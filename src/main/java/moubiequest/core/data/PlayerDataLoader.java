@@ -9,7 +9,7 @@ import org.jetbrains.annotations.NotNull;
  * @author MouBieCat
  */
 public class PlayerDataLoader
-        extends DataLoader
+        extends DataLoaderAbstract
         implements PlayerDataFile {
 
     // 資料擁有人

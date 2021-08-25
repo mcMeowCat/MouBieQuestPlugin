@@ -8,7 +8,7 @@ import org.jetbrains.annotations.NotNull;
  * 代表一個最基礎的紀錄檔案載入器
  * @author MouBieCat
  */
-public abstract class DataLoader
+public abstract class DataLoaderAbstract
         extends Loader
         implements DataFile {
 
@@ -17,7 +17,7 @@ public abstract class DataLoader
      * @param path      檔案路徑
      * @param name      檔案
      */
-    public DataLoader(final @NotNull String path, final @NotNull String name) {
+    public DataLoaderAbstract(final @NotNull String path, final @NotNull String name) {
         super(path, name, true);
         this.initData();
     }

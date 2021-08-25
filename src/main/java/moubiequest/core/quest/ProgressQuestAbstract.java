@@ -1,9 +1,11 @@
 package moubiequest.core.quest;
 
+import moubiequest.api.data.quest.PlayerQuestDataFile;
 import moubiequest.api.quest.ProgressQuest;
 import moubiequest.core.quest.object.Message;
 import moubiequest.core.quest.object.Status;
 import moubiequest.core.quest.object.Title;
+import moubiequest.main.MouBieCat;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
@@ -52,7 +54,10 @@ public abstract class ProgressQuestAbstract
      * @return 是否成功添加
      */
     public final boolean addPlayerQuestProgress(final @NotNull Player player) {
-        // wait code... < PlayerData.class >
+        if (this.isQuestEnable() && !this.isSuccess(player)) {
+            final PlayerQuestDataFile dataFile = MouBieCat.getInstance().getPlayerDataManager().get(player);
+            dataFile.setProgress(this, dataFile.getProgress(this));
+        }
         return false;
     }
 
@@ -61,7 +66,8 @@ public abstract class ProgressQuestAbstract
      * @param player 玩家
      */
     public final void clearPlayerQuestProgress(final @NotNull Player player) {
-        // wait code... < PlayerData.class >
+        final PlayerQuestDataFile dataFile = MouBieCat.getInstance().getPlayerDataManager().get(player);
+        dataFile.setProgress(this, 0);
     }
 
     /**
@@ -70,14 +76,18 @@ public abstract class ProgressQuestAbstract
      * @return 進度次數
      */
     public final int getPlayerQuestProgress(final @NotNull Player player) {
-        // wait code... < PlayerData.class >
-        return 0;
+        final PlayerQuestDataFile dataFile = MouBieCat.getInstance().getPlayerDataManager().get(player);
+        return dataFile.getProgress(this);
     }
 
+    /**
+     * 判定玩家該任務是否已經達成
+     * @param player 玩家
+     * @return 是否達成
+     */
     @Override
     public boolean isSuccess(final @NotNull Player player) {
-        // wait code... < PlayerData.class >
-        return false;
+        return (this.getPlayerQuestProgress(player) >= this.quest_progress);
     }
 
 }

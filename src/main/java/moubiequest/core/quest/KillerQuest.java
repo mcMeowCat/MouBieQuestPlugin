@@ -56,6 +56,11 @@ public class KillerQuest
         return this.quest_kill_entity_type.equals(type);
     }
 
+    /**
+     * 判定玩家該任務是否已經達成
+     * @param player 玩家
+     * @return 是否達成
+     */
     @Override
     public boolean isSuccess(final @NotNull Player player) {
         // wait code... < PlayerData.class >
