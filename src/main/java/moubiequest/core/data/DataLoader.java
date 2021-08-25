@@ -1,6 +1,6 @@
 package moubiequest.core.data;
 
-import moubiequest.api.yaml.DataFile;
+import moubiequest.api.data.DataFile;
 import moubiequest.core.yaml.Loader;
 import org.jetbrains.annotations.NotNull;
 

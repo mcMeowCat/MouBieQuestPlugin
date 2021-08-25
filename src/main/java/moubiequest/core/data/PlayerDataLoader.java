@@ -1,6 +1,6 @@
 package moubiequest.core.data;
 
-import moubiequest.api.yaml.PlayerDataFile;
+import moubiequest.api.data.PlayerDataFile;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 

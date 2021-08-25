@@ -1,4 +1,4 @@
-package moubiequest.api.yaml;
+package moubiequest.api.data;
 
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
