@@ -1,4 +1,4 @@
-package moubiequest.yaml;
+package moubiequest.core.yaml;
 
 import moubiequest.api.yaml.YamlSection;
 import org.bukkit.Material;
@@ -18,7 +18,7 @@ public abstract class YamlModuleAbstract
         implements YamlSection {
 
     /**
-     * 建構尺
+     * 建構子
      * @param path      檔案路徑
      * @param name      檔案
      * @param isNewFile 是否新創建

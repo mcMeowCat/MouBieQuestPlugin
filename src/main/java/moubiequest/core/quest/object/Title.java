@@ -1,4 +1,4 @@
-package moubiequest.quest.object;
+package moubiequest.core.quest.object;
 
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;

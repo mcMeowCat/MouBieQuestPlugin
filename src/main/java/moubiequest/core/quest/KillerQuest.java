@@ -1,8 +1,8 @@
-package moubiequest.quest;
+package moubiequest.core.quest;
 
-import moubiequest.quest.object.Message;
-import moubiequest.quest.object.Status;
-import moubiequest.quest.object.Title;
+import moubiequest.core.quest.object.Message;
+import moubiequest.core.quest.object.Status;
+import moubiequest.core.quest.object.Title;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;

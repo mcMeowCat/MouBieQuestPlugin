@@ -1,4 +1,4 @@
-package moubiequest.yaml;
+package moubiequest.core.yaml;
 
 import moubiequest.api.yaml.FileLoader;
 import org.jetbrains.annotations.NotNull;
@@ -12,8 +12,7 @@ public class Loader
         implements FileLoader {
 
     /**
-     * 建構尺
-     *
+     * 建構子
      * @param path      檔案路徑
      * @param name      檔案
      * @param isNewFile 是否新創建

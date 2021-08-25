@@ -1,4 +1,4 @@
-package moubiequest.yaml;
+package moubiequest.core.yaml;
 
 import moubiequest.api.yaml.FileSection;
 import moubiequest.main.MouBieCat;
@@ -17,7 +17,7 @@ public abstract class FileModuleAbstract
         implements FileSection {
 
     /**
-     * 建構尺
+     * 建構子
      * @param path 檔案路徑
      * @param name 檔案
      * @param isNewFile 是否新創建

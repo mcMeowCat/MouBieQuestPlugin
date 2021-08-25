@@ -1,4 +1,4 @@
-package moubiequest.yaml;
+package moubiequest.core.yaml;
 
 import moubiequest.api.yaml.MemorySection;
 import moubiequest.main.MouBieCat;

@@ -1,4 +1,4 @@
-package moubiequest.quest.object;
+package moubiequest.core.quest.object;
 
 import org.jetbrains.annotations.NotNull;
 
