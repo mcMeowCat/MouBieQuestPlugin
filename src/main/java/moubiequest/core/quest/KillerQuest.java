@@ -5,6 +5,7 @@ import moubiequest.core.quest.object.QItem;
 import moubiequest.core.quest.object.Status;
 import moubiequest.core.quest.object.Title;
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
 /**

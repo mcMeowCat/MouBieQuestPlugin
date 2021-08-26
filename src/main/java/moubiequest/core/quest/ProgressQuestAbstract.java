@@ -58,7 +58,8 @@ public abstract class ProgressQuestAbstract
     public final boolean addPlayerQuestProgress(final @NotNull Player player) {
         if (this.isQuestEnable() && !this.isSuccess(player)) {
             final PlayerQuestDataFile dataFile = MouBieCat.getInstance().getPlayerDataManager().get(player);
-            dataFile.setProgress(this, dataFile.getProgress(this));
+            dataFile.setProgress(this, dataFile.getProgress(this) + 1);
+            return true;
         }
         return false;
     }

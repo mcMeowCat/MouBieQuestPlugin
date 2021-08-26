@@ -18,30 +18,36 @@ public final class PlayerQuestData
         extends PlayerDataLoader
         implements PlayerQuestDataFile {
 
+    // 資料實體路徑
+    public static final String PLAYER_FLY_DATA_PATH = "player_data";
+
     // 玩家當前套用的稱號
     private Title player_title = null;
 
     // 玩家當前的榮譽點數
-    public static final String CONFIG_PATH_PLAYER_HONOR_POINT = "data.honor_point";
+    public static final String PLAYER_DATA_PATH_PLAYER_HONOR_POINT = "data.honor_point";
     private int player_honor_point;
 
     // 是否收到有關任務的訊息
-    public static final String CONFIG_PATH_PLAYER_IS_RECEIVE_MESSAGE = "data.receive_message";
+    public static final String PLAYER_DATA_PATH_PLAYER_IS_RECEIVE_MESSAGE = "data.receive_message";
     private boolean player_receive_message;
 
     // 是否看見其他人的稱號粒子效果
-    public static final String CONFIG_PATH_PLAYER_IS_VIEW_PARTICLE = "data.view_particle";
+    public static final String PLAYER_DATA_PATH_PLAYER_IS_VIEW_PARTICLE = "data.view_particle";
     private boolean player_view_particle;
+
+    // 進度任務路徑
+    public static final String PLAYER_DATA_PATH_PROGRESS_QUEST = "progress.";
 
     /**
      * 建構子
      * @param player 資料擁有人
      */
     public PlayerQuestData(final @NotNull Player player) {
-        super("player_data" + File.separatorChar, player);
-        this.player_honor_point = this.configuration.getInt(CONFIG_PATH_PLAYER_HONOR_POINT);
-        this.player_receive_message = this.configuration.getBoolean(CONFIG_PATH_PLAYER_IS_RECEIVE_MESSAGE);
-        this.player_view_particle = this.configuration.getBoolean(CONFIG_PATH_PLAYER_IS_VIEW_PARTICLE);
+        super(PLAYER_FLY_DATA_PATH + File.separatorChar, player);
+        this.player_honor_point = this.configuration.getInt(PLAYER_DATA_PATH_PLAYER_HONOR_POINT);
+        this.player_receive_message = this.configuration.getBoolean(PLAYER_DATA_PATH_PLAYER_IS_RECEIVE_MESSAGE);
+        this.player_view_particle = this.configuration.getBoolean(PLAYER_DATA_PATH_PLAYER_IS_VIEW_PARTICLE);
         this.initPlayerQuestData();
     }
 
@@ -49,9 +55,9 @@ public final class PlayerQuestData
      * 初始化
      */
     private void initPlayerQuestData() {
-        this.configuration.set(CONFIG_PATH_PLAYER_HONOR_POINT, this.player_honor_point);
-        this.configuration.set(CONFIG_PATH_PLAYER_IS_RECEIVE_MESSAGE, this.player_receive_message);
-        this.configuration.set(CONFIG_PATH_PLAYER_IS_VIEW_PARTICLE, this.player_view_particle);
+        this.configuration.set(PLAYER_DATA_PATH_PLAYER_HONOR_POINT, this.player_honor_point);
+        this.configuration.set(PLAYER_DATA_PATH_PLAYER_IS_RECEIVE_MESSAGE, this.player_receive_message);
+        this.configuration.set(PLAYER_DATA_PATH_PLAYER_IS_VIEW_PARTICLE, this.player_view_particle);
         this.save();
     }
 
@@ -101,7 +107,7 @@ public final class PlayerQuestData
      */
     public void setHonorPoint(final int point) {
         this.player_honor_point = point;
-        this.configuration.set(CONFIG_PATH_PLAYER_HONOR_POINT, this.player_honor_point);
+        this.configuration.set(PLAYER_DATA_PATH_PLAYER_HONOR_POINT, this.player_honor_point);
         this.save();
     }
 
@@ -153,7 +159,7 @@ public final class PlayerQuestData
      * @return 進度次數
      */
     public int getProgress(final @NotNull ProgressQuest quest) {
-        return this.configuration.getInt(quest.getQuestKey());
+        return this.configuration.getInt(PLAYER_DATA_PATH_PROGRESS_QUEST + quest.getQuestKey());
     }
 
     /**
@@ -163,7 +169,7 @@ public final class PlayerQuestData
      * @param progress 進度次數
      */
     public void setProgress(final @NotNull ProgressQuest quest, final int progress) {
-        this.configuration.set(quest.getQuestKey(), progress);
+        this.configuration.set(PLAYER_DATA_PATH_PROGRESS_QUEST + quest.getQuestKey(), progress);
         this.save();
     }
 
