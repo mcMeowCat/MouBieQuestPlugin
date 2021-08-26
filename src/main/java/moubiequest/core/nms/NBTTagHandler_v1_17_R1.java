@@ -16,6 +16,7 @@ public final class NBTTagHandler_v1_17_R1
     // 主路徑名稱
     private String mainTagName = "default_tag_name";
 
+    // NBT TAG 實例
     private NBTTagCompound compound = new NBTTagCompound();
 
     /**
@@ -58,7 +59,6 @@ public final class NBTTagHandler_v1_17_R1
 
     /**
      * 在該 tag 上設置一個 boolean
-     *
      * @param var1 路徑
      * @param var2 資料
      * @return 當前的建構器
@@ -71,7 +71,6 @@ public final class NBTTagHandler_v1_17_R1
 
     /**
      * 在該 tag 上設置一個 byte
-     *
      * @param var1 路徑
      * @param var2 資料
      * @return 當前的建構器
@@ -84,7 +83,6 @@ public final class NBTTagHandler_v1_17_R1
 
     /**
      * 在該 tag 上設置一個 double
-     *
      * @param var1 路徑
      * @param var2 資料
      * @return 當前的建構器
@@ -97,7 +95,6 @@ public final class NBTTagHandler_v1_17_R1
 
     /**
      * 在該 tag 上設置一個 float
-     *
      * @param var1 路徑
      * @param var2 資料
      * @return 當前的建構器
@@ -110,7 +107,6 @@ public final class NBTTagHandler_v1_17_R1
 
     /**
      * 在該 tag 上設置一個 int
-     *
      * @param var1 路徑
      * @param var2 資料
      * @return 當前的建構器
@@ -123,7 +119,6 @@ public final class NBTTagHandler_v1_17_R1
 
     /**
      * 在該 tag 上設置一個 long
-     *
      * @param var1 路徑
      * @param var2 資料
      * @return 當前的建構器
@@ -136,7 +131,6 @@ public final class NBTTagHandler_v1_17_R1
 
     /**
      * 在該 tag 上設置一個 short
-     *
      * @param var1 路徑
      * @param var2 資料
      * @return 當前的建構器
@@ -149,7 +143,6 @@ public final class NBTTagHandler_v1_17_R1
 
     /**
      * 在該 tag 上設置一個 String
-     *
      * @param var1 路徑
      * @param var2 資料
      * @return 當前的建構器
@@ -162,7 +155,6 @@ public final class NBTTagHandler_v1_17_R1
 
     /**
      * 在該 tag 上或取一個 boolean
-     *
      * @param var1 路徑
      * @return 資料
      */
@@ -172,7 +164,6 @@ public final class NBTTagHandler_v1_17_R1
 
     /**
      * 在該 tag 上或取一個 byte
-     *
      * @param var1 路徑
      * @return 資料
      */
@@ -182,7 +173,6 @@ public final class NBTTagHandler_v1_17_R1
 
     /**
      * 在該 tag 上或取一個 double
-     *
      * @param var1 路徑
      * @return 資料
      */
@@ -192,7 +182,6 @@ public final class NBTTagHandler_v1_17_R1
 
     /**
      * 在該 tag 上或取一個 float
-     *
      * @param var1 路徑
      * @return 資料
      */
@@ -202,7 +191,6 @@ public final class NBTTagHandler_v1_17_R1
 
     /**
      * 在該 tag 上或取一個 int
-     *
      * @param var1 路徑
      * @return 資料
      */
@@ -212,7 +200,6 @@ public final class NBTTagHandler_v1_17_R1
 
     /**
      * 在該 tag 上或取一個 long
-     *
      * @param var1 路徑
      * @return 資料
      */
@@ -222,7 +209,6 @@ public final class NBTTagHandler_v1_17_R1
 
     /**
      * 在該 tag 上或取一個 short
-     *
      * @param var1 路徑
      * @return 資料
      */
@@ -232,7 +218,6 @@ public final class NBTTagHandler_v1_17_R1
 
     /**
      * 在該 tag 上或取一個 String
-     *
      * @param var1 路徑
      * @return 資料
      */
@@ -243,7 +228,6 @@ public final class NBTTagHandler_v1_17_R1
 
     /**
      * 檢查是否包含一個路徑
-     *
      * @param var1 路徑
      * @return 資料
      */
@@ -253,7 +237,6 @@ public final class NBTTagHandler_v1_17_R1
 
     /**
      * 將一個物品寫入該 tag
-     *
      * @param var1 寫入的物品
      * @return 寫入後的物品
      */
@@ -276,7 +259,6 @@ public final class NBTTagHandler_v1_17_R1
 
     /**
      * 在一個物品上解析 tag 類型 boolean
-     *
      * @param var1 物品
      * @param var2 主路徑
      * @param var3 路徑
@@ -296,7 +278,6 @@ public final class NBTTagHandler_v1_17_R1
 
     /**
      * 在一個物品上解析 tag 類型 byte
-     *
      * @param var1 物品
      * @param var2 主路徑
      * @param var3 路徑
@@ -316,7 +297,6 @@ public final class NBTTagHandler_v1_17_R1
 
     /**
      * 在一個物品上解析 tag 類型 double
-     *
      * @param var1 物品
      * @param var2 主路徑
      * @param var3 路徑
@@ -336,7 +316,6 @@ public final class NBTTagHandler_v1_17_R1
 
     /**
      * 在一個物品上解析 tag 類型 float
-     *
      * @param var1 物品
      * @param var2 主路徑
      * @param var3 路徑
@@ -356,7 +335,6 @@ public final class NBTTagHandler_v1_17_R1
 
     /**
      * 在一個物品上解析 tag 類型 int
-     *
      * @param var1 物品
      * @param var2 主路徑
      * @param var3 路徑
@@ -376,7 +354,6 @@ public final class NBTTagHandler_v1_17_R1
 
     /**
      * 在一個物品上解析 tag 類型 long
-     *
      * @param var1 物品
      * @param var2 主路徑
      * @param var3 路徑
@@ -396,7 +373,6 @@ public final class NBTTagHandler_v1_17_R1
 
     /**
      * 在一個物品上解析 tag 類型 short
-     *
      * @param var1 物品
      * @param var2 主路徑
      * @param var3 路徑
@@ -416,7 +392,6 @@ public final class NBTTagHandler_v1_17_R1
 
     /**
      * 在一個物品上解析 tag 類型 String
-     *
      * @param var1 物品
      * @param var2 主路徑
      * @param var3 路徑
@@ -437,7 +412,6 @@ public final class NBTTagHandler_v1_17_R1
 
     /**
      * 檢查是否包含一個路徑
-     *
      * @param var1 物品
      * @param var2 主路徑
      * @return 資料

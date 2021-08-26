@@ -1,6 +1,6 @@
-package moubiequest.api.itemstack.UI;
+package moubiequest.api.itemstack.gui.ui;
 
-import moubiequest.api.itemstack.UI.button.UItem;
+import moubiequest.api.itemstack.gui.button.UItem;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 

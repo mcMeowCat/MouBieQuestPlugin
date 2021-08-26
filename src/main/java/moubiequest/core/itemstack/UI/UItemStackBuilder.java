@@ -1,6 +1,6 @@
 package moubiequest.core.itemstack.UI;
 
-import moubiequest.api.itemstack.UI.button.UItemBuilder;
+import moubiequest.api.itemstack.gui.button.UItemBuilder;
 import moubiequest.api.nms.NBTHandler;
 import moubiequest.core.itemstack.ItemStackBuilder;
 import moubiequest.main.MouBieCat;

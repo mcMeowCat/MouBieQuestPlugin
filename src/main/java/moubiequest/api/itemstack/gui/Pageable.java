@@ -1,4 +1,4 @@
-package moubiequest.api.itemstack.UI;
+package moubiequest.api.itemstack.gui;
 
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;

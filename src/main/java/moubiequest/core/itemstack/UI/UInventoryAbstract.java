@@ -1,7 +1,7 @@
 package moubiequest.core.itemstack.UI;
 
-import moubiequest.api.itemstack.UI.GUIBuilder;
-import moubiequest.api.itemstack.UI.button.UItem;
+import moubiequest.api.itemstack.gui.ui.GUIBuilder;
+import moubiequest.api.itemstack.gui.button.UItem;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -15,7 +15,7 @@ import org.jetbrains.annotations.NotNull;
  * 代表一個介面建構器類
  * @author MoiBueCat
  */
-public abstract class UInventoryBuilder
+public abstract class UInventoryAbstract
         implements GUIBuilder {
 
     /**
@@ -63,17 +63,17 @@ public abstract class UInventoryBuilder
     protected final Inventory inventory;
 
     // 標題
-    protected final String inventory_title;
+    private final String inventory_title;
 
     // 大小
-    protected final InventorySize inventory_size;
+    private final InventorySize inventory_size;
 
     /**
      * 建構子
      * @param title 介面標題
      * @param size 介面大小
      */
-    public UInventoryBuilder(final @NotNull String title, final @NotNull InventorySize size) {
+    public UInventoryAbstract(final @NotNull String title, final @NotNull InventorySize size) {
         this.inventory_title = ChatColor.translateAlternateColorCodes('%', title);
         this.inventory_size = size;
         this.inventory = Bukkit.createInventory(this, this.inventory_size.getSize(), this.inventory_title);

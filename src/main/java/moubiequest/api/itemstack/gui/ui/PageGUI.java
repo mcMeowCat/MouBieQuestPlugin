@@ -1,5 +1,6 @@
-package moubiequest.api.itemstack.UI;
+package moubiequest.api.itemstack.gui.ui;
 
+import moubiequest.api.itemstack.gui.Pageable;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 

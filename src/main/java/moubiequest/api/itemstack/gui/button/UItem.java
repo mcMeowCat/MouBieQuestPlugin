@@ -1,4 +1,4 @@
-package moubiequest.api.itemstack.UI.button;
+package moubiequest.api.itemstack.gui.button;
 
 import moubiequest.core.itemstack.UI.UItemStackBuilder;
 import org.bukkit.inventory.ItemStack;

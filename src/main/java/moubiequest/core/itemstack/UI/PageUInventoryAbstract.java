@@ -1,6 +1,6 @@
 package moubiequest.core.itemstack.UI;
 
-import moubiequest.api.itemstack.UI.PageGUI;
+import moubiequest.api.itemstack.gui.ui.PageGUI;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
@@ -8,12 +8,12 @@ import org.jetbrains.annotations.NotNull;
  * 代表一個有多頁數的介面建構器
  * @author MouBieCat
  */
-public abstract class PageUInventory
-        extends UInventoryBuilder
+public abstract class PageUInventoryAbstract
+        extends UInventoryAbstract
         implements PageGUI {
 
     // 當前頁數 (預設=0)
-    protected int nowPage = 0;
+    private int nowPage = 0;
 
     /**
      * 建構子
@@ -21,7 +21,7 @@ public abstract class PageUInventory
      * @param title 介面標題
      * @param size  介面大小
      */
-    public PageUInventory(final @NotNull String title, final @NotNull InventorySize size) {
+    public PageUInventoryAbstract(final @NotNull String title, final @NotNull InventorySize size) {
         super(title, size);
     }
 
