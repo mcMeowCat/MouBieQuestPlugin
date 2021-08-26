@@ -16,7 +16,7 @@ public final class KillerQuestManager
      */
     @Override
     public void parsingQuests() {
-        QuestLoader<KillerQuest> loader = new KillerQuestLoader();
+        final QuestLoader<KillerQuest> loader = new KillerQuestLoader();
         for (final KillerQuest quest : loader.parsing())
             this.add(quest.getQuestKey(), quest);
     }
