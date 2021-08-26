@@ -24,7 +24,7 @@ public class ItemStackBuilder
         implements ItemBuilder {
 
     // 項目實體
-    private final ItemStack itemStack;
+    protected final ItemStack itemStack;
 
     /**
      * 建構子
@@ -266,7 +266,7 @@ public class ItemStackBuilder
      * @return 物品
      */
     @NotNull
-    public final ItemStack build() {
+    public ItemStack build() {
         return this.itemStack;
     }
 

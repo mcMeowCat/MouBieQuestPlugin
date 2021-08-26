@@ -40,7 +40,7 @@ public interface Manager<K, V> {
 
     /**
      * 獲取管理器中所有的 value
-     * @return
+     * @return 集合
      */
     @NotNull Collection<V> getValues();
 
