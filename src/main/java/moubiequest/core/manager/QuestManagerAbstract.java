@@ -11,4 +11,17 @@ import moubiequest.api.quest.Quest;
 public abstract class QuestManagerAbstract<T extends Quest>
         extends ManagerAbstract<String, T>
         implements QuestManager<T> {
+
+    /**
+     * 建構子
+     */
+    public QuestManagerAbstract() {
+        this.parsingQuests();
+    }
+
+    /**
+     * 用於將檔案格式轉換成記憶體的方法
+     */
+    public abstract void parsingQuests();
+
 }

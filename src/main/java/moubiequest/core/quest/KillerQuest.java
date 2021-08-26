@@ -1,10 +1,10 @@
 package moubiequest.core.quest;
 
 import moubiequest.core.quest.object.Message;
+import moubiequest.core.quest.object.QItem;
 import moubiequest.core.quest.object.Status;
 import moubiequest.core.quest.object.Title;
 import org.bukkit.entity.EntityType;
-import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -31,10 +31,11 @@ public class KillerQuest
                        final @NotNull Title quest_title,
                        final @NotNull Message quest_message,
                        final @NotNull Status quest_status,
+                       final @NotNull QItem item,
                        final int quest_honor_point,
                        final int quest_progress,
                        final @NotNull EntityType quest_kill_entity_type) {
-        super(QuestType.KILLER, quest_key, quest_title, quest_message, quest_status, quest_honor_point, quest_progress);
+        super(QuestType.KILLER, quest_key, quest_title, quest_message, quest_status, item, quest_honor_point, quest_progress);
         this.quest_kill_entity_type = quest_kill_entity_type;
     }
 
@@ -54,17 +55,6 @@ public class KillerQuest
      */
     public final boolean checkEntityType(final @NotNull EntityType type) {
         return this.quest_kill_entity_type.equals(type);
-    }
-
-    /**
-     * 判定玩家該任務是否已經達成
-     * @param player 玩家
-     * @return 是否達成
-     */
-    @Override
-    public boolean isSuccess(final @NotNull Player player) {
-        // wait code... < PlayerData.class >
-        return super.isSuccess(player);
     }
 
 }

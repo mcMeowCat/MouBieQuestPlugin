@@ -1,8 +1,11 @@
 package moubiequest.api.quest;
 
 import moubiequest.core.quest.QuestType;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
 
 /**
  * 代表一個任務的基礎
@@ -69,6 +72,24 @@ public interface Quest {
      * @param isVisible 狀態
      */
     void setQuestVisible(final boolean isVisible);
+
+    /**
+     * 獲取材質
+     * @return 材質
+     */
+    @NotNull Material getQuestItemMaterial();
+
+    /**
+     * 獲取物品標題
+     * @return 標題
+     */
+    @NotNull String getQuestItemTitle();
+
+    /**
+     * 獲取物品說明
+     * @return 說明
+     */
+    @NotNull List<String> getQuestItemLore();
 
     /**
      * 獲取該任務的榮譽點數

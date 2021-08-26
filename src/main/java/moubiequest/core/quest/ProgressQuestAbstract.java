@@ -3,6 +3,7 @@ package moubiequest.core.quest;
 import moubiequest.api.data.quest.PlayerQuestDataFile;
 import moubiequest.api.quest.ProgressQuest;
 import moubiequest.core.quest.object.Message;
+import moubiequest.core.quest.object.QItem;
 import moubiequest.core.quest.object.Status;
 import moubiequest.core.quest.object.Title;
 import moubiequest.main.MouBieCat;
@@ -34,9 +35,10 @@ public abstract class ProgressQuestAbstract
                                  final @NotNull Title quest_title,
                                  final @NotNull Message quest_message,
                                  final @NotNull Status quest_status,
+                                 final @NotNull QItem item,
                                  final int quest_honor_point,
                                  final int quest_progress) {
-        super(quest_type, quest_key, quest_title, quest_message, quest_status, quest_honor_point);
+        super(quest_type, quest_key, quest_title, quest_message, quest_status, item, quest_honor_point);
         this.quest_progress = quest_progress;
     }
 

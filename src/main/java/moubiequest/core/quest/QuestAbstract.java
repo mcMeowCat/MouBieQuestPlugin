@@ -2,10 +2,14 @@ package moubiequest.core.quest;
 
 import moubiequest.api.quest.Quest;
 import moubiequest.core.quest.object.Message;
+import moubiequest.core.quest.object.QItem;
 import moubiequest.core.quest.object.Status;
 import moubiequest.core.quest.object.Title;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
 
 /**
  * 代表一個基礎任務該有的物件
@@ -29,6 +33,9 @@ public abstract class QuestAbstract
     // 任務目前的狀態
     protected final Status quest_status;
 
+    // 任務在介面資訊
+    protected final QItem item;
+
     // 任務的榮譽點數
     protected final int quest_honor_point;
 
@@ -46,12 +53,14 @@ public abstract class QuestAbstract
                          final @NotNull Title quest_title,
                          final @NotNull Message quest_message,
                          final @NotNull Status quest_status,
+                         final @NotNull QItem item,
                          final int quest_honor_point) {
         this.quest_type = quest_type;
         this.quest_key = quest_key;
         this.quest_title = quest_title;
         this.quest_messages = quest_message;
         this.quest_status = quest_status;
+        this.item = item;
         this.quest_honor_point = quest_honor_point;
     }
 
@@ -138,6 +147,33 @@ public abstract class QuestAbstract
      */
     public final void setQuestVisible(final boolean isVisible) {
         this.quest_status.setVisible(isVisible);
+    }
+
+    /**
+     * 獲取材質
+     * @return 材質
+     */
+    @NotNull
+    public final Material getQuestItemMaterial() {
+        return this.item.getMaterial();
+    }
+
+    /**
+     * 獲取物品標題
+     * @return 標題
+     */
+    @NotNull
+    public final String getQuestItemTitle() {
+        return this.item.getDisplayName();
+    }
+
+    /**
+     * 獲取物品說明
+     * @return 說明
+     */
+    @NotNull
+    public final List<String> getQuestItemLore() {
+        return this.item.getLore();
     }
 
     /**

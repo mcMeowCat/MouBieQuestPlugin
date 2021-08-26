@@ -22,7 +22,7 @@ public class PlayerDataLoader
      * @param player 資料擁有人
      */
     public PlayerDataLoader(final @NotNull String path, final @NotNull Player player) {
-        super(path, player.getUniqueId().toString() + ".yml");
+        super(path, player.getUniqueId() + ".yml");
         this.player = player;
         this.initPlayerData();
     }

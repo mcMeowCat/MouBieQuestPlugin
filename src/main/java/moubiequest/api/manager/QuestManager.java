@@ -6,4 +6,10 @@ package moubiequest.api.manager;
  * @author MouBieCat
  */
 public interface QuestManager<T> {
+
+    /**
+     * 用於將檔案格式轉換成記憶體的方法
+     */
+    void parsingQuests();
+
 }
