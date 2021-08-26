@@ -241,6 +241,17 @@ public final class NBTTagHandler_v1_17_R1
     }
 
     /**
+     * 檢查是否包含一個路徑
+     *
+     * @param var1 路徑
+     * @return 資料
+     */
+    @Override
+    public boolean hasTag(final @NotNull String var1) {
+        return this.compound.hasKey(var1);
+    }
+
+    /**
      * 將一個物品寫入該 tag
      *
      * @param var1 寫入的物品
@@ -429,6 +440,21 @@ public final class NBTTagHandler_v1_17_R1
             }
         }
         return "";
+    }
+
+    /**
+     * 檢查是否包含一個路徑
+     *
+     * @param var1 物品
+     * @param var2 主路徑
+     * @return 資料
+     */
+    public boolean hasTag(final @NotNull ItemStack var1, final @NotNull String var2) {
+        final net.minecraft.world.item.ItemStack itemStack = CraftItemStack.asNMSCopy(var1);
+        final NBTTagCompound tag1 = itemStack.hasTag() ? itemStack.getTag() : new NBTTagCompound();
+        if(tag1 != null)
+            return tag1.hasKey(var2);
+        return false;
     }
 
 }

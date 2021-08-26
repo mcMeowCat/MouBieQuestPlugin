@@ -148,6 +148,13 @@ public interface NBTHandler
     @NotNull String getString(final @NotNull String var1);
 
     /**
+     * 檢查是否包含一個路徑
+     * @param var1 路徑
+     * @return 資料
+     */
+    boolean hasTag(final @NotNull String var1);
+
+    /**
      * 將一個物品寫入該 tag
      * @param var1 寫入的物品
      * @return 寫入後的物品
@@ -226,5 +233,13 @@ public interface NBTHandler
      */
     @NotNull
     String getString(final @NotNull ItemStack var1, final @NotNull String var2, final @NotNull String var3);
+
+    /**
+     * 檢查是否包含一個路徑
+     * @param var1 物品
+     * @param var2 主路徑
+     * @return 資料
+     */
+    boolean hasTag(final @NotNull ItemStack var1, final @NotNull String var2);
 
 }

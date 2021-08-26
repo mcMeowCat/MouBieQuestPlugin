@@ -24,7 +24,7 @@ public class ItemStackBuilder
         implements ItemBuilder {
 
     // 項目實體
-    protected final ItemStack itemStack;
+    protected ItemStack itemStack;
 
     /**
      * 建構子

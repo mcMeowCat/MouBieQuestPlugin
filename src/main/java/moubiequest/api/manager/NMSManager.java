@@ -1,6 +1,7 @@
 package moubiequest.api.manager;
 
 import moubiequest.api.nms.Handler;
+import moubiequest.api.nms.NBTHandler;
 import moubiequest.core.manager.HandlerManager;
 import org.jetbrains.annotations.NotNull;
 
@@ -15,7 +16,7 @@ public interface NMSManager
      * 獲取操作NBTTag的介面類
      * @return NBTHandler
      */
-    @NotNull NMSManager getNmsManager();
+    @NotNull NBTHandler getNbtHandler();
 
     /**
      * 獲取一個 NMS 操作類

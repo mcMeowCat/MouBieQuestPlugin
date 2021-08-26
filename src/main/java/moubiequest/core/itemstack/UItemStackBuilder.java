@@ -1,9 +1,12 @@
 package moubiequest.core.itemstack;
 
 import moubiequest.api.itemstack.UItemBuilder;
+import moubiequest.api.nms.NBTHandler;
+import moubiequest.main.MouBieCat;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * 代表一個介面上的物品類
@@ -13,12 +16,10 @@ public class UItemStackBuilder
         extends ItemStackBuilder
         implements UItemBuilder {
 
-    /**
-     * 物品在介面上的功能
-     */
-    public enum ButtonType {
-        BUTTON, DECORATION
-    }
+    private static final String UI_ITEM_NBT_TAG_MAIN_PATH = "UI_ITEM_MAIN_TAG";
+
+    private static final String UI_ITEM_NBT_TAG_CAN_MOVE_PATH = "CAN_MOVE";
+    private static final String UI_ITEM_NBT_TAG_CLICK_TYPE_PATH = "CLICK_TYPE";
 
     /**
      * 點擊的方法
@@ -27,11 +28,13 @@ public class UItemStackBuilder
         LEFT, SHIFT_LEFT, RIGHT, SHIFT_RIGHT, DOUBLE_CLICK, DROP, NONE,
     }
 
+    // 介面位置
     private int slotId = 0;
 
-    private ButtonType buttonType = ButtonType.DECORATION;
-
+    // 點選方法
     private ClickType clickType = ClickType.NONE;
+
+    private boolean isCamMove = false;
 
     /**
      * 建構子
@@ -59,23 +62,25 @@ public class UItemStackBuilder
     }
 
     /**
-     * 設定按鈕類型
-     * @param buttonType 類型
+     * 設定該物品是否可以被移動
+     *
+     * @param canMove 是否可以
      * @return 當前的建構器
      */
     @NotNull
-    public final UItemBuilder setButtonType(final @NotNull ButtonType buttonType) {
-        this.buttonType = buttonType;
+    public final UItemBuilder setCanMove(final boolean canMove) {
+        this.isCamMove = canMove;
         return this;
     }
 
     /**
-     * 獲取按鈕類型
+     * 獲取該物品是否可以被移動
+     *
      * @return 類型
      */
-    @NotNull
-    public final ButtonType getButtonType() {
-        return buttonType;
+    @Override
+    public final boolean getButtonType() {
+        return this.isCamMove;
     }
 
     /**
@@ -118,12 +123,46 @@ public class UItemStackBuilder
     }
 
     /**
+     * 解析一個物品是否可以被使用者移動
+     * @param itemStack 物品
+     * @return 是否可被移動
+     */
+    public static boolean getItemStackCanMove(final @NotNull ItemStack itemStack) {
+        final NBTHandler handler = MouBieCat.getInstance().getNmsManager().getNbtHandler();
+        if (handler.hasTag(itemStack, UI_ITEM_NBT_TAG_MAIN_PATH))
+            return handler.getBoolean(itemStack, UI_ITEM_NBT_TAG_MAIN_PATH, UI_ITEM_NBT_TAG_CAN_MOVE_PATH);
+
+        return false;
+    }
+
+    /**
+     * 解析一個物品的點擊操作類型
+     * @param itemStack 物品
+     * @return 類型
+     */
+    @Nullable
+    public static ClickType getItemStackClickType(final @NotNull ItemStack itemStack) {
+        final NBTHandler handler = MouBieCat.getInstance().getNmsManager().getNbtHandler();
+        if (handler.hasTag(itemStack, UI_ITEM_NBT_TAG_MAIN_PATH)) {
+            return ClickType.valueOf(
+                    handler.getString(itemStack, UI_ITEM_NBT_TAG_MAIN_PATH, UI_ITEM_NBT_TAG_CLICK_TYPE_PATH)
+            );
+        }
+        return null;
+    }
+
+    /**
      * 將物品建置出來
      * @return 物品
      */
     @Override
     @NotNull
     public ItemStack build() {
+        final NBTHandler handler = MouBieCat.getInstance().getNmsManager().getNbtHandler();
+        handler.setMainTagName(UI_ITEM_NBT_TAG_MAIN_PATH);
+        handler.setBoolean(UI_ITEM_NBT_TAG_CAN_MOVE_PATH, this.isCamMove);
+        handler.setString(UI_ITEM_NBT_TAG_CLICK_TYPE_PATH, this.clickType.toString());
+        this.itemStack = handler.builder(this.itemStack);
         return super.build();
     }
 

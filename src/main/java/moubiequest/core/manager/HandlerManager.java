@@ -2,6 +2,7 @@ package moubiequest.core.manager;
 
 import moubiequest.api.manager.NMSManager;
 import moubiequest.api.nms.Handler;
+import moubiequest.api.nms.NBTHandler;
 import moubiequest.core.nms.NBTTagHandler_v1_17_R1;
 import moubiequest.main.MouBieCat;
 import org.bukkit.Bukkit;
@@ -47,8 +48,8 @@ public final class HandlerManager
      * @return NBTHandler
      */
     @NotNull
-    public NMSManager getNmsManager() {
-        return (NMSManager) this.get(NMSHandlerType.NBT_TAG);
+    public NBTHandler getNbtHandler() {
+        return (NBTHandler) this.get(NMSHandlerType.NBT_TAG);
     }
 
     /**
