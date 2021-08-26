@@ -4,7 +4,9 @@ import moubiequest.api.itemstack.UI.GUIBuilder;
 import moubiequest.api.itemstack.UI.button.UItem;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
@@ -64,7 +66,7 @@ public abstract class UInventoryBuilder
     protected final String inventory_title;
 
     // 大小
-    protected final int inventory_size;
+    protected final InventorySize inventory_size;
 
     /**
      * 建構子
@@ -73,15 +75,15 @@ public abstract class UInventoryBuilder
      */
     public UInventoryBuilder(final @NotNull String title, final @NotNull InventorySize size) {
         this.inventory_title = ChatColor.translateAlternateColorCodes('%', title);
-        this.inventory_size = size.getSize();
-        this.inventory = Bukkit.createInventory(this, this.inventory_size, this.inventory_title);
+        this.inventory_size = size;
+        this.inventory = Bukkit.createInventory(this, this.inventory_size.getSize(), this.inventory_title);
     }
 
     /**
      * 獲取介面大小
      * @return 大小
      */
-    public final int getGUISize() {
+    public final InventorySize getGUISize() {
         return this.inventory_size;
     }
 
@@ -117,6 +119,15 @@ public abstract class UInventoryBuilder
     }
 
     /**
+     * 清除當前介面上的所有物品按鈕
+     */
+    public final void clearInventory() {
+        final ItemStack airItemStack = new ItemStack(Material.AIR);
+        for (int slot = 0; slot < this.inventory_size.getSize(); slot++)
+            this.inventory.setItem(slot, airItemStack);
+    }
+
+    /**
      * Get the object's inventory.
      * @return The inventory.
      */
@@ -140,5 +151,11 @@ public abstract class UInventoryBuilder
      * @param player 玩家
      */
     protected abstract void initInventory(final @NotNull Player player);
+
+    /**
+     * 代表當介面被點擊的事件
+     * @param event 介面點擊事件
+     */
+    public abstract void clickInventory(final @NotNull InventoryClickEvent event);
 
 }

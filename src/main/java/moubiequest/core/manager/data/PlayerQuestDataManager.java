@@ -15,18 +15,18 @@ public final class PlayerQuestDataManager
         implements PlayerDataManager {
 
     /**
-     * 從管理器中獲取資料
-     * @param key k
+     * 或取一個玩家的任務資料
+     * @param player 玩家
      * @return v
      */
     @NotNull
-    public PlayerQuestDataFile get(final @NotNull Player key) {
-        final PlayerQuestDataFile dataFile = super.get(key);
+    public PlayerQuestDataFile get(final @NotNull Player player) {
+        final PlayerQuestDataFile dataFile = super.get(player);
         if (dataFile != null)
             return dataFile;
 
-        this.add(key, new PlayerQuestData(key));
-        return this.get(key);
+        this.add(player, new PlayerQuestData(player));
+        return this.get(player);
     }
 
 }

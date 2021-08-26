@@ -41,6 +41,7 @@ public final class NBTTagHandler_v1_17_R1
      * @param tagName 新名稱
      * @return 當前的建構器
      */
+    @NotNull
     public NBTHandler setMainTagName(final @NotNull String tagName) {
         this.mainTagName = tagName;
         return this;

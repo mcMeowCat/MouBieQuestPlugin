@@ -20,7 +20,7 @@ public interface NBTHandler
      * 設置當前的主路徑名稱
      * @param tagName 新名稱
      */
-    NBTHandler setMainTagName(final @NotNull String tagName);
+    @NotNull NBTHandler setMainTagName(final @NotNull String tagName);
 
     /**
      * 重製所有配置 (tag、mainTagName)

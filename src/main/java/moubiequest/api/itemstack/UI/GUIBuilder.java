@@ -23,4 +23,9 @@ public interface GUIBuilder
      */
     @NotNull GUIBuilder addItem(final @NotNull ItemStack itemStack);
 
+    /**
+     * 清除當前介面上的所有物品按鈕
+     */
+    void clearInventory();
+
 }
