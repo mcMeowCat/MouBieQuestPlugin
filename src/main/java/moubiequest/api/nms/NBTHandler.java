@@ -20,7 +20,7 @@ public interface NBTHandler
      * 設置當前的主路徑名稱
      * @param tagName 新名稱
      */
-    void setMainTagName(final @NotNull String tagName);
+    NBTHandler setMainTagName(final @NotNull String tagName);
 
     /**
      * 重製所有配置 (tag、mainTagName)
@@ -159,7 +159,7 @@ public interface NBTHandler
      * @param var1 寫入的物品
      * @return 寫入後的物品
      */
-    @NotNull ItemStack builder(final @NotNull ItemStack var1);
+    @NotNull ItemStack build(final @NotNull ItemStack var1);
 
     /**
      * 在一個物品上解析 tag 類型 boolean

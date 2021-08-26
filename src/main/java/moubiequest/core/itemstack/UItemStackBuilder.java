@@ -159,10 +159,15 @@ public class UItemStackBuilder
     @NotNull
     public ItemStack build() {
         final NBTHandler handler = MouBieCat.getInstance().getNmsManager().getNbtHandler();
-        handler.setMainTagName(UI_ITEM_NBT_TAG_MAIN_PATH);
-        handler.setBoolean(UI_ITEM_NBT_TAG_CAN_MOVE_PATH, this.isCamMove);
-        handler.setString(UI_ITEM_NBT_TAG_CLICK_TYPE_PATH, this.clickType.toString());
-        this.itemStack = handler.builder(this.itemStack);
+
+        // 配置 TAG 屬性
+        handler.setMainTagName(UI_ITEM_NBT_TAG_MAIN_PATH)
+                .setBoolean(UI_ITEM_NBT_TAG_CAN_MOVE_PATH, this.isCamMove)
+                .setString(UI_ITEM_NBT_TAG_CLICK_TYPE_PATH, this.clickType.toString());
+
+        // 寫入到物品中
+        this.itemStack = handler.build(this.itemStack);
+
         return super.build();
     }
 

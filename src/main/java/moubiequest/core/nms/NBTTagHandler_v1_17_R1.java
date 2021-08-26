@@ -29,7 +29,6 @@ public final class NBTTagHandler_v1_17_R1
 
     /**
      * 獲取當前的主路徑名稱
-     *
      * @return 名稱
      */
     @NotNull
@@ -39,11 +38,12 @@ public final class NBTTagHandler_v1_17_R1
 
     /**
      * 設置當前的主路徑名稱
-     *
      * @param tagName 新名稱
+     * @return 當前的建構器
      */
-    public void setMainTagName(final @NotNull String tagName) {
+    public NBTHandler setMainTagName(final @NotNull String tagName) {
         this.mainTagName = tagName;
+        return this;
     }
 
     /**
@@ -246,7 +246,6 @@ public final class NBTTagHandler_v1_17_R1
      * @param var1 路徑
      * @return 資料
      */
-    @Override
     public boolean hasTag(final @NotNull String var1) {
         return this.compound.hasKey(var1);
     }
@@ -257,8 +256,8 @@ public final class NBTTagHandler_v1_17_R1
      * @param var1 寫入的物品
      * @return 寫入後的物品
      */
-    @Override
-    public @NotNull ItemStack builder(final @NotNull ItemStack var1) {
+    @NotNull
+    public ItemStack build(final @NotNull ItemStack var1) {
         final net.minecraft.world.item.ItemStack itemStack = CraftItemStack.asNMSCopy(var1);
 
         final NBTTagCompound tag = itemStack.hasTag() ? itemStack.getTag() : new NBTTagCompound();
@@ -282,7 +281,6 @@ public final class NBTTagHandler_v1_17_R1
      * @param var3 路徑
      * @return 資料
      */
-    @Override
     public boolean getBoolean(final @NotNull ItemStack var1, final @NotNull String var2, final @NotNull String var3) {
         final net.minecraft.world.item.ItemStack itemStack = CraftItemStack.asNMSCopy(var1);
         final NBTTagCompound tag = itemStack.getTag();
@@ -303,7 +301,6 @@ public final class NBTTagHandler_v1_17_R1
      * @param var3 路徑
      * @return 資料
      */
-    @Override
     public byte getByte(final @NotNull ItemStack var1, final @NotNull String var2, final @NotNull String var3) {
         final net.minecraft.world.item.ItemStack itemStack = CraftItemStack.asNMSCopy(var1);
         final NBTTagCompound tag = itemStack.hasTag() ? itemStack.getTag() : new NBTTagCompound();
@@ -324,7 +321,6 @@ public final class NBTTagHandler_v1_17_R1
      * @param var3 路徑
      * @return 資料
      */
-    @Override
     public double getDouble(final @NotNull ItemStack var1, final @NotNull String var2, final @NotNull String var3) {
         final net.minecraft.world.item.ItemStack itemStack = CraftItemStack.asNMSCopy(var1);
         final NBTTagCompound tag1 = itemStack.hasTag() ? itemStack.getTag() : new NBTTagCompound();
@@ -345,7 +341,6 @@ public final class NBTTagHandler_v1_17_R1
      * @param var3 路徑
      * @return 資料
      */
-    @Override
     public float getFloat(final @NotNull ItemStack var1, final @NotNull String var2, final @NotNull String var3) {
         final net.minecraft.world.item.ItemStack itemStack = CraftItemStack.asNMSCopy(var1);
         final NBTTagCompound tag1 = itemStack.hasTag() ? itemStack.getTag() : new NBTTagCompound();
@@ -366,7 +361,6 @@ public final class NBTTagHandler_v1_17_R1
      * @param var3 路徑
      * @return 資料
      */
-    @Override
     public int getInt(final @NotNull ItemStack var1, final @NotNull String var2, final @NotNull String var3) {
         final net.minecraft.world.item.ItemStack itemStack = CraftItemStack.asNMSCopy(var1);
         final NBTTagCompound tag1 = itemStack.hasTag() ? itemStack.getTag() : new NBTTagCompound();
@@ -387,7 +381,6 @@ public final class NBTTagHandler_v1_17_R1
      * @param var3 路徑
      * @return 資料
      */
-    @Override
     public long getLong(final @NotNull ItemStack var1, final @NotNull String var2, final @NotNull String var3) {
         final net.minecraft.world.item.ItemStack itemStack = CraftItemStack.asNMSCopy(var1);
         final NBTTagCompound tag1 = itemStack.hasTag() ? itemStack.getTag() : new NBTTagCompound();
@@ -408,7 +401,6 @@ public final class NBTTagHandler_v1_17_R1
      * @param var3 路徑
      * @return 資料
      */
-    @Override
     public short getShort(final @NotNull ItemStack var1, final @NotNull String var2, final @NotNull String var3) {
         final net.minecraft.world.item.ItemStack itemStack = CraftItemStack.asNMSCopy(var1);
         final NBTTagCompound tag1 = itemStack.hasTag() ? itemStack.getTag() : new NBTTagCompound();
@@ -429,8 +421,8 @@ public final class NBTTagHandler_v1_17_R1
      * @param var3 路徑
      * @return 資料
      */
-    @Override
-    public @NotNull String getString(final @NotNull ItemStack var1, final @NotNull String var2, final @NotNull String var3) {
+    @NotNull
+    public String getString(final @NotNull ItemStack var1, final @NotNull String var2, final @NotNull String var3) {
         final net.minecraft.world.item.ItemStack itemStack = CraftItemStack.asNMSCopy(var1);
         final NBTTagCompound tag1 = itemStack.hasTag() ? itemStack.getTag() : new NBTTagCompound();
         if(tag1 != null) {
