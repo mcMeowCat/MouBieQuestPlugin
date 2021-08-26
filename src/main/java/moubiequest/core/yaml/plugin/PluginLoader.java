@@ -1,6 +1,7 @@
-package moubiequest.core.yaml;
+package moubiequest.core.yaml.plugin;
 
-import moubiequest.api.yaml.PluginFile;
+import moubiequest.api.yaml.plugin.PluginFile;
+import moubiequest.core.yaml.Loader;
 import org.jetbrains.annotations.NotNull;
 
 /**

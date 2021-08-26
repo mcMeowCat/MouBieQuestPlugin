@@ -2,10 +2,10 @@ package moubiequest.core.quest;
 
 import moubiequest.api.data.quest.PlayerQuestDataFile;
 import moubiequest.api.quest.ProgressQuest;
-import moubiequest.core.quest.object.Message;
-import moubiequest.core.quest.object.QItem;
-import moubiequest.core.quest.object.Status;
-import moubiequest.core.quest.object.Title;
+import moubiequest.core.quest.objects.Message;
+import moubiequest.core.quest.objects.QItem;
+import moubiequest.core.quest.objects.Status;
+import moubiequest.core.quest.objects.Title;
 import moubiequest.main.MouBieCat;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;

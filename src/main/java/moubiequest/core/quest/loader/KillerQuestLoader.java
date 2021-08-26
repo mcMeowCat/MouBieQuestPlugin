@@ -1,12 +1,12 @@
-package moubiequest.core.manager.loader;
+package moubiequest.core.quest.loader;
 
-import moubiequest.api.manager.loader.KillerLoader;
+import moubiequest.api.quest.loader.KillerLoader;
 import moubiequest.api.quest.KillerQuest;
 import moubiequest.core.quest.QuestType;
-import moubiequest.core.quest.object.Message;
-import moubiequest.core.quest.object.QItem;
-import moubiequest.core.quest.object.Status;
-import moubiequest.core.quest.object.Title;
+import moubiequest.core.quest.objects.Message;
+import moubiequest.core.quest.objects.QItem;
+import moubiequest.core.quest.objects.Status;
+import moubiequest.core.quest.objects.Title;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.EntityType;
 import org.jetbrains.annotations.NotNull;

@@ -1,6 +1,7 @@
-package moubiequest.api.itemstack;
+package moubiequest.api.itemstack.UI;
 
-import moubiequest.core.itemstack.UItemStackBuilder;
+import moubiequest.api.itemstack.ItemBuilder;
+import moubiequest.core.itemstack.UI.UItemStackBuilder;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;

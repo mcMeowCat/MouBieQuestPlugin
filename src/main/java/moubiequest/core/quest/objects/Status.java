@@ -1,4 +1,4 @@
-package moubiequest.core.quest.object;
+package moubiequest.core.quest.objects;
 
 /**
  * 用於儲存任務相關的當前狀態

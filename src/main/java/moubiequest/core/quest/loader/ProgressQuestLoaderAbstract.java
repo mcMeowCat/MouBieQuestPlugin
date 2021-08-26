@@ -1,4 +1,4 @@
-package moubiequest.core.manager.loader;
+package moubiequest.core.quest.loader;
 
 import moubiequest.api.quest.ProgressQuest;
 import moubiequest.core.quest.QuestType;

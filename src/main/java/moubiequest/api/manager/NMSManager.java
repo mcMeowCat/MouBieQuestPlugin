@@ -2,7 +2,7 @@ package moubiequest.api.manager;
 
 import moubiequest.api.nms.Handler;
 import moubiequest.api.nms.NBTHandler;
-import moubiequest.core.manager.HandlerManager;
+import moubiequest.core.manager.nms.HandlerManager;
 import org.jetbrains.annotations.NotNull;
 
 /**

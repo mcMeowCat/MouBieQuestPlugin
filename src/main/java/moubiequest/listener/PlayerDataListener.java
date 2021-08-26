@@ -1,6 +1,6 @@
 package moubiequest.listener;
 
-import moubiequest.core.data.PlayerQuestData;
+import moubiequest.core.data.quest.PlayerQuestData;
 import moubiequest.main.MouBieCat;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

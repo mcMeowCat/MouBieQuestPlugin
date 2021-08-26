@@ -1,9 +1,10 @@
-package moubiequest.core.manager;
+package moubiequest.core.manager.nms;
 
 import moubiequest.api.manager.NMSManager;
 import moubiequest.api.nms.Handler;
 import moubiequest.api.nms.NBTHandler;
 import moubiequest.core.nms.NBTTagHandler_v1_17_R1;
+import moubiequest.core.manager.ManagerAbstract;
 import moubiequest.main.MouBieCat;
 import org.bukkit.Bukkit;
 import org.jetbrains.annotations.NotNull;

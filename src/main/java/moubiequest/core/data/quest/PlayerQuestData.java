@@ -1,9 +1,10 @@
-package moubiequest.core.data;
+package moubiequest.core.data.quest;
 
 import moubiequest.api.data.quest.PlayerQuestDataFile;
 import moubiequest.api.quest.ProgressQuest;
 import moubiequest.api.quest.Quest;
-import moubiequest.core.quest.object.Title;
+import moubiequest.core.data.PlayerDataLoader;
+import moubiequest.core.quest.objects.Title;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;

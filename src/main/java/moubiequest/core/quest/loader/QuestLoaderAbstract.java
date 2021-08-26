@@ -1,9 +1,9 @@
-package moubiequest.core.manager.loader;
+package moubiequest.core.quest.loader;
 
-import moubiequest.api.manager.loader.QuestLoader;
+import moubiequest.api.quest.loader.QuestLoader;
 import moubiequest.api.quest.Quest;
-import moubiequest.core.quest.QuestType;
 import moubiequest.core.yaml.Loader;
+import moubiequest.core.quest.QuestType;
 import org.bukkit.Material;
 import org.jetbrains.annotations.NotNull;
 

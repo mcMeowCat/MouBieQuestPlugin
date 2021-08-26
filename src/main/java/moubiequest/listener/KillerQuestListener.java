@@ -21,10 +21,9 @@ public class KillerQuestListener
         final LivingEntity entity = event.getEntity();
         final Player killer = entity.getKiller();
         if (killer != null) {
-            for (final KillerQuest quest : MouBieCat.getInstance().getKillerQuestManager().getQuests()) {
+            for (final KillerQuest quest : MouBieCat.getInstance().getKillerQuestManager().getQuests())
                 if (quest.checkEntityType(entity.getType()))
                     quest.addPlayerQuestProgress(killer);
-            }
         }
     }
 

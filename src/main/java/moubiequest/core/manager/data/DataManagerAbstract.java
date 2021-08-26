@@ -1,6 +1,7 @@
-package moubiequest.core.manager;
+package moubiequest.core.manager.data;
 
 import moubiequest.api.data.DataFile;
+import moubiequest.core.manager.ManagerAbstract;
 import org.jetbrains.annotations.NotNull;
 
 /**

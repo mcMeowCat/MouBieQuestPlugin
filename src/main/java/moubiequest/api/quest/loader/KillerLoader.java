@@ -1,4 +1,4 @@
-package moubiequest.api.manager.loader;
+package moubiequest.api.quest.loader;
 
 import moubiequest.api.quest.KillerQuest;
 

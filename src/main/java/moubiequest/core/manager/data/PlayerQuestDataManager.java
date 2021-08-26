@@ -1,8 +1,8 @@
-package moubiequest.core.manager;
+package moubiequest.core.manager.data;
 
 import moubiequest.api.data.quest.PlayerQuestDataFile;
 import moubiequest.api.manager.PlayerDataManager;
-import moubiequest.core.data.PlayerQuestData;
+import moubiequest.core.data.quest.PlayerQuestData;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 

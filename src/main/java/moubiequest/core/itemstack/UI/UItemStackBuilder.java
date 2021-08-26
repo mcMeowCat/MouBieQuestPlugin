@@ -1,7 +1,8 @@
-package moubiequest.core.itemstack;
+package moubiequest.core.itemstack.UI;
 
-import moubiequest.api.itemstack.UItemBuilder;
+import moubiequest.api.itemstack.UI.UItemBuilder;
 import moubiequest.api.nms.NBTHandler;
+import moubiequest.core.itemstack.ItemStackBuilder;
 import moubiequest.main.MouBieCat;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
@@ -145,7 +146,7 @@ public class UItemStackBuilder
         final NBTHandler handler = MouBieCat.getInstance().getNmsManager().getNbtHandler();
         if (handler.hasTag(itemStack, UI_ITEM_NBT_TAG_MAIN_PATH)) {
             return ClickType.valueOf(
-                    handler.getString(itemStack, UI_ITEM_NBT_TAG_MAIN_PATH, UI_ITEM_NBT_TAG_CLICK_TYPE_PATH)
+                    handler.getString(itemStack, UI_ITEM_NBT_TAG_MAIN_PATH, UI_ITEM_NBT_TAG_CLICK_TYPE_PATH).toUpperCase()
             );
         }
         return null;
@@ -163,7 +164,7 @@ public class UItemStackBuilder
         // 配置 TAG 屬性
         handler.setMainTagName(UI_ITEM_NBT_TAG_MAIN_PATH)
                 .setBoolean(UI_ITEM_NBT_TAG_CAN_MOVE_PATH, this.isCamMove)
-                .setString(UI_ITEM_NBT_TAG_CLICK_TYPE_PATH, this.clickType.toString());
+                .setString(UI_ITEM_NBT_TAG_CLICK_TYPE_PATH, this.clickType.toString().toUpperCase());
 
         // 寫入到物品中
         this.itemStack = handler.build(this.itemStack);

@@ -1,6 +1,6 @@
 package moubiequest.api.data.quest;
 
-import moubiequest.core.quest.object.Title;
+import moubiequest.core.quest.objects.Title;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 

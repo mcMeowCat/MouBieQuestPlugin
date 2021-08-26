@@ -1,4 +1,4 @@
-package moubiequest.core.quest.object;
+package moubiequest.core.quest.objects;
 
 import org.bukkit.Material;
 import org.jetbrains.annotations.NotNull;
