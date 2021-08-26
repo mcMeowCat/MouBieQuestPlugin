@@ -3,6 +3,10 @@ package moubiequest.api.quest;
 import org.bukkit.entity.EntityType;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * 代表一個擊殺生物任務介面
+ * @author MouBieCat
+ */
 public interface KillerQuest
         extends ProgressQuest {
 

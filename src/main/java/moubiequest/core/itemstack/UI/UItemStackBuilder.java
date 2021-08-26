@@ -1,6 +1,6 @@
 package moubiequest.core.itemstack.UI;
 
-import moubiequest.api.itemstack.UI.UItemBuilder;
+import moubiequest.api.itemstack.UI.button.UItemBuilder;
 import moubiequest.api.nms.NBTHandler;
 import moubiequest.core.itemstack.ItemStackBuilder;
 import moubiequest.main.MouBieCat;
@@ -35,6 +35,7 @@ public class UItemStackBuilder
     // 點選方法
     private ClickType clickType = ClickType.NONE;
 
+    // 是否可以被移動
     private boolean isCamMove = false;
 
     /**
