@@ -1,0 +1,44 @@
+Quests:
+  KILL_ZOMBIE_1_QUEST:
+    title:
+      name: "[殭屍獵人]"
+    message:
+      message: ""
+      successs_message: ""
+    status:
+      enable: true
+      visible: false
+    item:
+      material: stone
+      display_name: "[殭屍獵人1]"
+      lore:
+        - ""
+        - "測試訊息1"
+        - ""
+    honor_point: 10
+    progress:
+      number: 5000
+    killer:
+      entity_type: zombie
+
+  KILL_ZOMBIE_2_QUEST:
+    title:
+      name: "[殭屍獵人]"
+    message:
+      message: ""
+      successs_message: ""
+    status:
+      enable: true
+      visible: true
+    item:
+      material: stone
+      display_name: "[殭屍獵人2]"
+      lore:
+        - ""
+        - "測試訊息2"
+        - ""
+    honor_point: 20
+    progress:
+      number: 10000
+    killer:
+      entity_type: zombie

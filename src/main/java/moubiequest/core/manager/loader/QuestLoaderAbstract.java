@@ -1,6 +1,6 @@
 package moubiequest.core.manager.loader;
 
-import moubiequest.api.manager.QuestLoader;
+import moubiequest.api.manager.loader.QuestLoader;
 import moubiequest.api.quest.Quest;
 import moubiequest.core.quest.QuestType;
 import moubiequest.core.yaml.Loader;
@@ -41,7 +41,7 @@ public abstract class QuestLoaderAbstract<T extends Quest>
      * @param type 解析的任務類型
      */
     public QuestLoaderAbstract(final @NotNull QuestType type) {
-        super("quests", type.getName().toLowerCase() + ".yml", false);
+        super("quests" + File.separatorChar, type.getName().toLowerCase() + ".yml", false);
     }
 
     /**

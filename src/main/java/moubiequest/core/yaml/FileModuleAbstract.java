@@ -29,9 +29,10 @@ public abstract class FileModuleAbstract
         final File fileObj = new File(pathObj, name);
 
         if (!fileObj.exists()) {
-            if (isNewFile)
+            if (isNewFile) {
                 if (!this.createFile(fileObj))
                     System.out.println(MouBieCat.PLUGIN_TITLE + "§c創建一個新的檔案配置失敗，這是一個錯誤訊息。");
+            }
             else
                 MouBieCat.getInstance().saveResource(path + name, false);
         }

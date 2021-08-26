@@ -3,8 +3,6 @@ package moubiequest.core.yaml;
 import moubiequest.api.yaml.FileLoader;
 import org.jetbrains.annotations.NotNull;
 
-import java.io.File;
-
 /**
  * 一個最基礎功能的檔案加載器 可被其他類繼承功能
  * @author MouBieCat
@@ -20,7 +18,7 @@ public class Loader
      * @param isNewFile 是否新創建
      */
     public Loader(final @NotNull String path, final @NotNull String name, final boolean isNewFile) {
-        super(path + File.separatorChar, name, isNewFile);
+        super(path, name, isNewFile);
     }
 
     /**

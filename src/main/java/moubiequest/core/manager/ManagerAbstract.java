@@ -15,7 +15,7 @@ import java.util.Map;
 public abstract class ManagerAbstract<K, V>
         implements Manager<K, V> {
 
-    private final Map<K, V> manager = new HashMap<>();
+    protected final Map<K, V> manager = new HashMap<>();
 
     /**
      * 添加資料到管理器中

@@ -1,6 +1,9 @@
 package moubiequest.main;
 
 import moubiequest.api.manager.PlayerDataManager;
+import moubiequest.api.manager.QuestManager;
+import moubiequest.api.quest.KillerQuest;
+import moubiequest.core.manager.KillerQuestManager;
 import moubiequest.core.manager.PlayerQuestDataManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -11,9 +14,12 @@ public final class MouBieCat extends JavaPlugin {
 
     private PlayerDataManager playerDataManager;
 
+    private QuestManager<KillerQuest> killerQuestManager;
+
     @Override
     public void onEnable() {
         this.playerDataManager = new PlayerQuestDataManager();
+        this.killerQuestManager = new KillerQuestManager();
     }
 
     @Override
@@ -26,6 +32,10 @@ public final class MouBieCat extends JavaPlugin {
 
     public PlayerDataManager getPlayerDataManager() {
         return this.playerDataManager;
+    }
+
+    public QuestManager<KillerQuest> getKillerQuestManager() {
+        return this.killerQuestManager;
     }
 
 }

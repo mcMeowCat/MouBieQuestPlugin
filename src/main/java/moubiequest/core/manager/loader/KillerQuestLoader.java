@@ -1,5 +1,6 @@
 package moubiequest.core.manager.loader;
 
+import moubiequest.api.manager.loader.KillerLoader;
 import moubiequest.api.quest.KillerQuest;
 import moubiequest.core.quest.QuestType;
 import moubiequest.core.quest.object.Message;
@@ -18,7 +19,8 @@ import java.util.List;
  * @author MouBieCat
  */
 public class KillerQuestLoader
-        extends ProgressQuestLoaderAbstract<KillerQuest> {
+        extends ProgressQuestLoaderAbstract<KillerQuest>
+        implements KillerLoader {
 
     private static final String QUEST_DATA_PROGRESS_NUMBER_PATH = ".killer.entity_type";
 

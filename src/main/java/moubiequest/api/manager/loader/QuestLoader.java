@@ -1,4 +1,4 @@
-package moubiequest.api.manager;
+package moubiequest.api.manager.loader;
 
 import moubiequest.api.quest.Quest;
 import org.jetbrains.annotations.NotNull;

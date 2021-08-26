@@ -8,6 +8,8 @@ import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.io.File;
+
 /**
  * 玩家的任務資料載入器
  * @author MouBieCat
@@ -36,7 +38,7 @@ public final class PlayerQuestData
      * @param player 資料擁有人
      */
     public PlayerQuestData(final @NotNull Player player) {
-        super("player_data", player);
+        super("player_data" + File.separatorChar, player);
         this.player_honor_point = this.configuration.getInt(CONFIG_PATH_PLAYER_HONOR_POINT);
         this.player_receive_message = this.configuration.getBoolean(CONFIG_PATH_PLAYER_IS_RECEIVE_MESSAGE);
         this.player_view_particle = this.configuration.getBoolean(CONFIG_PATH_PLAYER_IS_VIEW_PARTICLE);

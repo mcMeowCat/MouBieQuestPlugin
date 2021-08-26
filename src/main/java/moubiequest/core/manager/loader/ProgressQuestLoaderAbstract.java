@@ -15,6 +15,7 @@ public abstract class ProgressQuestLoaderAbstract<T extends ProgressQuest>
 
     /**
      * 建構子
+     * @param type 任務類型
      */
     public ProgressQuestLoaderAbstract(final @NotNull QuestType type) {
         super(type);
