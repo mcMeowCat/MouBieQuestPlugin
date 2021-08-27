@@ -1,6 +1,6 @@
 package moubiequest.core.itemstack.gui.quest;
 
-import moubiequest.api.itemstack.gui.ui.KillerQuestGUI;
+import moubiequest.api.itemstack.gui.quest.KillerQuestGUI;
 import moubiequest.api.quest.QuestType;
 import moubiequest.main.MouBieCat;
 import org.bukkit.entity.Player;

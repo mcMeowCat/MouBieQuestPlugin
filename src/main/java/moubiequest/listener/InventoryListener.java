@@ -1,6 +1,6 @@
 package moubiequest.listener;
 
-import moubiequest.api.itemstack.gui.ui.KillerQuestGUI;
+import moubiequest.api.itemstack.gui.quest.KillerQuestGUI;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;

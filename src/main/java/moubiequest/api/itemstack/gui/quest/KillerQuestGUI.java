@@ -1,4 +1,4 @@
-package moubiequest.api.itemstack.gui.ui;
+package moubiequest.api.itemstack.gui.quest;
 
 /**
  * 代表一個擊殺任務選單的操作介面

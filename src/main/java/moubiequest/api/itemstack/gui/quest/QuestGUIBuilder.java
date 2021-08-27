@@ -1,7 +1,8 @@
-package moubiequest.api.itemstack.gui.ui;
+package moubiequest.api.itemstack.gui.quest;
 
 import moubiequest.api.itemstack.gui.button.QuestUItem;
 import moubiequest.api.itemstack.gui.button.UItem;
+import moubiequest.api.itemstack.gui.ui.GUIBuilder;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 

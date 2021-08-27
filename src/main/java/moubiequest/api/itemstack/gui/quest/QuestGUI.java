@@ -1,6 +1,6 @@
-package moubiequest.api.itemstack.gui.ui;
+package moubiequest.api.itemstack.gui.quest;
 
-import moubiequest.core.itemstack.gui.quest.QuestUInventoryAbstract;
+import moubiequest.api.itemstack.gui.ui.PageGUI;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -14,12 +14,12 @@ public interface QuestGUI
      * 獲取當前的顯示方式類型
      * @return 顯示方式
      */
-    @NotNull QuestUInventoryAbstract.View getViewType();
+    @NotNull QuestView getViewType();
 
     /**
      * 設定當前的顯示方式類型
      * @param viewType 顯示方式
      */
-    void setViewType(final @NotNull QuestUInventoryAbstract.View viewType);
+    void setViewType(final @NotNull QuestView viewType);
 
 }

@@ -2,7 +2,8 @@ package moubiequest.core.itemstack.gui.quest;
 
 import moubiequest.api.itemstack.gui.button.QuestUItem;
 import moubiequest.api.itemstack.gui.button.UItem;
-import moubiequest.api.itemstack.gui.ui.QuestGUIBuilder;
+import moubiequest.api.itemstack.gui.quest.QuestGUIBuilder;
+import moubiequest.api.itemstack.gui.quest.QuestView;
 import moubiequest.api.quest.QuestType;
 import moubiequest.api.yaml.plugin.InventoryFile;
 import moubiequest.core.itemstack.gui.PageUInventoryAbstract;
@@ -32,21 +33,11 @@ public abstract class QuestUInventoryAbstract
             36, 37, 38, 39, 40, 41, 42, 43, 44
     };
 
-    /**
-     * 任務顯示方式
-     * 所有、完成、未完成
-     */
-    public enum View {
-        ALL,
-        SUCCESS,
-        NO_SUCCESS
-    }
-
     // 介面檔案
     protected final InventoryFile inventoryFile;
 
     // 顯示方式 (預設=所有)
-    protected View viewType = View.ALL;
+    protected QuestView viewType = QuestView.ALL;
 
     // 下一頁按鈕
     protected final UItem nextButton;
@@ -103,7 +94,7 @@ public abstract class QuestUInventoryAbstract
      * 獲取當前的顯示方式類型
      * @return 顯示方式
      */
-    public final @NotNull View getViewType() {
+    public final @NotNull QuestView getViewType() {
         return this.viewType;
     }
 
@@ -111,7 +102,7 @@ public abstract class QuestUInventoryAbstract
      * 設定當前的顯示方式類型
      * @param viewType 顯示方式
      */
-    public final void setViewType(final @NotNull View viewType) {
+    public final void setViewType(final @NotNull QuestView viewType) {
         this.viewType = viewType;
     }
 
