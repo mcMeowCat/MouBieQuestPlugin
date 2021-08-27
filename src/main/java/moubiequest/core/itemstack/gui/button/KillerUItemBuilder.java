@@ -21,9 +21,10 @@ public class KillerUItemBuilder
     /**
      * 建構子
      * @param quest 代表任務
+     * @param slot 介面位置
      */
-    public KillerUItemBuilder(final @NotNull KillerQuest quest) {
-        super(quest);
+    public KillerUItemBuilder(final @NotNull KillerQuest quest, final int slot) {
+        super(quest, slot);
     }
 
     /**

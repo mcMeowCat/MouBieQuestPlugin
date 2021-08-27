@@ -14,7 +14,7 @@ public interface QuestGUI
      * 獲取當前的顯示方式類型
      * @return 顯示方式
      */
-    QuestUInventoryAbstract.View getViewType();
+    @NotNull QuestUInventoryAbstract.View getViewType();
 
     /**
      * 設定當前的顯示方式類型

@@ -32,9 +32,10 @@ public abstract class QuestUItemBuilder<T extends Quest>
     /**
      * 建構子
      * @param quest 代表任務
+     * @param slot 介面位置
      */
-    public QuestUItemBuilder(final @NotNull T quest) {
-        super(quest.getQuestItemMaterial());
+    public QuestUItemBuilder(final @NotNull T quest, final int slot) {
+        super(quest.getQuestItemMaterial(), slot);
         this.quest = quest;
     }
 

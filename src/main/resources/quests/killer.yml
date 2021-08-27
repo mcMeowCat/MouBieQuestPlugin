@@ -3,8 +3,8 @@ Quests:
     title:
       name: "[殭屍獵人]"
     message:
-      message: ""
-      successs_message: ""
+      message: "進行中"
+      successs_message: "達成"
     status:
       enable: true
       visible: false
@@ -25,8 +25,8 @@ Quests:
     title:
       name: "[殭屍獵人]"
     message:
-      message: ""
-      successs_message: ""
+      message: "進行中"
+      successs_message: "達成"
     status:
       enable: true
       visible: true

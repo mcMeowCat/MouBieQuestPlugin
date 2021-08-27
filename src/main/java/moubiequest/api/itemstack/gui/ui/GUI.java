@@ -31,4 +31,11 @@ public interface GUI
      */
     void clickInventory(final @NotNull InventoryClickEvent event);
 
+    /**
+     * 關閉伺服器玩家開啟有關該庫存的介面
+     */
+    static void closePlayerInventory() {
+        UInventoryAbstract.closePlayerInventory();
+    }
+
 }

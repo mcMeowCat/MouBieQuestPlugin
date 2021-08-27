@@ -1,5 +1,6 @@
 package moubiequest.core.itemstack.gui;
 
+import moubiequest.api.itemstack.gui.ui.GUI;
 import moubiequest.api.itemstack.gui.ui.GUIBuilder;
 import moubiequest.api.itemstack.gui.button.UItem;
 import org.bukkit.Bukkit;
@@ -99,12 +100,9 @@ public abstract class UInventoryAbstract
     /**
      * 添加一個按鈕到介面
      * @param uItem 介面物品實例
-     * @return 當前的建構器
      */
-    @NotNull
-    public final GUIBuilder addUItem(final @NotNull UItem uItem) {
+    public final void addUItem(final @NotNull UItem uItem) {
         this.inventory.setItem(uItem.getSlotId(), uItem.build());
-        return this;
     }
 
     /**
@@ -115,6 +113,18 @@ public abstract class UInventoryAbstract
     @NotNull
     public final GUIBuilder addItem(final @NotNull ItemStack itemStack) {
         this.inventory.addItem(itemStack);
+        return this;
+    }
+
+    /**
+     * 添加一個物品到介面
+     * @param itemStack 物品
+     * @param slot 位置
+     * @return 當前的建構器
+     */
+    @NotNull
+    public final GUIBuilder addItem(final @NotNull ItemStack itemStack, final int slot) {
+        this.inventory.setItem(slot, itemStack);
         return this;
     }
 
@@ -157,5 +167,14 @@ public abstract class UInventoryAbstract
      * @param event 介面點擊事件
      */
     public abstract void clickInventory(final @NotNull InventoryClickEvent event);
+
+    /**
+     * 關閉伺服器玩家開啟有關該庫存的介面
+     */
+    public static void closePlayerInventory() {
+        for (final Player player : Bukkit.getOnlinePlayers())
+            if (player.getOpenInventory().getTopInventory().getHolder() instanceof GUI)
+                player.closeInventory();
+    }
 
 }

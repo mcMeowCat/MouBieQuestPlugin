@@ -33,7 +33,7 @@ public class UItemStackBuilder
     }
 
     // 介面位置
-    private int slotId = 0;
+    private int slotId;
 
     // 點選方法
     private ClickType clickType = ClickType.NONE;
@@ -44,26 +44,30 @@ public class UItemStackBuilder
     /**
      * 建構子
      * @param material 材質
+     * @param slot 介面位置
      */
-    public UItemStackBuilder(final @NotNull Material material) {
-        this(material, 1);
+    public UItemStackBuilder(final @NotNull Material material, final int slot) {
+        this(material, 1, slot);
     }
 
     /**
      * 建構子
      * @param material 材質
      * @param amount 數量
+     * @param slot 介面位置
      */
-    public UItemStackBuilder(final @NotNull Material material, final int amount) {
-        this(new ItemStack(material, amount));
+    public UItemStackBuilder(final @NotNull Material material, final int amount, final int slot) {
+        this(new ItemStack(material, amount), slot);
     }
 
     /**
      * 建構子
      * @param itemStack 物品實例
+     * @param slot 介面位置
      */
-    public UItemStackBuilder(final @NotNull ItemStack itemStack) {
+    public UItemStackBuilder(final @NotNull ItemStack itemStack, final int slot) {
         super(itemStack);
+        this.slotId = slot;
     }
 
     /**

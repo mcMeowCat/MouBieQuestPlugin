@@ -5,10 +5,13 @@ import moubiequest.api.manager.PlayerDataManager;
 import moubiequest.api.manager.QuestManager;
 import moubiequest.api.quest.KillerQuest;
 import moubiequest.api.yaml.plugin.FormatFile;
+import moubiequest.api.yaml.plugin.InventoryFile;
 import moubiequest.core.manager.nms.HandlerManager;
 import moubiequest.core.manager.quest.KillerQuestManager;
 import moubiequest.core.manager.data.PlayerQuestDataManager;
 import moubiequest.core.yaml.plugin.PluginFormat;
+import moubiequest.core.yaml.plugin.PluginInventory;
+import moubiequest.listener.InventoryListener;
 import moubiequest.listener.KillerQuestListener;
 import moubiequest.listener.PlayerDataListener;
 import org.bukkit.Bukkit;
@@ -22,6 +25,8 @@ public final class MouBieCat extends JavaPlugin {
 
     private FormatFile formatFile;
 
+    private InventoryFile inventoryFile;
+
     private PlayerDataManager playerDataManager;
 
     private QuestManager<KillerQuest> killerQuestManager;
@@ -31,12 +36,14 @@ public final class MouBieCat extends JavaPlugin {
     @Override
     public void onEnable() {
         this.formatFile = new PluginFormat();
+        this.inventoryFile = new PluginInventory();
         this.playerDataManager = new PlayerQuestDataManager();
         this.killerQuestManager = new KillerQuestManager();
         this.nmsManager = new HandlerManager();
 
         Bukkit.getPluginManager().registerEvents(new PlayerDataListener(), this);
         Bukkit.getPluginManager().registerEvents(new KillerQuestListener(), this);
+        Bukkit.getPluginManager().registerEvents(new InventoryListener(), this);
     }
 
     @Override
@@ -50,6 +57,11 @@ public final class MouBieCat extends JavaPlugin {
     @NotNull
     public FormatFile getFormatFile() {
         return this.formatFile;
+    }
+
+    @NotNull
+    public InventoryFile getInventoryFile() {
+        return this.inventoryFile;
     }
 
     @NotNull

@@ -13,11 +13,10 @@ public abstract class PageUInventoryAbstract
         implements PageGUI {
 
     // 當前頁數 (預設=0)
-    private int nowPage = 0;
+    private int nowPage = 1;
 
     /**
      * 建構子
-     *
      * @param title 介面標題
      * @param size  介面大小
      */
@@ -27,7 +26,6 @@ public abstract class PageUInventoryAbstract
 
     /**
      * 開啟一個特定頁數
-     *
      * @param player 玩家
      * @param page   頁數
      */
@@ -38,7 +36,6 @@ public abstract class PageUInventoryAbstract
 
     /**
      * 獲取當前頁數
-     *
      * @return 頁數
      */
     public final int getPage() {
