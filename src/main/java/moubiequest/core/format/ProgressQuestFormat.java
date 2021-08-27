@@ -39,11 +39,13 @@ public abstract class ProgressQuestFormat<T extends ProgressQuest>
     public String replace(final @NotNull String msg, final @NotNull Player player) {
         String replaceStr = msg;
 
+        // 轉換所需進度
         replaceStr = replaceStr.replace(
                 QUEST_PROGRESS,
                 ""+this.replacer.getQuestProgress()
         );
 
+        // 轉換當前進度
         replaceStr = replaceStr.replace(
                 QUEST_PROGRESS_PLAYER,
                 ""+this.replacer.getPlayerQuestProgress(player)
@@ -52,11 +54,13 @@ public abstract class ProgressQuestFormat<T extends ProgressQuest>
         // 計算進度百分比
         final int progressPercentage = this.calcProgressPercentage(player);
 
+        // 轉換當前進度 (百分比)
         replaceStr = replaceStr.replace(
                 QUEST_PROGRESS_PLAYER_PERCENTAGE,
                 ""+progressPercentage
         );
 
+        // 轉換當前進度 (圖表)
         replaceStr = replaceStr.replace(
                 QUEST_PROGRESS_PLAYER_PERCENTAGE_IMAGE,
                 ""+this.formatFile.getQuestProgressImage(progressPercentage)

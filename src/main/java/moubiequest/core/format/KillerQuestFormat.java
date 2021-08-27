@@ -32,6 +32,7 @@ public class KillerQuestFormat
     public String replace(final @NotNull String msg, final @NotNull Player player) {
         String replaceStr = msg;
 
+        // 轉換生物類型
         replaceStr = replaceStr.replace(
                 QUEST_KILLER_ENTITY_TYPE,
                 this.replacer.getKillEntity().toString()
