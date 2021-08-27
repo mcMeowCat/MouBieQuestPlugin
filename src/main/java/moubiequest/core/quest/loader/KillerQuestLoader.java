@@ -72,8 +72,7 @@ public class KillerQuestLoader
                     new Status(this.parsingQuestStatusEnable(key), this.parsingQuestStatusVisible(key));
 
             // 解析任務介面資訊
-            final QItem qItem =
-                    new QItem(this.parsingQuestItemMaterial(key), this.parsingQuestItemDisplayName(key), this.parsingQuestItemLore(key));
+            final QItem qItem = new QItem(this.parsingQuestItemMaterial(key));
 
             // 創建任務
             final moubiequest.core.quest.KillerQuest quest = new moubiequest.core.quest.KillerQuest(

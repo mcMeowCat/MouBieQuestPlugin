@@ -43,6 +43,14 @@ public abstract class PageUInventoryAbstract
     }
 
     /**
+     * 獲取當前頁數
+     * @param page 回到一個頁數
+     */
+    protected final void setPage(final int page) {
+        this.nowPage = page;
+    }
+
+    /**
      * 翻至下一頁
      * @param player 玩家
      */

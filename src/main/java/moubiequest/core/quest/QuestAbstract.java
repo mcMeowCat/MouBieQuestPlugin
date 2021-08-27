@@ -10,8 +10,6 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.List;
-
 /**
  * 代表一個基礎任務該有的物件
  * @author MouBieCat
@@ -157,24 +155,6 @@ public abstract class QuestAbstract
     @NotNull
     public final Material getQuestItemMaterial() {
         return this.item.getMaterial();
-    }
-
-    /**
-     * 獲取物品標題
-     * @return 標題
-     */
-    @NotNull
-    public final String getQuestItemTitle() {
-        return this.item.getDisplayName();
-    }
-
-    /**
-     * 獲取物品說明
-     * @return 說明
-     */
-    @NotNull
-    public final List<String> getQuestItemLore() {
-        return this.item.getLore();
     }
 
     /**

@@ -8,7 +8,10 @@ import moubiequest.api.quest.QuestType;
 import moubiequest.api.yaml.plugin.InventoryFile;
 import moubiequest.core.itemstack.gui.PageUInventoryAbstract;
 import moubiequest.core.itemstack.gui.button.UItemStackBuilder;
+import org.bukkit.Sound;
+import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
+import org.bukkit.event.inventory.InventoryClickEvent;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -25,6 +28,7 @@ public abstract class QuestUInventoryAbstract
     protected static final int INVENTORY_QUEST_ALL_BUTTON = 3;
     protected static final int INVENTORY_QUEST_SUCCESS_BUTTON = 4;
     protected static final int INVENTORY_QUEST_NO_SUCCESS_BUTTON = 5;
+    protected static final int INVENTORY_SUCCESS_AND_NOT_SUCCESS_BUTTON = 31;
 
     public static final int[] INVENTORY_QUEST_SLOT_BUTTON = new int[] {
             9, 10, 11, 12, 13, 14, 15, 16, 17,
@@ -53,6 +57,12 @@ public abstract class QuestUInventoryAbstract
 
     // 顯示方式按鈕(未完成)
     protected final UItem questNoSuccessButton;
+
+    // 任務全部完成
+    protected final UItem questAllSuccess;
+
+    // 沒有任何完成的任務
+    protected final UItem questAllNotSuccess;
 
     /**
      * 建構子
@@ -84,8 +94,35 @@ public abstract class QuestUInventoryAbstract
         // 解析通用按鈕 (顯示方式按鈕(未完成))
         builder = new UItemStackBuilder(this.inventoryFile.getCommonButton("quest_no_success"), INVENTORY_QUEST_NO_SUCCESS_BUTTON);
         this.questNoSuccessButton = builder;
+
+        // 解析通用按鈕 (任務全部完成)
+        builder = new UItemStackBuilder(this.inventoryFile.getCommonButton("quest_all_success"), INVENTORY_SUCCESS_AND_NOT_SUCCESS_BUTTON);
+        this.questAllSuccess = builder;
+
+        // 解析通用按鈕 (任務全部尚未傳承)
+        builder = new UItemStackBuilder(this.inventoryFile.getCommonButton("quest_all_not_success"), INVENTORY_SUCCESS_AND_NOT_SUCCESS_BUTTON);
+        this.questAllNotSuccess = builder;
     }
 
+    /**
+     * 初始化介面
+     * @param player 玩家
+     * @param page   頁數
+     */
+    @Override
+    protected void initPageInventory(@NotNull Player player, int page) {
+        // 清除介面所有按拗
+        this.clearInventory();
+
+        // 添加基本按鈕
+        this.addUItem(this.questAllButton).addUItem(this.questSuccessButton).addUItem(this.questNoSuccessButton);
+    }
+
+    /**
+     * 添加一個按鈕到介面
+     * @param uItem 介面物品實例
+     * @param player 玩家
+     */
     public void addUItem(final @NotNull QuestUItem<?> uItem, final @NotNull Player player) {
         this.inventory.setItem(uItem.getSlotId(), uItem.build(player));
     }
@@ -103,7 +140,57 @@ public abstract class QuestUInventoryAbstract
      * @param viewType 顯示方式
      */
     public final void setViewType(final @NotNull QuestView viewType) {
+        this.setPage(1);
         this.viewType = viewType;
+    }
+
+    /**
+     * 代表當介面被點擊的事件
+     * @param event 介面點擊事件
+     */
+    @Override
+    public void clickInventory(final @NotNull InventoryClickEvent event) {
+        event.setCancelled(true);
+        final HumanEntity whoClicked = event.getWhoClicked();
+
+        if (whoClicked instanceof Player && event.getCurrentItem() != null) {
+            final Player clickPlayer = (Player) whoClicked;
+            final int slot = event.getSlot();
+
+            // 上一頁
+            if (slot == INVENTORY_PREVIOUS_PAGE_BUTTON) {
+                this.previousPage(clickPlayer);
+                clickPlayer.playSound(clickPlayer.getLocation(), Sound.ITEM_BOOK_PAGE_TURN, 5f, 1.5f);
+            }
+
+            // 下一頁
+            else if (slot == INVENTORY_NEXT_PAGE_BUTTON) {
+                this.nextPage(clickPlayer);
+                clickPlayer.playSound(clickPlayer.getLocation(), Sound.ITEM_BOOK_PAGE_TURN, 5f, 1.5f);
+            }
+
+            // 顯示全部任務
+            else if (slot == INVENTORY_QUEST_ALL_BUTTON) {
+                this.setViewType(QuestView.ALL);
+                this.initPageInventory(clickPlayer, this.getPage());
+                clickPlayer.playSound(clickPlayer.getLocation(), Sound.ITEM_BOOK_PAGE_TURN, 5f, 1.5f);
+            }
+
+            // 只顯示完成任務
+            else if (slot == INVENTORY_QUEST_SUCCESS_BUTTON) {
+                this.setViewType(QuestView.SUCCESS);
+                this.initPageInventory(clickPlayer, this.getPage());
+                clickPlayer.playSound(clickPlayer.getLocation(), Sound.ITEM_BOOK_PAGE_TURN, 5f, 1.5f);
+            }
+
+            // 只顯示未完成任務
+            else if (slot == INVENTORY_QUEST_NO_SUCCESS_BUTTON) {
+                this.setViewType(QuestView.NO_SUCCESS);
+                this.initPageInventory(clickPlayer, this.getPage());
+                clickPlayer.playSound(clickPlayer.getLocation(), Sound.ITEM_BOOK_PAGE_TURN, 5f, 1.5f);
+            }
+
+        }
     }
 
 }

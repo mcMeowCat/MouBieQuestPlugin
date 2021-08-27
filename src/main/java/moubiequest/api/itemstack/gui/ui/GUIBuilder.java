@@ -15,7 +15,7 @@ public interface GUIBuilder
      * 添加一個按鈕到介面
      * @param uItem 介面物品實例
      */
-    void addUItem(final @NotNull UItem uItem);
+    @NotNull GUIBuilder addUItem(final @NotNull UItem uItem);
 
     /**
      * 添加一個物品到介面

@@ -20,5 +20,13 @@ QuestInventory:
       material: paper
       display_name: "§6顯示未完成"
 
+    quest_all_success:
+      material: emerald
+      display_name: "§e太好了！任務全部做完了。"
+
+    quest_all_not_success:
+      material: diamond
+      display_name: "§2什麼都沒有，快瞧瞧未完成任務吧！"
+
   KILLER:
     title: "- 擊殺任務介面 -"

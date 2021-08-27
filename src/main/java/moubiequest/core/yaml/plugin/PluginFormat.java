@@ -3,6 +3,7 @@ package moubiequest.core.yaml.plugin;
 import moubiequest.api.quest.Quest;
 import moubiequest.api.quest.QuestType;
 import moubiequest.api.yaml.plugin.FormatFile;
+import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -60,6 +61,17 @@ public final class PluginFormat
     @NotNull
     public String getQuestVisibleString(final boolean isVisible) {
         return this.getString(FORMAT_QUEST_VISIBLE_PATH + isVisible);
+    }
+
+    /**
+     * 獲取玩家應該看到的任務訊息
+     * @param quest 任務
+     * @param player 玩家
+     * @return 字串
+     */
+    @NotNull
+    public String getPlayerQuestMessageString(final @NotNull Quest quest, final @NotNull Player player) {
+        return quest.isSuccess(player) ? quest.getQuestSuccessMessage() : quest.getQuestMessage();
     }
 
     /**

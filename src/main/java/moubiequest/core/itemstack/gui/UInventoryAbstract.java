@@ -101,8 +101,10 @@ public abstract class UInventoryAbstract
      * 添加一個按鈕到介面
      * @param uItem 介面物品實例
      */
-    public final void addUItem(final @NotNull UItem uItem) {
+    @NotNull
+    public final GUIBuilder addUItem(final @NotNull UItem uItem) {
         this.inventory.setItem(uItem.getSlotId(), uItem.build());
+        return this;
     }
 
     /**

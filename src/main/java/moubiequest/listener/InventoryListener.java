@@ -1,6 +1,6 @@
 package moubiequest.listener;
 
-import moubiequest.api.itemstack.gui.quest.KillerQuestGUI;
+import moubiequest.api.itemstack.gui.ui.GUI;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -22,8 +22,8 @@ public final class InventoryListener
     public void onClick(final @NotNull InventoryClickEvent event) {
         final InventoryHolder holder = event.getInventory().getHolder();
 
-        if (holder instanceof KillerQuestGUI)
-            ((KillerQuestGUI)holder).clickInventory(event);
+        if (holder instanceof GUI)
+            ((GUI)holder).clickInventory(event);
     }
 
 }

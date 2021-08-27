@@ -85,7 +85,7 @@ public abstract class QuestReplacer<T extends Quest>
         // 轉換玩家當前看到的任務說明
         replaceStr = replaceStr.replace(
                 QUEST_MESSAGE_PLAYER,
-                this.formatFile.getQuestSuccessString(this.replacer.isSuccess(player))
+                this.formatFile.getPlayerQuestMessageString(this.replacer, player)
         );
 
         // 轉換任務進行中的說明

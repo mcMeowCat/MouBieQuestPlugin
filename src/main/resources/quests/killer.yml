@@ -4,20 +4,15 @@ Quests:
       name: "[殭屍獵人]"
     message:
       message: "進行中"
-      successs_message: "達成"
+      success_message: "達成"
     status:
       enable: true
       visible: false
     item:
       material: stone
-      display_name: "[殭屍獵人1]"
-      lore:
-        - ""
-        - "測試訊息1"
-        - ""
     honor_point: 10
     progress:
-      number: 5000
+      number: 10
     killer:
       entity_type: zombie
 
@@ -26,19 +21,14 @@ Quests:
       name: "[殭屍獵人]"
     message:
       message: "進行中"
-      successs_message: "達成"
+      success_message: "達成"
     status:
       enable: true
       visible: true
     item:
       material: stone
-      display_name: "[殭屍獵人2]"
-      lore:
-        - ""
-        - "測試訊息2"
-        - ""
     honor_point: 20
     progress:
-      number: 10000
+      number: 20
     killer:
       entity_type: zombie

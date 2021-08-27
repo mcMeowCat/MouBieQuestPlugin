@@ -8,7 +8,6 @@ import org.bukkit.Material;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
-import java.util.List;
 
 /**
  * 用於將YAML的任務格式轉換成記憶體類
@@ -31,8 +30,6 @@ public abstract class QuestLoaderAbstract<T extends Quest>
     private static final String QUEST_DATA_STATUS_VISIBLE_PATH = ".status.visible";
 
     private static final String QUEST_DATA_ITEM_MATERIAL_PATH = ".item.material";
-    private static final String QUEST_DATA_ITEM_DISPLAY_NAME_PATH = ".item.display_name";
-    private static final String QUEST_DATA_ITEM_LORE_PATH = ".item.lore";
 
     private static final String QUEST_DATA_HONOR_POINT_PATH = ".honor_point";
 
@@ -102,26 +99,6 @@ public abstract class QuestLoaderAbstract<T extends Quest>
         return Material.valueOf(this.getString(
                 QUEST_DATA_MAIN_PATH + key + QUEST_DATA_ITEM_MATERIAL_PATH
         ).toUpperCase());
-    }
-
-    /**
-     * 解析任務的介面物品標題
-     * @param key 任務識別碼
-     * @return 物品標題
-     */
-    @NotNull
-    public final String parsingQuestItemDisplayName(final @NotNull String key) {
-        return this.getString(QUEST_DATA_MAIN_PATH + key + QUEST_DATA_ITEM_DISPLAY_NAME_PATH);
-    }
-
-    /**
-     * 解析任務的介面物品說明
-     * @param key 任務識別碼
-     * @return 物品說明
-     */
-    @NotNull
-    public final List<String> parsingQuestItemLore(final @NotNull String key) {
-        return this.getStringList(QUEST_DATA_MAIN_PATH + key + QUEST_DATA_ITEM_LORE_PATH);
     }
 
     /**

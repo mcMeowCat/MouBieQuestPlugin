@@ -18,7 +18,7 @@ public interface QuestGUIBuilder
      * @param uItem 介面物品實例
      */
     @Deprecated
-    void addUItem(final @NotNull UItem uItem);
+    @NotNull GUIBuilder addUItem(final @NotNull UItem uItem);
 
     /**
      * 添加一個按鈕到介面

@@ -2,6 +2,7 @@ package moubiequest.api.yaml.plugin;
 
 import moubiequest.api.quest.Quest;
 import moubiequest.api.quest.QuestType;
+import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -33,6 +34,14 @@ public interface FormatFile
      * @return 字串
      */
     @NotNull String getQuestVisibleString(final boolean isVisible);
+
+    /**
+     * 獲取玩家應該看到的任務訊息
+     * @param quest 任務
+     * @param player 玩家
+     * @return 字串
+     */
+    @NotNull String getPlayerQuestMessageString(final @NotNull Quest quest, final @NotNull Player player);
 
     /**
      * 獲取任務進行中或是達成的訊息
