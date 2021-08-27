@@ -1,13 +1,12 @@
 package moubiequest.core.itemstack.gui.ui;
 
 import moubiequest.api.itemstack.gui.button.PlayerDataUItem;
-import moubiequest.api.itemstack.gui.quest.QuestUItem;
+import moubiequest.api.itemstack.gui.button.PlayerUItem;
 import moubiequest.api.itemstack.gui.button.UItem;
 import moubiequest.api.itemstack.gui.quest.QuestGUIBuilder;
-import moubiequest.api.itemstack.gui.quest.QuestView;
+import moubiequest.api.itemstack.gui.QuestView;
 import moubiequest.api.quest.QuestType;
 import moubiequest.api.yaml.plugin.InventoryFile;
-import moubiequest.core.itemstack.gui.PageUInventoryAbstract;
 import moubiequest.core.itemstack.gui.button.PlayerQuestDataBuilder;
 import moubiequest.core.itemstack.gui.button.UItemStackBuilder;
 import org.bukkit.Sound;
@@ -33,13 +32,6 @@ public abstract class QuestUInventoryAbstract
     protected static final int INVENTORY_QUEST_SUCCESS_BUTTON = 4;
     protected static final int INVENTORY_QUEST_NO_SUCCESS_BUTTON = 5;
     protected static final int INVENTORY_SUCCESS_AND_NOT_SUCCESS_BUTTON = 31;
-
-    public static final int[] INVENTORY_QUEST_SLOT_BUTTON = new int[] {
-            9, 10, 11, 12, 13, 14, 15, 16, 17,
-            18, 19, 20, 21, 22, 23, 24, 25, 26,
-            27, 28, 29, 30, 31, 32, 33, 34, 35,
-            36, 37, 38, 39, 40, 41, 42, 43, 44
-    };
 
     // 介面檔案
     protected final InventoryFile inventoryFile;
@@ -136,17 +128,8 @@ public abstract class QuestUInventoryAbstract
      * @param uItem 介面物品實例
      * @param player 玩家
      */
-    public void addUItem(final @NotNull QuestUItem<?> uItem, final @NotNull Player player) {
-        this.inventory.setItem(uItem.getSlotId(), uItem.build(player));
-    }
-
-    /**
-     * 添加一個玩家資料按鈕到介面
-     * @param uItem 介面物品實例
-     * @param player 玩家
-     */
-    public void addUItem(final @NotNull PlayerDataUItem uItem, final @NotNull Player player) {
-        this.inventory.setItem(uItem.getSlotId(), uItem.build(player));
+    public void addUItem(final @NotNull PlayerUItem uItem, final @NotNull Player player) {
+        this.addItem(uItem.build(player), uItem.getSlotId());
     }
 
     /**
@@ -162,7 +145,7 @@ public abstract class QuestUInventoryAbstract
      * @param viewType 顯示方式
      */
     public final void setViewType(final @NotNull QuestView viewType) {
-        this.setPage(1);
+        this.resetPage();
         this.viewType = viewType;
     }
 

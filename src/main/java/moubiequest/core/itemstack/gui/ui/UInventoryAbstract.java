@@ -1,4 +1,4 @@
-package moubiequest.core.itemstack.gui;
+package moubiequest.core.itemstack.gui.ui;
 
 import moubiequest.api.itemstack.gui.GUI;
 import moubiequest.api.itemstack.gui.GUIBuilder;

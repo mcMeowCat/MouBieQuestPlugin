@@ -1,10 +1,8 @@
-package moubiequest.api.itemstack.gui.quest;
+package moubiequest.api.itemstack.gui.button;
 
-import moubiequest.api.itemstack.gui.button.UItem;
 import moubiequest.api.quest.Quest;
 import moubiequest.api.quest.QuestType;
 import moubiequest.core.itemstack.gui.button.QuestUItemBuilder;
-import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -15,27 +13,13 @@ import org.jetbrains.annotations.Nullable;
  * @author MouBieCat
  */
 public interface QuestUItem<T extends Quest>
-        extends UItem {
+        extends PlayerUItem {
 
     /**
      * 獲取按鈕代表的任務
      * @return 任務
      */
     @NotNull T getQuest();
-
-    /**
-     * 將物品建置出來
-     * @return 物品
-     */
-    @Deprecated
-    @NotNull ItemStack build();
-
-    /**
-     * 將物品建置出來
-     * @param player 玩家
-     * @return 物品
-     */
-    @NotNull ItemStack build(final @NotNull Player player);
 
     /**
      * 解析物品上的任務類型

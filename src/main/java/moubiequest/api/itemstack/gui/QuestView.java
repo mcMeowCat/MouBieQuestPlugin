@@ -1,4 +1,4 @@
-package moubiequest.api.itemstack.gui.quest;
+package moubiequest.api.itemstack.gui;
 
 /**
  * 任務顯示方式

@@ -1,4 +1,4 @@
-package moubiequest.core.itemstack.gui;
+package moubiequest.core.itemstack.gui.ui;
 
 import moubiequest.api.itemstack.gui.PageGUI;
 import org.bukkit.entity.Player;
@@ -13,7 +13,7 @@ public abstract class PageUInventoryAbstract
         implements PageGUI {
 
     // 當前頁數 (預設=0)
-    private int nowPage = 1;
+    private int nowPage = 0;
 
     /**
      * 建構子
@@ -44,10 +44,9 @@ public abstract class PageUInventoryAbstract
 
     /**
      * 獲取當前頁數
-     * @param page 回到一個頁數
      */
-    protected final void setPage(final int page) {
-        this.nowPage = page;
+    protected final void resetPage() {
+        this.nowPage = 0;
     }
 
     /**
