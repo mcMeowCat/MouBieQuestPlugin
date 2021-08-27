@@ -20,11 +20,16 @@ public final class PluginFormat
     private static final String FORMAT_QUEST_HEAD_FORMAT_PATH = ".head";
     private static final String FORMAT_QUEST_BODY_FORMAT_PATH = ".body";
 
+    private static final String FORMAT_PLAYER_DATA_HEAD_FORMAT_PATH = "PlayerQuestHead.head";
+    private static final String FORMAT_PLAYER_DATA_BODY_FORMAT_PATH = "PlayerQuestHead.body";
+
     private static final String FORMAT_QUEST_TYPE_PATH = "Format.quest_type.";
     private static final String FORMAT_QUEST_ENABLE_PATH = "Format.quest_enable.";
     private static final String FORMAT_QUEST_VISIBLE_PATH = "Format.quest_visible.";
     private static final String FORMAT_QUEST_SUCCESS_PATH = "Format.success.";
     private static final String FORMAT_PROGRESS_QUEST_PERCENTAGE_IMAGE_PATH = "Format.percentage_image.";
+    private static final String PLAYER_DATA_RECEIVE_MESSAGE = "Format.receive_message.";
+    private static final String PLAYER_DATA_VIEW_PARTICLE = "Format.view_particle.";
 
     /**
      * 建構子
@@ -124,6 +129,45 @@ public final class PluginFormat
                         quest.getQuestType().getName() +
                         FORMAT_QUEST_BODY_FORMAT_PATH
         );
+    }
+
+    /**
+     * 獲取任務隱藏狀態的字串
+     * @param isReceiveMessage 是否接收
+     * @return 字串
+     */
+    @NotNull
+    public String getPlayerReceiveMessageString(final boolean isReceiveMessage) {
+        return this.getString(PLAYER_DATA_RECEIVE_MESSAGE + isReceiveMessage);
+    }
+
+    /**
+     * 獲取任務開放狀態的字串
+     * @param isViewParticle 是否可見
+     * @return 字串
+     */
+    @NotNull
+    public String getPlayerViewParticleString(final boolean isViewParticle) {
+        return this.getString(PLAYER_DATA_VIEW_PARTICLE + isViewParticle);
+    }
+
+    /**
+     * 獲取任務開放狀態的字串
+     * @return 字串
+     */
+    @NotNull
+    public String getPlayerDataFormatHead() {
+        return this.getString(FORMAT_PLAYER_DATA_HEAD_FORMAT_PATH);
+    }
+
+    /**
+     * 獲取任務的介面物品說明
+     *
+     * @return 字串
+     */
+    @NotNull
+    public List<String> getPlayerDataFormatBody() {
+        return this.getStringList(FORMAT_PLAYER_DATA_BODY_FORMAT_PATH);
     }
 
 }

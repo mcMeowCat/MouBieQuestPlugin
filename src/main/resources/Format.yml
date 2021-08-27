@@ -27,6 +27,22 @@ Format:
     90: "§e■■■■■■■■■§7■"
     100: "§e■■■■■■■■■■"
 
+  receive_message:
+    true: "&2接收中"
+    false: "&c拒絕接收"
+
+  view_particle:
+    true: "&2可見"
+    false: "&c不可見"
+
+PlayerQuestHead:
+  head: "§f您 §6{PLAYER_NAME} §f的任務資訊"
+  body:
+    - "§7稱號：§6{PLAYER_TITLE_NAME}"
+    - "§7榮譽：§6{PLAYER_HONOR_POINT} §f點"
+    - "§7通知：§6{PLAYER_RECEIVE_MESSAGE}"
+    - "§7特效：§6{PLAYER_VIEW_PARTICLE}"
+
 QuestFormat:
   KILLER:
     head: "§7[ §6{QUEST_TITLE} §7]"

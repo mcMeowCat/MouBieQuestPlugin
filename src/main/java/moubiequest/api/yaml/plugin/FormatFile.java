@@ -71,4 +71,30 @@ public interface FormatFile
      */
     @NotNull List<String> getFormatBody(final @NotNull Quest quest);
 
+    /**
+     * 獲取任務開放狀態的字串
+     * @param isViewParticle 是否可見
+     * @return 字串
+     */
+    @NotNull String getPlayerViewParticleString(final boolean isViewParticle);
+
+    /**
+     * 獲取任務隱藏狀態的字串
+     * @param isReceiveMessage 是否接收
+     * @return 字串
+     */
+    @NotNull String getPlayerReceiveMessageString(final boolean isReceiveMessage);
+
+    /**
+     * 獲取任務開放狀態的字串
+     * @return 字串
+     */
+    @NotNull String getPlayerDataFormatHead();
+
+    /**
+     * 獲取任務的介面物品說明
+     * @return 字串
+     */
+    @NotNull List<String> getPlayerDataFormatBody();
+
 }

@@ -25,6 +25,7 @@ public abstract class FormatAbstract<T>
     /**
      * 建構子
      * @param obj 轉換物件
+     * @param file 格式檔案
      */
     public FormatAbstract(final @NotNull T obj, final @NotNull FormatFile file) {
         this.replacer = obj;
@@ -34,7 +35,7 @@ public abstract class FormatAbstract<T>
     /**
      * 將文字集合的站位符轉換
      * @param list   訊息格式
-     * @param player 傳患的玩家資訊
+     * @param player 轉換的玩家資訊
      * @return 轉換後的文字集合
      */
     @NotNull
