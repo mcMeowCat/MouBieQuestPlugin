@@ -18,11 +18,4 @@ public interface PageGUI
     @Deprecated
     void open(final @NotNull Player player);
 
-    /**
-     * 開啟一個特定頁數
-     * @param player 玩家
-     * @param page 頁數
-     */
-    void open(final @NotNull Player player, final int page);
-
 }

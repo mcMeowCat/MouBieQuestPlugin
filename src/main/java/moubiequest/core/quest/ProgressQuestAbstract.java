@@ -2,6 +2,7 @@ package moubiequest.core.quest;
 
 import moubiequest.api.data.quest.PlayerQuestDataFile;
 import moubiequest.api.quest.ProgressQuest;
+import moubiequest.api.quest.QuestType;
 import moubiequest.core.quest.objects.Message;
 import moubiequest.core.quest.objects.QItem;
 import moubiequest.core.quest.objects.Status;

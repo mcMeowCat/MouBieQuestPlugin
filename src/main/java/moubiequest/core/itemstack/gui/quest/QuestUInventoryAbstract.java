@@ -1,6 +1,7 @@
-package moubiequest.core.itemstack.UI;
+package moubiequest.core.itemstack.gui.quest;
 
 import moubiequest.api.itemstack.gui.ui.QuestGUI;
+import moubiequest.core.itemstack.gui.PageUInventoryAbstract;
 import org.jetbrains.annotations.NotNull;
 
 /**

@@ -1,6 +1,5 @@
 package moubiequest.api.quest;
 
-import moubiequest.core.quest.QuestType;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;

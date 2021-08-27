@@ -1,7 +1,7 @@
 package moubiequest.core.quest.loader;
 
 import moubiequest.api.quest.ProgressQuest;
-import moubiequest.core.quest.QuestType;
+import moubiequest.api.quest.QuestType;
 import org.jetbrains.annotations.NotNull;
 
 /**

@@ -3,7 +3,7 @@ package moubiequest.core.quest.loader;
 import moubiequest.api.quest.loader.QuestLoader;
 import moubiequest.api.quest.Quest;
 import moubiequest.core.yaml.Loader;
-import moubiequest.core.quest.QuestType;
+import moubiequest.api.quest.QuestType;
 import org.bukkit.Material;
 import org.jetbrains.annotations.NotNull;
 

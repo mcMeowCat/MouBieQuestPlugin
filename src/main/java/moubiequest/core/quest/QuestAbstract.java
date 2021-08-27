@@ -1,6 +1,7 @@
 package moubiequest.core.quest;
 
 import moubiequest.api.quest.Quest;
+import moubiequest.api.quest.QuestType;
 import moubiequest.core.quest.objects.Message;
 import moubiequest.core.quest.objects.QItem;
 import moubiequest.core.quest.objects.Status;

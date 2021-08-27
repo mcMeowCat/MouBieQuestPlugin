@@ -1,7 +1,7 @@
 package moubiequest.api.itemstack.gui.button;
 
 import moubiequest.api.itemstack.ItemBuilder;
-import moubiequest.core.itemstack.UI.UItemStackBuilder;
+import moubiequest.core.itemstack.gui.button.UItemStackBuilder;
 import org.jetbrains.annotations.NotNull;
 
 /**

@@ -1,0 +1,65 @@
+package moubiequest.api.yaml.plugin;
+
+import moubiequest.api.quest.Quest;
+import moubiequest.api.quest.QuestType;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
+
+/**
+ * 代表該插件的嵌入式文件介面(Format.yml)
+ * @author MouBieCat
+ */
+public interface FormatFile
+        extends PluginFile {
+
+    /**
+     * 獲取任務類型的字串
+     * @param type 任務類型
+     * @return 字串
+     */
+    @NotNull String getQuestTypeString(final @NotNull QuestType type);
+
+    /**
+     * 獲取任務開放狀態的字串
+     * @param isEnable 是否啟用
+     * @return 字串
+     */
+    @NotNull String getQuestEnableString(final boolean isEnable);
+
+    /**
+     * 獲取任務隱藏狀態的字串
+     * @param isVisible 是否隱藏
+     * @return 字串
+     */
+    @NotNull String getQuestVisibleString(final boolean isVisible);
+
+    /**
+     * 獲取任務進行中或是達成的訊息
+     * @param isSuccess 是否完成
+     * @return 字串
+     */
+    @NotNull String getQuestSuccessString(final boolean isSuccess);
+
+    /**
+     * 獲取任務引王狀態的字串
+     * @param progressNumber 百分比
+     * @return 字串
+     */
+    @NotNull String getQuestProgressImage(final int progressNumber);
+
+    /**
+     * 獲取任務的介面物品標題
+     * @param quest 任務
+     * @return 字串
+     */
+    @NotNull String getFormatHead(final @NotNull Quest quest);
+
+    /**
+     * 獲取任務的介面物品說明
+     * @param quest 任務
+     * @return 字串
+     */
+    @NotNull List<String> getFormatBody(final @NotNull Quest quest);
+
+}

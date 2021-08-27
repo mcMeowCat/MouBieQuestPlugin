@@ -2,7 +2,7 @@ package moubiequest.core.quest.loader;
 
 import moubiequest.api.quest.loader.KillerLoader;
 import moubiequest.api.quest.KillerQuest;
-import moubiequest.core.quest.QuestType;
+import moubiequest.api.quest.QuestType;
 import moubiequest.core.quest.objects.Message;
 import moubiequest.core.quest.objects.QItem;
 import moubiequest.core.quest.objects.Status;

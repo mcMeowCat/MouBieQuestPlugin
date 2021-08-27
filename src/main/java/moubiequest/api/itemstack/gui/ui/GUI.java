@@ -1,7 +1,7 @@
 package moubiequest.api.itemstack.gui.ui;
 
 import moubiequest.api.itemstack.gui.Openable;
-import moubiequest.core.itemstack.UI.UInventoryAbstract;
+import moubiequest.core.itemstack.gui.UInventoryAbstract;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.InventoryHolder;
 import org.jetbrains.annotations.NotNull;

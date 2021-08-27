@@ -1,4 +1,4 @@
-package moubiequest.core.itemstack.UI;
+package moubiequest.core.itemstack.gui;
 
 import moubiequest.api.itemstack.gui.ui.PageGUI;
 import org.bukkit.entity.Player;
