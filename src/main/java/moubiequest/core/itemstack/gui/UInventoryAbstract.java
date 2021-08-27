@@ -1,7 +1,7 @@
 package moubiequest.core.itemstack.gui;
 
-import moubiequest.api.itemstack.gui.ui.GUI;
-import moubiequest.api.itemstack.gui.ui.GUIBuilder;
+import moubiequest.api.itemstack.gui.GUI;
+import moubiequest.api.itemstack.gui.GUIBuilder;
 import moubiequest.api.itemstack.gui.button.UItem;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -84,7 +84,7 @@ public abstract class UInventoryAbstract
      * 獲取介面大小
      * @return 大小
      */
-    public final InventorySize getGUISize() {
+    public final @NotNull InventorySize getGUISize() {
         return this.inventory_size;
     }
 

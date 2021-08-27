@@ -91,14 +91,6 @@ public abstract class QuestAbstract
     }
 
     /**
-     * 使一個玩家套用該任務的稱號
-     * @param player 玩家
-     */
-    public final void usingQuestTitle(final @NotNull Player player) {
-        this.quest_title.usingTitleForPlayer(player);
-    }
-
-    /**
      * 獲取任務進行中的消息
      * @return 消息
      */

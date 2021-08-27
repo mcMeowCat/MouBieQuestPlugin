@@ -1,6 +1,5 @@
-package moubiequest.api.itemstack.gui.ui;
+package moubiequest.api.itemstack.gui;
 
-import moubiequest.api.itemstack.gui.Openable;
 import moubiequest.core.itemstack.gui.UInventoryAbstract;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.InventoryHolder;
@@ -17,7 +16,7 @@ public interface GUI
      * 獲取介面大小
      * @return 大小
      */
-    UInventoryAbstract.InventorySize getGUISize();
+    @NotNull UInventoryAbstract.InventorySize getGUISize();
 
     /**
      * 獲取介面標題

@@ -29,12 +29,6 @@ public interface Quest {
     @NotNull String getQuestTitle();
 
     /**
-     * 使一個玩家套用該任務的稱號
-     * @param player 玩家
-     */
-    void usingQuestTitle(final @NotNull Player player);
-
-    /**
      * 獲取任務進行中的消息
      * @return 消息
      */

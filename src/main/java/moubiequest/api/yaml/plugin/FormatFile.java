@@ -2,8 +2,10 @@ package moubiequest.api.yaml.plugin;
 
 import moubiequest.api.quest.Quest;
 import moubiequest.api.quest.QuestType;
+import moubiequest.core.quest.objects.Title;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -84,6 +86,13 @@ public interface FormatFile
      * @return 字串
      */
     @NotNull String getPlayerReceiveMessageString(final boolean isReceiveMessage);
+
+    /**
+     * 獲取玩家當前使用的稱號
+     * @param title 稱號
+     * @return 字串
+     */
+    @NotNull String getPlayerUseTitle(final @Nullable Title title);
 
     /**
      * 獲取任務開放狀態的字串

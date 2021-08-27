@@ -1,6 +1,6 @@
 package moubiequest.api.itemstack.gui.quest;
 
-import moubiequest.api.itemstack.gui.ui.PageGUI;
+import moubiequest.api.itemstack.gui.PageGUI;
 import org.jetbrains.annotations.NotNull;
 
 /**

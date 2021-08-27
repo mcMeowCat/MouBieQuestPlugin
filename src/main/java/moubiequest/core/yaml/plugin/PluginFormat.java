@@ -3,8 +3,10 @@ package moubiequest.core.yaml.plugin;
 import moubiequest.api.quest.Quest;
 import moubiequest.api.quest.QuestType;
 import moubiequest.api.yaml.plugin.FormatFile;
+import moubiequest.core.quest.objects.Title;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -28,6 +30,8 @@ public final class PluginFormat
     private static final String FORMAT_QUEST_VISIBLE_PATH = "Format.quest_visible.";
     private static final String FORMAT_QUEST_SUCCESS_PATH = "Format.success.";
     private static final String FORMAT_PROGRESS_QUEST_PERCENTAGE_IMAGE_PATH = "Format.percentage_image.";
+
+    private static final String PLAYER_DATA_USE_TITLE = "Format.player_title.nothing";
     private static final String PLAYER_DATA_RECEIVE_MESSAGE = "Format.receive_message.";
     private static final String PLAYER_DATA_VIEW_PARTICLE = "Format.view_particle.";
 
@@ -149,6 +153,16 @@ public final class PluginFormat
     @NotNull
     public String getPlayerViewParticleString(final boolean isViewParticle) {
         return this.getString(PLAYER_DATA_VIEW_PARTICLE + isViewParticle);
+    }
+
+    /**
+     * 獲取玩家當前使用的稱號
+     * @param title 稱號
+     * @return 字串
+     */
+    @NotNull
+    public String getPlayerUseTitle(final @Nullable Title title) {
+        return title != null ? title.getTitle() : this.getString(PLAYER_DATA_USE_TITLE);
     }
 
     /**

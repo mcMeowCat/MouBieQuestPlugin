@@ -1,6 +1,6 @@
 package moubiequest.core.itemstack.gui.button;
 
-import moubiequest.api.itemstack.gui.button.QuestUItem;
+import moubiequest.api.itemstack.gui.quest.QuestUItem;
 import moubiequest.api.nms.NBTHandler;
 import moubiequest.api.quest.Quest;
 import moubiequest.api.quest.QuestType;

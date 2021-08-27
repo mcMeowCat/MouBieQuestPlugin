@@ -1,7 +1,7 @@
 package moubiequest.listener;
 
 import moubiequest.api.quest.KillerQuest;
-import moubiequest.core.itemstack.gui.quest.KillerQuestUInventory;
+import moubiequest.core.itemstack.gui.ui.KillerQuestUInventory;
 import moubiequest.main.MouBieCat;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;

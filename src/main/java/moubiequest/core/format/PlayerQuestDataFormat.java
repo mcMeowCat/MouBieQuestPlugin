@@ -7,6 +7,7 @@ import moubiequest.main.MouBieCat;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,6 +19,7 @@ public final class PlayerQuestDataFormat
         implements PlayerDataFormat {
 
     private static final String PLAYER_DATA_NAME = "{PLAYER_NAME}";
+    private static final String PLAYER_TITLE_NAME = "{PLAYER_TITLE_NAME}";
     private static final String PLAYER_DATA_HONOR_POINT = "{PLAYER_HONOR_POINT}";
     private static final String PLAYER_DATA_RECEIVE_MESSAGE = "{PLAYER_RECEIVE_MESSAGE}";
     private static final String PLAYER_DATA_VIEW_PARTICLE = "{PLAYER_VIEW_PARTICLE}";
@@ -56,9 +58,15 @@ public final class PlayerQuestDataFormat
                 PLAYER_DATA_NAME, this.replacer.getName()
         );
 
+        // 轉換玩家當前使用的稱號
+        replaceStr = replaceStr.replace(
+                PLAYER_TITLE_NAME,
+                this.formatFile.getPlayerUseTitle(dataFile.getPlayerTitle())
+        );
+
         // 轉換玩家榮譽點數
         replaceStr = replaceStr.replace(
-                PLAYER_DATA_HONOR_POINT, this.replacer.getName()
+                PLAYER_DATA_HONOR_POINT, ""+dataFile.getHonorPoint()
         );
 
         // 轉換是否接收任務消息
@@ -84,7 +92,13 @@ public final class PlayerQuestDataFormat
      */
     @NotNull
     public List<String> replaceList(final @NotNull List<String> list) {
-        return this.replaceList(list, replacer);
+        final List<String> newList = new ArrayList<>();
+
+        // 迴圈轉換所有字串
+        for (String str : list)
+            newList.add(this.replace(str));
+
+        return newList;
     }
 
 }

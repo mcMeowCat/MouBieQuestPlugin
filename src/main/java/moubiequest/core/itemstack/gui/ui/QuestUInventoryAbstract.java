@@ -1,12 +1,14 @@
-package moubiequest.core.itemstack.gui.quest;
+package moubiequest.core.itemstack.gui.ui;
 
-import moubiequest.api.itemstack.gui.button.QuestUItem;
+import moubiequest.api.itemstack.gui.button.PlayerDataUItem;
+import moubiequest.api.itemstack.gui.quest.QuestUItem;
 import moubiequest.api.itemstack.gui.button.UItem;
 import moubiequest.api.itemstack.gui.quest.QuestGUIBuilder;
 import moubiequest.api.itemstack.gui.quest.QuestView;
 import moubiequest.api.quest.QuestType;
 import moubiequest.api.yaml.plugin.InventoryFile;
 import moubiequest.core.itemstack.gui.PageUInventoryAbstract;
+import moubiequest.core.itemstack.gui.button.PlayerQuestDataBuilder;
 import moubiequest.core.itemstack.gui.button.UItemStackBuilder;
 import org.bukkit.Sound;
 import org.bukkit.entity.HumanEntity;
@@ -21,6 +23,8 @@ import org.jetbrains.annotations.NotNull;
 public abstract class QuestUInventoryAbstract
         extends PageUInventoryAbstract
         implements QuestGUIBuilder {
+
+    protected static final int PLAYER_QUEST_DATA_BUTTON = 49;
 
     protected static final int INVENTORY_PREVIOUS_PAGE_BUTTON = 52;
     protected static final int INVENTORY_NEXT_PAGE_BUTTON = 53;
@@ -42,6 +46,9 @@ public abstract class QuestUInventoryAbstract
 
     // 顯示方式 (預設=所有)
     protected QuestView viewType = QuestView.ALL;
+
+    // 玩家資料頭顱
+    protected final PlayerDataUItem playerUItem;
 
     // 下一頁按鈕
     protected final UItem nextButton;
@@ -72,6 +79,9 @@ public abstract class QuestUInventoryAbstract
     public QuestUInventoryAbstract(final @NotNull InventoryFile inventoryFile, final @NotNull QuestType type) {
         super(inventoryFile.getQuestInventoryTitle(type), InventorySize.SIX);
         this.inventoryFile = inventoryFile;
+
+        // 玩家資料頭顱
+        this.playerUItem = new PlayerQuestDataBuilder(PLAYER_QUEST_DATA_BUTTON);
 
         UItemStackBuilder builder;
 
@@ -110,12 +120,15 @@ public abstract class QuestUInventoryAbstract
      * @param page   頁數
      */
     @Override
-    protected void initPageInventory(@NotNull Player player, int page) {
+    protected void initPageInventory(final @NotNull Player player, final int page) {
         // 清除介面所有按拗
         this.clearInventory();
 
         // 添加基本按鈕
         this.addUItem(this.questAllButton).addUItem(this.questSuccessButton).addUItem(this.questNoSuccessButton);
+
+        // 添加玩家資料頭顱
+        this.addUItem(this.playerUItem, player);
     }
 
     /**
@@ -124,6 +137,15 @@ public abstract class QuestUInventoryAbstract
      * @param player 玩家
      */
     public void addUItem(final @NotNull QuestUItem<?> uItem, final @NotNull Player player) {
+        this.inventory.setItem(uItem.getSlotId(), uItem.build(player));
+    }
+
+    /**
+     * 添加一個玩家資料按鈕到介面
+     * @param uItem 介面物品實例
+     * @param player 玩家
+     */
+    public void addUItem(final @NotNull PlayerDataUItem uItem, final @NotNull Player player) {
         this.inventory.setItem(uItem.getSlotId(), uItem.build(player));
     }
 

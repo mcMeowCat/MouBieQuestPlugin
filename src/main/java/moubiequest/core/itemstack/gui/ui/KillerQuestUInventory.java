@@ -1,6 +1,6 @@
-package moubiequest.core.itemstack.gui.quest;
+package moubiequest.core.itemstack.gui.ui;
 
-import moubiequest.api.itemstack.gui.button.QuestUItem;
+import moubiequest.api.itemstack.gui.quest.QuestUItem;
 import moubiequest.api.itemstack.gui.quest.KillerQuestGUI;
 import moubiequest.api.quest.KillerQuest;
 import moubiequest.api.quest.QuestType;

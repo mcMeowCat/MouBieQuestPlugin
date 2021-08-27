@@ -24,6 +24,7 @@ public final class Title {
      * 獲取稱號名
      * @return 稱號
      */
+    @NotNull
     public String getTitle() {
         return quest_title;
     }
@@ -33,7 +34,7 @@ public final class Title {
      * @param player 玩家
      */
     public void usingTitleForPlayer(final @NotNull Player player) {
-
+        //wait code....
     }
 
 }

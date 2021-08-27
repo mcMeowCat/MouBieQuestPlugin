@@ -1,6 +1,5 @@
-package moubiequest.api.itemstack.gui.ui;
+package moubiequest.api.itemstack.gui;
 
-import moubiequest.api.itemstack.gui.Pageable;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
@@ -15,7 +14,6 @@ public interface PageGUI
      * 開啟介面
      * @param player 玩家
      */
-    @Deprecated
-    void open(final @NotNull Player player);
+    @Deprecated void open(final @NotNull Player player);
 
 }

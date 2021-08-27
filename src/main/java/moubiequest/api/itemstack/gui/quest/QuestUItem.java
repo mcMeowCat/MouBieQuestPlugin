@@ -1,5 +1,6 @@
-package moubiequest.api.itemstack.gui.button;
+package moubiequest.api.itemstack.gui.quest;
 
+import moubiequest.api.itemstack.gui.button.UItem;
 import moubiequest.api.quest.Quest;
 import moubiequest.api.quest.QuestType;
 import moubiequest.core.itemstack.gui.button.QuestUItemBuilder;
