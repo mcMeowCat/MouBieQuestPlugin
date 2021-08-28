@@ -43,7 +43,7 @@ public abstract class PageUInventoryAbstract
     }
 
     /**
-     * 獲取當前頁數
+     * 將頁數翻回初始頁
      */
     protected final void resetPage() {
         this.nowPage = 0;

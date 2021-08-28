@@ -186,34 +186,34 @@ public abstract class QuestUInventoryAbstract
             // 上一頁
             if (slot == INVENTORY_PREVIOUS_PAGE_BUTTON) {
                 this.previousPage(clickPlayer);
-                clickPlayer.playSound(clickPlayer.getLocation(), Sound.ITEM_BOOK_PAGE_TURN, 5f, 1.5f);
+                clickPlayer.playSound(clickPlayer.getLocation(), Sound.ITEM_BOOK_PAGE_TURN, 1f, 1f);
             }
 
             // 下一頁
             else if (slot == INVENTORY_NEXT_PAGE_BUTTON) {
                 this.nextPage(clickPlayer);
-                clickPlayer.playSound(clickPlayer.getLocation(), Sound.ITEM_BOOK_PAGE_TURN, 5f, 1.5f);
+                clickPlayer.playSound(clickPlayer.getLocation(), Sound.ITEM_BOOK_PAGE_TURN, 1f, 1f);
             }
 
             // 顯示全部任務
             else if (slot == INVENTORY_QUEST_ALL_BUTTON) {
                 this.setViewType(QuestView.ALL);
                 this.initPageInventory(clickPlayer, this.getPage());
-                clickPlayer.playSound(clickPlayer.getLocation(), Sound.ITEM_BOOK_PAGE_TURN, 5f, 1.5f);
+                clickPlayer.playSound(clickPlayer.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1f, 1f);
             }
 
             // 只顯示完成任務
             else if (slot == INVENTORY_QUEST_SUCCESS_BUTTON) {
                 this.setViewType(QuestView.SUCCESS);
                 this.initPageInventory(clickPlayer, this.getPage());
-                clickPlayer.playSound(clickPlayer.getLocation(), Sound.ITEM_BOOK_PAGE_TURN, 5f, 1.5f);
+                clickPlayer.playSound(clickPlayer.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1f, 1f);
             }
 
             // 只顯示未完成任務
             else if (slot == INVENTORY_QUEST_NO_SUCCESS_BUTTON) {
                 this.setViewType(QuestView.NO_SUCCESS);
                 this.initPageInventory(clickPlayer, this.getPage());
-                clickPlayer.playSound(clickPlayer.getLocation(), Sound.ITEM_BOOK_PAGE_TURN, 5f, 1.5f);
+                clickPlayer.playSound(clickPlayer.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1f, 1f);
             }
 
         }

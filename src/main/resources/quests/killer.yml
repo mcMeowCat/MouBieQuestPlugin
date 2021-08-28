@@ -1,5 +1,5 @@
 Quests:
-  KILL_BLAZE:
+  KILL_BLAZE_1:
     title:
       name: "烈焰使者"
     message:
@@ -16,7 +16,24 @@ Quests:
     killer:
       entity_type: blaze
 
-  KILL_CREEPER:
+  KILL_BLAZE_2:
+    title:
+      name: "烈焰使者"
+    message:
+      message: "成功打敗 烈焰使者 達 1000 次成就"
+      success_message: "您成功屈服了 烈焰使者 達 1000 次成就"
+    status:
+      enable: true
+      visible: false
+    item:
+      material: blaze_spawn_egg
+    honor_point: 20
+    progress:
+      number: 1000
+    killer:
+      entity_type: blaze
+
+  KILL_CREEPER_1:
     title:
       name: "炸彈超人"
     message:
@@ -33,7 +50,24 @@ Quests:
     killer:
       entity_type: creeper
 
-  KILL_DROWNED:
+  KILL_CREEPER_2:
+    title:
+      name: "炸彈超人"
+    message:
+      message: "成功打敗 苦力怕 達 1000 次成就"
+      success_message: "您成功屈服了 苦力怕 達 1000 次成就"
+    status:
+      enable: true
+      visible: false
+    item:
+      material: creeper_spawn_egg
+    honor_point: 30
+    progress:
+      number: 1000
+    killer:
+      entity_type: creeper
+
+  KILL_DROWNED_1:
     title:
       name: "潛水達人"
     message:
@@ -50,7 +84,24 @@ Quests:
     killer:
       entity_type: drowned
 
-  KILL_ELDER_GUARDIAN:
+  KILL_DROWNED_2:
+    title:
+      name: "潛水達人"
+    message:
+      message: "成功打敗 沉屍 達 1000 次成就"
+      success_message: "您成功屈服了 沉屍 達 1000 次成就"
+    status:
+      enable: true
+      visible: false
+    item:
+      material: drowned_spawn_egg
+    honor_point: 20
+    progress:
+      number: 1000
+    killer:
+      entity_type: drowned
+
+  KILL_ELDER_GUARDIAN_1:
     title:
       name: "海王波賽頓"
     message:
@@ -67,7 +118,24 @@ Quests:
     killer:
       entity_type: elder_guardian
 
-  KILL_EVOKER:
+  KILL_ELDER_GUARDIAN_2:
+    title:
+      name: "海王波賽頓"
+    message:
+      message: "成功打敗 遠古深海守衛 達 1000 次成就"
+      success_message: "您成功屈服了 遠古深海守衛 達 1000 次成就"
+    status:
+      enable: true
+      visible: false
+    item:
+      material: trident
+    honor_point: 30
+    progress:
+      number: 1000
+    killer:
+      entity_type: elder_guardian
+
+  KILL_EVOKER_1:
     title:
       name: "幻術師"
     message:
@@ -84,7 +152,24 @@ Quests:
     killer:
       entity_type: evoker
 
-  KILL_GHAST:
+  KILL_EVOKER_2:
+    title:
+      name: "幻術師"
+    message:
+      message: "成功打敗 喚魔者 達 1000 次成就"
+      success_message: "您成功屈服了 喚魔者 達 1000 次成就"
+    status:
+      enable: true
+      visible: false
+    item:
+      material: evoker_spawn_egg
+    honor_point: 50
+    progress:
+      number: 1000
+    killer:
+      entity_type: evoker
+
+  KILL_GHAST_1:
     title:
       name: "亡靈騎士"
     message:
@@ -101,7 +186,24 @@ Quests:
     killer:
       entity_type: ghast
 
-  KILL_GUARDIAN:
+  KILL_GHAST_2:
+    title:
+      name: "亡靈騎士"
+    message:
+      message: "成功打敗 地域幽靈 達 1000 次成就"
+      success_message: "您成功屈服了 地域幽靈 達 1000 次成就"
+    status:
+      enable: true
+      visible: false
+    item:
+      material: ghast_spawn_egg
+    honor_point: 30
+    progress:
+      number: 1000
+    killer:
+      entity_type: ghast
+
+  KILL_GUARDIAN_1:
     title:
       name: "深海守衛"
     message:
@@ -118,7 +220,24 @@ Quests:
     killer:
       entity_type: guardian
 
-  KILL_HUSK:
+  KILL_GUARDIAN_2:
+    title:
+      name: "深海守衛"
+    message:
+      message: "成功打敗 深海守衛 達 1000 次成就"
+      success_message: "您成功屈服了 深海守衛 達 1000 次成就"
+    status:
+      enable: true
+      visible: false
+    item:
+      material: guardian_spawn_egg
+    honor_point: 10
+    progress:
+      number: 1000
+    killer:
+      entity_type: guardian
+
+  KILL_HUSK_1:
     title:
       name: "深海守衛"
     message:
@@ -135,7 +254,24 @@ Quests:
     killer:
       entity_type: husk
 
-  KILL_MAGMA_CUBE:
+  KILL_HUSK_2:
+    title:
+      name: "深海守衛"
+    message:
+      message: "成功打敗 屍殼 達 1000 次成就"
+      success_message: "您成功屈服了 屍殼 達 1000 次成就"
+    status:
+      enable: true
+      visible: false
+    item:
+      material: husk_spawn_egg
+    honor_point: 10
+    progress:
+      number: 1000
+    killer:
+      entity_type: husk
+
+  KILL_MAGMA_CUBE_1:
     title:
       name: "地域立方體"
     message:
@@ -152,7 +288,24 @@ Quests:
     killer:
       entity_type: magma_cube
 
-  KILL_PHANTOM:
+  KILL_MAGMA_CUBE_2:
+    title:
+      name: "地域立方體"
+    message:
+      message: "成功打敗 熔岩史萊姆 達 1000 次成就"
+      success_message: "您成功屈服了 熔岩史萊姆 達 1000 次成就"
+    status:
+      enable: true
+      visible: false
+    item:
+      material: magma_cube_spawn_egg
+    honor_point: 20
+    progress:
+      number: 1000
+    killer:
+      entity_type: magma_cube
+
+  KILL_PHANTOM_1:
     title:
       name: "魅影突襲"
     message:
@@ -169,7 +322,24 @@ Quests:
     killer:
       entity_type: phantom
 
-  KILL_PILLAGER:
+  KILL_PHANTOM_2:
+    title:
+      name: "魅影突襲"
+    message:
+      message: "成功打敗 夜魅 達 1000 次成就"
+      success_message: "您成功屈服了 夜魅 達 1000 次成就"
+    status:
+      enable: true
+      visible: false
+    item:
+      material: phantom_spawn_egg
+    honor_point: 30
+    progress:
+      number: 1000
+    killer:
+      entity_type: phantom
+
+  KILL_PILLAGER_1:
     title:
       name: "村莊英雄"
     message:
@@ -186,7 +356,24 @@ Quests:
     killer:
       entity_type: pillager
 
-  KILL_RAVAGER:
+  KILL_PILLAGER_2:
+    title:
+      name: "村莊英雄"
+    message:
+      message: "成功打敗 掠奪者 達 1000 次成就"
+      success_message: "您成功屈服了 掠奪者 達 1000 次成就"
+    status:
+      enable: true
+      visible: false
+    item:
+      material: pillager_spawn_egg
+    honor_point: 20
+    progress:
+      number: 1000
+    killer:
+      entity_type: pillager
+
+  KILL_RAVAGER_1:
     title:
       name: "泰坦破壞者"
     message:
@@ -203,7 +390,24 @@ Quests:
     killer:
       entity_type: ravager
 
-  KILL_SHULKER:
+  KILL_RAVAGER_2:
+    title:
+      name: "泰坦破壞者"
+    message:
+      message: "成功打敗 劫毀獸 達 1000 次成就"
+      success_message: "您成功屈服了 劫毀獸 達 1000 次成就"
+    status:
+      enable: true
+      visible: false
+    item:
+      material: ravager_spawn_egg
+    honor_point: 30
+    progress:
+      number: 1000
+    killer:
+      entity_type: ravager
+
+  KILL_SHULKER_1:
     title:
       name: "物品收內箱"
     message:
@@ -220,7 +424,24 @@ Quests:
     killer:
       entity_type: shulker
 
-  KILL_SILVERFISH:
+  KILL_SHULKER_2:
+    title:
+      name: "物品收內箱"
+    message:
+      message: "成功打敗 界伏蚌 達 1000 次成就"
+      success_message: "您成功屈服了 界伏蚌 達 1000 次成就"
+    status:
+      enable: true
+      visible: false
+    item:
+      material: shulker_spawn_egg
+    honor_point: 20
+    progress:
+      number: 1000
+    killer:
+      entity_type: shulker
+
+  KILL_SILVERFISH_1:
     title:
       name: "？？？"
     message:
@@ -237,7 +458,24 @@ Quests:
     killer:
       entity_type: silverfish
 
-  KILL_SKELETON:
+  KILL_SILVERFISH_2:
+    title:
+      name: "？？？"
+    message:
+      message: "成功打敗 蠹魚 達 1000 次成就"
+      success_message: "您成功屈服了 蠹魚 達 1000 次成就"
+    status:
+      enable: true
+      visible: false
+    item:
+      material: silverfish_spawn_egg
+    honor_point: 20
+    progress:
+      number: 1000
+    killer:
+      entity_type: silverfish
+
+  KILL_SKELETON_1:
     title:
       name: "骷髏也拿弓？"
     message:
@@ -254,7 +492,24 @@ Quests:
     killer:
       entity_type: skeleton
 
-  KILL_SLIME:
+  KILL_SKELETON_2:
+    title:
+      name: "骷髏也拿弓？"
+    message:
+      message: "成功打敗 骷髏弓箭手 達 1000 次成就"
+      success_message: "您成功屈服了 骷髏弓箭手 達 1000 次成就"
+    status:
+      enable: true
+      visible: false
+    item:
+      material: skeleton_spawn_egg
+    honor_point: 10
+    progress:
+      number: 1000
+    killer:
+      entity_type: skeleton
+
+  KILL_SLIME_1:
     title:
       name: "轉生史萊姆那件事"
     message:
@@ -271,7 +526,24 @@ Quests:
     killer:
       entity_type: slime
 
-  KILL_STRAY:
+  KILL_SLIME_2:
+    title:
+      name: "轉生史萊姆那件事"
+    message:
+      message: "成功打敗 史萊姆 達 1000 次成就"
+      success_message: "您成功屈服了 史萊姆 達 1000 次成就"
+    status:
+      enable: true
+      visible: false
+    item:
+      material: slime_spawn_egg
+    honor_point: 20
+    progress:
+      number: 1000
+    killer:
+      entity_type: slime
+
+  KILL_STRAY_1:
     title:
       name: "？？？"
     message:
@@ -288,7 +560,24 @@ Quests:
     killer:
       entity_type: stray
 
-  KILL_VEX:
+  KILL_STRAY_2:
+    title:
+      name: "？？？"
+    message:
+      message: "成功打敗 流髑 達 1000 次成就"
+      success_message: "您成功屈服了 流髑 達 1000 次成就"
+    status:
+      enable: true
+      visible: false
+    item:
+      material: stray_spawn_egg
+    honor_point: 20
+    progress:
+      number: 1000
+    killer:
+      entity_type: stray
+
+  KILL_VEX_1:
     title:
       name: "腦鬼"
     message:
@@ -305,7 +594,24 @@ Quests:
     killer:
       entity_type: vex
 
-  KILL_VINDICATOR:
+  KILL_VEX_2:
+    title:
+      name: "腦鬼"
+    message:
+      message: "成功打敗 腦鬼 達 1000 次成就"
+      success_message: "您成功屈服了 腦鬼 達 1000 次成就"
+    status:
+      enable: true
+      visible: false
+    item:
+      material: vex_spawn_egg
+    honor_point: 30
+    progress:
+      number: 1000
+    killer:
+      entity_type: vex
+
+  KILL_VINDICATOR_1:
     title:
       name: "林地府邸攻掠者"
     message:
@@ -322,7 +628,24 @@ Quests:
     killer:
       entity_type: vindicator
 
-  KILL_WITCH:
+  KILL_VINDICATOR_2:
+    title:
+      name: "林地府邸攻掠者"
+    message:
+      message: "成功打敗 衛道士 達 1000 次成就"
+      success_message: "您成功屈服了 衛道士 達 1000 次成就"
+    status:
+      enable: true
+      visible: false
+    item:
+      material: vindicator_spawn_egg
+    honor_point: 20
+    progress:
+      number: 1000
+    killer:
+      entity_type: vindicator
+
+  KILL_WITCH_1:
     title:
       name: "我想吃蘋果！"
     message:
@@ -339,7 +662,24 @@ Quests:
     killer:
       entity_type: witch
 
-  KILL_WITHER_SKELETON:
+  KILL_WITCH_2:
+    title:
+      name: "我想吃蘋果！"
+    message:
+      message: "成功打敗 女巫 達 1000 次成就"
+      success_message: "您成功屈服了 女巫 達 1000 次成就"
+    status:
+      enable: true
+      visible: false
+    item:
+      material: witch_spawn_egg
+    honor_point: 20
+    progress:
+      number: 1000
+    killer:
+      entity_type: witch
+
+  KILL_WITHER_SKELETON_1:
     title:
       name: "凋零"
     message:
@@ -356,7 +696,24 @@ Quests:
     killer:
       entity_type: wither_skeleton
 
-  KILL_ZOGLIN:
+  KILL_WITHER_SKELETON_2:
+    title:
+      name: "凋零"
+    message:
+      message: "成功打敗 凋零骷髏 達 1000 次成就"
+      success_message: "您成功屈服了 凋零骷髏 達 1000 次成就"
+    status:
+      enable: true
+      visible: false
+    item:
+      material: wither_skeleton_spawn_egg
+    honor_point: 30
+    progress:
+      number: 1000
+    killer:
+      entity_type: wither_skeleton
+
+  KILL_ZOGLIN_1:
     title:
       name: "長得像豬的地域豬人"
     message:
@@ -373,7 +730,24 @@ Quests:
     killer:
       entity_type: zoglin
 
-  KILL_ZOMBIE:
+  KILL_ZOGLIN_2:
+    title:
+      name: "長得像豬的地域豬人"
+    message:
+      message: "成功打敗 豬屍獸 達 1000 次成就"
+      success_message: "您成功屈服了 豬屍獸 達 1000 次成就"
+    status:
+      enable: true
+      visible: false
+    item:
+      material: zoglin_spawn_egg
+    honor_point: 30
+    progress:
+      number: 1000
+    killer:
+      entity_type: zoglin
+
+  KILL_ZOMBIE_1:
     title:
       name: "將屍跳跳"
     message:
@@ -390,7 +764,24 @@ Quests:
     killer:
       entity_type: zombie
 
-  KILL_ZOMBIE_VILLAGER:
+  KILL_ZOMBIE_2:
+    title:
+      name: "將屍跳跳"
+    message:
+      message: "成功打敗 將屍 達 1000 次成就"
+      success_message: "您成功屈服了 將屍 達 1000 次成就"
+    status:
+      enable: true
+      visible: false
+    item:
+      material: zombie_spawn_egg
+    honor_point: 10
+    progress:
+      number: 1000
+    killer:
+      entity_type: zombie
+
+  KILL_ZOMBIE_VILLAGER_1:
     title:
       name: "今日的朋友明日的敵人"
     message:
@@ -407,7 +798,24 @@ Quests:
     killer:
       entity_type: zombie_villager
 
-  KILL_SPIDER:
+  KILL_ZOMBIE_VILLAGER_2:
+    title:
+      name: "今日的朋友明日的敵人"
+    message:
+      message: "成功打敗 殭屍村民 達 1000 次成就"
+      success_message: "您成功屈服了 殭屍村民 達 1000 次成就"
+    status:
+      enable: true
+      visible: false
+    item:
+      material: zombie_villager_spawn_egg
+    honor_point: 10
+    progress:
+      number: 1000
+    killer:
+      entity_type: zombie_villager
+
+  KILL_SPIDER_1:
     title:
       name: "蜘蛛人"
     message:
@@ -424,7 +832,24 @@ Quests:
     killer:
       entity_type: spider
 
-  KILL_ENDERMAN:
+  KILL_SPIDER_2:
+    title:
+      name: "蜘蛛人"
+    message:
+      message: "成功打敗 蜘蛛 達 1000 次成就"
+      success_message: "您成功屈服了 蜘蛛 達 1000 次成就"
+    status:
+      enable: true
+      visible: false
+    item:
+      material: spider_spawn_egg
+    honor_point: 10
+    progress:
+      number: 1000
+    killer:
+      entity_type: spider
+
+  KILL_ENDERMAN_1:
     title:
       name: "魔幻使者"
     message:
@@ -438,6 +863,23 @@ Quests:
     honor_point: 20
     progress:
       number: 500
+    killer:
+      entity_type: enderman
+
+  KILL_ENDERMAN_2:
+    title:
+      name: "魔幻使者"
+    message:
+      message: "成功打敗 終界使者 達 1000 次成就"
+      success_message: "您成功屈服了 終界使者 達 1000 次成就"
+    status:
+      enable: true
+      visible: false
+    item:
+      material: enderman_spawn_egg
+    honor_point: 20
+    progress:
+      number: 1000
     killer:
       entity_type: enderman
 
