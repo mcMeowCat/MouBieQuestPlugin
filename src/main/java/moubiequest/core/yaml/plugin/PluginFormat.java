@@ -3,10 +3,8 @@ package moubiequest.core.yaml.plugin;
 import moubiequest.api.quest.Quest;
 import moubiequest.api.quest.QuestType;
 import moubiequest.api.yaml.plugin.FormatFile;
-import moubiequest.core.quest.objects.Title;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -161,8 +159,8 @@ public final class PluginFormat
      * @return 字串
      */
     @NotNull
-    public String getPlayerUseTitle(final @Nullable Title title) {
-        return title != null ? title.getTitle() : this.getString(PLAYER_DATA_USE_TITLE);
+    public String getPlayerUseTitle(final @NotNull String title) {
+        return !title.equals("") ? title : this.getString(PLAYER_DATA_USE_TITLE);
     }
 
     /**

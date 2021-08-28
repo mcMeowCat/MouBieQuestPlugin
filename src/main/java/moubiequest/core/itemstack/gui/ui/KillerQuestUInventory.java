@@ -1,10 +1,13 @@
 package moubiequest.core.itemstack.gui.ui;
 
+import moubiequest.api.itemstack.gui.button.QuestUItem;
 import moubiequest.api.itemstack.gui.quest.KillerQuestGUI;
 import moubiequest.api.quest.KillerQuest;
 import moubiequest.api.quest.QuestType;
 import moubiequest.core.itemstack.gui.button.KillerUItemBuilder;
 import moubiequest.main.MouBieCat;
+import org.bukkit.Sound;
+import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.jetbrains.annotations.NotNull;
@@ -64,6 +67,24 @@ public final class KillerQuestUInventory
     @Override
     public void clickInventory(final @NotNull InventoryClickEvent event) {
         super.clickInventory(event);
+
+        final HumanEntity whoClicked = event.getWhoClicked();
+
+        if (whoClicked instanceof Player && event.getCurrentItem() != null) {
+            final Player clickPlayer = (Player) whoClicked;
+
+            final String questKey = QuestUItem.getItemStackQuestKey(event.getCurrentItem());
+
+            final KillerQuest quest = MouBieCat.getInstance().getKillerQuestManager().get(questKey);
+            if (quest != null && quest.isSuccess(clickPlayer)) {
+                clickPlayer.sendMessage("§2您成功配戴了該任務的稱號以及特殊效果！");
+                quest.usingTitleForPlayer(clickPlayer);
+                clickPlayer.playSound(clickPlayer.getLocation(), Sound.ENTITY_VILLAGER_YES, 1f, 1f);
+            } else {
+                clickPlayer.sendMessage("§c該任務可能不存在，或是您還沒有完成。因此無法配戴該稱號。");
+                clickPlayer.playSound(clickPlayer.getLocation(), Sound.ENTITY_VILLAGER_NO, 1f, 1f);
+            }
+        }
     }
 
 }

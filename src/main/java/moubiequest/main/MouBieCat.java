@@ -4,11 +4,13 @@ import moubiequest.api.manager.NMSManager;
 import moubiequest.api.manager.PlayerDataManager;
 import moubiequest.api.manager.QuestManager;
 import moubiequest.api.quest.KillerQuest;
+import moubiequest.api.yaml.plugin.ConfigFile;
 import moubiequest.api.yaml.plugin.FormatFile;
 import moubiequest.api.yaml.plugin.InventoryFile;
 import moubiequest.core.manager.nms.HandlerManager;
 import moubiequest.core.manager.quest.KillerQuestManager;
 import moubiequest.core.manager.data.PlayerQuestDataManager;
+import moubiequest.core.yaml.plugin.PluginConfig;
 import moubiequest.core.yaml.plugin.PluginFormat;
 import moubiequest.core.yaml.plugin.PluginInventory;
 import moubiequest.listener.InventoryListener;
@@ -23,6 +25,8 @@ public final class MouBieCat extends JavaPlugin {
     // 插件標題
     public static final String PLUGIN_TITLE = "§7[§fMouBie§6Quest§7] §r";
 
+    private ConfigFile configFile;
+
     private FormatFile formatFile;
 
     private InventoryFile inventoryFile;
@@ -35,6 +39,7 @@ public final class MouBieCat extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        this.configFile = new PluginConfig();
         this.formatFile = new PluginFormat();
         this.inventoryFile = new PluginInventory();
         this.playerDataManager = new PlayerQuestDataManager();
@@ -50,8 +55,14 @@ public final class MouBieCat extends JavaPlugin {
     public void onDisable() {
     }
 
+    @NotNull
     public static MouBieCat getInstance() {
         return JavaPlugin.getPlugin(MouBieCat.class);
+    }
+
+    @NotNull
+    public ConfigFile getConfigFile() {
+        return configFile;
     }
 
     @NotNull

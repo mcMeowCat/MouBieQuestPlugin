@@ -1,7 +1,8 @@
 package moubiequest.core.quest.objects;
 
-import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
 
 /**
  * 用於儲存任務稱號套用相關的物件
@@ -12,12 +13,16 @@ public final class Title {
     // 任務稱號名稱
     private final String quest_title;
 
+    // 特效集合
+    private final List<String> particleList;
+
     /**
      * 建構子
      * @param title 稱號
      */
-    public Title(final @NotNull String title) {
+    public Title(final @NotNull String title, final @NotNull List<String> particleList) {
         this.quest_title = title;
+        this.particleList = particleList;
     }
 
     /**
@@ -30,11 +35,12 @@ public final class Title {
     }
 
     /**
-     * 套用稱號至玩家
-     * @param player 玩家
+     * 獲取特效集合
+     * @return 套校集合
      */
-    public void usingTitleForPlayer(final @NotNull Player player) {
-        //wait code....
+    @NotNull
+    public List<String> getParticleList() {
+        return particleList;
     }
 
 }

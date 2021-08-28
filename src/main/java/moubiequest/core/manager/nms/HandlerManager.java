@@ -3,8 +3,10 @@ package moubiequest.core.manager.nms;
 import moubiequest.api.manager.NMSManager;
 import moubiequest.api.nms.Handler;
 import moubiequest.api.nms.NBTHandler;
+import moubiequest.api.nms.ParticleHandler;
 import moubiequest.core.nms.NBTTagHandler_v1_17_R1;
 import moubiequest.core.manager.ManagerAbstract;
+import moubiequest.core.nms.ParticleHandler_v1_17_R2;
 import moubiequest.main.MouBieCat;
 import org.bukkit.Bukkit;
 import org.jetbrains.annotations.NotNull;
@@ -20,7 +22,7 @@ public final class HandlerManager
     /**
      * NMS操作類的列舉類型
      */
-    public enum NMSHandlerType { NBT_TAG }
+    public enum NMSHandlerType { NBT_TAG, PARTICLE }
 
     /**
      * 建構子
@@ -31,8 +33,10 @@ public final class HandlerManager
 
         // 判斷版本，如果該插件不支持。自動卸載該插件
         try {
-            if ("v1_17_R1".equals(versionStr))
+            if ("v1_17_R1".equals(versionStr)) {
                 this.add(NMSHandlerType.NBT_TAG, new NBTTagHandler_v1_17_R1());
+                this.add(NMSHandlerType.PARTICLE, new ParticleHandler_v1_17_R2());
+            }
 
             else
                 throw new ClassNotFoundException();
@@ -51,6 +55,15 @@ public final class HandlerManager
     @NotNull
     public NBTHandler getNbtHandler() {
         return (NBTHandler) this.get(NMSHandlerType.NBT_TAG);
+    }
+
+    /**
+     * 獲取操作粒子特效的介面類
+     * @return NBTHandler
+     */
+    @NotNull
+    public ParticleHandler getParticleHandler() {
+        return (ParticleHandler) this.get(NMSHandlerType.PARTICLE);
     }
 
     /**

@@ -9,7 +9,8 @@ import java.util.Collection;
  * @param <T> 繼承 Quest
  * @author MouBieCat
  */
-public interface QuestManager<T> {
+public interface QuestManager<T>
+        extends Manager<String, T> {
 
     /**
      * 用於將檔案格式轉換成記憶體的方法

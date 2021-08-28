@@ -1,7 +1,6 @@
 package moubiequest.listener;
 
 import moubiequest.api.quest.KillerQuest;
-import moubiequest.core.itemstack.gui.ui.KillerQuestUInventory;
 import moubiequest.main.MouBieCat;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
@@ -29,10 +28,7 @@ public class KillerQuestListener
             for (final KillerQuest quest : MouBieCat.getInstance().getKillerQuestManager().getQuests())
                 if (quest.checkEntityType(entity.getType()))
                     quest.addPlayerQuestProgress(killer);
-
-            new KillerQuestUInventory().open(killer, 0);
         }
-
     }
 
 }

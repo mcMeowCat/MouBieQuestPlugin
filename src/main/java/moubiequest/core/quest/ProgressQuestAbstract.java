@@ -1,6 +1,6 @@
 package moubiequest.core.quest;
 
-import moubiequest.api.data.quest.PlayerQuestDataFile;
+import moubiequest.api.data.quest.ProgressQuestData;
 import moubiequest.api.quest.ProgressQuest;
 import moubiequest.api.quest.QuestType;
 import moubiequest.core.quest.objects.Message;
@@ -58,7 +58,7 @@ public abstract class ProgressQuestAbstract
      */
     public final boolean addPlayerQuestProgress(final @NotNull Player player) {
         if (this.isQuestEnable() && !this.isSuccess(player)) {
-            final PlayerQuestDataFile dataFile = MouBieCat.getInstance().getPlayerDataManager().get(player);
+            final ProgressQuestData dataFile = MouBieCat.getInstance().getPlayerDataManager().get(player);
             dataFile.setProgress(this, dataFile.getProgress(this) + 1);
             return true;
         }
@@ -70,7 +70,7 @@ public abstract class ProgressQuestAbstract
      * @param player 玩家
      */
     public final void clearPlayerQuestProgress(final @NotNull Player player) {
-        final PlayerQuestDataFile dataFile = MouBieCat.getInstance().getPlayerDataManager().get(player);
+        final ProgressQuestData dataFile = MouBieCat.getInstance().getPlayerDataManager().get(player);
         dataFile.setProgress(this, 0);
     }
 
@@ -80,7 +80,7 @@ public abstract class ProgressQuestAbstract
      * @return 進度次數
      */
     public final int getPlayerQuestProgress(final @NotNull Player player) {
-        final PlayerQuestDataFile dataFile = MouBieCat.getInstance().getPlayerDataManager().get(player);
+        final ProgressQuestData dataFile = MouBieCat.getInstance().getPlayerDataManager().get(player);
         return dataFile.getProgress(this);
     }
 

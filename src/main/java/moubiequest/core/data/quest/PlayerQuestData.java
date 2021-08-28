@@ -10,6 +10,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
+import java.util.List;
 
 /**
  * 玩家的任務資料載入器
@@ -23,7 +24,7 @@ public final class PlayerQuestData
     public static final String PLAYER_FLY_DATA_PATH = "player_data";
 
     // 玩家當前套用的稱號
-    private Title player_title = null;
+    private final TitleDataObject player_title_data;
 
     // 玩家當前的榮譽點數
     public static final String PLAYER_DATA_PATH_PLAYER_HONOR_POINT = "data.honor_point";
@@ -49,6 +50,7 @@ public final class PlayerQuestData
         this.player_honor_point = this.configuration.getInt(PLAYER_DATA_PATH_PLAYER_HONOR_POINT);
         this.player_receive_message = this.configuration.getBoolean(PLAYER_DATA_PATH_PLAYER_IS_RECEIVE_MESSAGE);
         this.player_view_particle = this.configuration.getBoolean(PLAYER_DATA_PATH_PLAYER_IS_VIEW_PARTICLE);
+        this.player_title_data = new TitleDataObject(player);
         this.initPlayerQuestData();
     }
 
@@ -66,17 +68,25 @@ public final class PlayerQuestData
      * 獲取當前使用的稱號
      * @return 稱號實例
      */
-    @Nullable
-    public Title getPlayerTitle() {
-        return this.player_title;
+    public @NotNull String getPlayerTitleName() {
+        return this.player_title_data.getTitle();
     }
 
     /**
-     * 設定當前使用的稱號
-     * @param title 稱號實例
+     * 獲取當前使用的特效集合
+     * @return 特效集合
      */
-    public void setPlayerTitle(final @NotNull Title title) {
-        this.player_title = title;
+    @NotNull
+    public List<String> getPlayerTitleParticle() {
+        return this.player_title_data.getParticle();
+    }
+
+    /**
+     * 設定當前使用的稱號 (如果為空代表取消任何的稱號)
+     * @param title 稱號
+     */
+    public void setPlayerTitle(final @Nullable Title title) {
+        this.player_title_data.usingQuestTitle(title);
     }
 
     /**

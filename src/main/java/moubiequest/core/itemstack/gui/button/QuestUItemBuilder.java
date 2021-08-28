@@ -3,11 +3,9 @@ package moubiequest.core.itemstack.gui.button;
 import moubiequest.api.itemstack.gui.button.QuestUItem;
 import moubiequest.api.nms.NBTHandler;
 import moubiequest.api.quest.Quest;
-import moubiequest.api.quest.QuestType;
 import moubiequest.main.MouBieCat;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 /**
  * 代表一任務介面上的按鈕
@@ -21,8 +19,6 @@ public abstract class QuestUItemBuilder<T extends Quest>
     // 任務介面物品主要TAG
     private static final String UI_ITEM_QUEST_MAIN_TAG = "UI_ITEM_QUEST_MAIN_TAG";
 
-    // 任務介面物品任務類型TAG
-    private static final String UI_ITEM_QUEST_QUEST_TYPE_TAG = "QUEST_TYPE";
     // 任務介面物品任務名稱TAG
     private static final String UI_ITEM_QUEST_QUEST_KEY_TAG = "QUEST_KEY";
 
@@ -46,23 +42,6 @@ public abstract class QuestUItemBuilder<T extends Quest>
     @NotNull
     public final T getQuest() {
         return this.quest;
-    }
-
-    /**
-     * 解析物品上的任務類型
-     * @param itemStack 物品
-     * @return 類型
-     */
-    @Nullable
-    public static QuestType getItemStackQuestType(final @NotNull ItemStack itemStack) {
-        final NBTHandler handler = MouBieCat.getInstance().getNmsManager().getNbtHandler();
-
-        if (handler.hasTag(itemStack, UI_ITEM_QUEST_MAIN_TAG))
-            return QuestType.valueOf(
-                    handler.getString(itemStack, UI_ITEM_QUEST_MAIN_TAG, UI_ITEM_QUEST_QUEST_TYPE_TAG)
-            );
-
-        return null;
     }
 
     /**
@@ -90,7 +69,6 @@ public abstract class QuestUItemBuilder<T extends Quest>
 
         // 配置 TAG 屬性
         handler.setMainTagName(UI_ITEM_QUEST_MAIN_TAG)
-                .setString(UI_ITEM_QUEST_QUEST_TYPE_TAG, this.quest.getQuestType().getName())
                 .setString(UI_ITEM_QUEST_QUEST_KEY_TAG, this.quest.getQuestKey());
 
         // 寫入到物品中

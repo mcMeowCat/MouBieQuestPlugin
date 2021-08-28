@@ -5,9 +5,11 @@ import moubiequest.api.quest.Quest;
 import moubiequest.core.yaml.Loader;
 import moubiequest.api.quest.QuestType;
 import org.bukkit.Material;
+import org.bukkit.entity.LightningStrike;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
+import java.util.List;
 
 /**
  * 用於將YAML的任務格式轉換成記憶體類
@@ -22,6 +24,7 @@ public abstract class QuestLoaderAbstract<T extends Quest>
     protected static final String QUEST_DATA_MAIN_PATH = "Quests.";
 
     private static final String QUEST_DATA_TITLE_NAME_PATH = ".title.name";
+    private static final String QUEST_DATA_TITLE_PARTICLE_PATH = ".title.particles";
 
     private static final String QUEST_DATA_MESSAGE_MESSAGE_PATH = ".message.message";
     private static final String QUEST_DATA_MESSAGE_SUCCESS_MESSAGE_PATH = ".message.success_message";
@@ -49,6 +52,16 @@ public abstract class QuestLoaderAbstract<T extends Quest>
     @NotNull
     public final String parsingQuestTitleName(final @NotNull String key) {
         return this.getString(QUEST_DATA_MAIN_PATH + key + QUEST_DATA_TITLE_NAME_PATH);
+    }
+
+    /**
+     * 解析任務的稱號效果
+     * @param key 任務識別碼
+     * @return 稱號特效集合
+     */
+    @NotNull
+    public final List<String> parsingQuestParticle(final @NotNull String key) {
+        return this.getStringList(QUEST_DATA_MAIN_PATH + key + QUEST_DATA_TITLE_PARTICLE_PATH);
     }
 
     /**

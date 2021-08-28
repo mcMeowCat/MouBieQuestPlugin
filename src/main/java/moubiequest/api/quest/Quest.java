@@ -65,6 +65,12 @@ public interface Quest {
     void setQuestVisible(final boolean isVisible);
 
     /**
+     * 使一個玩家使用該任務的稱號頭銜與效果
+     * @param player 玩家
+     */
+    void usingTitleForPlayer(final @NotNull Player player);
+
+    /**
      * 獲取材質
      * @return 材質
      */

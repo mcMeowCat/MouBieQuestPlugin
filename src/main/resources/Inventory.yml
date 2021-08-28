@@ -2,23 +2,23 @@ QuestInventory:
   common_button:
     next:
       material: paper
-      display_name: "§6下一頁"
+      display_name: "§6下一頁 §c▸▸"
 
     previous:
       material: paper
-      display_name: "§6上一頁"
+      display_name: "§c◂◂ §6上一頁"
 
     quest_all:
       material: paper
-      display_name: "§6顯示所有任務"
+      display_name: "§7❖ 顯示所有任務 "
 
     quest_success:
       material: paper
-      display_name: "§6顯示已完成"
+      display_name: "§7❖ 顯示已完成任務 ❖"
 
     quest_no_success:
       material: paper
-      display_name: "§6顯示未完成"
+      display_name: "§7❖ 顯示未完成任務 ❖"
 
   KILLER:
-    title: "- 擊殺任務介面 -"
+    title: "§8§l擊殺任務列表"

@@ -1,11 +1,13 @@
 package moubiequest.core.quest;
 
+import moubiequest.api.data.quest.TitleData;
 import moubiequest.api.quest.Quest;
 import moubiequest.api.quest.QuestType;
 import moubiequest.core.quest.objects.Message;
 import moubiequest.core.quest.objects.QItem;
 import moubiequest.core.quest.objects.Status;
 import moubiequest.core.quest.objects.Title;
+import moubiequest.main.MouBieCat;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
@@ -138,6 +140,16 @@ public abstract class QuestAbstract
      */
     public final void setQuestVisible(final boolean isVisible) {
         this.quest_status.setVisible(isVisible);
+    }
+
+    /**
+     * 使一個玩家使用該任務的稱號頭銜與效果
+     *
+     * @param player 玩家
+     */
+    public final void usingTitleForPlayer(final @NotNull Player player) {
+        final TitleData dataFile = MouBieCat.getInstance().getPlayerDataManager().get(player);
+        dataFile.setPlayerTitle(this.quest_title);
     }
 
     /**

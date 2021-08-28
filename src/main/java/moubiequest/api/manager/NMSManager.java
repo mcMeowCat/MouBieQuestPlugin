@@ -2,6 +2,7 @@ package moubiequest.api.manager;
 
 import moubiequest.api.nms.Handler;
 import moubiequest.api.nms.NBTHandler;
+import moubiequest.api.nms.ParticleHandler;
 import moubiequest.core.manager.nms.HandlerManager;
 import org.jetbrains.annotations.NotNull;
 
@@ -19,10 +20,9 @@ public interface NMSManager
     @NotNull NBTHandler getNbtHandler();
 
     /**
-     * 獲取一個 NMS 操作類
-     * @param key k 操作類型
-     * @return NMS操作類
+     * 獲取操作粒子特效的介面類
+     * @return NBTHandler
      */
-    @NotNull Handler get(final @NotNull HandlerManager.NMSHandlerType key);
+    @NotNull ParticleHandler getParticleHandler();
 
 }

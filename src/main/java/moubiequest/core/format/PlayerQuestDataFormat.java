@@ -61,7 +61,7 @@ public final class PlayerQuestDataFormat
         // 轉換玩家當前使用的稱號
         replaceStr = replaceStr.replace(
                 PLAYER_TITLE_NAME,
-                this.formatFile.getPlayerUseTitle(dataFile.getPlayerTitle())
+                this.formatFile.getPlayerUseTitle(dataFile.getPlayerTitleName())
         );
 
         // 轉換玩家榮譽點數
@@ -78,7 +78,7 @@ public final class PlayerQuestDataFormat
         // 轉換是否可見特效
         replaceStr = replaceStr.replace(
                 PLAYER_DATA_VIEW_PARTICLE,
-                this.formatFile.getPlayerReceiveMessageString(dataFile.isViewParticle())
+                this.formatFile.getPlayerViewParticleString(dataFile.isViewParticle())
         );
 
         return replaceStr;

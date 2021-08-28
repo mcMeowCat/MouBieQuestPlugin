@@ -2,6 +2,10 @@ Quests:
   KILL_BLAZE_1:
     title:
       name: "烈焰使者"
+      particles:
+        - ""
+        - ""
+        - ""
     message:
       message: "成功打敗 烈焰使者 達 500 次成就"
       success_message: "您成功屈服了 烈焰使者 達 500 次成就"
