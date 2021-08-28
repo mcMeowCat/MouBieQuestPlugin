@@ -7,8 +7,8 @@ Format:
     false: "§c尚未開放"
 
   quest_visible:
-    true: "§6隱藏任務"
-    false: "§e公開任務"
+    true: "§c隱藏任務"
+    false: "§2公開任務"
 
   success:
     true: "§a達成任務！ §7(點選更換稱號)"
@@ -29,22 +29,22 @@ Format:
 
   receive_message:
     true: "§2接收中"
-    false: "§c拒絕接收"
+    false: "§f拒絕接收"
 
   view_particle:
     true: "§2可見"
-    false: "§c不可見"
+    false: "§f不可見"
 
   player_title:
-    nothing: "§c目前沒有套用"
+    nothing: "§f目前沒有套用"
 
 PlayerQuestHead:
   head: "§f您 §6{PLAYER_NAME} §f的任務資訊"
   body:
     - "§7稱號： §6{PLAYER_TITLE_NAME}"
-    - "§7榮譽： §6{PLAYER_HONOR_POINT} §f點"
-    - "§7通知： §6{PLAYER_RECEIVE_MESSAGE}"
-    - "§7特效： §6{PLAYER_VIEW_PARTICLE}"
+    - "§7榮譽： §f{PLAYER_HONOR_POINT} §7點"
+    - "§7通知： §r{PLAYER_RECEIVE_MESSAGE}"
+    - "§7特效： §r{PLAYER_VIEW_PARTICLE}"
 
 QuestFormat:
   KILLER:

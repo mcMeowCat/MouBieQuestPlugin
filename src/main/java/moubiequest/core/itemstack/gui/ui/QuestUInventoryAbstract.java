@@ -36,7 +36,6 @@ public abstract class QuestUInventoryAbstract
     protected static final int INVENTORY_QUEST_ALL_BUTTON = 3;
     protected static final int INVENTORY_QUEST_SUCCESS_BUTTON = 4;
     protected static final int INVENTORY_QUEST_NO_SUCCESS_BUTTON = 5;
-    protected static final int INVENTORY_SUCCESS_AND_NOT_SUCCESS_BUTTON = 31;
 
     // 介面檔案
     protected final InventoryFile inventoryFile;
@@ -104,7 +103,7 @@ public abstract class QuestUInventoryAbstract
      */
     @Override
     protected void initPageInventory(final @NotNull Player player, final int page) {
-        // 清除介面所有按拗
+        // 清除介面所有按鈕
         this.clearInventory();
 
         // 添加基本按鈕
@@ -176,7 +175,8 @@ public abstract class QuestUInventoryAbstract
      */
     @Override
     public void clickInventory(final @NotNull InventoryClickEvent event) {
-        event.setCancelled(true);
+        super.clickInventory(event);
+
         final HumanEntity whoClicked = event.getWhoClicked();
 
         if (whoClicked instanceof Player && event.getCurrentItem() != null) {

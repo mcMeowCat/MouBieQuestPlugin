@@ -32,6 +32,12 @@ public interface GUIBuilder
     @NotNull GUIBuilder addItem(final @NotNull ItemStack itemStack, final int slot);
 
     /**
+     * 設定是否取消點擊事件操作
+     * @param isCancel 是否取消任務 (使物品不被移動)
+     */
+    void setCancelClickEvent(final boolean isCancel);
+
+    /**
      * 清除當前介面上的所有物品按鈕
      */
     void clearInventory();

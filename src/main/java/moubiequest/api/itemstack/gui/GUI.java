@@ -31,6 +31,12 @@ public interface GUI
     void clickInventory(final @NotNull InventoryClickEvent event);
 
     /**
+     * 是否取消點擊事件操作 (使物品不被移動)
+     * @return 是否取消
+     */
+    boolean isCancelClickEvent();
+
+    /**
      * 關閉伺服器玩家開啟有關該庫存的介面
      */
     static void closePlayerInventory() {

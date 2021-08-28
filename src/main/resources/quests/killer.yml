@@ -1,34 +1,476 @@
 Quests:
-  KILL_ZOMBIE_1_QUEST:
+  KILL_BLAZE:
     title:
-      name: "[殭屍獵人]"
+      name: "烈焰使者"
     message:
-      message: "進行中"
-      success_message: "達成"
+      message: "成功打敗 烈焰使者 達 500 次成就"
+      success_message: "您成功屈服了 烈焰使者 達 500 次成就"
     status:
       enable: true
       visible: false
     item:
-      material: stone
+      material: blaze_spawn_egg
+    honor_point: 20
+    progress:
+      number: 500
+    killer:
+      entity_type: blaze
+
+  KILL_CREEPER:
+    title:
+      name: "炸彈超人"
+    message:
+      message: "成功打敗 苦力怕 達 500 次成就"
+      success_message: "您成功屈服了 苦力怕 達 500 次成就"
+    status:
+      enable: true
+      visible: false
+    item:
+      material: creeper_spawn_egg
+    honor_point: 30
+    progress:
+      number: 500
+    killer:
+      entity_type: creeper
+
+  KILL_DROWNED:
+    title:
+      name: "潛水達人"
+    message:
+      message: "成功打敗 沉屍 達 500 次成就"
+      success_message: "您成功屈服了 沉屍 達 500 次成就"
+    status:
+      enable: true
+      visible: false
+    item:
+      material: drowned_spawn_egg
+    honor_point: 20
+    progress:
+      number: 500
+    killer:
+      entity_type: drowned
+
+  KILL_ELDER_GUARDIAN:
+    title:
+      name: "海王波賽頓"
+    message:
+      message: "成功打敗 遠古深海守衛 達 500 次成就"
+      success_message: "您成功屈服了 遠古深海守衛 達 500 次成就"
+    status:
+      enable: true
+      visible: false
+    item:
+      material: trident
+    honor_point: 30
+    progress:
+      number: 500
+    killer:
+      entity_type: elder_guardian
+
+  KILL_EVOKER:
+    title:
+      name: "幻術師"
+    message:
+      message: "成功打敗 喚魔者 達 500 次成就"
+      success_message: "您成功屈服了 喚魔者 達 500 次成就"
+    status:
+      enable: true
+      visible: false
+    item:
+      material: evoker_spawn_egg
+    honor_point: 50
+    progress:
+      number: 500
+    killer:
+      entity_type: evoker
+
+  KILL_GHAST:
+    title:
+      name: "亡靈騎士"
+    message:
+      message: "成功打敗 地域幽靈 達 500 次成就"
+      success_message: "您成功屈服了 地域幽靈 達 500 次成就"
+    status:
+      enable: true
+      visible: false
+    item:
+      material: ghast_spawn_egg
+    honor_point: 30
+    progress:
+      number: 500
+    killer:
+      entity_type: ghast
+
+  KILL_GUARDIAN:
+    title:
+      name: "深海守衛"
+    message:
+      message: "成功打敗 深海守衛 達 500 次成就"
+      success_message: "您成功屈服了 深海守衛 達 500 次成就"
+    status:
+      enable: true
+      visible: false
+    item:
+      material: guardian_spawn_egg
     honor_point: 10
     progress:
-      number: 10
+      number: 500
+    killer:
+      entity_type: guardian
+
+  KILL_HUSK:
+    title:
+      name: "深海守衛"
+    message:
+      message: "成功打敗 屍殼 達 500 次成就"
+      success_message: "您成功屈服了 屍殼 達 500 次成就"
+    status:
+      enable: true
+      visible: false
+    item:
+      material: husk_spawn_egg
+    honor_point: 10
+    progress:
+      number: 500
+    killer:
+      entity_type: husk
+
+  KILL_MAGMA_CUBE:
+    title:
+      name: "地域立方體"
+    message:
+      message: "成功打敗 熔岩史萊姆 達 500 次成就"
+      success_message: "您成功屈服了 熔岩史萊姆 達 500 次成就"
+    status:
+      enable: true
+      visible: false
+    item:
+      material: magma_cube_spawn_egg
+    honor_point: 20
+    progress:
+      number: 500
+    killer:
+      entity_type: magma_cube
+
+  KILL_PHANTOM:
+    title:
+      name: "魅影突襲"
+    message:
+      message: "成功打敗 夜魅 達 500 次成就"
+      success_message: "您成功屈服了 夜魅 達 500 次成就"
+    status:
+      enable: true
+      visible: false
+    item:
+      material: phantom_spawn_egg
+    honor_point: 30
+    progress:
+      number: 500
+    killer:
+      entity_type: phantom
+
+  KILL_PILLAGER:
+    title:
+      name: "村莊英雄"
+    message:
+      message: "成功打敗 掠奪者 達 500 次成就"
+      success_message: "您成功屈服了 掠奪者 達 500 次成就"
+    status:
+      enable: true
+      visible: false
+    item:
+      material: pillager_spawn_egg
+    honor_point: 20
+    progress:
+      number: 500
+    killer:
+      entity_type: pillager
+
+  KILL_RAVAGER:
+    title:
+      name: "泰坦破壞者"
+    message:
+      message: "成功打敗 劫毀獸 達 500 次成就"
+      success_message: "您成功屈服了 劫毀獸 達 500 次成就"
+    status:
+      enable: true
+      visible: false
+    item:
+      material: ravager_spawn_egg
+    honor_point: 30
+    progress:
+      number: 500
+    killer:
+      entity_type: ravager
+
+  KILL_SHULKER:
+    title:
+      name: "物品收內箱"
+    message:
+      message: "成功打敗 界伏蚌 達 500 次成就"
+      success_message: "您成功屈服了 界伏蚌 達 500 次成就"
+    status:
+      enable: true
+      visible: false
+    item:
+      material: shulker_spawn_egg
+    honor_point: 20
+    progress:
+      number: 500
+    killer:
+      entity_type: shulker
+
+  KILL_SILVERFISH:
+    title:
+      name: "？？？"
+    message:
+      message: "成功打敗 蠹魚 達 500 次成就"
+      success_message: "您成功屈服了 蠹魚 達 500 次成就"
+    status:
+      enable: true
+      visible: false
+    item:
+      material: silverfish_spawn_egg
+    honor_point: 20
+    progress:
+      number: 500
+    killer:
+      entity_type: silverfish
+
+  KILL_SKELETON:
+    title:
+      name: "骷髏也拿弓？"
+    message:
+      message: "成功打敗 骷髏弓箭手 達 500 次成就"
+      success_message: "您成功屈服了 骷髏弓箭手 達 500 次成就"
+    status:
+      enable: true
+      visible: false
+    item:
+      material: skeleton_spawn_egg
+    honor_point: 10
+    progress:
+      number: 500
+    killer:
+      entity_type: skeleton
+
+  KILL_SLIME:
+    title:
+      name: "轉生史萊姆那件事"
+    message:
+      message: "成功打敗 史萊姆 達 500 次成就"
+      success_message: "您成功屈服了 史萊姆 達 500 次成就"
+    status:
+      enable: true
+      visible: false
+    item:
+      material: slime_spawn_egg
+    honor_point: 20
+    progress:
+      number: 500
+    killer:
+      entity_type: slime
+
+  KILL_STRAY:
+    title:
+      name: "？？？"
+    message:
+      message: "成功打敗 流髑 達 500 次成就"
+      success_message: "您成功屈服了 流髑 達 500 次成就"
+    status:
+      enable: true
+      visible: false
+    item:
+      material: stray_spawn_egg
+    honor_point: 20
+    progress:
+      number: 500
+    killer:
+      entity_type: stray
+
+  KILL_VEX:
+    title:
+      name: "腦鬼"
+    message:
+      message: "成功打敗 腦鬼 達 500 次成就"
+      success_message: "您成功屈服了 腦鬼 達 500 次成就"
+    status:
+      enable: true
+      visible: false
+    item:
+      material: vex_spawn_egg
+    honor_point: 30
+    progress:
+      number: 500
+    killer:
+      entity_type: vex
+
+  KILL_VINDICATOR:
+    title:
+      name: "林地府邸攻掠者"
+    message:
+      message: "成功打敗 衛道士 達 500 次成就"
+      success_message: "您成功屈服了 衛道士 達 500 次成就"
+    status:
+      enable: true
+      visible: false
+    item:
+      material: vindicator_spawn_egg
+    honor_point: 20
+    progress:
+      number: 500
+    killer:
+      entity_type: vindicator
+
+  KILL_WITCH:
+    title:
+      name: "我想吃蘋果！"
+    message:
+      message: "成功打敗 女巫 達 500 次成就"
+      success_message: "您成功屈服了 女巫 達 500 次成就"
+    status:
+      enable: true
+      visible: false
+    item:
+      material: witch_spawn_egg
+    honor_point: 20
+    progress:
+      number: 500
+    killer:
+      entity_type: witch
+
+  KILL_WITHER_SKELETON:
+    title:
+      name: "凋零"
+    message:
+      message: "成功打敗 凋零骷髏 達 500 次成就"
+      success_message: "您成功屈服了 凋零骷髏 達 500 次成就"
+    status:
+      enable: true
+      visible: false
+    item:
+      material: wither_skeleton_spawn_egg
+    honor_point: 30
+    progress:
+      number: 500
+    killer:
+      entity_type: wither_skeleton
+
+  KILL_ZOGLIN:
+    title:
+      name: "長得像豬的地域豬人"
+    message:
+      message: "成功打敗 豬屍獸 達 500 次成就"
+      success_message: "您成功屈服了 豬屍獸 達 500 次成就"
+    status:
+      enable: true
+      visible: false
+    item:
+      material: zoglin_spawn_egg
+    honor_point: 30
+    progress:
+      number: 500
+    killer:
+      entity_type: zoglin
+
+  KILL_ZOMBIE:
+    title:
+      name: "將屍跳跳"
+    message:
+      message: "成功打敗 將屍 達 500 次成就"
+      success_message: "您成功屈服了 將屍 達 500 次成就"
+    status:
+      enable: true
+      visible: false
+    item:
+      material: zombie_spawn_egg
+    honor_point: 10
+    progress:
+      number: 500
     killer:
       entity_type: zombie
 
-  KILL_ZOMBIE_2_QUEST:
+  KILL_ZOMBIE_VILLAGER:
     title:
-      name: "[殭屍獵人]"
+      name: "今日的朋友明日的敵人"
     message:
-      message: "進行中"
-      success_message: "達成"
+      message: "成功打敗 殭屍村民 達 500 次成就"
+      success_message: "您成功屈服了 殭屍村民 達 500 次成就"
+    status:
+      enable: true
+      visible: false
+    item:
+      material: zombie_villager_spawn_egg
+    honor_point: 10
+    progress:
+      number: 500
+    killer:
+      entity_type: zombie_villager
+
+  KILL_SPIDER:
+    title:
+      name: "蜘蛛人"
+    message:
+      message: "成功打敗 蜘蛛 達 500 次成就"
+      success_message: "您成功屈服了 蜘蛛 達 500 次成就"
+    status:
+      enable: true
+      visible: false
+    item:
+      material: spider_spawn_egg
+    honor_point: 10
+    progress:
+      number: 500
+    killer:
+      entity_type: spider
+
+  KILL_ENDERMAN:
+    title:
+      name: "魔幻使者"
+    message:
+      message: "成功打敗 終界使者 達 500 次成就"
+      success_message: "您成功屈服了 終界使者 達 500 次成就"
+    status:
+      enable: true
+      visible: false
+    item:
+      material: enderman_spawn_egg
+    honor_point: 20
+    progress:
+      number: 500
+    killer:
+      entity_type: enderman
+
+  KILL_ENDER_DRAGON:
+    title:
+      name: "魔幻龍騎士"
+    message:
+      message: "成功打敗 終界龍 達 100 次成就"
+      success_message: "您成功屈服了 終界龍 達 100 次成就"
     status:
       enable: true
       visible: true
     item:
-      material: stone
-    honor_point: 20
+      material: dragon_head
+    honor_point: 50
     progress:
-      number: 20
+      number: 100
     killer:
-      entity_type: zombie
+      entity_type: ender_dragon
+
+  KILL_WITHER:
+    title:
+      name: "三頭怪征服者"
+    message:
+      message: "成功打敗 凋零怪 達 100 次成就"
+      success_message: "您成功屈服了 凋零怪 達 100 次成就"
+    status:
+      enable: true
+      visible: true
+    item:
+      material: beacon
+    honor_point: 50
+    progress:
+      number: 100
+    killer:
+      entity_type: wither

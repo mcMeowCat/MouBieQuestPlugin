@@ -1,6 +1,5 @@
 package moubiequest.core.itemstack.gui.ui;
 
-import moubiequest.api.itemstack.gui.button.QuestUItem;
 import moubiequest.api.itemstack.gui.quest.KillerQuestGUI;
 import moubiequest.api.quest.KillerQuest;
 import moubiequest.api.quest.QuestType;
@@ -37,7 +36,7 @@ public final class KillerQuestUInventory
         // 先回去運行基本代碼
         super.initPageInventory(player, page);
 
-        // 如果頁數 >1 則添加上一頁按鈕
+        // 如果頁數 >0 則添加上一頁按鈕
         if (page > 0) this.addUItem(this.previousButton);
 
         // 任務排序結果
@@ -50,8 +49,7 @@ public final class KillerQuestUInventory
             // 迴圈開始編排任務
             for (int slot = 9; slot < 45; slot++) {
                 final KillerQuest quest = sortQuests.get(startQuest++);
-                final QuestUItem<KillerQuest> questUItem = new KillerUItemBuilder(quest, slot);
-                this.addUItem(questUItem, player);
+                this.addUItem(new KillerUItemBuilder(quest, slot), player);
             }
         } catch (final IndexOutOfBoundsException e) { return; }
 

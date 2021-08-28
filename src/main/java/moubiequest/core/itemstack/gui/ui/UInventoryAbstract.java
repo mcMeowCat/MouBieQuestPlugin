@@ -69,6 +69,9 @@ public abstract class UInventoryAbstract
     // 大小
     private final InventorySize inventory_size;
 
+    // 是否取消事件的操作(使介面不被更動 預設=true)
+    private boolean inventory_cancelEvent = true;
+
     /**
      * 建構子
      * @param title 介面標題
@@ -131,6 +134,22 @@ public abstract class UInventoryAbstract
     }
 
     /**
+     * 設定是否可以移動該介面的物品
+     * @param isCanMove 可以移動的
+     */
+    public final void setCancelClickEvent(final boolean isCanMove) {
+        this.inventory_cancelEvent = isCanMove;
+    }
+
+    /**
+     * 是否可以移動該介面的物品
+     * @return 是否可以
+     */
+    public final boolean isCancelClickEvent() {
+        return this.inventory_cancelEvent;
+    }
+
+    /**
      * 清除當前介面上的所有物品按鈕
      */
     public final void clearInventory() {
@@ -168,7 +187,9 @@ public abstract class UInventoryAbstract
      * 代表當介面被點擊的事件
      * @param event 介面點擊事件
      */
-    public abstract void clickInventory(final @NotNull InventoryClickEvent event);
+    public void clickInventory(final @NotNull InventoryClickEvent event) {
+        event.setCancelled(this.isCancelClickEvent());
+    }
 
     /**
      * 關閉伺服器玩家開啟有關該庫存的介面
