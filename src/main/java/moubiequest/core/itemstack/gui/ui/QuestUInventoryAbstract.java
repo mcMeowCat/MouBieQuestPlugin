@@ -5,6 +5,8 @@ import moubiequest.api.itemstack.gui.button.PlayerUItem;
 import moubiequest.api.itemstack.gui.button.UItem;
 import moubiequest.api.itemstack.gui.quest.QuestGUIBuilder;
 import moubiequest.api.itemstack.gui.QuestView;
+import moubiequest.api.manager.QuestManager;
+import moubiequest.api.quest.Quest;
 import moubiequest.api.quest.QuestType;
 import moubiequest.api.yaml.plugin.InventoryFile;
 import moubiequest.core.itemstack.gui.button.PlayerQuestDataBuilder;
@@ -14,6 +16,9 @@ import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * 代表一個基礎的任務介面操作類
@@ -57,12 +62,6 @@ public abstract class QuestUInventoryAbstract
     // 顯示方式按鈕(未完成)
     protected final UItem questNoSuccessButton;
 
-    // 任務全部完成
-    protected final UItem questAllSuccess;
-
-    // 沒有任何完成的任務
-    protected final UItem questAllNotSuccess;
-
     /**
      * 建構子
      * @param inventoryFile 介面檔案
@@ -96,14 +95,6 @@ public abstract class QuestUInventoryAbstract
         // 解析通用按鈕 (顯示方式按鈕(未完成))
         builder = new UItemStackBuilder(this.inventoryFile.getCommonButton("quest_no_success"), INVENTORY_QUEST_NO_SUCCESS_BUTTON);
         this.questNoSuccessButton = builder;
-
-        // 解析通用按鈕 (任務全部完成)
-        builder = new UItemStackBuilder(this.inventoryFile.getCommonButton("quest_all_success"), INVENTORY_SUCCESS_AND_NOT_SUCCESS_BUTTON);
-        this.questAllSuccess = builder;
-
-        // 解析通用按鈕 (任務全部尚未傳承)
-        builder = new UItemStackBuilder(this.inventoryFile.getCommonButton("quest_all_not_success"), INVENTORY_SUCCESS_AND_NOT_SUCCESS_BUTTON);
-        this.questAllNotSuccess = builder;
     }
 
     /**
@@ -147,6 +138,36 @@ public abstract class QuestUInventoryAbstract
     public final void setViewType(final @NotNull QuestView viewType) {
         this.resetPage();
         this.viewType = viewType;
+    }
+
+    /**
+     * 獲取當前狀態對任務的排序方式
+     * @param manager 任務管理器
+     * @param player 玩家
+     * @param <T> 繼承 Quest
+     * @return 任務排序集合
+     */
+    @NotNull
+    protected final<T extends Quest> List<T> getSortQuests(final @NotNull QuestManager<T> manager, final @NotNull Player player) {
+        final List<T> quests = new LinkedList<>();
+        switch (this.viewType) {
+            case ALL:
+                for (final T quest : manager.getQuests())
+                    if (!quest.isQuestVisible() || quest.isSuccess(player))
+                        quests.add(quest);
+                break;
+            case SUCCESS:
+                for (final T quest : manager.getQuests())
+                    if (quest.isSuccess(player))
+                        quests.add(quest);
+                break;
+            case NO_SUCCESS:
+                for (final T quest : manager.getQuests())
+                    if (!quest.isQuestVisible() && !quest.isSuccess(player))
+                        quests.add(quest);
+                break;
+        }
+        return quests;
     }
 
     /**

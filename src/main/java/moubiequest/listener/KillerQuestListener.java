@@ -30,7 +30,7 @@ public class KillerQuestListener
                 if (quest.checkEntityType(entity.getType()))
                     quest.addPlayerQuestProgress(killer);
 
-            new KillerQuestUInventory().open(killer, 1);
+            new KillerQuestUInventory().open(killer, 0);
         }
 
     }

@@ -10,8 +10,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 /**
@@ -42,32 +40,8 @@ public final class KillerQuestUInventory
         // 如果頁數 >1 則添加上一頁按鈕
         if (page > 0) this.addUItem(this.previousButton);
 
-        // 創建任務表
-        final List<KillerQuest> newQuestList = new ArrayList<>();
-        final Collection<KillerQuest> quests = MouBieCat.getInstance().getKillerQuestManager().getQuests();
-
-        // 根據 QuestView 選擇排序任務方法
-        switch (this.viewType) {
-            case ALL:
-                newQuestList.addAll(quests);
-                break;
-            case SUCCESS:
-                for (final KillerQuest quest : quests) {
-                    if (quest.isSuccess(player))
-                        newQuestList.add(quest);
-                }
-                if (newQuestList.size() == 0)
-                    this.addUItem(this.questAllNotSuccess);
-                break;
-            case NO_SUCCESS:
-                for (final KillerQuest quest : quests) {
-                    if (!quest.isSuccess(player))
-                        newQuestList.add(quest);
-                }
-                if (newQuestList.size() == 0)
-                    this.addUItem(this.questAllSuccess);
-                break;
-        }
+        // 任務排序結果
+        final List<KillerQuest> sortQuests = this.getSortQuests(MouBieCat.getInstance().getKillerQuestManager(), player);
 
         try {
             // 計算迴圈任務起始
@@ -75,7 +49,7 @@ public final class KillerQuestUInventory
 
             // 迴圈開始編排任務
             for (int slot = 9; slot < 45; slot++) {
-                final KillerQuest quest = newQuestList.get(startQuest++);
+                final KillerQuest quest = sortQuests.get(startQuest++);
                 final QuestUItem<KillerQuest> questUItem = new KillerUItemBuilder(quest, slot);
                 this.addUItem(questUItem, player);
             }

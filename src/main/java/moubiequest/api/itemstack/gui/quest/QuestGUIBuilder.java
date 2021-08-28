@@ -1,7 +1,6 @@
 package moubiequest.api.itemstack.gui.quest;
 
 import moubiequest.api.itemstack.gui.button.PlayerUItem;
-import moubiequest.api.itemstack.gui.button.UItem;
 import moubiequest.api.itemstack.gui.GUIBuilder;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
@@ -12,13 +11,6 @@ import org.jetbrains.annotations.NotNull;
  */
 public interface QuestGUIBuilder
         extends GUIBuilder, QuestGUI {
-
-    /**
-     * 添加一個按鈕到介面
-     * @param uItem 介面物品實例
-     */
-    @Deprecated
-    @NotNull GUIBuilder addUItem(final @NotNull UItem uItem);
 
     /**
      * 添加一個按鈕到介面
