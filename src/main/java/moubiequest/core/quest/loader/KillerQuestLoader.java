@@ -61,7 +61,7 @@ public class KillerQuestLoader
 
             // 解析任務稱號
             final Title title =
-                    new Title(this.parsingQuestTitleName(key), this.parsingQuestParticle(key));
+                    new Title(this.parsingQuestTitleName(key), this.parsingQuestParticleLocus(key), this.parsingQuestParticle(key));
 
             // 解析任務訊息
             final Message message =

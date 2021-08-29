@@ -2,10 +2,12 @@ Quests:
   KILL_BLAZE_1:
     title:
       name: "烈焰使者"
-      particles:
-        - ""
-        - ""
-        - ""
+      particle:
+        locus: TOP_TO_BOTTOM
+        particles:
+          - "DRAGON_BREATH"
+          - "REDSTONE:255:0:0:2"
+          - "REDSTONE:0:255:0:2"
     message:
       message: "成功打敗 烈焰使者 達 500 次成就"
       success_message: "您成功屈服了 烈焰使者 達 500 次成就"

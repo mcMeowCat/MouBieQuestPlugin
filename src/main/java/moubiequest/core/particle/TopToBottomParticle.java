@@ -41,9 +41,9 @@ public final class TopToBottomParticle
      */
     @Override
     public void run() {
-        if(this.offsetHigh <= 2) {
+        if(this.offsetHigh <= 0) {
             this.t = 0.0;
-            this.offsetHigh = 0.0;
+            this.offsetHigh = 2.0;
         }
 
         // 計算生成位置

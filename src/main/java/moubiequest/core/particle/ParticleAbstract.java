@@ -32,7 +32,7 @@ public abstract class ParticleAbstract
     protected final ParticleLocus locus;
 
     // 特效集合
-    private final List<ParticleType> particles;
+    protected final List<ParticleType> particles;
 
     /**
      * 建構子

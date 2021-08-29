@@ -1,7 +1,6 @@
 package moubiequest.core.data.quest;
 
 import moubiequest.api.manager.ParticleManager;
-import moubiequest.api.particle.ParticleTimer;
 import moubiequest.core.manager.data.PlayerParticleManager;
 import moubiequest.core.quest.objects.Title;
 import org.bukkit.entity.Player;
@@ -38,12 +37,20 @@ public final class TitleDataObject {
     }
 
     /**
+     * 獲取稱號擁有者
+     * @return 玩家(擁有者本身)
+     */
+    public Player getPlayer() {
+        return this.player;
+    }
+
+    /**
      * 獲取稱號標題
      * @return 標題
      */
     @NotNull
     public String getTitle() {
-        return title;
+        return this.title;
     }
 
     /**
@@ -52,7 +59,7 @@ public final class TitleDataObject {
      */
     @NotNull
     public List<String> getParticle() {
-        return particle;
+        return this.particle;
     }
 
     /**
@@ -60,22 +67,42 @@ public final class TitleDataObject {
      * @param title 稱號
      */
     public void usingQuestTitle(final @Nullable Title title) {
-        // 停止所有之前套用任務稱號的粒子效果線程
-        for (final ParticleTimer timer : this.particleManager.getValues())
-            timer.stop();
+//        // 如果為空，則卸載稱號
+//        if (title == null) {
+//            this.unQuestTitle();
+//        } else {
+//            this.title = title.getTitle();
+//            this.particle = title.getParticleList();
+//
+//            // 解析粒子特效
+//            final List<ParticleType> particleTypes = title.parsingQuestParticleType();
+//            switch (title.getParticleLocus()) {
+//                case TOP_SPIN:
+//                    this.particleManager.add(0, new TopSpinParticle(this.player, particleTypes));
+//                    break;
+//                case TOP_TO_BOTTOM:
+//                    this.particleManager.add(0, new TopToBottomParticle(this.player, particleTypes));
+//                    break;
+//                case FOOD_SPIN:
+//                    this.particleManager.add(0, new FoodSpinParticle(this.player, particleTypes));
+//                    break;
+//                case BOTTOM_TO_TOP:
+//                    this.particleManager.add(0, new BottomToTopParticle(this.player, particleTypes));
+//                    break;
+//            }
+//        }
+    }
 
-        // 如果不為空，則設置稱號
-        if (title != null) {
-            this.title = title.getTitle();
-            this.particle = title.getParticleList();
-
-        // 否則，取消選定的任何稱號
-        } else {
-            this.title = "";
-            this.particle.clear();
-        }
-
-        player.setPlayerListName("§c" + this.title + "§f" + this.player.getName());
+    public void unQuestTitle() {
+//        // 停止所有之前套用任務稱號的粒子效果線程
+//        for (final ParticleTimer timer : this.particleManager.getValues())
+//            timer.stop();
+//
+//        // 稱號為空字串
+//        this.title = "";
+//
+//        // 清除特效集合
+//        this.particle.clear();
     }
 
 }

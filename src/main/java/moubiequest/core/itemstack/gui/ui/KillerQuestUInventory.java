@@ -47,10 +47,10 @@ public final class KillerQuestUInventory
 
         try {
             // 計算迴圈任務起始
-            int startQuest = page * 36;
+            int startQuest = page * INVENTORY_QUEST_SLOT_BUTTON.size();
 
             // 迴圈開始編排任務
-            for (int slot = 9; slot < 45; slot++) {
+            for (int slot = INVENTORY_QUEST_SLOT_BUTTON.get(0); slot <= INVENTORY_QUEST_SLOT_BUTTON.get(INVENTORY_QUEST_SLOT_BUTTON.size() - 1); slot++) {
                 final KillerQuest quest = sortQuests.get(startQuest++);
                 this.addUItem(new KillerUItemBuilder(quest, slot), player);
             }
@@ -70,18 +70,17 @@ public final class KillerQuestUInventory
 
         final HumanEntity whoClicked = event.getWhoClicked();
 
-        if (whoClicked instanceof Player && event.getCurrentItem() != null) {
+        if (whoClicked instanceof Player && event.getCurrentItem() != null && INVENTORY_QUEST_SLOT_BUTTON.contains(event.getSlot())) {
             final Player clickPlayer = (Player) whoClicked;
 
             final String questKey = QuestUItem.getItemStackQuestKey(event.getCurrentItem());
 
             final KillerQuest quest = MouBieCat.getInstance().getKillerQuestManager().get(questKey);
             if (quest != null && quest.isSuccess(clickPlayer)) {
-                clickPlayer.sendMessage("§2您成功配戴了該任務的稱號以及特殊效果！");
                 quest.usingTitleForPlayer(clickPlayer);
+                this.initPageInventory(clickPlayer, this.getPage());
                 clickPlayer.playSound(clickPlayer.getLocation(), Sound.ENTITY_VILLAGER_YES, 1f, 1f);
             } else {
-                clickPlayer.sendMessage("§c該任務可能不存在，或是您還沒有完成。因此無法配戴該稱號。");
                 clickPlayer.playSound(clickPlayer.getLocation(), Sound.ENTITY_VILLAGER_NO, 1f, 1f);
             }
         }

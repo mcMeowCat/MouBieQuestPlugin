@@ -1,23 +1,16 @@
 package moubiequest.listener;
 
-import moubiequest.api.particle.ParticleTimer;
-import moubiequest.api.particle.ParticleType;
+import moubiequest.api.itemstack.gui.quest.QuestGUI;
 import moubiequest.core.data.quest.PlayerQuestData;
-import moubiequest.core.particle.TopToBottomParticle;
-import moubiequest.core.particle.type.ParticleBase;
-import moubiequest.core.particle.type.ParticleDustOptions;
+import moubiequest.core.itemstack.gui.ui.KillerQuestUInventory;
 import moubiequest.main.MouBieCat;
-import org.bukkit.Color;
-import org.bukkit.Particle;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * 有關於玩家資料的事件監聽都在這
@@ -47,14 +40,13 @@ public final class PlayerDataListener
     }
 
     @EventHandler
-    public void onTestJoin(final @NotNull PlayerJoinEvent event) {
+    public void onDropItem(final @NotNull PlayerDropItemEvent event) {
         final Player player = event.getPlayer();
-
-        final List<ParticleType> particles = new ArrayList<>();
-        particles.add(new ParticleBase(Particle.DRAGON_BREATH));
-        particles.add(new ParticleDustOptions(Particle.REDSTONE, new Particle.DustOptions(Color.RED, 5)));
-        ParticleTimer timer = new TopToBottomParticle(player, particles);
-        timer.start();
+        if (player.isSneaking()) {
+            event.setCancelled(true);
+            QuestGUI gui = new KillerQuestUInventory();
+            gui.open(player, 0);
+        }
     }
 
 }

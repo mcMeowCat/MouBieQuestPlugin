@@ -14,4 +14,6 @@ public enum ParticleLocus {
 
     FOOD_SPIN,
 
+    NOTHING,
+
 }
