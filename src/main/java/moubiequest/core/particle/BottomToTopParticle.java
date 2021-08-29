@@ -41,10 +41,6 @@ public final class BottomToTopParticle
      */
     @Override
     public void run() {
-        // 判斷時間軸
-        if (this.t >= 6.28)
-            this.t = 0;
-
         if(this.offsetHigh >= 2) {
             this.t = 0.0;
             this.offsetHigh = 0.0;

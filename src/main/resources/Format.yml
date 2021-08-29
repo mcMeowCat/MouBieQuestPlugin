@@ -28,12 +28,12 @@ Format:
     100: "§e■■■■■■■■■■"
 
   receive_message:
-    true: "§2接收中"
-    false: "§f拒絕接收"
+    true: "§2接收通知"
+    false: "§f拒絕通知"
 
   view_particle:
-    true: "§2可見"
-    false: "§f不可見"
+    true: "§2可見特效"
+    false: "§f屏蔽特效"
 
   player_title:
     nothing: "§f目前沒有套用"
