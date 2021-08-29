@@ -1,6 +1,6 @@
 package moubiequest.core.particle.type;
 
-import moubiequest.api.particle.ParticleType;
+import moubiequest.api.particle.ParticleDataType;
 import org.bukkit.Particle;
 import org.jetbrains.annotations.NotNull;
 
@@ -9,10 +9,8 @@ import org.jetbrains.annotations.NotNull;
  * @param <T>
  */
 public abstract class ParticleTypeAbstract<T>
-        implements ParticleType<T> {
-
-    // 特效類型
-    private final Particle particle;
+        extends ParticleBase
+        implements ParticleDataType<T> {
 
     // 特效資料物件
     private final T particleObject;
@@ -23,17 +21,8 @@ public abstract class ParticleTypeAbstract<T>
      * @param particleObject 特效資料物件
      */
     public ParticleTypeAbstract(final @NotNull Particle particle, final @NotNull T particleObject) {
-        this.particle = particle;
+        super(particle);
         this.particleObject = particleObject;
-    }
-
-    /**
-     * 獲取特效類型
-     * @return 類型
-     */
-    @NotNull
-    public final Particle getParticle() {
-        return particle;
     }
 
     /**
@@ -42,7 +31,7 @@ public abstract class ParticleTypeAbstract<T>
      */
     @NotNull
     public final T getParticleObject() {
-        return particleObject;
+        return this.particleObject;
     }
 
 }

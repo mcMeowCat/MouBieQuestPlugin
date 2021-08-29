@@ -5,4 +5,13 @@ package moubiequest.api.particle;
  * @author MouBieCat
  */
 public enum ParticleLocus {
+
+    TOP_TO_BOTTOM,
+
+    BOTTOM_TO_TOP,
+
+    TOP_SPIN,
+
+    FOOD_SPIN,
+
 }

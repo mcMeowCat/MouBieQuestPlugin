@@ -18,6 +18,6 @@ public interface ParticleHandler
      * @param location 位置
      * @param particle 特效實例
      */
-    void spawnParticle(final @NotNull Player player, final @NotNull Location location, final @NotNull ParticleType<?> particle);
+    void spawnParticle(final @NotNull Player player, final @NotNull Location location, final @NotNull ParticleType particle);
 
 }

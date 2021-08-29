@@ -32,7 +32,7 @@ public abstract class ParticleAbstract
     protected final ParticleLocus locus;
 
     // 特效集合
-    private final List<ParticleType<?>> particles;
+    private final List<ParticleType> particles;
 
     /**
      * 建構子
@@ -40,7 +40,7 @@ public abstract class ParticleAbstract
      * @param locus 軌跡類型
      * @param particles 特效集合
      */
-    public ParticleAbstract(final @NotNull Player player, final @NotNull ParticleLocus locus, final @NotNull List<ParticleType<?>> particles) {
+    public ParticleAbstract(final @NotNull Player player, final @NotNull ParticleLocus locus, final @NotNull List<ParticleType> particles) {
         this.player = player;
         this.locus = locus;
         this.particles = particles;
@@ -69,7 +69,7 @@ public abstract class ParticleAbstract
      * @return 特效集合
      */
     @NotNull
-    public final List<ParticleType<?>> getParticles() {
+    public final List<ParticleType> getParticles() {
         return this.particles;
     }
 
@@ -80,7 +80,7 @@ public abstract class ParticleAbstract
      */
     protected final void generateParticle(final @NotNull Player var1, final @NotNull Location var2) {
         final ParticleHandler handler = MouBieCat.getInstance().getNmsManager().getParticleHandler();
-        for (final ParticleType<?> particle : this.particles)
+        for (final ParticleType particle : this.particles)
             handler.spawnParticle(var1, var2, particle);
     }
 
@@ -102,6 +102,16 @@ public abstract class ParticleAbstract
     }
 
     /**
+     * 檢查玩家是否想接收到特效
+     * @param var1 玩家
+     * @return 是否可以生成
+     */
+    protected final boolean checkPlayerViewParticleData(final @NotNull Player var1) {
+        final ParticleData dataFile = MouBieCat.getInstance().getPlayerDataManager().get(player);
+        return dataFile.isViewParticle();
+    }
+
+    /**
      * 獲取該玩家周圍的所有玩家集合 (包括自己)
      *
      * @param var1 玩家
@@ -114,15 +124,11 @@ public abstract class ParticleAbstract
         final ConfigFile configFile = MouBieCat.getInstance().getConfigFile();
         final double maxRange = configFile.getSpawnParticleToPlayerMaxRange();
 
-        for (final Entity entity : var1.getNearbyEntities(maxRange, maxRange, maxRange))
-            if (entity instanceof Player) {
-                final Player player = (Player) entity;
-                final ParticleData dataFile = MouBieCat.getInstance().getPlayerDataManager().get(player);
-                if (dataFile.isViewParticle())
-                    list.add((Player) entity);
-            }
-
         list.add(var1);
+        for (final Entity entity : var1.getNearbyEntities(maxRange, maxRange, maxRange))
+            if (entity instanceof Player)
+                list.add((Player) entity);
+
         return list;
     }
 
