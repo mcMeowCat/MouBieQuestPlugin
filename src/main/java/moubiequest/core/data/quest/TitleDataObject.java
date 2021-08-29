@@ -17,17 +17,26 @@ import java.util.List;
  */
 public final class TitleDataObject {
 
+    /**
+     * 代表一個紀載效果的物件
+     * @author MouBieCat
+     */
+    public static class ParticleObject {
+        // 稱號標題
+        public String title = "";
+
+        // 特效
+        public List<String> particle = new ArrayList<>();
+
+        // 特效線程管理員
+        public final ParticleManager particleManager = new PlayerParticleManager();
+    }
+
     // 玩家(擁有者)
     private final Player player;
 
-    // 稱號標題
-    private String title = "";
-
-    // 特效
-    private List<String> particle = new ArrayList<>();
-
-    // 特效線程管理員
-    private final ParticleManager particleManager = new PlayerParticleManager();
+    // 特效物件
+    private final ParticleObject particleObject = new ParticleObject();
 
     /**
      * 建構子
@@ -50,16 +59,7 @@ public final class TitleDataObject {
      */
     @NotNull
     public String getTitle() {
-        return this.title;
-    }
-
-    /**
-     * 獲取特效集合
-     * @return 特效集合
-     */
-    @NotNull
-    public List<String> getParticle() {
-        return this.particle;
+        return this.particleObject.title;
     }
 
     /**
@@ -67,42 +67,24 @@ public final class TitleDataObject {
      * @param title 稱號
      */
     public void usingQuestTitle(final @Nullable Title title) {
-//        // 如果為空，則卸載稱號
-//        if (title == null) {
-//            this.unQuestTitle();
-//        } else {
-//            this.title = title.getTitle();
-//            this.particle = title.getParticleList();
-//
-//            // 解析粒子特效
-//            final List<ParticleType> particleTypes = title.parsingQuestParticleType();
-//            switch (title.getParticleLocus()) {
-//                case TOP_SPIN:
-//                    this.particleManager.add(0, new TopSpinParticle(this.player, particleTypes));
-//                    break;
-//                case TOP_TO_BOTTOM:
-//                    this.particleManager.add(0, new TopToBottomParticle(this.player, particleTypes));
-//                    break;
-//                case FOOD_SPIN:
-//                    this.particleManager.add(0, new FoodSpinParticle(this.player, particleTypes));
-//                    break;
-//                case BOTTOM_TO_TOP:
-//                    this.particleManager.add(0, new BottomToTopParticle(this.player, particleTypes));
-//                    break;
-//            }
-//        }
+        if (title == null)
+            this.unQuestTitle();
+        else {
+            this.particleObject.title  = title.getTitle();
+            this.particleObject.particle = title.getParticleList();
+        }
     }
 
+    /**
+     * 卸載套用的稱號
+     */
     public void unQuestTitle() {
-//        // 停止所有之前套用任務稱號的粒子效果線程
-//        for (final ParticleTimer timer : this.particleManager.getValues())
-//            timer.stop();
-//
-//        // 稱號為空字串
-//        this.title = "";
-//
-//        // 清除特效集合
-//        this.particle.clear();
+        // 停止所有之前套用任務稱號的粒子效果線程
+        this.particleObject.particleManager.clear();
+        // 稱號為空字串
+        this.particleObject.title = "";
+        // 清除特效集合
+        this.particleObject.particle.clear();
     }
 
 }

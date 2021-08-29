@@ -10,7 +10,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
-import java.util.List;
 
 /**
  * 玩家的任務資料載入器
@@ -70,15 +69,6 @@ public final class PlayerQuestData
      */
     public @NotNull String getPlayerTitleName() {
         return this.player_title_data.getTitle();
-    }
-
-    /**
-     * 獲取當前使用的特效集合
-     * @return 特效集合
-     */
-    @NotNull
-    public List<String> getPlayerTitleParticle() {
-        return this.player_title_data.getParticle();
     }
 
     /**

@@ -39,4 +39,14 @@ public final class PlayerParticleManager
         super.remove(key);
     }
 
+    /**
+     * 清除所有特效物件
+     */
+    public void clear() {
+        for (final ParticleTimer timer : this.manager.values())
+            timer.stop();
+
+        this.manager.clear();
+    }
+
 }

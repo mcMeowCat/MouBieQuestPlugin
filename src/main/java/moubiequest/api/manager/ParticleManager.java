@@ -8,4 +8,10 @@ import moubiequest.api.particle.ParticleTimer;
  */
 public interface ParticleManager
         extends Manager<Integer, ParticleTimer> {
+
+    /**
+     * 清除所有特效物件
+     */
+    void clear();
+
 }

@@ -107,6 +107,7 @@ public abstract class ParticleAbstract
      * @return 是否可以生成
      */
     protected final boolean checkPlayerViewParticleData(final @NotNull Player var1) {
+        if (var1 == this.player) return true;
         final ParticleData dataFile = MouBieCat.getInstance().getPlayerDataManager().get(player);
         return dataFile.isViewParticle();
     }
