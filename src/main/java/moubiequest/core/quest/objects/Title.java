@@ -1,6 +1,7 @@
 package moubiequest.core.quest.objects;
 
 import moubiequest.api.particle.ParticleLocus;
+import moubiequest.api.particle.ParticleType;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -18,7 +19,7 @@ public final class Title {
     private final ParticleLocus locus;
 
     // 特效集合
-    private final List<String> particleList;
+    private final List<ParticleType> particleList;
 
     /**
      * 建構子
@@ -26,7 +27,7 @@ public final class Title {
      * @param locus 軌跡類型
      * @param particleList 效果集合
      */
-    public Title(final @NotNull String title, final @NotNull ParticleLocus locus, final @NotNull List<String> particleList) {
+    public Title(final @NotNull String title, final @NotNull ParticleLocus locus, final @NotNull List<ParticleType> particleList) {
         this.quest_title = title;
         this.locus = locus;
         this.particleList = particleList;
@@ -55,8 +56,8 @@ public final class Title {
      * @return 套校集合
      */
     @NotNull
-    public List<String> getParticleList() {
-        return particleList;
+    public List<ParticleType> getParticleList() {
+        return this.particleList;
     }
 
 }

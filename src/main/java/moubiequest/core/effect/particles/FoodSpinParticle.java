@@ -1,4 +1,4 @@
-package moubiequest.core.particle;
+package moubiequest.core.effect.particles;
 
 import moubiequest.api.particle.ParticleLocus;
 import moubiequest.api.particle.ParticleType;
@@ -9,23 +9,18 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-/**
- * 代表一個由上至下的特效軌跡
- * @author MouBieCat
- */
-public final class TopToBottomParticle
+public class FoodSpinParticle
         extends ParticleAbstract {
 
     private double t; //時間
-    private double offsetHigh = 2.5; //高度偏移
 
     /**
      * 建構子
      * @param player    玩家
      * @param particles 特效集合
      */
-    public TopToBottomParticle(final @NotNull Player player, final @NotNull List<ParticleType> particles) {
-        super(player, ParticleLocus.TOP_TO_BOTTOM, particles);
+    public FoodSpinParticle(final @NotNull Player player, final @NotNull List<ParticleType> particles) {
+        super(player, ParticleLocus.TOP_SPIN, particles);
     }
 
     /**
@@ -41,29 +36,28 @@ public final class TopToBottomParticle
      */
     @Override
     public void run() {
-        if(this.offsetHigh <= 0) {
-            this.t = 0.0;
-            this.offsetHigh = 2.0;
+        if (!this.player.isOnline())
+            this.cancel();
+
+        if (this.t >= 6.28) {
+            this.t = 0;
         }
 
-        // 計算生成位置
         final double x = Math.sin(this.t);
         final double z = Math.cos(this.t);
 
-        // 迴圈
         for (final Player player : this.getPlayerRangePlayers(this.player)) {
             if (!this.checkPlayerViewParticleData(player))
                 continue;
 
             final Location clone = this.player.getLocation().clone();
-            final Location particleLocation = clone.add(x, this.offsetHigh, z);
+            final Location particleLocation = clone.add(x, 0.2, z);
 
             if (this.hasGenerateParticle(player, particleLocation))
                 this.generateParticle(player, particleLocation);
         }
 
-        t += 0.25;
-        this.offsetHigh -= 0.02;
+        this.t += 0.25;
     }
 
     /**

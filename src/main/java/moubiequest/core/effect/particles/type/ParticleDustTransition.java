@@ -1,4 +1,4 @@
-package moubiequest.core.particle.type;
+package moubiequest.core.effect.particles.type;
 
 import org.bukkit.Particle;
 import org.jetbrains.annotations.NotNull;

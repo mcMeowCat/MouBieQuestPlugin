@@ -1,14 +1,20 @@
 package moubiequest.core.quest.loader;
 
 import moubiequest.api.particle.ParticleLocus;
+import moubiequest.api.particle.ParticleType;
 import moubiequest.api.quest.loader.QuestLoader;
 import moubiequest.api.quest.Quest;
+import moubiequest.core.effect.particles.type.*;
 import moubiequest.core.yaml.Loader;
 import moubiequest.api.quest.QuestType;
+import org.bukkit.Color;
 import org.bukkit.Material;
+import org.bukkit.Particle;
+import org.bukkit.configuration.ConfigurationSection;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -75,8 +81,50 @@ public abstract class QuestLoaderAbstract<T extends Quest>
      * @return 稱號特效集合
      */
     @NotNull
-    public final List<String> parsingQuestParticle(final @NotNull String key) {
-        return this.getStringList(QUEST_DATA_MAIN_PATH + key + QUEST_DATA_TITLE_PARTICLE_PARTICLES_PATH);
+    public final List<ParticleType> parsingQuestParticle(final @NotNull String key) {
+        final ConfigurationSection configurationSection =
+                this.configuration.getConfigurationSection(QUEST_DATA_MAIN_PATH + key + QUEST_DATA_TITLE_PARTICLE_PARTICLES_PATH);
+
+        final List<ParticleType> particleTypes = new LinkedList<>();
+
+        if (configurationSection == null) return particleTypes;
+
+        for (final String str : configurationSection.getKeys(false)) {
+            final Particle particle = Particle.valueOf(str.toUpperCase());
+            switch (particle) {
+                case DUST_COLOR_TRANSITION:
+                    particleTypes.add(
+                            new ParticleDustTransition(
+                                    particle,
+                                    new Particle.DustTransition(
+                                            Color.fromRGB(Integer.parseInt(
+                                                    this.getString(QUEST_DATA_MAIN_PATH + key + QUEST_DATA_TITLE_PARTICLE_PARTICLES_PATH + "." + particle + ".data.fromColor"
+                                                    ), 16)),
+                                            Color.fromRGB(Integer.parseInt(
+                                                    this.getString(QUEST_DATA_MAIN_PATH + key + QUEST_DATA_TITLE_PARTICLE_PARTICLES_PATH + "." + particle + ".data.toColor"
+                                                    ), 16)),
+                                            this.getInt(QUEST_DATA_MAIN_PATH + key + QUEST_DATA_TITLE_PARTICLE_PARTICLES_PATH + "."  + particle + ".data.size")
+                                    )
+                            )
+                    );
+                    break;
+                case REDSTONE:
+                    particleTypes.add(
+                            new ParticleDustOptions(
+                                    particle,
+                                    new Particle.DustOptions(Color.fromRGB(Integer.parseInt(
+                                            this.getString(QUEST_DATA_MAIN_PATH + key + QUEST_DATA_TITLE_PARTICLE_PARTICLES_PATH + "." + particle + ".data.color"), 16)),
+                                            this.getInt(QUEST_DATA_MAIN_PATH + key + QUEST_DATA_TITLE_PARTICLE_PARTICLES_PATH + "."  + particle + ".data.size")
+                                    )
+                            )
+                    );
+                    break;
+                default:
+                    particleTypes.add(new ParticleBase(particle));
+                    break;
+            }
+        }
+        return particleTypes;
     }
 
     /**

@@ -1,4 +1,4 @@
-package moubiequest.core.particle;
+package moubiequest.core.effect.particles;
 
 import moubiequest.api.particle.ParticleLocus;
 import moubiequest.api.particle.ParticleType;
@@ -9,7 +9,11 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class FoodSpinParticle
+/**
+ * 代表一個在頭上旋轉的特效軌跡
+ * @author MouBieCat
+ */
+public final class TopSpinParticle
         extends ParticleAbstract {
 
     private double t; //時間
@@ -19,7 +23,7 @@ public class FoodSpinParticle
      * @param player    玩家
      * @param particles 特效集合
      */
-    public FoodSpinParticle(final @NotNull Player player, final @NotNull List<ParticleType> particles) {
+    public TopSpinParticle(final @NotNull Player player, final @NotNull List<ParticleType> particles) {
         super(player, ParticleLocus.TOP_SPIN, particles);
     }
 
@@ -36,6 +40,9 @@ public class FoodSpinParticle
      */
     @Override
     public void run() {
+        if (!this.player.isOnline())
+            this.cancel();
+
         if (this.t >= 6.28) {
             this.t = 0;
         }
@@ -48,7 +55,7 @@ public class FoodSpinParticle
                 continue;
 
             final Location clone = this.player.getLocation().clone();
-            final Location particleLocation = clone.add(x, 0.2, z);
+            final Location particleLocation = clone.add(x, 2.5, z);
 
             if (this.hasGenerateParticle(player, particleLocation))
                 this.generateParticle(player, particleLocation);

@@ -1,4 +1,4 @@
-package moubiequest.core.particle.type;
+package moubiequest.core.effect.particles.type;
 
 import moubiequest.api.particle.ParticleDataType;
 import org.bukkit.Particle;

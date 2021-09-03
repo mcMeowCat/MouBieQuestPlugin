@@ -1,4 +1,4 @@
-package moubiequest.core.particle;
+package moubiequest.core.effect.particles;
 
 import moubiequest.api.particle.ParticleLocus;
 import moubiequest.api.particle.ParticleType;
@@ -10,21 +10,22 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 /**
- * 代表一個在頭上旋轉的特效軌跡
+ * 代表一個由下至上的特效軌跡
  * @author MouBieCat
  */
-public final class TopSpinParticle
+public final class BottomToTopParticle
         extends ParticleAbstract {
 
     private double t; //時間
+    private double offsetHigh = 0; //高度偏移
 
     /**
      * 建構子
      * @param player    玩家
      * @param particles 特效集合
      */
-    public TopSpinParticle(final @NotNull Player player, final @NotNull List<ParticleType> particles) {
-        super(player, ParticleLocus.TOP_SPIN, particles);
+    public BottomToTopParticle(final @NotNull Player player, final @NotNull List<ParticleType> particles) {
+        super(player, ParticleLocus.BOTTOM_TO_TOP, particles);
     }
 
     /**
@@ -40,8 +41,12 @@ public final class TopSpinParticle
      */
     @Override
     public void run() {
-        if (this.t >= 6.28) {
-            this.t = 0;
+        if (!this.player.isOnline())
+            this.cancel();
+
+        if(this.offsetHigh >= 2) {
+            this.t = 0.0;
+            this.offsetHigh = 0.0;
         }
 
         final double x = Math.sin(this.t);
@@ -52,13 +57,14 @@ public final class TopSpinParticle
                 continue;
 
             final Location clone = this.player.getLocation().clone();
-            final Location particleLocation = clone.add(x, 2.5, z);
+            final Location particleLocation = clone.add(x, offsetHigh, z);
 
             if (this.hasGenerateParticle(player, particleLocation))
                 this.generateParticle(player, particleLocation);
         }
 
-        this.t += 0.25;
+        t += 0.25;
+        offsetHigh += 0.02;
     }
 
     /**
@@ -76,5 +82,6 @@ public final class TopSpinParticle
     public void stop() {
         this.cancel();
     }
+
 
 }

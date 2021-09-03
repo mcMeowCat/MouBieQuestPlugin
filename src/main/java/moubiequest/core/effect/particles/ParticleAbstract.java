@@ -1,4 +1,4 @@
-package moubiequest.core.particle;
+package moubiequest.core.effect.particles;
 
 import moubiequest.api.data.quest.ParticleData;
 import moubiequest.api.nms.ParticleHandler;

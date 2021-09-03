@@ -5,9 +5,12 @@ Quests:
       particle:
         locus: TOP_TO_BOTTOM
         particles:
-          - "DRAGON_BREATH"
-          - "REDSTONE:255:0:0:2"
-          - "REDSTONE:0:255:0:2"
+          DRAGON_BREATH:
+            data: null
+          REDSTONE:
+            data:
+              color: FF0000
+              size: 2
     message:
       message: "成功打敗 烈焰使者 達 500 次成就"
       success_message: "您成功屈服了 烈焰使者 達 500 次成就"
@@ -25,6 +28,18 @@ Quests:
   KILL_BLAZE_2:
     title:
       name: "烈焰使者"
+      particle:
+        locus: BOTTOM_TO_TOP
+        particles:
+          DUST_COLOR_TRANSITION:
+            data:
+              fromColor: FF0000
+              toColor: 001600
+              size: 5
+          REDSTONE:
+            data:
+              color: FF0000
+              size: 2
     message:
       message: "成功打敗 烈焰使者 達 1000 次成就"
       success_message: "您成功屈服了 烈焰使者 達 1000 次成就"
