@@ -13,6 +13,7 @@ import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * 有關玩家狀態設定的選單介面類
@@ -27,7 +28,7 @@ public final class PlayerStatusUInventory
     private static final int INVENTORY_PLAYER_STATUS_BACK_INVENTORY_BUTTON = 40;
 
     // 返回上一層介面
-    private final GUI goBackInventory;
+    private final GUI returnInventory;
 
     // 開啟功能
     private final UItemBuilder enableButton;
@@ -47,10 +48,11 @@ public final class PlayerStatusUInventory
     /**
      * 建構子
      * @param player 玩家
+     * @param backGUI 要返回的介面 (null 則直接關閉介面)
      */
-    public PlayerStatusUInventory(final @NotNull Player player, final @NotNull GUI gui) {
+    public PlayerStatusUInventory(final @NotNull Player player, final @Nullable GUI backGUI) {
         super(MouBieCat.getInstance().getInventoryFile().getPlayerStatusInventoryTitle(player), InventorySize.FIVE);
-        this.goBackInventory = gui;
+        this.returnInventory = backGUI;
 
         final InventoryFile inventoryFile = MouBieCat.getInstance().getInventoryFile();
         UItemStackBuilder builder;
@@ -82,11 +84,13 @@ public final class PlayerStatusUInventory
      */
     @Override
     protected void initInventory(final @NotNull Player player) {
+        // 清除當前介面上的所有按鈕
         this.clearInventory();
 
-        final PlayerQuestDataFile dataFile = MouBieCat.getInstance().getPlayerDataManager().get(player);
+        // 添加介面基本按鈕
         this.addUItem(this.viewParticleButton).addUItem(this.receiveMessageButton).addUItem(this.backInventoryButton);
 
+        final PlayerQuestDataFile dataFile = MouBieCat.getInstance().getPlayerDataManager().get(player);
         // 判斷可見粒子狀態
         if (dataFile.isViewParticle()) {
             this.disableButton.setSlotId(29);
@@ -139,10 +143,7 @@ public final class PlayerStatusUInventory
 
                 // 判斷返回上一層清單
                 case INVENTORY_PLAYER_STATUS_BACK_INVENTORY_BUTTON:
-                    if (this.goBackInventory instanceof Pageable) {
-                        final Pageable pageable = (Pageable) this.goBackInventory;
-                        pageable.open(clickPlayer, pageable.getPage());
-                    }
+                    this.backGUI(clickPlayer);
                     break;
             }
 
@@ -151,12 +152,31 @@ public final class PlayerStatusUInventory
     }
 
     /**
-     * 獲取下層介面
+     * 返回上一層介面
+     * @param player 玩家
+     */
+    public void backGUI(final @NotNull Player player) {
+        // 如果沒有上層介面，則直接關閉該介面
+        if (this.returnInventory == null)
+            player.closeInventory();
+
+        // 如果該介面帶有頁數，則回到第一頁(0)
+        else if (this.returnInventory instanceof Pageable) {
+            final Pageable pageableGUI = (Pageable) this.returnInventory;
+            pageableGUI.open(player, 0);
+
+        } else // 否則，正常情況下開啟
+            this.returnInventory.open(player);
+
+    }
+
+    /**
+     * 獲取返回的介面
      * @return 介面
      */
     @NotNull
-    public GUI getBackInventory() {
-        return this.goBackInventory;
+    public GUI getReturnGUI() {
+        return this.returnInventory;
     }
 
 }

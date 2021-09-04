@@ -30,6 +30,7 @@ public abstract class PageUInventoryAbstract
      * @param page   頁數
      */
     public final void open(final @NotNull Player player, final int page) {
+        this.nowPage = page;
         this.initPageInventory(player, page);
         super.open(player);
     }
