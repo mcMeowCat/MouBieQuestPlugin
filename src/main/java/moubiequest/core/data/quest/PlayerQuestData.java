@@ -133,6 +133,8 @@ public final class PlayerQuestData
      */
     public void setReceiveMessage(final boolean status) {
         this.player_receive_message = status;
+        this.configuration.set(PLAYER_DATA_PATH_PLAYER_IS_RECEIVE_MESSAGE, status);
+        this.save();
     }
 
     /**
@@ -149,6 +151,8 @@ public final class PlayerQuestData
      */
     public void setViewParticle(final boolean status) {
         this.player_view_particle = status;
+        this.configuration.set(PLAYER_DATA_PATH_PLAYER_IS_VIEW_PARTICLE, status);
+        this.save();
     }
 
     /**

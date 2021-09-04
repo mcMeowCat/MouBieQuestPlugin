@@ -1,8 +1,10 @@
 package moubiequest.listener;
 
+import moubiequest.api.itemstack.gui.quest.PlayerStatusGUI;
 import moubiequest.api.itemstack.gui.quest.QuestGUI;
 import moubiequest.core.data.quest.PlayerQuestData;
 import moubiequest.core.itemstack.gui.ui.KillerQuestUInventory;
+import moubiequest.core.itemstack.gui.ui.PlayerStatusUInventory;
 import moubiequest.main.MouBieCat;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -44,8 +46,8 @@ public final class PlayerDataListener
         final Player player = event.getPlayer();
         if (player.isSneaking()) {
             event.setCancelled(true);
-            QuestGUI gui = new KillerQuestUInventory();
-            gui.open(player, 0);
+            PlayerStatusGUI gui = new PlayerStatusUInventory(event.getPlayer());
+            gui.open(event.getPlayer());
         }
     }
 

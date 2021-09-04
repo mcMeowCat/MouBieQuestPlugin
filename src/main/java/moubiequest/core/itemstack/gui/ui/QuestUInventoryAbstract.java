@@ -84,23 +84,23 @@ public abstract class QuestUInventoryAbstract
         UItemStackBuilder builder;
 
         // 解析通用按鈕 (上一頁)
-        builder = new UItemStackBuilder(this.inventoryFile.getCommonButton("previous"), INVENTORY_PREVIOUS_PAGE_BUTTON);
+        builder = new UItemStackBuilder(this.inventoryFile.getQuestInventoryCommonButton("previous"), INVENTORY_PREVIOUS_PAGE_BUTTON);
         this.previousButton = builder;
 
         // 解析通用按鈕 (下一頁)
-        builder = new UItemStackBuilder(this.inventoryFile.getCommonButton("next"), INVENTORY_NEXT_PAGE_BUTTON);
+        builder = new UItemStackBuilder(this.inventoryFile.getQuestInventoryCommonButton("next"), INVENTORY_NEXT_PAGE_BUTTON);
         this.nextButton = builder;
 
         // 解析通用按鈕 (顯示方式按鈕(所有))
-        builder = new UItemStackBuilder(this.inventoryFile.getCommonButton("quest_all"), INVENTORY_QUEST_ALL_BUTTON);
+        builder = new UItemStackBuilder(this.inventoryFile.getQuestInventoryCommonButton("quest_all"), INVENTORY_QUEST_ALL_BUTTON);
         this.questAllButton = builder;
 
         // 解析通用按鈕 (顯示方式按鈕(完成))
-        builder = new UItemStackBuilder(this.inventoryFile.getCommonButton("quest_success"), INVENTORY_QUEST_SUCCESS_BUTTON);
+        builder = new UItemStackBuilder(this.inventoryFile.getQuestInventoryCommonButton("quest_success"), INVENTORY_QUEST_SUCCESS_BUTTON);
         this.questSuccessButton = builder;
 
         // 解析通用按鈕 (顯示方式按鈕(未完成))
-        builder = new UItemStackBuilder(this.inventoryFile.getCommonButton("quest_no_success"), INVENTORY_QUEST_NO_SUCCESS_BUTTON);
+        builder = new UItemStackBuilder(this.inventoryFile.getQuestInventoryCommonButton("quest_no_success"), INVENTORY_QUEST_NO_SUCCESS_BUTTON);
         this.questNoSuccessButton = builder;
     }
 

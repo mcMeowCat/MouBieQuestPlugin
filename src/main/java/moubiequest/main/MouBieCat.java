@@ -16,6 +16,7 @@ import moubiequest.core.yaml.plugin.PluginInventory;
 import moubiequest.listener.InventoryListener;
 import moubiequest.listener.KillerQuestListener;
 import moubiequest.listener.PlayerDataListener;
+import moubiequest.listener.QuestListener;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
@@ -49,6 +50,7 @@ public final class MouBieCat extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new PlayerDataListener(), this);
         Bukkit.getPluginManager().registerEvents(new KillerQuestListener(), this);
         Bukkit.getPluginManager().registerEvents(new InventoryListener(), this);
+        Bukkit.getPluginManager().registerEvents(new QuestListener(), this);
     }
 
     @Override

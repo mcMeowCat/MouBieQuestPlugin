@@ -1,3 +1,22 @@
+PlayerStatus:
+  title: "§8§l玩家 {PLAYER_NAME} 狀態面板"
+  common_button:
+    view_particle_button:
+      material: nether_star
+      display_name: "§7❖ 粒子特效可見功能 ❖"
+
+    receive_message_button:
+      material: nether_star
+      display_name: "§7❖ 任務消息接收功能 ❖"
+
+    enable_button:
+      material: lime_dye
+      display_name: "§2開啟功能"
+
+    disable_button:
+      material: pink_dye
+      display_name: "§c關閉功能"
+
 QuestInventory:
   common_button:
     next:

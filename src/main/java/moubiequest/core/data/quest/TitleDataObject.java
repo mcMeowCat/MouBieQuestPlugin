@@ -12,6 +12,8 @@ import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
+
 /**
  * 有關玩家特效的紀錄資料
  * @author MouBieCat
@@ -66,16 +68,16 @@ public final class TitleDataObject {
             ParticleTimer timer = null;
             switch (title.getParticleLocus()) {
                 case BOTTOM_TO_TOP:
-                    timer = new BottomToTopParticle(this.player, title.getParticleList());
+                    timer = new BottomToTopParticle(this.player, new ArrayList<>(title.getParticleList()));
                     break;
                 case TOP_SPIN:
-                    timer = new TopSpinParticle(this.player, title.getParticleList());
+                    timer = new TopSpinParticle(this.player, new ArrayList<>(title.getParticleList()));
                     break;
                 case FOOD_SPIN:
-                    timer = new FoodSpinParticle(this.player, title.getParticleList());
+                    timer = new FoodSpinParticle(this.player, new ArrayList<>(title.getParticleList()));
                     break;
                 case TOP_TO_BOTTOM:
-                    timer = new TopToBottomParticle(this.player, title.getParticleList());
+                    timer = new TopToBottomParticle(this.player, new ArrayList<>(title.getParticleList()));
                     break;
             }
 
