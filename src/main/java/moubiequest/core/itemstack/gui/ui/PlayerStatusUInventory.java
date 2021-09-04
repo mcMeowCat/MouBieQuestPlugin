@@ -1,6 +1,8 @@
 package moubiequest.core.itemstack.gui.ui;
 
 import moubiequest.api.data.quest.PlayerQuestDataFile;
+import moubiequest.api.itemstack.gui.GUI;
+import moubiequest.api.itemstack.gui.Pageable;
 import moubiequest.api.itemstack.gui.button.UItem;
 import moubiequest.api.itemstack.gui.button.UItemBuilder;
 import moubiequest.api.itemstack.gui.quest.PlayerStatusGUI;
@@ -22,9 +24,10 @@ public final class PlayerStatusUInventory
 
     private static final int INVENTORY_PLAYER_STATUS_RECEIVE_MESSAGE_BUTTON = 11;
     private static final int INVENTORY_PLAYER_STATUS_VIEW_PARTICLE_BUTTON = 15;
+    private static final int INVENTORY_PLAYER_STATUS_BACK_INVENTORY_BUTTON = 40;
 
-    // 玩家
-    private final Player player;
+    // 返回上一層介面
+    private final GUI goBackInventory;
 
     // 開啟功能
     private final UItemBuilder enableButton;
@@ -38,13 +41,16 @@ public final class PlayerStatusUInventory
     // 接收任務消息
     private final UItem receiveMessageButton;
 
+    // 返回上一層清單
+    private final UItem backInventoryButton;
+
     /**
      * 建構子
      * @param player 玩家
      */
-    public PlayerStatusUInventory(final @NotNull Player player) {
+    public PlayerStatusUInventory(final @NotNull Player player, final @NotNull GUI gui) {
         super(MouBieCat.getInstance().getInventoryFile().getPlayerStatusInventoryTitle(player), InventorySize.FIVE);
-        this.player = player;
+        this.goBackInventory = gui;
 
         final InventoryFile inventoryFile = MouBieCat.getInstance().getInventoryFile();
         UItemStackBuilder builder;
@@ -65,6 +71,9 @@ public final class PlayerStatusUInventory
         builder = new UItemStackBuilder(inventoryFile.getPlayerStatusInventoryCommonButton("receive_message_button"), INVENTORY_PLAYER_STATUS_RECEIVE_MESSAGE_BUTTON);
         this.receiveMessageButton = builder;
 
+        // 解析通用按鈕 (返回上一層清單)
+        builder = new UItemStackBuilder(inventoryFile.getPlayerStatusInventoryCommonButton("back_button"), INVENTORY_PLAYER_STATUS_BACK_INVENTORY_BUTTON);
+        this.backInventoryButton = builder;
     }
 
     /**
@@ -76,7 +85,7 @@ public final class PlayerStatusUInventory
         this.clearInventory();
 
         final PlayerQuestDataFile dataFile = MouBieCat.getInstance().getPlayerDataManager().get(player);
-        this.addUItem(this.viewParticleButton).addUItem(this.receiveMessageButton);
+        this.addUItem(this.viewParticleButton).addUItem(this.receiveMessageButton).addUItem(this.backInventoryButton);
 
         // 判斷可見粒子狀態
         if (dataFile.isViewParticle()) {
@@ -107,7 +116,8 @@ public final class PlayerStatusUInventory
         final HumanEntity whoClicked = event.getWhoClicked();
 
         if (whoClicked instanceof Player && event.getCurrentItem() != null) {
-            final PlayerQuestDataFile dataFile = MouBieCat.getInstance().getPlayerDataManager().get(player);
+            final Player clickPlayer = (Player) whoClicked;
+            final PlayerQuestDataFile dataFile = MouBieCat.getInstance().getPlayerDataManager().get(clickPlayer);
             final int clickSlot = event.getSlot();
 
             switch (clickSlot) {
@@ -126,19 +136,27 @@ public final class PlayerStatusUInventory
                 case 33:
                     dataFile.setReceiveMessage(false);
                     break;
+
+                // 判斷返回上一層清單
+                case INVENTORY_PLAYER_STATUS_BACK_INVENTORY_BUTTON:
+                    if (this.goBackInventory instanceof Pageable) {
+                        final Pageable pageable = (Pageable) this.goBackInventory;
+                        pageable.open(clickPlayer, pageable.getPage());
+                    }
+                    break;
             }
 
-            this.initInventory(this.player);
+            this.initInventory(clickPlayer);
         }
     }
 
     /**
-     * 獲取是誰的狀態介面
-     * @return 玩家
+     * 獲取下層介面
+     * @return 介面
      */
     @NotNull
-    public Player getPlayer() {
-        return this.player;
+    public GUI getBackInventory() {
+        return this.goBackInventory;
     }
 
 }

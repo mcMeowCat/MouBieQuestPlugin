@@ -1,7 +1,6 @@
 package moubiequest.api.itemstack.gui.quest;
 
 import moubiequest.api.itemstack.gui.GUI;
-import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -12,9 +11,9 @@ public interface PlayerStatusGUI
         extends GUI {
 
     /**
-     * 獲取是誰的狀態介面
-     * @return 玩家
+     * 獲取下層介面
+     * @return 介面
      */
-    @NotNull Player getPlayer();
+    @NotNull GUI getBackInventory();
 
 }

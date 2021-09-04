@@ -45,6 +45,8 @@ PlayerQuestHead:
     - "§7榮譽： §f{PLAYER_HONOR_POINT} §7點"
     - "§7通知： §r{PLAYER_RECEIVE_MESSAGE}"
     - "§7特效： §r{PLAYER_VIEW_PARTICLE}"
+    - "§r"
+    - "§9點擊進入相關配置！"
 
 QuestFormat:
   KILLER:

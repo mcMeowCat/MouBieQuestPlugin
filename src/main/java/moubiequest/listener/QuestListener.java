@@ -1,8 +1,12 @@
 package moubiequest.listener;
 
+import moubiequest.api.itemstack.gui.quest.QuestGUI;
+import moubiequest.core.itemstack.gui.ui.KillerQuestUInventory;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
+import org.bukkit.event.player.PlayerDropItemEvent;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -22,6 +26,14 @@ public final class QuestListener
 //        final TitleData titleData = MouBieCat.getInstance().getPlayerDataManager().get(player);
 //        final String replace = event.getFormat().replace("{PLAYER_TITLE}", titleData.getPlayerTitleName());
 //        event.setFormat(replace);
+    }
+
+    @EventHandler
+    public void onDrop(final @NotNull PlayerDropItemEvent event) {
+        final Player player = event.getPlayer();
+        event.setCancelled(true);
+        QuestGUI gui = new KillerQuestUInventory();
+        gui.open(player, 0);
     }
 
 }

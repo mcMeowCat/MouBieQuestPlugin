@@ -3,6 +3,7 @@ package moubiequest.core.itemstack.gui.ui;
 import moubiequest.api.itemstack.gui.button.PlayerDataUItem;
 import moubiequest.api.itemstack.gui.button.PlayerUItem;
 import moubiequest.api.itemstack.gui.button.UItem;
+import moubiequest.api.itemstack.gui.quest.PlayerStatusGUI;
 import moubiequest.api.itemstack.gui.quest.QuestGUIBuilder;
 import moubiequest.api.itemstack.gui.QuestView;
 import moubiequest.api.manager.QuestManager;
@@ -224,6 +225,11 @@ public abstract class QuestUInventoryAbstract
                 clickPlayer.playSound(clickPlayer.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1f, 1f);
             }
 
+            // 玩家頭顱狀態配置
+            else if (slot == PLAYER_QUEST_DATA_BUTTON) {
+                final PlayerStatusGUI statusGUI = new PlayerStatusUInventory(clickPlayer, this);
+                statusGUI.open(clickPlayer);
+            }
         }
     }
 

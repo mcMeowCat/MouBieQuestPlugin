@@ -1,15 +1,10 @@
 package moubiequest.listener;
 
-import moubiequest.api.itemstack.gui.quest.PlayerStatusGUI;
-import moubiequest.api.itemstack.gui.quest.QuestGUI;
 import moubiequest.core.data.quest.PlayerQuestData;
-import moubiequest.core.itemstack.gui.ui.KillerQuestUInventory;
-import moubiequest.core.itemstack.gui.ui.PlayerStatusUInventory;
 import moubiequest.main.MouBieCat;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.jetbrains.annotations.NotNull;
@@ -39,16 +34,6 @@ public final class PlayerDataListener
     public void onQuit(final @NotNull PlayerQuitEvent event) {
         final Player player = event.getPlayer();
         MouBieCat.getInstance().getPlayerDataManager().remove(player);
-    }
-
-    @EventHandler
-    public void onDropItem(final @NotNull PlayerDropItemEvent event) {
-        final Player player = event.getPlayer();
-        if (player.isSneaking()) {
-            event.setCancelled(true);
-            PlayerStatusGUI gui = new PlayerStatusUInventory(event.getPlayer());
-            gui.open(event.getPlayer());
-        }
     }
 
 }

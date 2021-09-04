@@ -17,6 +17,10 @@ PlayerStatus:
       material: pink_dye
       display_name: "§c關閉功能"
 
+    back_button:
+      material: barrier
+      display_name: "§c返回上層清單"
+
 QuestInventory:
   common_button:
     next:
