@@ -75,8 +75,11 @@ public final class PlayerQuestData
      * 設定當前使用的稱號 (如果為空代表取消任何的稱號)
      * @param title 稱號
      */
-    public void setPlayerTitle(final @Nullable Title title) {
-        this.player_title_data.usingQuestTitle(title);
+    public void     setPlayerTitle(final @Nullable Title title) {
+        if (title != null)
+            this.player_title_data.usingQuestTitle(title);
+        else
+            this.player_title_data.unQuestTitle();
     }
 
     /**

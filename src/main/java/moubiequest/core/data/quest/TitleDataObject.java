@@ -8,6 +8,7 @@ import moubiequest.core.effect.particles.TopSpinParticle;
 import moubiequest.core.effect.particles.TopToBottomParticle;
 import moubiequest.core.manager.data.PlayerParticleManager;
 import moubiequest.core.quest.objects.Title;
+import moubiequest.main.MouBieCat;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -58,38 +59,34 @@ public final class TitleDataObject {
      * 使用一個任務稱號 (當NULL的話，取消任何的稱號套用)
      * @param title 稱號
      */
-    public void usingQuestTitle(final @Nullable Title title) {
-        if (title == null)
-            this.unQuestTitle();
-        else {
-            this.unQuestTitle();
+    public void usingQuestTitle(final @NotNull Title title) {
+        this.unQuestTitle();
 
-            this.title = title.getTitle();
-            ParticleTimer timer = null;
-            switch (title.getParticleLocus()) {
-                case BOTTOM_TO_TOP:
-                    timer = new BottomToTopParticle(this.player, new ArrayList<>(title.getParticleList()));
-                    break;
-                case TOP_SPIN:
-                    timer = new TopSpinParticle(this.player, new ArrayList<>(title.getParticleList()));
-                    break;
-                case FOOD_SPIN:
-                    timer = new FoodSpinParticle(this.player, new ArrayList<>(title.getParticleList()));
-                    break;
-                case TOP_TO_BOTTOM:
-                    timer = new TopToBottomParticle(this.player, new ArrayList<>(title.getParticleList()));
-                    break;
-            }
-
-            if (timer != null)
-                this.particleManager.add(0, timer);
+        this.title = title.getTitle();
+        final ParticleTimer timer;
+        switch (title.getParticleLocus()) {
+            case BOTTOM_TO_TOP:
+                timer = new BottomToTopParticle(this.player, new ArrayList<>(title.getParticleList()));
+                break;
+            case TOP_SPIN:
+                timer = new TopSpinParticle(this.player, new ArrayList<>(title.getParticleList()));
+                break;
+            case FOOD_SPIN:
+                timer = new FoodSpinParticle(this.player, new ArrayList<>(title.getParticleList()));
+                break;
+            case TOP_TO_BOTTOM:
+                timer = new TopToBottomParticle(this.player, new ArrayList<>(title.getParticleList()));
+                break;
+            default:
+                throw new IllegalStateException(MouBieCat.PLUGIN_TITLE + "§c找不到一個相應的粒子軌跡類型 §6" + title.getParticleLocus());
         }
+        this.particleManager.add(0, timer);
     }
 
     /**
      * 卸載套用的稱號
      */
-    private void unQuestTitle() {
+    public void unQuestTitle() {
         // 停止所有之前套用任務稱號的粒子效果線程
         this.particleManager.clear();
         // 稱號為空字串
