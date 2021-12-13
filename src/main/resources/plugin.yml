@@ -1,0 +1,9 @@
+name: MouBieQuest
+
+version: '${project.version}'
+api-version: 1.18
+
+authors: [ MouBieCat ]
+description: 作為 MouBieCat 開發的功能，可以在一系列任務中獲得成就與頭銜。
+
+main: moubiequest.main.MouBieCat
