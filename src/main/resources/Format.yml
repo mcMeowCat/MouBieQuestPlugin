@@ -1,0 +1,67 @@
+Format:
+  quest_type:
+    KILLER: "§c擊殺任務"
+
+  quest_enable:
+    true: "§2開放進行"
+    false: "§c尚未開放"
+
+  quest_visible:
+    true: "§c隱藏任務"
+    false: "§2公開任務"
+
+  success:
+    true: "§a達成任務！ §7(點選更換稱號)"
+    false: "§c尚未達成！"
+
+  percentage_image:
+    0: "§7■■■■■■■■■■"
+    10: "§e■§7■■■■■■■■■"
+    20: "§e■■§7■■■■■■■■"
+    30: "§e■■■§7■■■■■■■"
+    40: "§e■■■■§7■■■■■■"
+    50: "§e■■■■■§7■■■■■"
+    60: "§e■■■■■■§7■■■■"
+    70: "§e■■■■■■■§7■■■"
+    80: "§e■■■■■■■■§7■■"
+    90: "§e■■■■■■■■■§7■"
+    100: "§e■■■■■■■■■■"
+
+  receive_message:
+    true: "§2接收中"
+    false: "§f拒絕接收"
+
+  view_particle:
+    true: "§2可見"
+    false: "§f不可見"
+
+  player_title:
+    nothing: "§f目前沒有套用"
+
+PlayerQuestHead:
+  head: "§f您 §6{PLAYER_NAME} §f的任務資訊"
+  body:
+    - "§7稱號： §6{PLAYER_TITLE_NAME}"
+    - "§7榮譽： §f{PLAYER_HONOR_POINT} §7點"
+    - "§7通知： §r{PLAYER_RECEIVE_MESSAGE}"
+    - "§7特效： §r{PLAYER_VIEW_PARTICLE}"
+
+QuestFormat:
+  KILLER:
+    head: "§7[ §6{QUEST_TITLE} §7]"
+    body:
+      - "§7任務名稱： §6{QUEST_KEY}"
+      - "§7任務類型： §6{QUEST_TYPE}"
+      - "§7任務稱號： §6{QUEST_TITLE}"
+      - "§7榮譽點數： §6{QUEST_HONOR_POINT} §f點"
+      - "§7是否進行： §6{QUEST_ENABLE}"
+      - "§7是否隱藏： §6{QUEST_VISIBLE}"
+      - "§7詳細進度： §a{QUEST_PROGRESS_PLAYER} §7/ §c{QUEST_PROGRESS}"
+      - "§r"
+      - "§7任務說明："
+      - "§f{QUEST_MESSAGE_PLAYER}"
+      - "§r"
+      - "§7任務進度： §6{QUEST_PROGRESS_PLAYER_PERCENTAGE_IMAGE} §f- §6{QUEST_PROGRESS_PLAYER_PERCENTAGE} §f%"
+      - "§7擊殺類型： §6{QUEST_KILLER_ENTITY_TYPE}"
+      - "§r"
+      - "§7是否達成： §6{QUEST_IS_SUCCESS}"

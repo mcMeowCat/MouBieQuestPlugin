@@ -1,0 +1,24 @@
+QuestInventory:
+  common_button:
+    next:
+      material: paper
+      display_name: "§6下一頁"
+
+    previous:
+      material: paper
+      display_name: "§6上一頁"
+
+    quest_all:
+      material: paper
+      display_name: "§6顯示所有任務"
+
+    quest_success:
+      material: paper
+      display_name: "§6顯示已完成"
+
+    quest_no_success:
+      material: paper
+      display_name: "§6顯示未完成"
+
+  KILLER:
+    title: "- 擊殺任務介面 -"
