@@ -1,6 +1,6 @@
 # MouBieQuest
 
-Description: 該插件於 MouBieCat 旗下開發，可以在一系列任務中獲得成就與頭銜。
+Description: 作為 MouBieCat 開發的功能，可以在一系列任務中獲得成就與頭銜。
 
 Author: MouBieCat
 
