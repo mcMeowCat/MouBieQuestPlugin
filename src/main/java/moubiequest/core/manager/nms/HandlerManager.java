@@ -24,7 +24,7 @@ package moubiequest.core.manager.nms;
 import moubiequest.api.manager.NMSManager;
 import moubiequest.api.nms.Handler;
 import moubiequest.api.nms.NBTHandler;
-import moubiequest.core.nms.NBTTagHandler_v1_17_R1;
+import moubiequest.core.nms.NBTTagHandler_v1_18_R1;
 import moubiequest.core.manager.ManagerAbstract;
 import moubiequest.main.MouBieCat;
 import org.bukkit.Bukkit;
@@ -53,7 +53,7 @@ public final class HandlerManager
         // 判斷版本，如果該插件不支持。自動卸載該插件
         try {
             if ("v1_17_R1".equals(versionStr))
-                this.add(NMSHandlerType.NBT_TAG, new NBTTagHandler_v1_17_R1());
+                this.add(NMSHandlerType.NBT_TAG, new NBTTagHandler_v1_18_R1());
 
             else
                 throw new ClassNotFoundException();
