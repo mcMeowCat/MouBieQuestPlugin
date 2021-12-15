@@ -46,7 +46,7 @@ public final class NBTTagHandler_v1_18_R1
      */
     @NotNull
     public String getVersion() {
-        return "v1_17_R1";
+        return "v1_18_R1";
     }
 
     /**
