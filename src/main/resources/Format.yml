@@ -1,29 +1,39 @@
 HonorPointFormat:
+  # 根據榮獲得的榮譽點數變換稱號顯示格式(由大至小)
   Ranks:
     1000: "§7[§c{TITLE}§7]"
     500: "§7[§9{TITLE}§7]"
     100: "§7[§2{TITLE}§7]"
 
+  # 預設值
   default: "§7[§6{TITLE}§7]"
 
+  # 由各伺服器的聊天插件添加該格式(比如：Essentials)
+  # format: '{TITLE} <{DISPLAYNAME}> {MESSAGE}'
   Format: "{TITLE}"
 
+# 格式
 Format:
+  # 任務中文名
   quest_type:
     KILLER: "§c擊殺任務"
 
+  # 認識是否開放(不開放不會添加進度)
   quest_enable:
     true: "§2開放進行"
     false: "§c尚未開放"
 
+  # 任務是否為隱藏(不會顯示在介面)
   quest_visible:
     true: "§c隱藏任務"
     false: "§2公開任務"
 
+  # 任務是否完成
   success:
     true: "§a達成任務！ §7(點選更換稱號)"
     false: "§c尚未達成！"
 
+  # 任務進度以圖表顯示
   percentage_image:
     0: "§7■■■■■■■■■■"
     10: "§e■§7■■■■■■■■■"
@@ -37,17 +47,12 @@ Format:
     90: "§e■■■■■■■■■§7■"
     100: "§e■■■■■■■■■■"
 
+  # 是否接收任務通知(其他人達成任務時是否收到通知)
   receive_message:
     true: "§2接收中"
     false: "§f拒絕接收"
 
-  view_particle:
-    true: "§2可見"
-    false: "§f不可見"
-
-  player_title:
-    nothing: "§f目前沒有套用"
-
+# 個人資料，顯示在介面中格式
 PlayerQuestHead:
   head: "§f您 §6{PLAYER_NAME} §f的任務資訊"
   body:
@@ -55,6 +60,7 @@ PlayerQuestHead:
     - "§7榮譽： §f{PLAYER_HONOR_POINT} §7點"
     - "§7通知： §r{PLAYER_RECEIVE_MESSAGE}"
 
+# 任務顯示在介面中格式
 QuestFormat:
   KILLER:
     head: "§7[ §6{QUEST_TITLE} §7]"

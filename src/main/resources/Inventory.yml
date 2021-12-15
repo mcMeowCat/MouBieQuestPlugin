@@ -1,4 +1,5 @@
 QuestInventory:
+  #基礎按鈕
   common_button:
     next:
       material: paper
@@ -24,5 +25,6 @@ QuestInventory:
       material: paper
       display_name: "§7通知狀態變更"
 
+  # 擊殺任務介面標題
   KILLER:
     title: "- 擊殺任務介面 -"
