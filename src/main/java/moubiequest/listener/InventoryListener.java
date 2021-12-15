@@ -22,9 +22,13 @@
 package moubiequest.listener;
 
 import moubiequest.api.itemstack.gui.GUI;
+import moubiequest.api.itemstack.gui.quest.QuestGUI;
+import moubiequest.core.itemstack.gui.ui.KillerQuestUInventory;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.inventory.InventoryHolder;
 import org.jetbrains.annotations.NotNull;
 
@@ -45,6 +49,21 @@ public final class InventoryListener
 
         if (holder instanceof GUI)
             ((GUI)holder).clickInventory(event);
+    }
+
+    /**
+     * 玩家丟棄物品事件
+     * @param event 事件
+     */
+    @EventHandler
+    public void onDrop(final @NotNull PlayerDropItemEvent event) {
+        final Player player = event.getPlayer();
+        if (player.isSneaking()) {
+            event.setCancelled(true);
+
+            final QuestGUI inventory = new KillerQuestUInventory();
+            inventory.open(player, 0);
+        }
     }
 
 }

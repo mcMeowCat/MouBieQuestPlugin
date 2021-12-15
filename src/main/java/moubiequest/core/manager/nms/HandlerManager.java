@@ -52,7 +52,7 @@ public final class HandlerManager
 
         // 判斷版本，如果該插件不支持。自動卸載該插件
         try {
-            if ("v1_17_R1".equals(versionStr))
+            if ("v1_18_R1".equals(versionStr))
                 this.add(NMSHandlerType.NBT_TAG, new NBTTagHandler_v1_18_R1());
 
             else
