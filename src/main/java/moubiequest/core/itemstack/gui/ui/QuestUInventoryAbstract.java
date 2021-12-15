@@ -21,6 +21,7 @@
 
 package moubiequest.core.itemstack.gui.ui;
 
+import moubiequest.api.data.quest.PlayerQuestDataFile;
 import moubiequest.api.itemstack.gui.button.PlayerDataUItem;
 import moubiequest.api.itemstack.gui.button.PlayerUItem;
 import moubiequest.api.itemstack.gui.button.UItem;
@@ -32,6 +33,7 @@ import moubiequest.api.quest.QuestType;
 import moubiequest.api.yaml.plugin.InventoryFile;
 import moubiequest.core.itemstack.gui.button.PlayerQuestDataBuilder;
 import moubiequest.core.itemstack.gui.button.UItemStackBuilder;
+import moubiequest.main.MouBieCat;
 import org.bukkit.Sound;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
@@ -57,6 +59,7 @@ public abstract class QuestUInventoryAbstract
     protected static final int INVENTORY_QUEST_ALL_BUTTON = 3;
     protected static final int INVENTORY_QUEST_SUCCESS_BUTTON = 4;
     protected static final int INVENTORY_QUEST_NO_SUCCESS_BUTTON = 5;
+    protected static final int INVENTORY_QUEST_RECEIVE_MESSAGE_BUTTON = 48;
 
     // 介面檔案
     protected final InventoryFile inventoryFile;
@@ -81,6 +84,9 @@ public abstract class QuestUInventoryAbstract
 
     // 顯示方式按鈕(未完成)
     protected final UItem questNoSuccessButton;
+
+    // 接收通知按鈕
+    protected final UItem questReceiveMessageButton;
 
     /**
      * 建構子
@@ -115,6 +121,10 @@ public abstract class QuestUInventoryAbstract
         // 解析通用按鈕 (顯示方式按鈕(未完成))
         builder = new UItemStackBuilder(this.inventoryFile.getCommonButton("quest_no_success"), INVENTORY_QUEST_NO_SUCCESS_BUTTON);
         this.questNoSuccessButton = builder;
+
+        // 解析通用按鈕 (顯示通知)
+        builder = new UItemStackBuilder(this.inventoryFile.getCommonButton("quest_receive_message"), INVENTORY_QUEST_RECEIVE_MESSAGE_BUTTON);
+        this.questReceiveMessageButton = builder;
     }
 
     /**
@@ -128,7 +138,10 @@ public abstract class QuestUInventoryAbstract
         this.clearInventory();
 
         // 添加基本按鈕
-        this.addUItem(this.questAllButton).addUItem(this.questSuccessButton).addUItem(this.questNoSuccessButton);
+        this.addUItem(this.questAllButton)
+                .addUItem(this.questSuccessButton)
+                .addUItem(this.questNoSuccessButton)
+                .addUItem(this.questReceiveMessageButton);
 
         // 添加玩家資料頭顱
         this.addUItem(this.playerUItem, player);
@@ -232,6 +245,15 @@ public abstract class QuestUInventoryAbstract
             // 只顯示未完成任務
             else if (slot == INVENTORY_QUEST_NO_SUCCESS_BUTTON) {
                 this.setViewType(QuestView.NO_SUCCESS);
+                this.initPageInventory(clickPlayer, this.getPage());
+                clickPlayer.playSound(clickPlayer.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1f, 1f);
+            }
+
+            // 改變通知
+            else if (slot == INVENTORY_QUEST_RECEIVE_MESSAGE_BUTTON) {
+                final PlayerQuestDataFile dataFile =
+                        MouBieCat.getInstance().getPlayerDataManager().get(clickPlayer);
+                dataFile.setReceiveMessage(!dataFile.isReceiveMessage());
                 this.initPageInventory(clickPlayer, this.getPage());
                 clickPlayer.playSound(clickPlayer.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1f, 1f);
             }

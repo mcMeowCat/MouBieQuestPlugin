@@ -59,7 +59,7 @@ public class QuestListener
 
         for (final Player serverPlayer : Bukkit.getOnlinePlayers()) {
             final PlayerQuestDataFile dataFile = MouBieCat.getInstance().getPlayerDataManager().get(serverPlayer);
-            if (dataFile.isReceiveMessage())
+            if (dataFile.isReceiveMessage() || serverPlayer == player)
                 player.sendMessage(MouBieCat.PLUGIN_TITLE + changedQuestTitle);
         }
     }

@@ -20,5 +20,9 @@ QuestInventory:
       material: paper
       display_name: "§6顯示未完成"
 
+    quest_receive_message:
+      material: paper
+      display_name: "§7通知狀態變更"
+
   KILLER:
     title: "- 擊殺任務介面 -"
