@@ -41,6 +41,6 @@ public interface TitleData {
      * 設定當前使用的稱號
      * @param title 稱號實例
      */
-    void setPlayerTitle(final @NotNull Title title);
+    void setPlayerTitle(final @Nullable Title title);
 
 }

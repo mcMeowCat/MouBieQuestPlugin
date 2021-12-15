@@ -91,7 +91,7 @@ public final class PlayerQuestData
      * 設定當前使用的稱號
      * @param title 稱號實例
      */
-    public void setPlayerTitle(final @NotNull Title title) {
+    public void setPlayerTitle(final @Nullable Title title) {
         this.player_title = title;
     }
 

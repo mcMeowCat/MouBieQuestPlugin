@@ -59,6 +59,8 @@ public abstract class QuestUInventoryAbstract
     protected static final int INVENTORY_QUEST_ALL_BUTTON = 3;
     protected static final int INVENTORY_QUEST_SUCCESS_BUTTON = 4;
     protected static final int INVENTORY_QUEST_NO_SUCCESS_BUTTON = 5;
+
+    protected static final int INVENTORY_QUEST_CLEAR_TITLE_BUTTON = 47;
     protected static final int INVENTORY_QUEST_RECEIVE_MESSAGE_BUTTON = 48;
 
     // 介面檔案
@@ -84,6 +86,9 @@ public abstract class QuestUInventoryAbstract
 
     // 顯示方式按鈕(未完成)
     protected final UItem questNoSuccessButton;
+
+    // 清除套用稱號
+    protected final UItem questClearTitleButton;
 
     // 接收通知按鈕
     protected final UItem questReceiveMessageButton;
@@ -122,6 +127,10 @@ public abstract class QuestUInventoryAbstract
         builder = new UItemStackBuilder(this.inventoryFile.getCommonButton("quest_no_success"), INVENTORY_QUEST_NO_SUCCESS_BUTTON);
         this.questNoSuccessButton = builder;
 
+        // 解析通用按鈕 (清除套用稱號)
+        builder = new UItemStackBuilder(this.inventoryFile.getCommonButton("quest_clear_title"), INVENTORY_QUEST_CLEAR_TITLE_BUTTON);
+        this.questClearTitleButton = builder;
+
         // 解析通用按鈕 (顯示通知)
         builder = new UItemStackBuilder(this.inventoryFile.getCommonButton("quest_receive_message"), INVENTORY_QUEST_RECEIVE_MESSAGE_BUTTON);
         this.questReceiveMessageButton = builder;
@@ -141,7 +150,8 @@ public abstract class QuestUInventoryAbstract
         this.addUItem(this.questAllButton)
                 .addUItem(this.questSuccessButton)
                 .addUItem(this.questNoSuccessButton)
-                .addUItem(this.questReceiveMessageButton);
+                .addUItem(this.questReceiveMessageButton)
+                .addUItem(this.questClearTitleButton);
 
         // 添加玩家資料頭顱
         this.addUItem(this.playerUItem, player);
@@ -245,6 +255,15 @@ public abstract class QuestUInventoryAbstract
             // 只顯示未完成任務
             else if (slot == INVENTORY_QUEST_NO_SUCCESS_BUTTON) {
                 this.setViewType(QuestView.NO_SUCCESS);
+                this.initPageInventory(clickPlayer, this.getPage());
+                clickPlayer.playSound(clickPlayer.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1f, 1f);
+            }
+
+            // 清除稱號套用
+            else if (slot == INVENTORY_QUEST_CLEAR_TITLE_BUTTON) {
+                final PlayerQuestDataFile dataFile =
+                        MouBieCat.getInstance().getPlayerDataManager().get(clickPlayer);
+                dataFile.setPlayerTitle(null);
                 this.initPageInventory(clickPlayer, this.getPage());
                 clickPlayer.playSound(clickPlayer.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1f, 1f);
             }

@@ -33,6 +33,10 @@ Format:
     true: "§a達成任務！ §7(點選更換稱號)"
     false: "§c尚未達成！"
 
+  # 沒有套用稱號時
+  player_title:
+    nothing: "§f目前沒有套用"
+
   # 任務進度以圖表顯示
   percentage_image:
     0: "§7■■■■■■■■■■"
