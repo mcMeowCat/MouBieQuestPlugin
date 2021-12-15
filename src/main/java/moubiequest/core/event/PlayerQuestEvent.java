@@ -19,31 +19,30 @@
  * <http://www.gnu.org/licenses/gpl-3.0.html>.
  */
 
-package moubiequest.api.yaml.plugin;
+package moubiequest.core.event;
 
-import moubiequest.api.quest.QuestType;
-import org.bukkit.inventory.ItemStack;
+import moubiequest.api.quest.Quest;
+import org.bukkit.entity.Player;
+import org.bukkit.event.player.PlayerEvent;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * 代表該插件的嵌入式文件介面(Inventory.yml)
+ * 有關玩家任務事件
  * @author MouBieCat
  */
-public interface InventoryFile
-        extends PluginFile {
+public abstract class PlayerQuestEvent
+        extends PlayerEvent {
 
-    /**
-     * 獲取一個任務類型的介面標題
-     *
-     * @param type 任務類型
-     * @return 標題
-     */
-    @NotNull String getQuestInventoryTitle(final @NotNull QuestType type);
+    private final Quest quest;
 
-    /**
-     * 獲取介面通用按鈕
-     * @return 按鈕
-     */
-    @NotNull ItemStack getCommonButton(final @NotNull String name);
+    public PlayerQuestEvent(final @NotNull Player who, final @NotNull Quest quest) {
+        super(who);
+        this.quest = quest;
+    }
+
+    @NotNull
+    public final Quest getQuest() {
+        return this.quest;
+    }
 
 }

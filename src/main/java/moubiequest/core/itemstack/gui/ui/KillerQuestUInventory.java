@@ -26,10 +26,12 @@ import moubiequest.api.itemstack.gui.button.QuestUItem;
 import moubiequest.api.itemstack.gui.quest.KillerQuestGUI;
 import moubiequest.api.quest.KillerQuest;
 import moubiequest.api.quest.QuestType;
+import moubiequest.core.event.PlayerChangTitleEvent;
+import moubiequest.core.event.PlayerChangedTitleEvent;
 import moubiequest.core.itemstack.gui.button.KillerUItemBuilder;
 import moubiequest.core.quest.objects.Title;
 import moubiequest.main.MouBieCat;
-import org.bukkit.Sound;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -108,16 +110,25 @@ public final class KillerQuestUInventory
 
             // 如果有該任務以及任務是達成狀態
             if (killerQuest != null && killerQuest.isSuccess(clickPlayer)) {
-                // 設定玩家的稱號
-                final PlayerQuestDataFile playerQuestDataFile =
-                        MouBieCat.getInstance().getPlayerDataManager().get(clickPlayer);
-                playerQuestDataFile.setPlayerTitle(new Title(killerQuest.getQuestTitle()));
 
-                // 發送音效
-                clickPlayer.playSound(clickPlayer.getLocation(), Sound.ENTITY_VILLAGER_YES, 1f, 1f);
+                // 建造事件
+                final PlayerChangTitleEvent playerChangTitleEvent =
+                        new PlayerChangTitleEvent(clickPlayer, killerQuest);
 
-                // 重整介面
-                this.initPageInventory(clickPlayer, this.getPage());
+                // 發送事件
+                Bukkit.getPluginManager().callEvent(playerChangTitleEvent);
+
+                if (!playerChangTitleEvent.isCancelled()) {
+                    // 設定玩家的稱號
+                    final PlayerQuestDataFile playerQuestDataFile =
+                            MouBieCat.getInstance().getPlayerDataManager().get(clickPlayer);
+                    playerQuestDataFile.setPlayerTitle(new Title(killerQuest.getQuestTitle()));
+
+                    // 重整介面
+                    this.initPageInventory(clickPlayer, this.getPage());
+
+                    Bukkit.getPluginManager().callEvent(new PlayerChangedTitleEvent(clickPlayer, killerQuest));
+                }
             }
         }
     }

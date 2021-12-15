@@ -19,31 +19,46 @@
  * <http://www.gnu.org/licenses/gpl-3.0.html>.
  */
 
-package moubiequest.api.yaml.plugin;
+package moubiequest.core.yaml.plugin;
 
-import moubiequest.api.quest.QuestType;
-import org.bukkit.inventory.ItemStack;
+import moubiequest.api.yaml.plugin.MessageFile;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * 代表該插件的嵌入式文件介面(Inventory.yml)
+ * 代表該插件的嵌入式文件(Message.yml)
  * @author MouBieCat
  */
-public interface InventoryFile
-        extends PluginFile {
+public final class PluginMessage
+        extends PluginLoader
+        implements MessageFile {
+
+    public static final String MESSAGE_CHANGED_QUEST_TITLE = "ChangedQuestTitle";
+
+    public static final String MESSAGE_SUCCESS_QUEST_TITLE = "SuccessQuest";
 
     /**
-     * 獲取一個任務類型的介面標題
-     *
-     * @param type 任務類型
-     * @return 標題
+     * 建構子
      */
-    @NotNull String getQuestInventoryTitle(final @NotNull QuestType type);
+    public PluginMessage() {
+        super("", "Message.yml");
+    }
 
     /**
-     * 獲取介面通用按鈕
-     * @return 按鈕
+     * 獲取改變更號的訊息
+     * @return 訊息
      */
-    @NotNull ItemStack getCommonButton(final @NotNull String name);
+    @NotNull
+    public String getChangedQuestTitle() {
+        return this.getString(MESSAGE_CHANGED_QUEST_TITLE);
+    }
+
+    /**
+     * 獲取達成任務時的訊息
+     * @return 訊息
+     */
+    @NotNull
+    public String getSuccessQuest() {
+        return this.getString(MESSAGE_SUCCESS_QUEST_TITLE);
+    }
 
 }

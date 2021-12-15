@@ -44,6 +44,7 @@ public final class PlayerQuestData
     public static final String PLAYER_FLY_DATA_PATH = "player_data";
 
     // 玩家當前套用的稱號
+    @Nullable
     private Title player_title = null;
 
     // 玩家當前的榮譽點數

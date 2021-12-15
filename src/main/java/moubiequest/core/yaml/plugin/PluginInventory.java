@@ -29,7 +29,7 @@ import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * 代表一個有關介面資料的檔案介面
+ * 代表該插件的嵌入式文件(Inventory.yml)
  * @author MouBieCat
  */
 public final class PluginInventory

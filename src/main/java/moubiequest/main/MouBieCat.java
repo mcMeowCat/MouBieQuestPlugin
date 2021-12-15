@@ -27,14 +27,17 @@ import moubiequest.api.manager.QuestManager;
 import moubiequest.api.quest.KillerQuest;
 import moubiequest.api.yaml.plugin.FormatFile;
 import moubiequest.api.yaml.plugin.InventoryFile;
+import moubiequest.api.yaml.plugin.MessageFile;
 import moubiequest.core.manager.nms.HandlerManager;
 import moubiequest.core.manager.quest.KillerQuestManager;
 import moubiequest.core.manager.data.PlayerQuestDataManager;
 import moubiequest.core.yaml.plugin.PluginFormat;
 import moubiequest.core.yaml.plugin.PluginInventory;
+import moubiequest.core.yaml.plugin.PluginMessage;
 import moubiequest.listener.InventoryListener;
 import moubiequest.listener.KillerQuestListener;
 import moubiequest.listener.PlayerDataListener;
+import moubiequest.listener.QuestListener;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
@@ -55,6 +58,9 @@ public final class MouBieCat
     // 代表介面檔案
     private InventoryFile inventoryFile;
 
+    // 代表訊息檔案
+    private MessageFile messageFile;
+
     // 代表擊殺任務經理
     private QuestManager<KillerQuest> killerQuestManager;
 
@@ -72,6 +78,9 @@ public final class MouBieCat
         // 加載檔案
         this.formatFile = new PluginFormat();
         this.inventoryFile = new PluginInventory();
+        this.messageFile = new PluginMessage();
+
+        // 加載經理
         this.killerQuestManager = new KillerQuestManager();
         this.nmsManager = new HandlerManager();
 
@@ -81,6 +90,7 @@ public final class MouBieCat
         Bukkit.getPluginManager().registerEvents(new PlayerDataListener(), this);
         Bukkit.getPluginManager().registerEvents(new KillerQuestListener(), this);
         Bukkit.getPluginManager().registerEvents(new InventoryListener(), this);
+        Bukkit.getPluginManager().registerEvents(new QuestListener(), this);
     }
 
     @Override
@@ -111,6 +121,15 @@ public final class MouBieCat
     @NotNull
     public InventoryFile getInventoryFile() {
         return this.inventoryFile;
+    }
+
+    /**
+     * 獲取訊息檔案
+     * @return 檔案
+     */
+    @NotNull
+    public MessageFile getMessageFile() {
+        return this.messageFile;
     }
 
     /**

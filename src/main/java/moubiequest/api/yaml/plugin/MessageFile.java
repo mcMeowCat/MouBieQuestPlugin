@@ -21,29 +21,25 @@
 
 package moubiequest.api.yaml.plugin;
 
-import moubiequest.api.quest.QuestType;
-import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * 代表該插件的嵌入式文件介面(Inventory.yml)
+ * 代表該插件的嵌入式文件(Message.yml)
  * @author MouBieCat
  */
-public interface InventoryFile
+public interface MessageFile
         extends PluginFile {
 
     /**
-     * 獲取一個任務類型的介面標題
-     *
-     * @param type 任務類型
-     * @return 標題
+     * 獲取改變更號的訊息
+     * @return 訊息
      */
-    @NotNull String getQuestInventoryTitle(final @NotNull QuestType type);
+    @NotNull String getChangedQuestTitle();
 
     /**
-     * 獲取介面通用按鈕
-     * @return 按鈕
+     * 獲取達成任務時的訊息
+     * @return 訊息
      */
-    @NotNull ItemStack getCommonButton(final @NotNull String name);
+    @NotNull String getSuccessQuest();
 
 }

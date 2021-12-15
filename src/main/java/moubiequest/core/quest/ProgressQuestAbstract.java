@@ -24,11 +24,13 @@ package moubiequest.core.quest;
 import moubiequest.api.data.quest.PlayerQuestDataFile;
 import moubiequest.api.quest.ProgressQuest;
 import moubiequest.api.quest.QuestType;
+import moubiequest.core.event.PlayerQuestSuccessEvent;
 import moubiequest.core.quest.objects.Message;
 import moubiequest.core.quest.objects.QItem;
 import moubiequest.core.quest.objects.Status;
 import moubiequest.core.quest.objects.Title;
 import moubiequest.main.MouBieCat;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
@@ -81,6 +83,11 @@ public abstract class ProgressQuestAbstract
         if (this.isQuestEnable() && !this.isSuccess(player)) {
             final PlayerQuestDataFile dataFile = MouBieCat.getInstance().getPlayerDataManager().get(player);
             dataFile.setProgress(this, dataFile.getProgress(this) + 1);
+
+            // 當完達成時呼叫(僅限一次)
+            if (this.getPlayerQuestProgress(player) == this.quest_progress)
+                Bukkit.getPluginManager().callEvent(new PlayerQuestSuccessEvent(player, this));
+
             return true;
         }
         return false;
