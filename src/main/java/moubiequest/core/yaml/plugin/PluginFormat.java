@@ -25,11 +25,13 @@ import moubiequest.api.quest.Quest;
 import moubiequest.api.quest.QuestType;
 import moubiequest.api.yaml.plugin.FormatFile;
 import moubiequest.core.quest.objects.Title;
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * 代表該插件的嵌入式文件(Format.yml)
@@ -56,7 +58,9 @@ public final class PluginFormat
     private static final String PLAYER_DATA_RECEIVE_MESSAGE = "Format.receive_message.";
     private static final String PLAYER_DATA_VIEW_PARTICLE = "Format.view_particle.";
 
-    private static final String FORMAT_CHAT_TITLE_REPLACE = "ChatTitleReplaceFormat";
+    private static final String FORMAT_CHAT_TITLE_REPLACE = "HonorPointFormat.Format";
+
+    private static final String FORMAT_HONOR_POINT_FORMAT = "HonorPointFormat";
 
     /**
      * 建構子
@@ -214,6 +218,28 @@ public final class PluginFormat
     @NotNull
     public String getTitleReplaceFormat() {
         return this.getString(FORMAT_CHAT_TITLE_REPLACE);
+    }
+
+    /**
+     * 獲取玩家的榮譽點數到達的稱號格式顯示等級
+     * @param playerHonorPoint 玩家持有點數
+     * @return 格式
+     */
+    @NotNull
+    public String getHonorPointTitleFormat(final int playerHonorPoint) {
+        final ConfigurationSection honorPointFormat =
+                this.getConfiguration().getConfigurationSection(FORMAT_HONOR_POINT_FORMAT + ".Ranks");
+
+        if (honorPointFormat != null) {
+            final Set<String> keys = honorPointFormat.getKeys(false);
+            for (final String str : keys) {
+                final int point = Integer.parseInt(str);
+                if (playerHonorPoint >= point)
+                    return this.getString(FORMAT_HONOR_POINT_FORMAT + ".Ranks." + str);
+            }
+        }
+
+        return this.getString(FORMAT_HONOR_POINT_FORMAT + ".default");
     }
 
 }

@@ -133,4 +133,11 @@ public interface FormatFile
      */
     @NotNull String getTitleReplaceFormat();
 
+    /**
+     * 獲取玩家的榮譽點數到達的稱號格式顯示等級
+     * @param playerHonorPoint 玩家持有點數
+     * @return 格式
+     */
+    @NotNull String getHonorPointTitleFormat(final int playerHonorPoint);
+
 }

@@ -1,4 +1,12 @@
-ChatTitleReplaceFormat: "{TITLE}"
+HonorPointFormat:
+  Ranks:
+    1000: "§7[§c{TITLE}§7]"
+    500: "§7[§9{TITLE}§7]"
+    100: "§7[§2{TITLE}§7]"
+
+  default: "§7[§6{TITLE}§7]"
+
+  Format: "{TITLE}"
 
 Format:
   quest_type:

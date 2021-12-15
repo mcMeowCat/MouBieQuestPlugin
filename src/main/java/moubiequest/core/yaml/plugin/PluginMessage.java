@@ -22,7 +22,11 @@
 package moubiequest.core.yaml.plugin;
 
 import moubiequest.api.yaml.plugin.MessageFile;
+import org.bukkit.configuration.ConfigurationSection;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.Set;
+import java.util.stream.Stream;
 
 /**
  * 代表該插件的嵌入式文件(Message.yml)
@@ -34,7 +38,7 @@ public final class PluginMessage
 
     public static final String MESSAGE_CHANGED_QUEST_TITLE = "ChangedQuestTitle";
 
-    public static final String MESSAGE_SUCCESS_QUEST_TITLE = "SuccessQuest";
+    public static final String MESSAGE_SUCCESS_MESSAGE = "SuccessQuest";
 
     /**
      * 建構子
@@ -58,7 +62,7 @@ public final class PluginMessage
      */
     @NotNull
     public String getSuccessQuest() {
-        return this.getString(MESSAGE_SUCCESS_QUEST_TITLE);
+        return this.getString(MESSAGE_SUCCESS_MESSAGE);
     }
 
 }

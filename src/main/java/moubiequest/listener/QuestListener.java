@@ -23,14 +23,18 @@ package moubiequest.listener;
 
 import moubiequest.api.data.quest.PlayerQuestDataFile;
 import moubiequest.api.quest.Quest;
+import moubiequest.api.yaml.plugin.FormatFile;
 import moubiequest.core.event.PlayerChangedTitleEvent;
 import moubiequest.core.event.PlayerQuestSuccessEvent;
+import moubiequest.core.quest.objects.Title;
 import moubiequest.main.MouBieCat;
 import org.bukkit.Bukkit;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerChatEvent;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -75,6 +79,31 @@ public class QuestListener
 
         player.sendMessage(MouBieCat.PLUGIN_TITLE + changedQuestTitle);
         player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_YES, 1f, 1f);
+    }
+
+    /**
+     * 玩家發言事件
+     * @param event 事件
+     */
+    @EventHandler(priority = EventPriority.LOWEST)
+    public void onChat(final @NotNull PlayerChatEvent event) {
+        Player player = event.getPlayer();
+        String format = event.getFormat();
+
+        final PlayerQuestDataFile dataFile = MouBieCat.getInstance().getPlayerDataManager().get(player);
+        final Title playerTitle = dataFile.getPlayerTitle();
+
+        final FormatFile formatFile = MouBieCat.getInstance().getFormatFile();
+
+        if (playerTitle != null) {
+            final String honorPointTitleFormat = formatFile.getHonorPointTitleFormat(dataFile.getHonorPoint())
+                    .replace("{TITLE}", playerTitle.getTitle());
+
+            format = format.replace(formatFile.getTitleReplaceFormat(), honorPointTitleFormat);
+        } else
+            format = format.replace(formatFile.getTitleReplaceFormat(), "");
+
+        event.setFormat(format);
     }
 
 }
