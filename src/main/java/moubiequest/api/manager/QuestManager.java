@@ -21,6 +21,7 @@
 
 package moubiequest.api.manager;
 
+import moubiequest.api.quest.Quest;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Collection;
@@ -30,7 +31,8 @@ import java.util.Collection;
  * @param <T> 繼承 Quest
  * @author MouBieCat
  */
-public interface QuestManager<T> {
+public interface QuestManager<T extends Quest>
+        extends Manager<String, T>{
 
     /**
      * 用於將檔案格式轉換成記憶體的方法

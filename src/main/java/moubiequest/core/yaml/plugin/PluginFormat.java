@@ -56,6 +56,8 @@ public final class PluginFormat
     private static final String PLAYER_DATA_RECEIVE_MESSAGE = "Format.receive_message.";
     private static final String PLAYER_DATA_VIEW_PARTICLE = "Format.view_particle.";
 
+    private static final String FORMAT_CHAT_TITLE_REPLACE = "ChatTitleReplaceFormat";
+
     /**
      * 建構子
      */
@@ -203,6 +205,15 @@ public final class PluginFormat
     @NotNull
     public List<String> getPlayerDataFormatBody() {
         return this.getStringList(FORMAT_PLAYER_DATA_BODY_FORMAT_PATH);
+    }
+
+    /**
+     * 獲取替換稱號的格式
+     * @return 格式
+     */
+    @NotNull
+    public String getTitleReplaceFormat() {
+        return this.getString(FORMAT_CHAT_TITLE_REPLACE);
     }
 
 }

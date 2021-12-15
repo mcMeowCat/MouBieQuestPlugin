@@ -1,3 +1,5 @@
+ChatTitleReplaceFormat: "{TITLE}"
+
 Format:
   quest_type:
     KILLER: "§c擊殺任務"

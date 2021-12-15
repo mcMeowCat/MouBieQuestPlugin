@@ -25,7 +25,9 @@ import moubiequest.core.data.quest.PlayerQuestData;
 import moubiequest.main.MouBieCat;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerChatEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.jetbrains.annotations.NotNull;
@@ -55,6 +57,35 @@ public final class PlayerDataListener
     public void onQuit(final @NotNull PlayerQuitEvent event) {
         final Player player = event.getPlayer();
         MouBieCat.getInstance().getPlayerDataManager().remove(player);
+    }
+
+    /**
+     * 玩家說話事件
+     * @param event 事件
+     */
+    @EventHandler(priority = EventPriority.LOWEST)
+    public void onChat(final @NotNull PlayerChatEvent event) {
+//        Bukkit.getLogger().info("call");
+//
+//        final Player player = event.getPlayer();
+//        final PlayerQuestDataFile dataFile =
+//                MouBieCat.getInstance().getPlayerDataManager().get(player);
+//
+//        final Title playerTitle = dataFile.getPlayerTitle();
+//        final String replaceMessage;
+//        if (playerTitle != null) {
+//            replaceMessage = event.getMessage().replace(
+//                    MouBieCat.getInstance().getFormatFile().getTitleReplaceFormat(),
+//                    playerTitle.getTitle()
+//            );
+//
+//        } else {
+//            replaceMessage = event.getMessage().replace(
+//                    MouBieCat.getInstance().getFormatFile().getTitleReplaceFormat(),
+//                    ""
+//            );
+//        }
+//        event.setMessage(replaceMessage);
     }
 
 }

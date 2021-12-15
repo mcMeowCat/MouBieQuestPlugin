@@ -21,13 +21,19 @@
 
 package moubiequest.core.itemstack.gui.ui;
 
+import moubiequest.api.data.quest.PlayerQuestDataFile;
+import moubiequest.api.itemstack.gui.button.QuestUItem;
 import moubiequest.api.itemstack.gui.quest.KillerQuestGUI;
 import moubiequest.api.quest.KillerQuest;
 import moubiequest.api.quest.QuestType;
 import moubiequest.core.itemstack.gui.button.KillerUItemBuilder;
+import moubiequest.core.quest.objects.Title;
 import moubiequest.main.MouBieCat;
+import org.bukkit.Sound;
+import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -85,6 +91,35 @@ public final class KillerQuestUInventory
     @Override
     public void clickInventory(final @NotNull InventoryClickEvent event) {
         super.clickInventory(event);
+
+        final HumanEntity whoClicked = event.getWhoClicked();
+        final ItemStack currentItem = event.getCurrentItem();
+
+        if (whoClicked instanceof final Player clickPlayer && currentItem != null) {
+            // 獲取物品按鈕上的任務類型
+            final QuestType itemStackQuestType = QuestUItem.getItemStackQuestType(currentItem);
+            // 判斷物品按鈕上的任務類型
+            if (itemStackQuestType != QuestType.KILLER)
+                return;
+
+            // 獲取物品按鈕上的任務專屬名稱
+            final String itemStackQuestKey = QuestUItem.getItemStackQuestKey(currentItem);
+            final KillerQuest killerQuest = MouBieCat.getInstance().getKillerQuestManager().get(itemStackQuestKey);
+
+            // 如果有該任務以及任務是達成狀態
+            if (killerQuest != null && killerQuest.isSuccess(clickPlayer)) {
+                // 設定玩家的稱號
+                final PlayerQuestDataFile playerQuestDataFile =
+                        MouBieCat.getInstance().getPlayerDataManager().get(clickPlayer);
+                playerQuestDataFile.setPlayerTitle(new Title(killerQuest.getQuestTitle()));
+
+                // 發送音效
+                clickPlayer.playSound(clickPlayer.getLocation(), Sound.ENTITY_VILLAGER_YES, 1f, 1f);
+
+                // 重整介面
+                this.initPageInventory(clickPlayer, this.getPage());
+            }
+        }
     }
 
 }

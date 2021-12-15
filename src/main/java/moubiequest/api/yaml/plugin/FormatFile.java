@@ -127,4 +127,10 @@ public interface FormatFile
      */
     @NotNull List<String> getPlayerDataFormatBody();
 
+    /**
+     * 獲取替換稱號的格式
+     * @return 格式
+     */
+    @NotNull String getTitleReplaceFormat();
+
 }

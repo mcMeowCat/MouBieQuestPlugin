@@ -111,12 +111,12 @@ Quests:
       enable: true
       visible: false
     item:
-      material: trident
+      material: elder_guardian_spawn_egg
     honor_point: 30
     progress:
       number: 500
     killer:
-      entity_type: elder_guardian_spawn_egg
+      entity_type: elder_guardian
 
   KILL_ELDER_GUARDIAN_2:
     title:
