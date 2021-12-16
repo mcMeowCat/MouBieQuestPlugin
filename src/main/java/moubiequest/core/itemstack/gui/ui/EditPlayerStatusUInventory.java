@@ -83,7 +83,7 @@ public final class EditPlayerStatusUInventory
         builder = new UItemStackBuilder(inventoryFile.getCommonButton("quest_receive_message"), INVENTORY_QUEST_RECEIVE_MESSAGE_BUTTON);
         this.questReceiveMessageButton = builder;
 
-        // 解析通用按鈕 (顯示通知)
+        // 解析通用按鈕 (返回上一層介面)
         builder = new UItemStackBuilder(inventoryFile.getCommonButton("backer"), INVENTORY_BACK_INVENTORY_BUTTON);
         this.backInventoryButton = builder;
     }
@@ -93,7 +93,7 @@ public final class EditPlayerStatusUInventory
      * @param player 玩家
      */
     @Override
-    protected void initInventory(@NotNull Player player) {
+    protected void initInventory(final @NotNull Player player) {
         // 添加基本按鈕
         this.addUItem(this.questReceiveMessageButton)
                 .addUItem(this.questClearTitleButton)
