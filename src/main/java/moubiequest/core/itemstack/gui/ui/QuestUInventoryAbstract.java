@@ -21,7 +21,7 @@
 
 package moubiequest.core.itemstack.gui.ui;
 
-import moubiequest.api.data.quest.PlayerQuestDataFile;
+import moubiequest.api.itemstack.gui.GUI;
 import moubiequest.api.itemstack.gui.button.PlayerDataUItem;
 import moubiequest.api.itemstack.gui.button.PlayerUItem;
 import moubiequest.api.itemstack.gui.button.UItem;
@@ -33,7 +33,6 @@ import moubiequest.api.quest.QuestType;
 import moubiequest.api.yaml.plugin.InventoryFile;
 import moubiequest.core.itemstack.gui.button.PlayerQuestDataBuilder;
 import moubiequest.core.itemstack.gui.button.UItemStackBuilder;
-import moubiequest.main.MouBieCat;
 import org.bukkit.Sound;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
@@ -60,38 +59,33 @@ public abstract class QuestUInventoryAbstract
     protected static final int INVENTORY_QUEST_SUCCESS_BUTTON = 4;
     protected static final int INVENTORY_QUEST_NO_SUCCESS_BUTTON = 5;
 
-    protected static final int INVENTORY_QUEST_CLEAR_TITLE_BUTTON = 47;
-    protected static final int INVENTORY_QUEST_RECEIVE_MESSAGE_BUTTON = 48;
-
-    // 介面檔案
-    protected final InventoryFile inventoryFile;
-
     // 顯示方式 (預設=所有)
+    @NotNull
     protected QuestView viewType = QuestView.ALL;
 
     // 玩家資料頭顱
+    @NotNull
     protected final PlayerDataUItem playerUItem;
 
     // 下一頁按鈕
+    @NotNull
     protected final UItem nextButton;
 
     // 上一頁按鈕
+    @NotNull
     protected final UItem previousButton;
 
     // 顯示方式按鈕(所有)
+    @NotNull
     protected final UItem questAllButton;
 
     // 顯示方式按鈕(完成)
+    @NotNull
     protected final UItem questSuccessButton;
 
     // 顯示方式按鈕(未完成)
+    @NotNull
     protected final UItem questNoSuccessButton;
-
-    // 清除套用稱號
-    protected final UItem questClearTitleButton;
-
-    // 接收通知按鈕
-    protected final UItem questReceiveMessageButton;
 
     /**
      * 建構子
@@ -100,7 +94,6 @@ public abstract class QuestUInventoryAbstract
      */
     public QuestUInventoryAbstract(final @NotNull InventoryFile inventoryFile, final @NotNull QuestType type) {
         super(inventoryFile.getQuestInventoryTitle(type), InventorySize.SIX);
-        this.inventoryFile = inventoryFile;
 
         // 玩家資料頭顱
         this.playerUItem = new PlayerQuestDataBuilder(PLAYER_QUEST_DATA_BUTTON);
@@ -108,32 +101,24 @@ public abstract class QuestUInventoryAbstract
         UItemStackBuilder builder;
 
         // 解析通用按鈕 (上一頁)
-        builder = new UItemStackBuilder(this.inventoryFile.getCommonButton("previous"), INVENTORY_PREVIOUS_PAGE_BUTTON);
+        builder = new UItemStackBuilder(inventoryFile.getCommonButton("previous"), INVENTORY_PREVIOUS_PAGE_BUTTON);
         this.previousButton = builder;
 
         // 解析通用按鈕 (下一頁)
-        builder = new UItemStackBuilder(this.inventoryFile.getCommonButton("next"), INVENTORY_NEXT_PAGE_BUTTON);
+        builder = new UItemStackBuilder(inventoryFile.getCommonButton("next"), INVENTORY_NEXT_PAGE_BUTTON);
         this.nextButton = builder;
 
         // 解析通用按鈕 (顯示方式按鈕(所有))
-        builder = new UItemStackBuilder(this.inventoryFile.getCommonButton("quest_all"), INVENTORY_QUEST_ALL_BUTTON);
+        builder = new UItemStackBuilder(inventoryFile.getCommonButton("quest_all"), INVENTORY_QUEST_ALL_BUTTON);
         this.questAllButton = builder;
 
         // 解析通用按鈕 (顯示方式按鈕(完成))
-        builder = new UItemStackBuilder(this.inventoryFile.getCommonButton("quest_success"), INVENTORY_QUEST_SUCCESS_BUTTON);
+        builder = new UItemStackBuilder(inventoryFile.getCommonButton("quest_success"), INVENTORY_QUEST_SUCCESS_BUTTON);
         this.questSuccessButton = builder;
 
         // 解析通用按鈕 (顯示方式按鈕(未完成))
-        builder = new UItemStackBuilder(this.inventoryFile.getCommonButton("quest_no_success"), INVENTORY_QUEST_NO_SUCCESS_BUTTON);
+        builder = new UItemStackBuilder(inventoryFile.getCommonButton("quest_no_success"), INVENTORY_QUEST_NO_SUCCESS_BUTTON);
         this.questNoSuccessButton = builder;
-
-        // 解析通用按鈕 (清除套用稱號)
-        builder = new UItemStackBuilder(this.inventoryFile.getCommonButton("quest_clear_title"), INVENTORY_QUEST_CLEAR_TITLE_BUTTON);
-        this.questClearTitleButton = builder;
-
-        // 解析通用按鈕 (顯示通知)
-        builder = new UItemStackBuilder(this.inventoryFile.getCommonButton("quest_receive_message"), INVENTORY_QUEST_RECEIVE_MESSAGE_BUTTON);
-        this.questReceiveMessageButton = builder;
     }
 
     /**
@@ -149,9 +134,7 @@ public abstract class QuestUInventoryAbstract
         // 添加基本按鈕
         this.addUItem(this.questAllButton)
                 .addUItem(this.questSuccessButton)
-                .addUItem(this.questNoSuccessButton)
-                .addUItem(this.questReceiveMessageButton)
-                .addUItem(this.questClearTitleButton);
+                .addUItem(this.questNoSuccessButton);
 
         // 添加玩家資料頭顱
         this.addUItem(this.playerUItem, player);
@@ -235,12 +218,14 @@ public abstract class QuestUInventoryAbstract
                 case INVENTORY_PREVIOUS_PAGE_BUTTON -> {
                     this.previousPage(clickPlayer);
                     clickPlayer.playSound(clickPlayer.getLocation(), Sound.ITEM_BOOK_PAGE_TURN, 1f, 1f);
+                    return false;
                 }
 
                 // 下一頁按鈕
                 case INVENTORY_NEXT_PAGE_BUTTON -> {
                     this.nextPage(clickPlayer);
                     clickPlayer.playSound(clickPlayer.getLocation(), Sound.ITEM_BOOK_PAGE_TURN, 1f, 1f);
+                    return false;
                 }
 
                 // 顯示全部任務
@@ -248,6 +233,7 @@ public abstract class QuestUInventoryAbstract
                     this.setViewType(QuestView.ALL);
                     this.initPageInventory(clickPlayer, this.getPage());
                     clickPlayer.playSound(clickPlayer.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1f, 1f);
+                    return false;
                 }
 
                 // 只顯示完成任務
@@ -255,6 +241,7 @@ public abstract class QuestUInventoryAbstract
                     this.setViewType(QuestView.SUCCESS);
                     this.initPageInventory(clickPlayer, this.getPage());
                     clickPlayer.playSound(clickPlayer.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1f, 1f);
+                    return false;
                 }
 
                 // 只顯示未完成任務
@@ -262,24 +249,13 @@ public abstract class QuestUInventoryAbstract
                     this.setViewType(QuestView.NO_SUCCESS);
                     this.initPageInventory(clickPlayer, this.getPage());
                     clickPlayer.playSound(clickPlayer.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1f, 1f);
+                    return false;
                 }
 
-                // 清除稱號套用
-                case INVENTORY_QUEST_CLEAR_TITLE_BUTTON -> {
-                    final PlayerQuestDataFile dataFile =
-                            MouBieCat.getInstance().getPlayerDataManager().get(clickPlayer);
-                    dataFile.setPlayerTitle(null);
-                    this.initPageInventory(clickPlayer, this.getPage());
-                    clickPlayer.playSound(clickPlayer.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1f, 1f);
-                }
-
-                // 更改通知狀態
-                case INVENTORY_QUEST_RECEIVE_MESSAGE_BUTTON -> {
-                    final PlayerQuestDataFile dataFile =
-                            MouBieCat.getInstance().getPlayerDataManager().get(clickPlayer);
-                    dataFile.setReceiveMessage(!dataFile.isReceiveMessage());
-                    this.initPageInventory(clickPlayer, this.getPage());
-                    clickPlayer.playSound(clickPlayer.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1f, 1f);
+                case PLAYER_QUEST_DATA_BUTTON -> {
+                    final GUI editGUI = new EditPlayerStatusUInventory(clickPlayer, this);
+                    editGUI.open(clickPlayer);
+                    return false;
                 }
             }
         }

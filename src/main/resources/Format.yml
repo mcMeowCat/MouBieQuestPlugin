@@ -63,6 +63,7 @@ PlayerQuestHead:
     - "§7稱號： §6{PLAYER_TITLE_NAME}"
     - "§7榮譽： §f{PLAYER_HONOR_POINT} §7點"
     - "§7通知： §r{PLAYER_RECEIVE_MESSAGE}"
+    - "§9點擊進入配置介面"
 
 # 任務顯示在介面中格式
 QuestFormat:
