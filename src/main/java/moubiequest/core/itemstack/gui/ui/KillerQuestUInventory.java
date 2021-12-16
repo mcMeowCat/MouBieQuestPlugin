@@ -71,6 +71,11 @@ public final class KillerQuestUInventory
         final List<KillerQuest> sortQuests = this.getSortQuests(MouBieCat.getInstance().getKillerQuestManager(), player);
 
         try {
+            if (sortQuests.size() == 0) {
+                this.showNothingQuest();
+                return;
+            }
+
             // 計算迴圈任務起始
             int startQuest = page * 36;
 

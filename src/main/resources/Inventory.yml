@@ -29,6 +29,10 @@ QuestInventory:
       material: paper
       display_name: "§7清除套用稱號"
 
+    nothing_quests:
+      material: barrier
+      display_name: "§e沒有任何東西！"
+
     backer:
       material: nether_star
       display_name: "§7返回介面"

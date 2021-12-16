@@ -59,6 +59,8 @@ public abstract class QuestUInventoryAbstract
     protected static final int INVENTORY_QUEST_SUCCESS_BUTTON = 4;
     protected static final int INVENTORY_QUEST_NO_SUCCESS_BUTTON = 5;
 
+    protected static final int INVENTORY_NOTHING_QUESTS_BUTTON = 31;
+
     // 顯示方式 (預設=所有)
     @NotNull
     protected QuestView viewType = QuestView.ALL;
@@ -86,6 +88,10 @@ public abstract class QuestUInventoryAbstract
     // 顯示方式按鈕(未完成)
     @NotNull
     protected final UItem questNoSuccessButton;
+
+    // 沒有顯示出任何任務按鈕
+    @NotNull
+    protected final UItem questShowNothingButton;
 
     /**
      * 建構子
@@ -119,6 +125,10 @@ public abstract class QuestUInventoryAbstract
         // 解析通用按鈕 (顯示方式按鈕(未完成))
         builder = new UItemStackBuilder(inventoryFile.getCommonButton("quest_no_success"), INVENTORY_QUEST_NO_SUCCESS_BUTTON);
         this.questNoSuccessButton = builder;
+
+        // 解析通用按鈕 (沒有任何任務)
+        builder = new UItemStackBuilder(inventoryFile.getCommonButton("nothing_quests"), INVENTORY_NOTHING_QUESTS_BUTTON);
+        this.questShowNothingButton = builder;
     }
 
     /**
@@ -195,7 +205,15 @@ public abstract class QuestUInventoryAbstract
                         quests.add(quest);
             }
         }
+
         return quests;
+    }
+
+    /**
+     * 顯示出沒有找到任何任務的按鈕
+     */
+    protected final void showNothingQuest() {
+        this.addUItem(this.questShowNothingButton);
     }
 
     /**
