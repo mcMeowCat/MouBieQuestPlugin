@@ -26,7 +26,6 @@ import moubiequest.api.itemstack.gui.button.QuestUItem;
 import moubiequest.api.itemstack.gui.quest.KillerQuestGUI;
 import moubiequest.api.quest.KillerQuest;
 import moubiequest.api.quest.QuestType;
-import moubiequest.core.event.PlayerChangTitleEvent;
 import moubiequest.core.event.PlayerChangedTitleEvent;
 import moubiequest.core.itemstack.gui.button.KillerUItemBuilder;
 import moubiequest.core.quest.objects.Title;
@@ -89,48 +88,36 @@ public final class KillerQuestUInventory
     /**
      * 代表當介面被點擊的事件
      * @param event 介面點擊事件
+     * @return 回傳false不繼續運行
      */
     @Override
-    public void clickInventory(final @NotNull InventoryClickEvent event) {
-        super.clickInventory(event);
+    public boolean clickInventory(final @NotNull InventoryClickEvent event) {
+        if (!super.clickInventory(event))
+            return false;
 
         final HumanEntity whoClicked = event.getWhoClicked();
         final ItemStack currentItem = event.getCurrentItem();
 
         if (whoClicked instanceof final Player clickPlayer && currentItem != null) {
-            // 獲取物品按鈕上的任務類型
-            final QuestType itemStackQuestType = QuestUItem.getItemStackQuestType(currentItem);
-            // 判斷物品按鈕上的任務類型
-            if (itemStackQuestType != QuestType.KILLER)
-                return;
-
             // 獲取物品按鈕上的任務專屬名稱
             final String itemStackQuestKey = QuestUItem.getItemStackQuestKey(currentItem);
             final KillerQuest killerQuest = MouBieCat.getInstance().getKillerQuestManager().get(itemStackQuestKey);
 
             // 如果有該任務以及任務是達成狀態
             if (killerQuest != null && killerQuest.isSuccess(clickPlayer)) {
+                // 設定玩家的稱號
+                final PlayerQuestDataFile playerQuestDataFile =
+                        MouBieCat.getInstance().getPlayerDataManager().get(clickPlayer);
+                playerQuestDataFile.setPlayerTitle(new Title(killerQuest.getQuestTitle()));
 
-                // 建造事件
-                final PlayerChangTitleEvent playerChangTitleEvent =
-                        new PlayerChangTitleEvent(clickPlayer, killerQuest);
+                // 重整介面
+                this.initPageInventory(clickPlayer, this.getPage());
 
-                // 發送事件
-                Bukkit.getPluginManager().callEvent(playerChangTitleEvent);
-
-                if (!playerChangTitleEvent.isCancelled()) {
-                    // 設定玩家的稱號
-                    final PlayerQuestDataFile playerQuestDataFile =
-                            MouBieCat.getInstance().getPlayerDataManager().get(clickPlayer);
-                    playerQuestDataFile.setPlayerTitle(new Title(killerQuest.getQuestTitle()));
-
-                    // 重整介面
-                    this.initPageInventory(clickPlayer, this.getPage());
-
-                    Bukkit.getPluginManager().callEvent(new PlayerChangedTitleEvent(clickPlayer, killerQuest));
-                }
+                Bukkit.getPluginManager().callEvent(new PlayerChangedTitleEvent(clickPlayer, killerQuest));
             }
         }
+
+        return false;
     }
 
 }

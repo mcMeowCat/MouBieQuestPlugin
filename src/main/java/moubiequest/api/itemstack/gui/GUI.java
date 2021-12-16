@@ -48,8 +48,9 @@ public interface GUI
     /**
      * 代表當介面被點擊的事件
      * @param event 介面點擊事件
+     * @return 回傳false不繼續運行
      */
-    void clickInventory(final @NotNull InventoryClickEvent event);
+    boolean clickInventory(final @NotNull InventoryClickEvent event);
 
     /**
      * 是否取消點擊事件操作 (使物品不被移動)

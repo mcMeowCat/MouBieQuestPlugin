@@ -207,9 +207,11 @@ public abstract class UInventoryAbstract
     /**
      * 代表當介面被點擊的事件
      * @param event 介面點擊事件
+     * @return 回傳false不繼續運行
      */
-    public void clickInventory(final @NotNull InventoryClickEvent event) {
+    public boolean clickInventory(final @NotNull InventoryClickEvent event) {
         event.setCancelled(this.isCancelClickEvent());
+        return true;
     }
 
     /**

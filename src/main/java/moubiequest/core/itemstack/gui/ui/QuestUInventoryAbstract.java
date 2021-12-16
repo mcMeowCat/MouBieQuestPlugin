@@ -194,21 +194,23 @@ public abstract class QuestUInventoryAbstract
     protected final<T extends Quest> List<T> getSortQuests(final @NotNull QuestManager<T> manager, final @NotNull Player player) {
         final List<T> quests = new LinkedList<>();
         switch (this.viewType) {
-            case ALL:
+            case ALL -> {
                 for (final T quest : manager.getQuests())
                     if (!quest.isQuestVisible() || quest.isSuccess(player))
                         quests.add(quest);
-                break;
-            case SUCCESS:
+            }
+
+            case SUCCESS -> {
                 for (final T quest : manager.getQuests())
                     if (quest.isSuccess(player))
                         quests.add(quest);
-                break;
-            case NO_SUCCESS:
+            }
+
+            case NO_SUCCESS -> {
                 for (final T quest : manager.getQuests())
                     if (!quest.isQuestVisible() && !quest.isSuccess(player))
                         quests.add(quest);
-                break;
+            }
         }
         return quests;
     }
@@ -216,68 +218,73 @@ public abstract class QuestUInventoryAbstract
     /**
      * 代表當介面被點擊的事件
      * @param event 介面點擊事件
+     * @return 回傳false不繼續運行
      */
     @Override
-    public void clickInventory(final @NotNull InventoryClickEvent event) {
-        super.clickInventory(event);
+    public boolean clickInventory(final @NotNull InventoryClickEvent event) {
+        if (!super.clickInventory(event))
+            return false;
 
         final HumanEntity whoClicked = event.getWhoClicked();
 
         if (whoClicked instanceof final Player clickPlayer && event.getCurrentItem() != null) {
             final int slot = event.getSlot();
 
-            // 上一頁
-            if (slot == INVENTORY_PREVIOUS_PAGE_BUTTON) {
-                this.previousPage(clickPlayer);
-                clickPlayer.playSound(clickPlayer.getLocation(), Sound.ITEM_BOOK_PAGE_TURN, 1f, 1f);
-            }
+            switch (slot) {
+                // 上一頁按鈕
+                case INVENTORY_PREVIOUS_PAGE_BUTTON -> {
+                    this.previousPage(clickPlayer);
+                    clickPlayer.playSound(clickPlayer.getLocation(), Sound.ITEM_BOOK_PAGE_TURN, 1f, 1f);
+                }
 
-            // 下一頁
-            else if (slot == INVENTORY_NEXT_PAGE_BUTTON) {
-                this.nextPage(clickPlayer);
-                clickPlayer.playSound(clickPlayer.getLocation(), Sound.ITEM_BOOK_PAGE_TURN, 1f, 1f);
-            }
+                // 下一頁按鈕
+                case INVENTORY_NEXT_PAGE_BUTTON -> {
+                    this.nextPage(clickPlayer);
+                    clickPlayer.playSound(clickPlayer.getLocation(), Sound.ITEM_BOOK_PAGE_TURN, 1f, 1f);
+                }
 
-            // 顯示全部任務
-            else if (slot == INVENTORY_QUEST_ALL_BUTTON) {
-                this.setViewType(QuestView.ALL);
-                this.initPageInventory(clickPlayer, this.getPage());
-                clickPlayer.playSound(clickPlayer.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1f, 1f);
-            }
+                // 顯示全部任務
+                case INVENTORY_QUEST_ALL_BUTTON -> {
+                    this.setViewType(QuestView.ALL);
+                    this.initPageInventory(clickPlayer, this.getPage());
+                    clickPlayer.playSound(clickPlayer.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1f, 1f);
+                }
 
-            // 只顯示完成任務
-            else if (slot == INVENTORY_QUEST_SUCCESS_BUTTON) {
-                this.setViewType(QuestView.SUCCESS);
-                this.initPageInventory(clickPlayer, this.getPage());
-                clickPlayer.playSound(clickPlayer.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1f, 1f);
-            }
+                // 只顯示完成任務
+                case INVENTORY_QUEST_SUCCESS_BUTTON -> {
+                    this.setViewType(QuestView.SUCCESS);
+                    this.initPageInventory(clickPlayer, this.getPage());
+                    clickPlayer.playSound(clickPlayer.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1f, 1f);
+                }
 
-            // 只顯示未完成任務
-            else if (slot == INVENTORY_QUEST_NO_SUCCESS_BUTTON) {
-                this.setViewType(QuestView.NO_SUCCESS);
-                this.initPageInventory(clickPlayer, this.getPage());
-                clickPlayer.playSound(clickPlayer.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1f, 1f);
-            }
+                // 只顯示未完成任務
+                case INVENTORY_QUEST_NO_SUCCESS_BUTTON -> {
+                    this.setViewType(QuestView.NO_SUCCESS);
+                    this.initPageInventory(clickPlayer, this.getPage());
+                    clickPlayer.playSound(clickPlayer.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1f, 1f);
+                }
 
-            // 清除稱號套用
-            else if (slot == INVENTORY_QUEST_CLEAR_TITLE_BUTTON) {
-                final PlayerQuestDataFile dataFile =
-                        MouBieCat.getInstance().getPlayerDataManager().get(clickPlayer);
-                dataFile.setPlayerTitle(null);
-                this.initPageInventory(clickPlayer, this.getPage());
-                clickPlayer.playSound(clickPlayer.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1f, 1f);
-            }
+                // 清除稱號套用
+                case INVENTORY_QUEST_CLEAR_TITLE_BUTTON -> {
+                    final PlayerQuestDataFile dataFile =
+                            MouBieCat.getInstance().getPlayerDataManager().get(clickPlayer);
+                    dataFile.setPlayerTitle(null);
+                    this.initPageInventory(clickPlayer, this.getPage());
+                    clickPlayer.playSound(clickPlayer.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1f, 1f);
+                }
 
-            // 改變通知
-            else if (slot == INVENTORY_QUEST_RECEIVE_MESSAGE_BUTTON) {
-                final PlayerQuestDataFile dataFile =
-                        MouBieCat.getInstance().getPlayerDataManager().get(clickPlayer);
-                dataFile.setReceiveMessage(!dataFile.isReceiveMessage());
-                this.initPageInventory(clickPlayer, this.getPage());
-                clickPlayer.playSound(clickPlayer.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1f, 1f);
+                // 更改通知狀態
+                case INVENTORY_QUEST_RECEIVE_MESSAGE_BUTTON -> {
+                    final PlayerQuestDataFile dataFile =
+                            MouBieCat.getInstance().getPlayerDataManager().get(clickPlayer);
+                    dataFile.setReceiveMessage(!dataFile.isReceiveMessage());
+                    this.initPageInventory(clickPlayer, this.getPage());
+                    clickPlayer.playSound(clickPlayer.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1f, 1f);
+                }
             }
-
         }
+
+        return true;
     }
 
 }
