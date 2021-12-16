@@ -36,8 +36,9 @@ public interface QuestManager<T extends Quest>
 
     /**
      * 用於將檔案格式轉換成記憶體的方法
+     * @param showInfo 顯示任務加載資訊
      */
-    void parsingQuests();
+    void parsingQuests(final boolean showInfo);
 
     /**
      * 獲取所有的任務

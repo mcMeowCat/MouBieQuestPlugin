@@ -19,45 +19,46 @@
  * <http://www.gnu.org/licenses/gpl-3.0.html>.
  */
 
-package moubiequest.core.manager.quest;
+package moubiequest.api;
 
-import moubiequest.api.Debugger;
-import moubiequest.api.manager.QuestManager;
-import moubiequest.api.quest.Quest;
-import moubiequest.core.manager.ManagerAbstract;
+import moubiequest.main.MouBieCat;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Collection;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
- * 代表一個單一類型任務的管理器
- * @param <T> 繼承 Quest
+ * 有關偵錯或是訊息輸出類
  * @author MouBieCat
  */
-public abstract class QuestManagerAbstract<T extends Quest>
-        extends ManagerAbstract<String, T>
-        implements QuestManager<T> {
+public final class Debugger {
+
+    // 紀錄器
+    private static final Logger LOGGER = MouBieCat.getInstance().getLogger();
 
     /**
-     * 建構子
+     * 發送一般資訊紀錄
+     * @param msg 訊息
      */
-    public QuestManagerAbstract() {
-        this.parsingQuests(true);
+    public static void info(final @NotNull String msg) {
+        Debugger.LOGGER.info(MouBieCat.PLUGIN_TITLE + msg);
     }
 
     /**
-     * 用於將檔案格式轉換成記憶體的方法
-     * @param showInfo 顯示任務加載資訊
+     * 發送嚴重警告紀錄
+     * @param msg 訊息
      */
-    public abstract void parsingQuests(final boolean showInfo);
+    public static void warning(final @NotNull String msg) {
+        Debugger.LOGGER.warning(MouBieCat.PLUGIN_TITLE + msg);
+    }
 
     /**
-     * 獲取所有的任務
-     * @return 任務集合
+     * 自訂訊息級別
+     * @param level 級別
+     * @param msg 訊息
      */
-    @NotNull
-    public final Collection<T> getQuests() {
-        return this.manager.values();
+    public static void log(final @NotNull Level level, final @NotNull String msg) {
+        Debugger.LOGGER.log(level, MouBieCat.PLUGIN_TITLE + msg);
     }
 
 }

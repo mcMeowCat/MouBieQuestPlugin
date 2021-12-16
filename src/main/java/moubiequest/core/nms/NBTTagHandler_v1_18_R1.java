@@ -28,7 +28,7 @@ import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * 該操作類只適用於 Minecraft 架構 (v1_17_R1)
+ * 該操作類只適用於 Minecraft 架構 (v1_18_R1)
  * @author MouBieCat
  */
 public final class NBTTagHandler_v1_18_R1

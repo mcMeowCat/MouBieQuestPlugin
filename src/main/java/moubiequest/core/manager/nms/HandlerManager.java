@@ -21,6 +21,7 @@
 
 package moubiequest.core.manager.nms;
 
+import moubiequest.api.Debugger;
 import moubiequest.api.manager.NMSManager;
 import moubiequest.api.nms.Handler;
 import moubiequest.api.nms.NBTHandler;
@@ -60,7 +61,7 @@ public final class HandlerManager
 
         } catch (ClassNotFoundException e) {
             // 卸載插件
-            System.out.println(MouBieCat.PLUGIN_TITLE + "§c該插件不支持您伺服器的版本。請伺服器所有者回報給插件作者！");
+            Debugger.warning("§c該插件不支持您伺服器的版本。請伺服器所有者回報給插件作者！");
             Bukkit.getPluginManager().disablePlugin(MouBieCat.getInstance());
         }
     }

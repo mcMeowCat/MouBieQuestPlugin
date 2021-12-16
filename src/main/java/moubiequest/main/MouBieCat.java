@@ -82,6 +82,7 @@ public final class MouBieCat
 
         // 加載經理
         this.killerQuestManager = new KillerQuestManager();
+
         this.nmsManager = new HandlerManager();
 
         this.playerDataManager = new PlayerQuestDataManager();
