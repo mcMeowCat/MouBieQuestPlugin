@@ -26,7 +26,7 @@ import moubiequest.api.itemstack.gui.button.QuestUItem;
 import moubiequest.api.itemstack.gui.quest.KillerQuestGUI;
 import moubiequest.api.quest.KillerQuest;
 import moubiequest.api.quest.QuestType;
-import moubiequest.core.event.PlayerChangedTitleEvent;
+import moubiequest.api.event.PlayerChangedTitleEvent;
 import moubiequest.core.itemstack.gui.button.KillerUItemBuilder;
 import moubiequest.core.quest.objects.Title;
 import moubiequest.main.MouBieCat;

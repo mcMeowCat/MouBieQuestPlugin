@@ -19,30 +19,34 @@
  * <http://www.gnu.org/licenses/gpl-3.0.html>.
  */
 
-package moubiequest.core.event;
+package moubiequest.api.event;
 
 import moubiequest.api.quest.Quest;
 import org.bukkit.entity.Player;
-import org.bukkit.event.player.PlayerEvent;
+import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * 有關玩家任務事件
+ * 當玩家完成變更稱號事件
  * @author MouBieCat
  */
-public abstract class PlayerQuestEvent
-        extends PlayerEvent {
+public class PlayerChangedTitleEvent
+        extends PlayerQuestEvent {
 
-    private final Quest quest;
+    private static final HandlerList handlers = new HandlerList();
 
-    public PlayerQuestEvent(final @NotNull Player who, final @NotNull Quest quest) {
-        super(who);
-        this.quest = quest;
+    public PlayerChangedTitleEvent(final @NotNull Player who, final @NotNull Quest quest) {
+        super(who, quest);
     }
 
     @NotNull
-    public final Quest getQuest() {
-        return this.quest;
+    public HandlerList getHandlers() {
+        return handlers;
+    }
+
+    @NotNull
+    public static HandlerList getHandlerList() {
+        return handlers;
     }
 
 }
