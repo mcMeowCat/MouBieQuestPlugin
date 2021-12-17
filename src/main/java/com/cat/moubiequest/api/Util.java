@@ -52,7 +52,7 @@ public final class Util {
             matcher = hexPattern.matcher(message);
         }
 
-        return ChatColor.translateAlternateColorCodes('&', message);
+        return message;
     }
 
 }

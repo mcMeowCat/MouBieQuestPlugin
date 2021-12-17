@@ -7,7 +7,7 @@ HonorPointFormat:
     100: "<#00c800>[{TITLE}]§r"
 
   # 預設值
-  default: "<#fec200>[{TITLE}]"
+  default: "<#fec200>[{TITLE}]§r"
 
   # 由各伺服器的聊天插件添加該格式(比如：Essentials)
   # format: '{TITLE} <{DISPLAYNAME}> {MESSAGE}'
