@@ -118,8 +118,7 @@ public abstract class QuestLoaderAbstract<T extends Quest>
     @NotNull
     public final Material parsingQuestItemMaterial(final @NotNull String key) {
         return Material.valueOf(this.getString(
-                QUEST_DATA_MAIN_PATH + key + QUEST_DATA_ITEM_MATERIAL_PATH,
-                false
+                QUEST_DATA_MAIN_PATH + key + QUEST_DATA_ITEM_MATERIAL_PATH
         ).toUpperCase());
     }
 

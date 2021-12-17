@@ -36,7 +36,7 @@ import java.util.List;
  * 該類可用於操作與獲取YAML物件資料
  * @author MouBieCat
  */
-public abstract class YamlModuleAbstract
+public class YamlModuleAbstract
         extends FileModuleAbstract
         implements YamlSection {
 
@@ -86,6 +86,17 @@ public abstract class YamlModuleAbstract
      */
     public final double getDouble(final @NotNull String var1) {
         return this.configuration.getDouble(var1);
+    }
+
+    /**
+     * 在指定路徑獲取 String
+     *
+     * @param var1 路徑
+     * @return String obj
+     */
+    @NotNull
+    public final String getString(final @NotNull String var1) {
+        return this.getString(var1, false);
     }
 
     /**
@@ -160,6 +171,17 @@ public abstract class YamlModuleAbstract
     @NotNull
     public final List<Integer> getIntegerList(final @NotNull String var1) {
         return this.configuration.getIntegerList(var1);
+    }
+
+    /**
+     * 在指定路徑獲取 List<String>
+     *
+     * @param var1 路徑
+     * @return List<String> obj
+     */
+    @NotNull
+    public final List<String> getStringList(final @NotNull String var1) {
+        return this.getStringList(var1, false);
     }
 
     /**

@@ -65,6 +65,13 @@ public interface YamlSection
     /**
      * 在指定路徑獲取 String
      * @param var1 路徑
+     * @return String obj
+     */
+    @NotNull String getString(final @NotNull String var1);
+
+    /**
+     * 在指定路徑獲取 String
+     * @param var1 路徑
      * @param isRgb 是否要解析RGB格式
      * @return String obj
      */
@@ -111,6 +118,13 @@ public interface YamlSection
      * @return List<Integer> obj
      */
     @NotNull List<Integer> getIntegerList(final @NotNull String var1);
+
+    /**
+     * 在指定路徑獲取 List<String>
+     * @param var1 路徑
+     * @return List<String> obj
+     */
+    @NotNull List<String> getStringList(final @NotNull String var1);
 
     /**
      * 在指定路徑獲取 List<String>

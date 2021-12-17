@@ -56,7 +56,6 @@ public final class PluginFormat
 
     private static final String PLAYER_DATA_USE_TITLE = "Format.player_title.nothing";
     private static final String PLAYER_DATA_RECEIVE_MESSAGE = "Format.receive_message.";
-    private static final String PLAYER_DATA_VIEW_PARTICLE = "Format.view_particle.";
 
     private static final String FORMAT_CHAT_TITLE_REPLACE = "HonorPointFormat.Format";
 

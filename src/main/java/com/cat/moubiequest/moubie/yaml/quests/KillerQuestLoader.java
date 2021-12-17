@@ -59,8 +59,7 @@ public class KillerQuestLoader
      */
     public final EntityType parsingQuestKillEntityType(final @NotNull String key) {
         return EntityType.valueOf(this.getString(
-                QUEST_DATA_MAIN_PATH + key + QUEST_DATA_PROGRESS_NUMBER_PATH,
-                false
+                QUEST_DATA_MAIN_PATH + key + QUEST_DATA_PROGRESS_NUMBER_PATH
         ).toUpperCase());
     }
 
