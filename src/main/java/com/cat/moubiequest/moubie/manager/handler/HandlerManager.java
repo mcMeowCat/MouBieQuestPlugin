@@ -59,7 +59,7 @@ public final class HandlerManager
             else
                 throw new ClassNotFoundException();
 
-        } catch (ClassNotFoundException e) {
+        } catch (final ClassNotFoundException e) {
             // 卸載插件
             Debugger.warning("§c該插件不支持您伺服器的版本。請伺服器所有者回報給插件作者！");
             Bukkit.getPluginManager().disablePlugin(MouBieCat.getInstance());

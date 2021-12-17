@@ -27,6 +27,7 @@ import com.cat.moubiequest.api.gui.ui.KillerQuestGUI;
 import com.cat.moubiequest.api.quests.KillerQuest;
 import com.cat.moubiequest.api.quests.QuestType;
 import com.cat.moubiequest.api.event.PlayerChangedTitleEvent;
+import com.cat.moubiequest.moubie.gui.QuestUInventoryAbstract;
 import com.cat.moubiequest.moubie.gui.button.KillerUItemBuilder;
 import com.cat.moubiequest.moubie.quests.object.Title;
 import com.cat.moubiequest.MouBieCat;

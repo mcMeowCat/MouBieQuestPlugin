@@ -21,7 +21,7 @@
 
 package com.cat.moubiequest.listener;
 
-import com.cat.moubiequest.api.gui.GUI;
+import com.cat.moubiequest.api.gui.ui.GUI;
 import com.cat.moubiequest.api.gui.ui.QuestGUI;
 import com.cat.moubiequest.moubie.gui.ui.KillerQuestUInventory;
 import org.bukkit.entity.Player;

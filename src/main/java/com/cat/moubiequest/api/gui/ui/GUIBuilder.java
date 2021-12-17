@@ -19,7 +19,7 @@
  * <http://www.gnu.org/licenses/gpl-3.0.html>.
  */
 
-package com.cat.moubiequest.api.gui;
+package com.cat.moubiequest.api.gui.ui;
 
 import com.cat.moubiequest.api.gui.button.Button;
 import org.bukkit.inventory.ItemStack;

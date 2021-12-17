@@ -82,7 +82,7 @@ public abstract class ProgressQuestAbstract
     public final boolean addPlayerQuestProgress(final @NotNull Player player) {
         if (this.isQuestEnable() && !this.isSuccess(player)) {
             final PlayerQuestDataFile dataFile = MouBieCat.getInstance().getPlayerDataManager().get(player);
-            dataFile.setProgress(this, dataFile.getProgress(this) + 1);
+            dataFile.setProgress(this, this.getPlayerQuestProgress(player) + 1);
 
             // 當完達成時呼叫(僅限一次)
             if (this.getPlayerQuestProgress(player) == this.quest_progress) {

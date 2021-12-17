@@ -19,9 +19,9 @@
  * <http://www.gnu.org/licenses/gpl-3.0.html>.
  */
 
-package com.cat.moubiequest.moubie.gui.ui;
+package com.cat.moubiequest.moubie.gui;
 
-import com.cat.moubiequest.api.gui.PageGUI;
+import com.cat.moubiequest.api.gui.ui.PageGUI;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 

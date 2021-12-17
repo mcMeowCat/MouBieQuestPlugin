@@ -21,7 +21,6 @@
 
 package com.cat.moubiequest.api.gui.ui;
 
-import com.cat.moubiequest.api.gui.PageGUI;
 import com.cat.moubiequest.api.gui.QuestView;
 import org.jetbrains.annotations.NotNull;
 

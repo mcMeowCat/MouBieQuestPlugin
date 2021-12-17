@@ -26,6 +26,7 @@ import com.cat.moubiequest.api.gui.button.Button;
 import com.cat.moubiequest.api.gui.ui.EditStatusGUI;
 import com.cat.moubiequest.api.gui.ui.QuestGUI;
 import com.cat.moubiequest.api.yaml.plugin.InventoryFile;
+import com.cat.moubiequest.moubie.gui.UInventoryAbstract;
 import com.cat.moubiequest.moubie.gui.button.UItemStackBuilder;
 import com.cat.moubiequest.MouBieCat;
 import org.bukkit.Sound;

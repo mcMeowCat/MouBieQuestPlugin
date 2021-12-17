@@ -22,7 +22,6 @@
 package com.cat.moubiequest.api.gui.ui;
 
 import com.cat.moubiequest.api.gui.BackInventory;
-import com.cat.moubiequest.api.gui.GUI;
 
 /**
  * 代表一個編輯任務狀態的介面

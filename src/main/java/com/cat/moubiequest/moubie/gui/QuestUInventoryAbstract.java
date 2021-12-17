@@ -19,9 +19,9 @@
  * <http://www.gnu.org/licenses/gpl-3.0.html>.
  */
 
-package com.cat.moubiequest.moubie.gui.ui;
+package com.cat.moubiequest.moubie.gui;
 
-import com.cat.moubiequest.api.gui.GUI;
+import com.cat.moubiequest.api.gui.ui.GUI;
 import com.cat.moubiequest.api.gui.button.PlayerDataUItem;
 import com.cat.moubiequest.api.gui.button.PlayerUItem;
 import com.cat.moubiequest.api.gui.button.Button;
@@ -33,6 +33,7 @@ import com.cat.moubiequest.api.quests.QuestType;
 import com.cat.moubiequest.api.yaml.plugin.InventoryFile;
 import com.cat.moubiequest.moubie.gui.button.PlayerQuestDataBuilder;
 import com.cat.moubiequest.moubie.gui.button.UItemStackBuilder;
+import com.cat.moubiequest.moubie.gui.ui.EditPlayerStatusUInventory;
 import org.bukkit.Sound;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;

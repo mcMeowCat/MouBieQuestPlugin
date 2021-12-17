@@ -21,6 +21,7 @@
 
 package com.cat.moubiequest.api.gui;
 
+import com.cat.moubiequest.api.gui.ui.GUI;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
