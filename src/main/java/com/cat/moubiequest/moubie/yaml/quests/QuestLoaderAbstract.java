@@ -69,7 +69,7 @@ public abstract class QuestLoaderAbstract<T extends Quest>
      */
     @NotNull
     public final String parsingQuestTitleName(final @NotNull String key) {
-        return this.getString(QUEST_DATA_MAIN_PATH + key + QUEST_DATA_TITLE_NAME_PATH);
+        return this.getString(QUEST_DATA_MAIN_PATH + key + QUEST_DATA_TITLE_NAME_PATH, true);
     }
 
     /**
@@ -79,7 +79,7 @@ public abstract class QuestLoaderAbstract<T extends Quest>
      */
     @NotNull
     public final String parsingQuestMessage(final @NotNull String key) {
-        return this.getString(QUEST_DATA_MAIN_PATH + key + QUEST_DATA_MESSAGE_MESSAGE_PATH);
+        return this.getString(QUEST_DATA_MAIN_PATH + key + QUEST_DATA_MESSAGE_MESSAGE_PATH, true);
     }
 
     /**
@@ -89,7 +89,7 @@ public abstract class QuestLoaderAbstract<T extends Quest>
      */
     @NotNull
     public final String parsingQuestSuccessMessage(final @NotNull String key) {
-        return this.getString(QUEST_DATA_MAIN_PATH + key + QUEST_DATA_MESSAGE_SUCCESS_MESSAGE_PATH);
+        return this.getString(QUEST_DATA_MAIN_PATH + key + QUEST_DATA_MESSAGE_SUCCESS_MESSAGE_PATH, true);
     }
 
     /**
@@ -118,7 +118,8 @@ public abstract class QuestLoaderAbstract<T extends Quest>
     @NotNull
     public final Material parsingQuestItemMaterial(final @NotNull String key) {
         return Material.valueOf(this.getString(
-                QUEST_DATA_MAIN_PATH + key + QUEST_DATA_ITEM_MATERIAL_PATH
+                QUEST_DATA_MAIN_PATH + key + QUEST_DATA_ITEM_MATERIAL_PATH,
+                false
         ).toUpperCase());
     }
 

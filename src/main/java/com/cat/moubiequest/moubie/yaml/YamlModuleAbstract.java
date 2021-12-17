@@ -21,6 +21,7 @@
 
 package com.cat.moubiequest.moubie.yaml;
 
+import com.cat.moubiequest.api.Util;
 import com.cat.moubiequest.api.yaml.YamlSection;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -28,6 +29,7 @@ import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -89,12 +91,14 @@ public abstract class YamlModuleAbstract
     /**
      * 在指定路徑獲取 String
      * @param var1 路徑
+     * @param isRgb 是否要解析RGB格式
      * @return String obj
      */
     @NotNull
-    public final String getString(final @NotNull String var1) {
+    public final String getString(final @NotNull String var1, final boolean isRgb) {
         final String getString = this.configuration.getString(var1);
-        return (getString != null) ? getString : "§4ERROR";
+        return (getString != null) ? (isRgb) ?
+                Util.forMessageToRGB(getString) : getString : "§4ERROR";
     }
 
     /**
@@ -161,10 +165,20 @@ public abstract class YamlModuleAbstract
     /**
      * 在指定路徑獲取 List<String>
      * @param var1 路徑
+     * @param isRgb 是否要解析RGB格式
      * @return List<String> obj
      */
     @NotNull
-    public final List<String> getStringList(final @NotNull String var1) {
+    public final List<String> getStringList(final @NotNull String var1, final boolean isRgb) {
+        final List<String> stringList = this.configuration.getStringList(var1);
+        if (isRgb) {
+            final List<String> stringListRbg = new ArrayList<>();
+            for (final String str : stringList)
+                stringListRbg.add(Util.forMessageToRGB(str));
+
+            return stringListRbg;
+        }
+
         return this.configuration.getStringList(var1);
     }
 

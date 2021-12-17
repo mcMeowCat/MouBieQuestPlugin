@@ -1,12 +1,13 @@
 HonorPointFormat:
   # 根據榮獲得的榮譽點數變換稱號顯示格式(由大至小)
   Ranks:
-    1000: "§7[§c{TITLE}§7]"
-    500: "§7[§9{TITLE}§7]"
-    100: "§7[§2{TITLE}§7]"
+    1000: "<#ff0000>[{TITLE}]§r"
+    500: "<#aa00f9>[{TITLE}]§r"
+    250: "<#0000c8>[{TITLE}]§r"
+    100: "<#00c800>[{TITLE}]§r"
 
   # 預設值
-  default: "§7[§6{TITLE}§7]"
+  default: "<#fec200>[{TITLE}]"
 
   # 由各伺服器的聊天插件添加該格式(比如：Essentials)
   # format: '{TITLE} <{DISPLAYNAME}> {MESSAGE}'

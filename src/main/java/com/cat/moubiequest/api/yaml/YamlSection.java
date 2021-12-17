@@ -65,9 +65,10 @@ public interface YamlSection
     /**
      * 在指定路徑獲取 String
      * @param var1 路徑
+     * @param isRgb 是否要解析RGB格式
      * @return String obj
      */
-    @NotNull String getString(final @NotNull String var1);
+    @NotNull String getString(final @NotNull String var1, final boolean isRgb);
 
     /**
      * 在指定路徑獲取 ItemStack
@@ -114,8 +115,9 @@ public interface YamlSection
     /**
      * 在指定路徑獲取 List<String>
      * @param var1 路徑
+     * @param isRgb 是否要解析RGB格式
      * @return List<String> obj
      */
-    @NotNull List<String> getStringList(final @NotNull String var1);
+    @NotNull List<String> getStringList(final @NotNull String var1, final boolean isRgb);
 
 }

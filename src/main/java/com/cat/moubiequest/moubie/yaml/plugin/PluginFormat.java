@@ -76,7 +76,7 @@ public final class PluginFormat
      */
     @NotNull
     public String getQuestTypeString(final @NotNull QuestType type) {
-        return this.getString(FORMAT_QUEST_TYPE_PATH + type.getName());
+        return this.getString(FORMAT_QUEST_TYPE_PATH + type.getName(), true);
     }
 
     /**
@@ -86,7 +86,7 @@ public final class PluginFormat
      */
     @NotNull
     public String getQuestEnableString(final boolean isEnable) {
-        return this.getString(FORMAT_QUEST_ENABLE_PATH + isEnable);
+        return this.getString(FORMAT_QUEST_ENABLE_PATH + isEnable, true);
     }
 
     /**
@@ -96,7 +96,7 @@ public final class PluginFormat
      */
     @NotNull
     public String getQuestVisibleString(final boolean isVisible) {
-        return this.getString(FORMAT_QUEST_VISIBLE_PATH + isVisible);
+        return this.getString(FORMAT_QUEST_VISIBLE_PATH + isVisible, true);
     }
 
     /**
@@ -117,7 +117,7 @@ public final class PluginFormat
      */
     @NotNull
     public String getQuestSuccessString(final boolean isSuccess) {
-        return this.getString(FORMAT_QUEST_SUCCESS_PATH + isSuccess);
+        return this.getString(FORMAT_QUEST_SUCCESS_PATH + isSuccess, true);
     }
 
     /**
@@ -129,7 +129,7 @@ public final class PluginFormat
     public String getQuestProgressImage(final int progressNumber) {
         for(int i = 100; i >= 0; i -= 10)
             if(progressNumber >= i)
-                return this.getString(FORMAT_PROGRESS_QUEST_PERCENTAGE_IMAGE_PATH + i);
+                return this.getString(FORMAT_PROGRESS_QUEST_PERCENTAGE_IMAGE_PATH + i, true);
 
         return "§4ERROR";
     }
@@ -144,7 +144,8 @@ public final class PluginFormat
         return this.getString(
                 FORMAT_QUEST_FORMAT_MAIN_PATH +
                         quest.getQuestType().getName() +
-                        FORMAT_QUEST_HEAD_FORMAT_PATH
+                        FORMAT_QUEST_HEAD_FORMAT_PATH,
+                true
         );
     }
 
@@ -158,7 +159,8 @@ public final class PluginFormat
         return this.getStringList(
                 FORMAT_QUEST_FORMAT_MAIN_PATH +
                         quest.getQuestType().getName() +
-                        FORMAT_QUEST_BODY_FORMAT_PATH
+                        FORMAT_QUEST_BODY_FORMAT_PATH,
+                true
         );
     }
 
@@ -169,17 +171,7 @@ public final class PluginFormat
      */
     @NotNull
     public String getPlayerReceiveMessageString(final boolean isReceiveMessage) {
-        return this.getString(PLAYER_DATA_RECEIVE_MESSAGE + isReceiveMessage);
-    }
-
-    /**
-     * 獲取任務開放狀態的字串
-     * @param isViewParticle 是否可見
-     * @return 字串
-     */
-    @NotNull
-    public String getPlayerViewParticleString(final boolean isViewParticle) {
-        return this.getString(PLAYER_DATA_VIEW_PARTICLE + isViewParticle);
+        return this.getString(PLAYER_DATA_RECEIVE_MESSAGE + isReceiveMessage, true);
     }
 
     /**
@@ -189,7 +181,7 @@ public final class PluginFormat
      */
     @NotNull
     public String getPlayerUseTitle(final @Nullable Title title) {
-        return title != null ? title.getTitle() : this.getString(PLAYER_DATA_USE_TITLE);
+        return title != null ? title.getTitle() : this.getString(PLAYER_DATA_USE_TITLE, true);
     }
 
     /**
@@ -198,7 +190,7 @@ public final class PluginFormat
      */
     @NotNull
     public String getPlayerDataFormatHead() {
-        return this.getString(FORMAT_PLAYER_DATA_HEAD_FORMAT_PATH);
+        return this.getString(FORMAT_PLAYER_DATA_HEAD_FORMAT_PATH, true);
     }
 
     /**
@@ -208,7 +200,7 @@ public final class PluginFormat
      */
     @NotNull
     public List<String> getPlayerDataFormatBody() {
-        return this.getStringList(FORMAT_PLAYER_DATA_BODY_FORMAT_PATH);
+        return this.getStringList(FORMAT_PLAYER_DATA_BODY_FORMAT_PATH, true);
     }
 
     /**
@@ -217,7 +209,7 @@ public final class PluginFormat
      */
     @NotNull
     public String getTitleReplaceFormat() {
-        return this.getString(FORMAT_CHAT_TITLE_REPLACE);
+        return this.getString(FORMAT_CHAT_TITLE_REPLACE, true);
     }
 
     /**
@@ -235,11 +227,11 @@ public final class PluginFormat
             for (final String str : keys) {
                 final int point = Integer.parseInt(str);
                 if (playerHonorPoint >= point)
-                    return this.getString(FORMAT_HONOR_POINT_FORMAT + ".Ranks." + str);
+                    return this.getString(FORMAT_HONOR_POINT_FORMAT + ".Ranks." + str, true);
             }
         }
 
-        return this.getString(FORMAT_HONOR_POINT_FORMAT + ".default");
+        return this.getString(FORMAT_HONOR_POINT_FORMAT + ".default", true);
     }
 
 }

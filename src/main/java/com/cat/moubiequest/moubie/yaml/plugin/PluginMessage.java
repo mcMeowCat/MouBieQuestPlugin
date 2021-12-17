@@ -49,7 +49,7 @@ public final class PluginMessage
      */
     @NotNull
     public String getChangedQuestTitle() {
-        return this.getString(MESSAGE_CHANGED_QUEST_TITLE);
+        return this.getString(MESSAGE_CHANGED_QUEST_TITLE, true);
     }
 
     /**
@@ -58,7 +58,7 @@ public final class PluginMessage
      */
     @NotNull
     public String getSuccessQuest() {
-        return this.getString(MESSAGE_SUCCESS_MESSAGE);
+        return this.getString(MESSAGE_SUCCESS_MESSAGE, true);
     }
 
 }

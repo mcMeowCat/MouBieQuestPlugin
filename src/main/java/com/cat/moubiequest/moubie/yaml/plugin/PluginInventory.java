@@ -60,9 +60,8 @@ public final class PluginInventory
     @NotNull
     public String getQuestInventoryTitle(final @NotNull QuestType type) {
         return this.getString(
-                INVENTORY_QUEST_INVENTORY_MAIN_PATH +
-                        type.getName() +
-                        INVENTORY_QUEST_INVENTORY_TITLE_PATH
+                INVENTORY_QUEST_INVENTORY_MAIN_PATH + type.getName() + INVENTORY_QUEST_INVENTORY_TITLE_PATH,
+                true
         );
     }
 
@@ -75,15 +74,16 @@ public final class PluginInventory
     public ItemStack getCommonButton(final @NotNull String name) {
         // 解析材質
         final Material material = Material.valueOf(
-                this.getString(INVENTORY_QUEST_INVENTORY_MAIN_PATH + INVENTORY_QUEST_COMMON_BUTTON_PATH +
-                        name + INVENTORY_QUEST_COMMON_BUTTON_MATERIAL_PATH
+                this.getString(
+                        INVENTORY_QUEST_INVENTORY_MAIN_PATH + INVENTORY_QUEST_COMMON_BUTTON_PATH + name + INVENTORY_QUEST_COMMON_BUTTON_MATERIAL_PATH,
+                        true
                 ).toUpperCase()
         );
 
         // 解析按鈕名稱
         final String displayName = this.getString(
-                INVENTORY_QUEST_INVENTORY_MAIN_PATH + INVENTORY_QUEST_COMMON_BUTTON_PATH +
-                        name + INVENTORY_QUEST_COMMON_DISPLAY_NAME_PATH
+                INVENTORY_QUEST_INVENTORY_MAIN_PATH + INVENTORY_QUEST_COMMON_BUTTON_PATH + name + INVENTORY_QUEST_COMMON_DISPLAY_NAME_PATH,
+                true
         );
 
         // 製作按鈕
