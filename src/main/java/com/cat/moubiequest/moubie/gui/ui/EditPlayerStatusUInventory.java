@@ -21,6 +21,7 @@
 
 package com.cat.moubiequest.moubie.gui.ui;
 
+import com.cat.moubiequest.api.MouBieQuest;
 import com.cat.moubiequest.api.data.quest.PlayerQuestDataFile;
 import com.cat.moubiequest.api.gui.button.Button;
 import com.cat.moubiequest.api.gui.ui.EditStatusGUI;
@@ -137,7 +138,7 @@ public final class EditPlayerStatusUInventory
                 // 清除稱號套用
                 case INVENTORY_QUEST_CLEAR_TITLE_BUTTON -> {
                     final PlayerQuestDataFile dataFile =
-                            MouBieCat.getInstance().getPlayerDataManager().get(clickPlayer);
+                            MouBieQuest.getAPI().getQuestData().get(clickPlayer);
                     dataFile.setPlayerTitle(null);
 
                     this.initInventory(clickPlayer);
@@ -148,7 +149,7 @@ public final class EditPlayerStatusUInventory
                 // 更改通知狀態
                 case INVENTORY_QUEST_RECEIVE_MESSAGE_BUTTON -> {
                     final PlayerQuestDataFile dataFile =
-                            MouBieCat.getInstance().getPlayerDataManager().get(clickPlayer);
+                            MouBieQuest.getAPI().getQuestData().get(clickPlayer);
                     dataFile.setReceiveMessage(!dataFile.isReceiveMessage());
 
                     this.initInventory(clickPlayer);

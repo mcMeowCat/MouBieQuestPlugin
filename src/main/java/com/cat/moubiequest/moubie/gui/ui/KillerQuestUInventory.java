@@ -21,6 +21,7 @@
 
 package com.cat.moubiequest.moubie.gui.ui;
 
+import com.cat.moubiequest.api.MouBieQuest;
 import com.cat.moubiequest.api.data.quest.PlayerQuestDataFile;
 import com.cat.moubiequest.api.gui.button.QuestUItem;
 import com.cat.moubiequest.api.gui.ui.KillerQuestGUI;
@@ -113,7 +114,7 @@ public final class KillerQuestUInventory
             if (killerQuest != null && killerQuest.isSuccess(clickPlayer)) {
                 // 設定玩家的稱號
                 final PlayerQuestDataFile playerQuestDataFile =
-                        MouBieCat.getInstance().getPlayerDataManager().get(clickPlayer);
+                        MouBieQuest.getAPI().getQuestData().get(clickPlayer);
                 playerQuestDataFile.setPlayerTitle(new Title(killerQuest.getQuestTitle()));
 
                 // 重整介面

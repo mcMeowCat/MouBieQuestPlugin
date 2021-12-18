@@ -21,6 +21,7 @@
 
 package com.cat.moubiequest.moubie.quests.quest;
 
+import com.cat.moubiequest.api.MouBieQuest;
 import com.cat.moubiequest.api.data.quest.PlayerQuestDataFile;
 import com.cat.moubiequest.api.quests.ProgressQuest;
 import com.cat.moubiequest.api.quests.QuestType;
@@ -29,7 +30,6 @@ import com.cat.moubiequest.moubie.quests.object.Message;
 import com.cat.moubiequest.moubie.quests.object.QItem;
 import com.cat.moubiequest.moubie.quests.object.Status;
 import com.cat.moubiequest.moubie.quests.object.Title;
-import com.cat.moubiequest.MouBieCat;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
@@ -81,7 +81,7 @@ public abstract class ProgressQuestAbstract
      */
     public final boolean addPlayerQuestProgress(final @NotNull Player player) {
         if (this.isQuestEnable() && !this.isSuccess(player)) {
-            final PlayerQuestDataFile dataFile = MouBieCat.getInstance().getPlayerDataManager().get(player);
+            final PlayerQuestDataFile dataFile = MouBieQuest.getAPI().getQuestData().get(player);
             dataFile.setProgress(this, this.getPlayerQuestProgress(player) + 1);
 
             // 當完達成時呼叫(僅限一次)
@@ -100,7 +100,7 @@ public abstract class ProgressQuestAbstract
      * @param player 玩家
      */
     public final void clearPlayerQuestProgress(final @NotNull Player player) {
-        final PlayerQuestDataFile dataFile = MouBieCat.getInstance().getPlayerDataManager().get(player);
+        final PlayerQuestDataFile dataFile = MouBieQuest.getAPI().getQuestData().get(player);
         dataFile.setProgress(this, 0);
     }
 
@@ -110,7 +110,7 @@ public abstract class ProgressQuestAbstract
      * @return 進度次數
      */
     public final int getPlayerQuestProgress(final @NotNull Player player) {
-        final PlayerQuestDataFile dataFile = MouBieCat.getInstance().getPlayerDataManager().get(player);
+        final PlayerQuestDataFile dataFile = MouBieQuest.getAPI().getQuestData().get(player);
         return dataFile.getProgress(this);
     }
 

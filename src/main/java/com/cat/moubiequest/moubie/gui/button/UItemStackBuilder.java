@@ -21,10 +21,10 @@
 
 package com.cat.moubiequest.moubie.gui.button;
 
+import com.cat.moubiequest.api.MouBieQuest;
 import com.cat.moubiequest.api.gui.button.UItemBuilder;
 import com.cat.moubiequest.api.handler.NBTHandler;
 import com.cat.moubiequest.moubie.itemstack.ItemStackBuilder;
-import com.cat.moubiequest.MouBieCat;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
@@ -158,7 +158,7 @@ public class UItemStackBuilder
      * @return 是否可被移動
      */
     public static boolean getItemStackCanMove(final @NotNull ItemStack itemStack) {
-        final NBTHandler handler = MouBieCat.getInstance().getNmsManager().getNbtHandler();
+        final NBTHandler handler = MouBieQuest.getAPI().getNMS().getNbtHandler();
         if (handler.hasTag(itemStack, UI_ITEM_NBT_TAG_MAIN_PATH))
             return handler.getBoolean(itemStack, UI_ITEM_NBT_TAG_MAIN_PATH, UI_ITEM_NBT_TAG_CAN_MOVE_PATH);
 
@@ -172,7 +172,7 @@ public class UItemStackBuilder
      */
     @Nullable
     public static ClickType getItemStackClickType(final @NotNull ItemStack itemStack) {
-        final NBTHandler handler = MouBieCat.getInstance().getNmsManager().getNbtHandler();
+        final NBTHandler handler = MouBieQuest.getAPI().getNMS().getNbtHandler();
         if (handler.hasTag(itemStack, UI_ITEM_NBT_TAG_MAIN_PATH)) {
             return ClickType.valueOf(
                     handler.getString(itemStack, UI_ITEM_NBT_TAG_MAIN_PATH, UI_ITEM_NBT_TAG_CLICK_TYPE_PATH).toUpperCase()
@@ -188,7 +188,7 @@ public class UItemStackBuilder
     @Override
     @NotNull
     public ItemStack build() {
-        final NBTHandler handler = MouBieCat.getInstance().getNmsManager().getNbtHandler();
+        final NBTHandler handler = MouBieQuest.getAPI().getNMS().getNbtHandler();
 
         // 配置 TAG 屬性
         handler.setMainTagName(UI_ITEM_NBT_TAG_MAIN_PATH)

@@ -21,7 +21,7 @@
 
 package com.cat.moubiequest.moubie.yaml;
 
-import com.cat.moubiequest.api.Util;
+import com.cat.moubiequest.api.Utils;
 import com.cat.moubiequest.api.yaml.YamlSection;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -109,7 +109,7 @@ public class YamlModuleAbstract
     public final String getString(final @NotNull String var1, final boolean isRgb) {
         final String getString = this.configuration.getString(var1);
         return (getString != null) ? (isRgb) ?
-                Util.forMessageToRGB(getString) : getString : "§4ERROR";
+                Utils.forMessageToRGB(getString) : getString : "§4ERROR";
     }
 
     /**
@@ -196,7 +196,7 @@ public class YamlModuleAbstract
         if (isRgb) {
             final List<String> stringListRbg = new ArrayList<>();
             for (final String str : stringList)
-                stringListRbg.add(Util.forMessageToRGB(str));
+                stringListRbg.add(Utils.forMessageToRGB(str));
 
             return stringListRbg;
         }

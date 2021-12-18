@@ -21,6 +21,7 @@
 
 package com.cat.moubiequest.listener;
 
+import com.cat.moubiequest.api.MouBieQuest;
 import com.cat.moubiequest.api.data.quest.PlayerQuestDataFile;
 import com.cat.moubiequest.api.quests.Quest;
 import com.cat.moubiequest.api.yaml.plugin.FormatFile;
@@ -58,7 +59,7 @@ public class QuestListener
         changedQuestTitle = changedQuestTitle.replace("{QUEST_TITLE}", quest.getQuestTitle());
 
         for (final Player serverPlayer : Bukkit.getOnlinePlayers()) {
-            final PlayerQuestDataFile dataFile = MouBieCat.getInstance().getPlayerDataManager().get(serverPlayer);
+            final PlayerQuestDataFile dataFile = MouBieQuest.getAPI().getQuestData().get(serverPlayer);
             if (dataFile.isReceiveMessage() || serverPlayer == player)
                 player.sendMessage(MouBieCat.PLUGIN_TITLE + changedQuestTitle);
         }
@@ -90,7 +91,7 @@ public class QuestListener
         Player player = event.getPlayer();
         String format = event.getFormat();
 
-        final PlayerQuestDataFile dataFile = MouBieCat.getInstance().getPlayerDataManager().get(player);
+        final PlayerQuestDataFile dataFile = MouBieQuest.getAPI().getQuestData().get(player);
         final Title playerTitle = dataFile.getPlayerTitle();
 
         final FormatFile formatFile = MouBieCat.getInstance().getFormatFile();

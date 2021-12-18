@@ -21,11 +21,11 @@
 
 package com.cat.moubiequest.moubie.gui.button;
 
+import com.cat.moubiequest.api.MouBieQuest;
 import com.cat.moubiequest.api.gui.button.QuestUItem;
 import com.cat.moubiequest.api.handler.NBTHandler;
 import com.cat.moubiequest.api.quests.Quest;
 import com.cat.moubiequest.api.quests.QuestType;
-import com.cat.moubiequest.MouBieCat;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -76,7 +76,7 @@ public abstract class QuestUItemBuilder<T extends Quest>
      */
     @Nullable
     public static QuestType getItemStackQuestType(final @NotNull ItemStack itemStack) {
-        final NBTHandler handler = MouBieCat.getInstance().getNmsManager().getNbtHandler();
+        final NBTHandler handler = MouBieQuest.getAPI().getNMS().getNbtHandler();
 
         if (handler.hasTag(itemStack, UI_ITEM_QUEST_MAIN_TAG))
             return QuestType.valueOf(
@@ -93,7 +93,7 @@ public abstract class QuestUItemBuilder<T extends Quest>
      */
     @NotNull
     public static String getItemStackQuestKey(final @NotNull ItemStack itemStack) {
-        final NBTHandler handler = MouBieCat.getInstance().getNmsManager().getNbtHandler();
+        final NBTHandler handler = MouBieQuest.getAPI().getNMS().getNbtHandler();
 
         if (handler.hasTag(itemStack, UI_ITEM_QUEST_MAIN_TAG))
             return handler.getString(itemStack, UI_ITEM_QUEST_MAIN_TAG, UI_ITEM_QUEST_QUEST_KEY_TAG);
@@ -107,7 +107,7 @@ public abstract class QuestUItemBuilder<T extends Quest>
      */
     @NotNull
     public final ItemStack build() {
-        final NBTHandler handler = MouBieCat.getInstance().getNmsManager().getNbtHandler();
+        final NBTHandler handler = MouBieQuest.getAPI().getNMS().getNbtHandler();
 
         // 配置 TAG 屬性
         handler.setMainTagName(UI_ITEM_QUEST_MAIN_TAG)

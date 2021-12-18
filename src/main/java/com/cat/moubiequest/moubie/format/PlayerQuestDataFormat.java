@@ -24,7 +24,7 @@ package com.cat.moubiequest.moubie.format;
 import com.cat.moubiequest.api.data.quest.PlayerQuestDataFile;
 import com.cat.moubiequest.api.format.PlayerDataFormat;
 import com.cat.moubiequest.api.yaml.plugin.FormatFile;
-import com.cat.moubiequest.MouBieCat;
+import com.cat.moubiequest.api.MouBieQuest;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
@@ -43,7 +43,6 @@ public final class PlayerQuestDataFormat
     private static final String PLAYER_TITLE_NAME = "{PLAYER_TITLE_NAME}";
     private static final String PLAYER_DATA_HONOR_POINT = "{PLAYER_HONOR_POINT}";
     private static final String PLAYER_DATA_RECEIVE_MESSAGE = "{PLAYER_RECEIVE_MESSAGE}";
-    private static final String PLAYER_DATA_VIEW_PARTICLE = "{PLAYER_VIEW_PARTICLE}";
 
     /**
      * 建構子
@@ -72,7 +71,7 @@ public final class PlayerQuestDataFormat
     @NotNull
     public String replace(final @NotNull String msg) {
         String replaceStr = msg;
-        final PlayerQuestDataFile dataFile = MouBieCat.getInstance().getPlayerDataManager().get(this.replacer);
+        final PlayerQuestDataFile dataFile = MouBieQuest.getAPI().getQuestData().get(this.replacer);
 
         // 轉換玩家名稱
         replaceStr = replaceStr.replace(

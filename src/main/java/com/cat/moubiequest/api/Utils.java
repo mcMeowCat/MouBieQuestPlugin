@@ -31,7 +31,7 @@ import java.util.regex.Pattern;
  * 代表一些有用的應用副程序
  * @author MouBieCat
  */
-public final class Util {
+public final class Utils {
 
     /**
      * 將字串RGB解析成RGB物件
