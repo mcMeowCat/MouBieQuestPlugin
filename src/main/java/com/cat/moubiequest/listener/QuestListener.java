@@ -25,8 +25,6 @@ import com.cat.moubiequest.api.MouBieQuest;
 import com.cat.moubiequest.api.data.quest.PlayerQuestDataFile;
 import com.cat.moubiequest.api.quests.Quest;
 import com.cat.moubiequest.api.yaml.plugin.FormatFile;
-import com.cat.moubiequest.api.event.PlayerChangedTitleEvent;
-import com.cat.moubiequest.api.event.PlayerQuestSuccessEvent;
 import com.cat.moubiequest.moubie.quests.object.Title;
 import com.cat.moubiequest.MouBieCat;
 import org.bukkit.Bukkit;
@@ -45,66 +43,66 @@ import org.jetbrains.annotations.NotNull;
 public class QuestListener
         implements Listener {
 
-    /**
-     * 當玩家達成任務時調用
-     * @param event 事件
-     */
-    @EventHandler
-    public void onPlayerQuestSuccess(final @NotNull PlayerQuestSuccessEvent event) {
-        final Quest quest = event.getQuest();
-        final Player player = event.getPlayer();
-
-        String changedQuestTitle = MouBieCat.getInstance().getMessageFile().getSuccessQuest();
-        changedQuestTitle = changedQuestTitle.replace("{PLAYER_NAME}", player.getName());
-        changedQuestTitle = changedQuestTitle.replace("{QUEST_TITLE}", quest.getQuestTitle());
-
-        for (final Player serverPlayer : Bukkit.getOnlinePlayers()) {
-            final PlayerQuestDataFile dataFile = MouBieQuest.getAPI().getQuestData().get(serverPlayer);
-            if (dataFile.isReceiveMessage() || serverPlayer == player)
-                player.sendMessage(MouBieCat.PLUGIN_TITLE + changedQuestTitle);
-        }
-    }
-
-    /**
-     * 當玩家完成變更稱號時調用
-     * @param event 事件
-     */
-    @EventHandler
-    public void onPlayerChangedTitle(final @NotNull PlayerChangedTitleEvent event) {
-        final Player player = event.getPlayer();
-        final Quest quest = event.getQuest();
-
-        String changedQuestTitle = MouBieCat.getInstance().getMessageFile().getChangedQuestTitle();
-        changedQuestTitle = changedQuestTitle.replace("{PLAYER_NAME}", player.getName());
-        changedQuestTitle = changedQuestTitle.replace("{QUEST_TITLE}", quest.getQuestTitle());
-
-        player.sendMessage(MouBieCat.PLUGIN_TITLE + changedQuestTitle);
-        player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_YES, 1f, 1f);
-    }
-
-    /**
-     * 玩家發言事件
-     * @param event 事件
-     */
-    @EventHandler(priority = EventPriority.LOWEST)
-    public void onChat(final @NotNull PlayerChatEvent event) {
-        Player player = event.getPlayer();
-        String format = event.getFormat();
-
-        final PlayerQuestDataFile dataFile = MouBieQuest.getAPI().getQuestData().get(player);
-        final Title playerTitle = dataFile.getPlayerTitle();
-
-        final FormatFile formatFile = MouBieCat.getInstance().getFormatFile();
-
-        if (playerTitle != null) {
-            final String honorPointTitleFormat = formatFile.getHonorPointTitleFormat(dataFile.getHonorPoint())
-                    .replace("{TITLE}", playerTitle.getTitle());
-
-            format = format.replace(formatFile.getTitleReplaceFormat(), honorPointTitleFormat);
-        } else
-            format = format.replace(formatFile.getTitleReplaceFormat(), "");
-
-        event.setFormat(format);
-    }
+//    /**
+//     * 當玩家達成任務時調用
+//     * @param event 事件
+//     */
+//    @EventHandler
+//    public void onPlayerQuestSuccess(final @NotNull PlayerQuestSuccessEvent event) {
+//        final Quest quest = event.getQuest();
+//        final Player player = event.getPlayer();
+//
+//        String changedQuestTitle = MouBieCat.getInstance().getMessageFile().getSuccessQuest();
+//        changedQuestTitle = changedQuestTitle.replace("{PLAYER_NAME}", player.getName());
+//        changedQuestTitle = changedQuestTitle.replace("{QUEST_TITLE}", quest.getQuestTitle());
+//
+//        for (final Player serverPlayer : Bukkit.getOnlinePlayers()) {
+//            final PlayerQuestDataFile dataFile = MouBieQuest.getAPI().getQuestData().get(serverPlayer);
+//            if (dataFile.isReceiveMessage() || serverPlayer == player)
+//                player.sendMessage(MouBieCat.PLUGIN_TITLE + changedQuestTitle);
+//        }
+//    }
+//
+//    /**
+//     * 當玩家完成變更稱號時調用
+//     * @param event 事件
+//     */
+//    @EventHandler
+//    public void onPlayerChangedTitle(final @NotNull PlayerChangedTitleEvent event) {
+//        final Player player = event.getPlayer();
+//        final Quest quest = event.getQuest();
+//
+//        String changedQuestTitle = MouBieCat.getInstance().getMessageFile().getChangedQuestTitle();
+//        changedQuestTitle = changedQuestTitle.replace("{PLAYER_NAME}", player.getName());
+//        changedQuestTitle = changedQuestTitle.replace("{QUEST_TITLE}", quest.getQuestTitle());
+//
+//        player.sendMessage(MouBieCat.PLUGIN_TITLE + changedQuestTitle);
+//        player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_YES, 1f, 1f);
+//    }
+//
+//    /**
+//     * 玩家發言事件
+//     * @param event 事件
+//     */
+//    @EventHandler(priority = EventPriority.LOWEST)
+//    public void onChat(final @NotNull PlayerChatEvent event) {
+//        Player player = event.getPlayer();
+//        String format = event.getFormat();
+//
+//        final PlayerQuestDataFile dataFile = MouBieQuest.getAPI().getQuestData().get(player);
+//        final Title playerTitle = dataFile.getPlayerTitle();
+//
+//        final FormatFile formatFile = MouBieCat.getInstance().getFormatFile();
+//
+//        if (playerTitle != null) {
+//            final String honorPointTitleFormat = formatFile.getHonorPointTitleFormat(dataFile.getHonorPoint())
+//                    .replace("{TITLE}", playerTitle.getTitle());
+//
+//            format = format.replace(formatFile.getTitleReplaceFormat(), honorPointTitleFormat);
+//        } else
+//            format = format.replace(formatFile.getTitleReplaceFormat(), "");
+//
+//        event.setFormat(format);
+//    }
 
 }

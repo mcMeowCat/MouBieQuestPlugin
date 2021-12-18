@@ -25,7 +25,6 @@ import com.cat.moubiequest.api.MouBieQuest;
 import com.cat.moubiequest.api.data.quest.PlayerQuestDataFile;
 import com.cat.moubiequest.api.quests.ProgressQuest;
 import com.cat.moubiequest.api.quests.QuestType;
-import com.cat.moubiequest.api.event.PlayerQuestSuccessEvent;
 import com.cat.moubiequest.moubie.quests.object.Message;
 import com.cat.moubiequest.moubie.quests.object.QItem;
 import com.cat.moubiequest.moubie.quests.object.Status;
@@ -85,10 +84,8 @@ public abstract class ProgressQuestAbstract
             dataFile.setProgress(this, this.getPlayerQuestProgress(player) + 1);
 
             // 當完達成時呼叫(僅限一次)
-            if (this.getPlayerQuestProgress(player) == this.quest_progress) {
-                Bukkit.getPluginManager().callEvent(new PlayerQuestSuccessEvent(player, this));
+            if (this.getPlayerQuestProgress(player) == this.quest_progress)
                 dataFile.addHonorPoint(this);
-            }
 
             return true;
         }
