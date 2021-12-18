@@ -21,6 +21,9 @@
 
 package com.cat.moubiequest.moubie.gui;
 
+import com.cat.moubiequest.api.MouBieQuest;
+import com.cat.moubiequest.api.data.quest.TitleData;
+import com.cat.moubiequest.api.event.PlayerChangedTitleEvent;
 import com.cat.moubiequest.api.gui.ui.GUI;
 import com.cat.moubiequest.api.gui.button.PlayerDataUItem;
 import com.cat.moubiequest.api.gui.button.PlayerUItem;
@@ -34,6 +37,8 @@ import com.cat.moubiequest.api.yaml.plugin.InventoryFile;
 import com.cat.moubiequest.moubie.gui.button.PlayerQuestDataBuilder;
 import com.cat.moubiequest.moubie.gui.button.UItemStackBuilder;
 import com.cat.moubiequest.moubie.gui.ui.EditPlayerStatusUInventory;
+import com.cat.moubiequest.moubie.quests.object.Title;
+import org.bukkit.Bukkit;
 import org.bukkit.Sound;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
@@ -211,10 +216,22 @@ public abstract class QuestUInventoryAbstract
     }
 
     /**
-     * 顯示出沒有找到任何任務的按鈕
+     * 嘗試將一個稱號套用至玩家
+     * @param quest 任務
+     * @param player 玩家
      */
-    protected final void showNothingQuest() {
-        this.addUItem(this.questShowNothingButton);
+    protected final boolean tryUseTitleToPlayer(final @NotNull Quest quest, final @NotNull Player player) {
+        // 該任務玩家是否達成
+        if (quest.isSuccess(player)) {
+            // 設定玩家的稱號
+            final TitleData titleData = MouBieQuest.getAPI().getQuestData().get(player);
+            titleData.setPlayerTitle(new Title(quest.getQuestTitle()));
+
+            // 調用事件
+            Bukkit.getPluginManager().callEvent(new PlayerChangedTitleEvent(player, quest));
+            return true;
+        }
+        return false;
     }
 
     /**

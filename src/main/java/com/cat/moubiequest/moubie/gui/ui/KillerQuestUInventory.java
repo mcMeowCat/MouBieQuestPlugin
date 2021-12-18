@@ -21,18 +21,13 @@
 
 package com.cat.moubiequest.moubie.gui.ui;
 
-import com.cat.moubiequest.api.MouBieQuest;
-import com.cat.moubiequest.api.data.quest.PlayerQuestDataFile;
 import com.cat.moubiequest.api.gui.button.QuestUItem;
 import com.cat.moubiequest.api.gui.ui.KillerQuestGUI;
 import com.cat.moubiequest.api.quests.KillerQuest;
 import com.cat.moubiequest.api.quests.QuestType;
-import com.cat.moubiequest.api.event.PlayerChangedTitleEvent;
 import com.cat.moubiequest.moubie.gui.QuestUInventoryAbstract;
 import com.cat.moubiequest.moubie.gui.button.KillerUItemBuilder;
-import com.cat.moubiequest.moubie.quests.object.Title;
 import com.cat.moubiequest.MouBieCat;
-import org.bukkit.Bukkit;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -73,18 +68,19 @@ public final class KillerQuestUInventory
         final List<KillerQuest> sortQuests = this.getSortQuests(MouBieCat.getInstance().getKillerQuestManager(), player);
 
         try {
-            if (sortQuests.size() == 0) {
-                this.showNothingQuest();
-                return;
-            }
+            // 如果沒有任何任務，顯示空任務按鈕
+            if (sortQuests.size() == 0)
+                this.addUItem(this.questShowNothingButton);
 
-            // 計算迴圈任務起始
-            int startQuest = page * 36;
+            else {
+                // 計算迴圈任務起始
+                int startQuest = page * 36;
 
-            // 迴圈開始編排任務
-            for (int slot = 9; slot < 45; slot++) {
-                final KillerQuest quest = sortQuests.get(startQuest++);
-                this.addUItem(new KillerUItemBuilder(quest, slot), player);
+                // 迴圈開始編排任務
+                for (int slot = 9; slot < 45; slot++) {
+                    final KillerQuest quest = sortQuests.get(startQuest++);
+                    this.addUItem(new KillerUItemBuilder(quest, slot), player);
+                }
             }
         } catch (final IndexOutOfBoundsException e) { return; }
 
@@ -110,18 +106,9 @@ public final class KillerQuestUInventory
             final String itemStackQuestKey = QuestUItem.getItemStackQuestKey(currentItem);
             final KillerQuest killerQuest = MouBieCat.getInstance().getKillerQuestManager().get(itemStackQuestKey);
 
-            // 如果有該任務以及任務是達成狀態
-            if (killerQuest != null && killerQuest.isSuccess(clickPlayer)) {
-                // 設定玩家的稱號
-                final PlayerQuestDataFile playerQuestDataFile =
-                        MouBieQuest.getAPI().getQuestData().get(clickPlayer);
-                playerQuestDataFile.setPlayerTitle(new Title(killerQuest.getQuestTitle()));
-
-                // 重整介面
+            // 如果任務不為空、嘗試套用稱號成功
+            if (killerQuest != null && this.tryUseTitleToPlayer(killerQuest, clickPlayer))
                 this.initPageInventory(clickPlayer, this.getPage());
-
-                Bukkit.getPluginManager().callEvent(new PlayerChangedTitleEvent(clickPlayer, killerQuest));
-            }
         }
 
         return false;
