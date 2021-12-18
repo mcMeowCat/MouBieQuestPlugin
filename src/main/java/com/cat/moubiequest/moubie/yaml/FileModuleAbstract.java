@@ -21,6 +21,7 @@
 
 package com.cat.moubiequest.moubie.yaml;
 
+import com.cat.moubiequest.api.Debugger;
 import com.cat.moubiequest.api.yaml.FileSection;
 import com.cat.moubiequest.MouBieCat;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -52,7 +53,7 @@ public abstract class FileModuleAbstract
         if (!fileObj.exists()) {
             if (isNewFile) {
                 if (!this.createFile(fileObj))
-                    System.out.println(MouBieCat.PLUGIN_TITLE + "§c創建一個新的檔案配置失敗，這是一個錯誤訊息。");
+                    Debugger.warning("§c創建一個新的檔案配置失敗，這是一個錯誤訊息。");
             }
             else
                 MouBieCat.getInstance().saveResource(path + name, false);
@@ -94,7 +95,7 @@ public abstract class FileModuleAbstract
             this.configuration.save(file);
         } catch (final IOException e) {
             e.printStackTrace();
-            System.out.println(MouBieCat.PLUGIN_TITLE + "§c嘗試將檔案保存至實體位置失敗，這是一個錯誤訊息。");
+            Debugger.warning("§c嘗試將檔案保存至實體位置失敗，這是一個錯誤訊息。");
         }
     }
 

@@ -21,6 +21,7 @@
 
 package com.cat.moubiequest.moubie.yaml;
 
+import com.cat.moubiequest.api.Debugger;
 import com.cat.moubiequest.api.yaml.MemorySection;
 import com.cat.moubiequest.MouBieCat;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -48,7 +49,7 @@ public abstract class MemoryModuleAbstract
     public MemoryModuleAbstract(final @NotNull String path) {
         final File pathFileObj = new File(MouBieCat.getInstance().getDataFolder(), path);
         if (!this.createPath(pathFileObj))
-            System.out.println(MouBieCat.PLUGIN_TITLE + "§c用於存放檔案路徑創建失敗，這是一個錯誤訊息。");
+            Debugger.warning("§c用於存放檔案路徑創建失敗，這是一個錯誤訊息。");
     }
 
     /**

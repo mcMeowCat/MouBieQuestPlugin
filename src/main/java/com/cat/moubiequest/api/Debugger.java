@@ -41,7 +41,7 @@ public final class Debugger {
      * @param msg 訊息
      */
     public static void info(final @NotNull String msg) {
-        Debugger.LOGGER.info(Utils.forMessageToRGB(MouBieCat.PLUGIN_TITLE + msg));
+        Debugger.LOGGER.info(Utils.forMessageToRGB(msg));
     }
 
     /**
@@ -49,7 +49,7 @@ public final class Debugger {
      * @param msg 訊息
      */
     public static void warning(final @NotNull String msg) {
-        Debugger.LOGGER.warning(Utils.forMessageToRGB(MouBieCat.PLUGIN_TITLE + msg));
+        Debugger.LOGGER.warning(Utils.forMessageToRGB(msg));
     }
 
     /**
@@ -58,7 +58,7 @@ public final class Debugger {
      * @param msg 訊息
      */
     public static void log(final @NotNull Level level, final @NotNull String msg) {
-        Debugger.LOGGER.log(level, Utils.forMessageToRGB(MouBieCat.PLUGIN_TITLE + msg));
+        Debugger.LOGGER.log(level, Utils.forMessageToRGB(msg));
     }
 
 }
