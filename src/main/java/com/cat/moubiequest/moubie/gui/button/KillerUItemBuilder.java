@@ -66,8 +66,8 @@ public class KillerUItemBuilder
         final QuestFormat<KillerQuest> killerFormat = new KillerQuestFormat(this.quest, formatFile);
 
         // 轉換開始
-        this.displayName(killerFormat.replace(formatHead, player));
-        this.lore(killerFormat.replaceList(formatBody, player));
+        this.displayName(killerFormat.replace(formatHead, player))
+                .lore(killerFormat.replaceList(formatBody, player));
 
         return super.build();
     }

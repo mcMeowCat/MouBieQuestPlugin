@@ -103,4 +103,11 @@ public interface Quest {
      */
     boolean isSuccess(final @NotNull Player player);
 
+    /**
+     * 設定玩家的稱號
+     * @param player 玩家
+     * @return 是否設定成功
+     */
+    boolean setPlayerTitle(final @NotNull Player player);
+
 }

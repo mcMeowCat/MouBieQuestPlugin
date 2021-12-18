@@ -65,12 +65,10 @@ public final class PlayerQuestDataBuilder
         // 轉換佔位符格式
         final PlayerDataFormat dataFormat = new PlayerQuestDataFormat(player, formatFile);
 
-        // 轉換開始
-        this.displayName(dataFormat.replace(dataFormatHead));
-        this.lore(dataFormat.replaceList(dataFormatBody));
-
-        // 設定頭顱
-        this.skullMeta(player);
+        // 轉換開始及設定頭顱
+        this.displayName(dataFormat.replace(dataFormatHead))
+                .lore(dataFormat.replaceList(dataFormatBody))
+                .skullMeta(player);
 
         return super.build();
     }

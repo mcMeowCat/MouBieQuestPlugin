@@ -107,7 +107,7 @@ public final class KillerQuestUInventory
             final KillerQuest killerQuest = MouBieCat.getInstance().getKillerQuestManager().get(itemStackQuestKey);
 
             // 如果任務不為空、嘗試套用稱號成功
-            if (killerQuest != null && this.tryUseTitleToPlayer(killerQuest, clickPlayer))
+            if (killerQuest != null && killerQuest.setPlayerTitle(clickPlayer))
                 this.initPageInventory(clickPlayer, this.getPage());
         }
 

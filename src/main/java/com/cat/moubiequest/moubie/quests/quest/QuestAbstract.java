@@ -21,6 +21,8 @@
 
 package com.cat.moubiequest.moubie.quests.quest;
 
+import com.cat.moubiequest.api.MouBieQuest;
+import com.cat.moubiequest.api.data.quest.TitleData;
 import com.cat.moubiequest.api.quests.Quest;
 import com.cat.moubiequest.api.quests.QuestType;
 import com.cat.moubiequest.moubie.quests.object.Message;
@@ -184,4 +186,19 @@ public abstract class QuestAbstract
      */
     public abstract boolean isSuccess(final @NotNull Player player);
 
+    /**
+     * 設定玩家的稱號
+     * @param player 玩家
+     * @return 是否設定成功
+     */
+    public boolean setPlayerTitle(final @NotNull Player player) {
+        // 該任務玩家是否達成
+        if (this.isSuccess(player)) {
+            // 設定玩家的稱號
+            final TitleData titleData = MouBieQuest.getAPI().getQuestData().get(player);
+            titleData.setPlayerTitle(new Title(this.getQuestTitle()));
+            return true;
+        }
+        return false;
+    }
 }
