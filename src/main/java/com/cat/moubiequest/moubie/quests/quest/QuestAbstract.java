@@ -23,12 +23,15 @@ package com.cat.moubiequest.moubie.quests.quest;
 
 import com.cat.moubiequest.api.MouBieQuest;
 import com.cat.moubiequest.api.data.quest.TitleData;
+import com.cat.moubiequest.api.event.PlayerChangeTitleEvent;
+import com.cat.moubiequest.api.event.PlayerChangedTitleEvent;
 import com.cat.moubiequest.api.quests.Quest;
 import com.cat.moubiequest.api.quests.QuestType;
 import com.cat.moubiequest.moubie.quests.object.Message;
 import com.cat.moubiequest.moubie.quests.object.QItem;
 import com.cat.moubiequest.moubie.quests.object.Status;
 import com.cat.moubiequest.moubie.quests.object.Title;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
@@ -192,11 +195,20 @@ public abstract class QuestAbstract
      * @return 是否設定成功
      */
     public boolean setPlayerTitle(final @NotNull Player player) {
-        // 該任務玩家是否達成
-        if (this.isSuccess(player)) {
+        // 發送事件
+        final PlayerChangeTitleEvent changeTitleEvent = new PlayerChangeTitleEvent(this, player);
+        Bukkit.getPluginManager().callEvent(changeTitleEvent);
+
+        // 該任務玩家是否達成以及事件是否被取消
+        if (!changeTitleEvent.isCancelled() && this.isSuccess(player)) {
             // 設定玩家的稱號
             final TitleData titleData = MouBieQuest.getAPI().getQuestData().get(player);
             titleData.setPlayerTitle(new Title(this.getQuestTitle()));
+
+            // 發送事件
+            final PlayerChangedTitleEvent changedTitleEvent = new PlayerChangedTitleEvent(this, player);
+            Bukkit.getPluginManager().callEvent(changedTitleEvent);
+
             return true;
         }
         return false;

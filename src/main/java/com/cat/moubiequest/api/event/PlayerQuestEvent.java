@@ -19,41 +19,41 @@
  * <http://www.gnu.org/licenses/gpl-3.0.html>.
  */
 
-package com.cat.moubiequest.api.quests;
+package com.cat.moubiequest.api.event;
 
+import com.cat.moubiequest.api.quests.Quest;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * 代表一個帶有進度的任務介面
+ * 代表一個有關玩家的任務事件
+ * @param <T> 任務類型
  * @author MouBieCat
  */
-public interface ProgressQuest
-        extends Quest {
+public abstract class PlayerQuestEvent<T extends Quest>
+        extends QuestEvent<T> {
+
+    // 玩家
+    @NotNull
+    private final Player player;
 
     /**
-     * 或取進度任務需達成的次數
-     * @return 所需次數
+     * 建構子
+     * @param quest 事件任務
+     * @param who 玩家
      */
-    int getQuestProgress();
+    public PlayerQuestEvent(final @NotNull T quest, final @NotNull Player who) {
+        super(quest);
+        this.player = who;
+    }
 
     /**
-     * 對玩家添加進度一次
-     * @param player 玩家
+     * 獲取觸發事件的玩家
+     * @return 玩家
      */
-    void addPlayerQuestProgress(final @NotNull Player player);
-
-    /**
-     * 對玩家進度清除歸零
-     * @param player 玩家
-     */
-    void clearPlayerQuestProgress(final @NotNull Player player);
-
-    /**
-     * 獲取該玩家目前達到的進度水平
-     * @param player 玩家
-     * @return 進度次數
-     */
-    int getPlayerQuestProgress(final @NotNull Player player);
+    @NotNull
+    public final Player getPlayer() {
+        return this.player;
+    }
 
 }

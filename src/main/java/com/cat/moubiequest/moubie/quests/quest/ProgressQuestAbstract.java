@@ -23,6 +23,9 @@ package com.cat.moubiequest.moubie.quests.quest;
 
 import com.cat.moubiequest.api.MouBieQuest;
 import com.cat.moubiequest.api.data.quest.PlayerQuestDataFile;
+import com.cat.moubiequest.api.event.PlayerProgressAddEvent;
+import com.cat.moubiequest.api.event.PlayerProgressClearEvent;
+import com.cat.moubiequest.api.event.QuestSuccessEvent;
 import com.cat.moubiequest.api.quests.ProgressQuest;
 import com.cat.moubiequest.api.quests.QuestType;
 import com.cat.moubiequest.moubie.quests.object.Message;
@@ -76,20 +79,26 @@ public abstract class ProgressQuestAbstract
     /**
      * 對玩家添加進度一次
      * @param player 玩家
-     * @return 是否成功添加
      */
-    public final boolean addPlayerQuestProgress(final @NotNull Player player) {
-        if (this.isQuestEnable() && !this.isSuccess(player)) {
+    public final void addPlayerQuestProgress(final @NotNull Player player) {
+        // 發送事件
+        final PlayerProgressAddEvent addEvent = new PlayerProgressAddEvent(this, player);
+        Bukkit.getPluginManager().callEvent(addEvent);
+
+        if (!addEvent.isCancelled() && this.isQuestEnable() && !this.isSuccess(player)) {
             final PlayerQuestDataFile dataFile = MouBieQuest.getAPI().getQuestData().get(player);
             dataFile.setProgress(this, this.getPlayerQuestProgress(player) + 1);
 
             // 當完達成時呼叫(僅限一次)
-            if (this.getPlayerQuestProgress(player) == this.quest_progress)
-                dataFile.addHonorPoint(this);
+            if (this.getPlayerQuestProgress(player) == this.quest_progress) {
+                // 發送事件
+                final QuestSuccessEvent successEvent = new QuestSuccessEvent(this, player);
+                Bukkit.getPluginManager().callEvent(successEvent);
 
-            return true;
+                // 給予榮譽點數
+                dataFile.addHonorPoint(this);
+            }
         }
-        return false;
     }
 
     /**
@@ -97,6 +106,10 @@ public abstract class ProgressQuestAbstract
      * @param player 玩家
      */
     public final void clearPlayerQuestProgress(final @NotNull Player player) {
+        // 發送事件
+        final PlayerProgressClearEvent clearEvent = new PlayerProgressClearEvent(this, player);
+        Bukkit.getPluginManager().callEvent(clearEvent);
+
         final PlayerQuestDataFile dataFile = MouBieQuest.getAPI().getQuestData().get(player);
         dataFile.setProgress(this, 0);
     }
