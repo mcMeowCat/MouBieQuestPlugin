@@ -33,6 +33,7 @@ import com.cat.moubiequest.moubie.quests.object.Status;
 import com.cat.moubiequest.moubie.quests.object.Title;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
@@ -201,13 +202,15 @@ public abstract class QuestAbstract
 
         // 該任務玩家是否達成以及事件是否被取消
         if (!changeTitleEvent.isCancelled() && this.isSuccess(player)) {
+            // 發送事件
+            final PlayerChangedTitleEvent changedTitleEvent = new PlayerChangedTitleEvent(this, player);
+            Bukkit.getPluginManager().callEvent(changedTitleEvent);
+
             // 設定玩家的稱號
             final TitleData titleData = MouBieQuest.getAPI().getQuestData().get(player);
             titleData.setPlayerTitle(new Title(this.getQuestTitle()));
 
-            // 發送事件
-            final PlayerChangedTitleEvent changedTitleEvent = new PlayerChangedTitleEvent(this, player);
-            Bukkit.getPluginManager().callEvent(changedTitleEvent);
+            player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_YES, 1f, 1f);
 
             return true;
         }
