@@ -34,7 +34,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerChatEvent;
 import org.jetbrains.annotations.NotNull;
 
@@ -109,7 +108,9 @@ public final class QuestListener
         final String honorPointTitleFormat = formatFile.getHonorPointTitleFormat(dataFile.getHonorPoint());
 
         if (dataFile.getPlayerTitle() != null) {
-            format = format.replace(replaceFormat, honorPointTitleFormat);
+            final String replace = honorPointTitleFormat.replace("{TITLE}", dataFile.getPlayerTitle().getTitle());
+
+            format = format.replace(replaceFormat, replace);
         } else
             format = format.replace(replaceFormat, "");
 
