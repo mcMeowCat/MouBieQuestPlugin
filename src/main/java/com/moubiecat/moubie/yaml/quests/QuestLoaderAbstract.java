@@ -21,10 +21,11 @@
 
 package com.moubiecat.moubie.yaml.quests;
 
+import com.moubiecat.MouBieCat;
 import com.moubiecat.api.yaml.quests.QuestLoader;
 import com.moubiecat.api.quests.Quest;
-import com.moubiecat.moubie.yaml.Loader;
 import com.moubiecat.api.quests.QuestType;
+import com.moubiecat.moubieapi.yaml.Loader;
 import org.bukkit.Material;
 import org.jetbrains.annotations.NotNull;
 
@@ -59,7 +60,7 @@ public abstract class QuestLoaderAbstract<T extends Quest>
      * @param type 解析的任務類型
      */
     public QuestLoaderAbstract(final @NotNull QuestType type) {
-        super("quests" + File.separatorChar, type.getName().toLowerCase() + ".yml", false);
+        super(MouBieCat.getInstance(), "quests" + File.separatorChar, type.getName().toLowerCase() + ".yml", false);
     }
 
     /**

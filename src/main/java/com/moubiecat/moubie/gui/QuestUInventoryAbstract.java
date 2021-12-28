@@ -21,19 +21,22 @@
 
 package com.moubiecat.moubie.gui;
 
-import com.moubiecat.api.gui.ui.GUI;
-import com.moubiecat.api.gui.button.PlayerDataUItem;
 import com.moubiecat.api.gui.button.PlayerUItem;
-import com.moubiecat.api.gui.button.Button;
-import com.moubiecat.api.gui.ui.QuestGUIBuilder;
 import com.moubiecat.api.gui.QuestView;
+import com.moubiecat.api.gui.ui.QuestGUI;
+import com.moubiecat.api.inventory.InventorySize;
+import com.moubiecat.api.inventory.button.Button;
+import com.moubiecat.api.inventory.button.PageButton;
+import com.moubiecat.api.inventory.gui.GUI;
 import com.moubiecat.api.manager.QuestManager;
 import com.moubiecat.api.quests.Quest;
 import com.moubiecat.api.quests.QuestType;
 import com.moubiecat.api.yaml.plugin.InventoryFile;
 import com.moubiecat.moubie.gui.button.PlayerQuestDataBuilder;
-import com.moubiecat.moubie.gui.button.UItemStackBuilder;
 import com.moubiecat.moubie.gui.ui.EditPlayerStatusUInventory;
+import com.moubiecat.moubieapi.inventory.PageUInventoryAbstract;
+import com.moubiecat.moubieapi.inventory.PageUItemStack;
+import com.moubiecat.moubieapi.inventory.UItemStackBuilder;
 import org.bukkit.Sound;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
@@ -49,7 +52,7 @@ import java.util.List;
  */
 public abstract class QuestUInventoryAbstract
         extends PageUInventoryAbstract
-        implements QuestGUIBuilder {
+        implements QuestGUI {
 
     protected static final int PLAYER_QUEST_DATA_BUTTON = 49;
 
@@ -68,15 +71,15 @@ public abstract class QuestUInventoryAbstract
 
     // 玩家資料頭顱
     @NotNull
-    protected final PlayerDataUItem playerUItem;
+    protected final PlayerUItem playerUItem;
 
     // 下一頁按鈕
     @NotNull
-    protected final Button nextButton;
+    protected final PageButton nextButton;
 
     // 上一頁按鈕
     @NotNull
-    protected final Button previousButton;
+    protected final PageButton previousButton;
 
     // 顯示方式按鈕(所有)
     @NotNull
@@ -108,12 +111,12 @@ public abstract class QuestUInventoryAbstract
         UItemStackBuilder builder;
 
         // 解析通用按鈕 (上一頁)
-        builder = new UItemStackBuilder(inventoryFile.getCommonButton("previous"), INVENTORY_PREVIOUS_PAGE_BUTTON);
-        this.previousButton = builder;
+        builder = new PageUItemStack(inventoryFile.getCommonButton("previous"), INVENTORY_PREVIOUS_PAGE_BUTTON);
+        this.previousButton = (PageButton) builder;
 
         // 解析通用按鈕 (下一頁)
-        builder = new UItemStackBuilder(inventoryFile.getCommonButton("next"), INVENTORY_NEXT_PAGE_BUTTON);
-        this.nextButton = builder;
+        builder = new PageUItemStack(inventoryFile.getCommonButton("next"), INVENTORY_NEXT_PAGE_BUTTON);
+        this.nextButton = (PageButton) builder;
 
         // 解析通用按鈕 (顯示方式按鈕(所有))
         builder = new UItemStackBuilder(inventoryFile.getCommonButton("quest_all"), INVENTORY_QUEST_ALL_BUTTON);
@@ -174,7 +177,7 @@ public abstract class QuestUInventoryAbstract
      * @param viewType 顯示方式
      */
     public final void setViewType(final @NotNull QuestView viewType) {
-        this.resetPage();
+        this.rePage();
         this.viewType = viewType;
     }
 
@@ -190,19 +193,19 @@ public abstract class QuestUInventoryAbstract
         final List<T> quests = new LinkedList<>();
         switch (this.viewType) {
             case ALL -> {
-                for (final T quest : manager.getQuests())
+                for (final T quest : manager.getValues())
                     if (!quest.isQuestVisible() || quest.isSuccess(player))
                         quests.add(quest);
             }
 
             case SUCCESS -> {
-                for (final T quest : manager.getQuests())
+                for (final T quest : manager.getValues())
                     if (quest.isSuccess(player))
                         quests.add(quest);
             }
 
             case NO_SUCCESS -> {
-                for (final T quest : manager.getQuests())
+                for (final T quest : manager.getValues())
                     if (!quest.isQuestVisible() && !quest.isSuccess(player))
                         quests.add(quest);
             }

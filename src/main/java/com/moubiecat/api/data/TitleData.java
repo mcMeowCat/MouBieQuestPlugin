@@ -19,29 +19,27 @@
  * <http://www.gnu.org/licenses/gpl-3.0.html>.
  */
 
-package com.moubiecat.api.gui;
+package com.moubiecat.api.data;
 
-import com.moubiecat.api.gui.ui.GUI;
-import org.bukkit.entity.Player;
-import org.jetbrains.annotations.NotNull;
+import com.moubiecat.moubie.quests.object.Title;
+import org.jetbrains.annotations.Nullable;
 
 /**
- * 代表一個具有返回介面的介面
- * @param <T> 有關 GUI 的類
+ * 有關玩家當前套用的稱號管理介面
  * @author MouBieCat
  */
-public interface BackInventory<T extends GUI>  {
+public interface TitleData {
 
     /**
-     * 獲取返回介面
-     * @return 返回介面
+     * 獲取當前使用的稱號
+     * @return 稱號實例
      */
-    @NotNull T getBacker();
+    @Nullable Title getPlayerTitle();
 
     /**
-     * 返回上一層介面
-     * @param player 玩家
+     * 設定當前使用的稱號
+     * @param title 稱號實例
      */
-    void goBack(final @NotNull Player player);
+    void setPlayerTitle(final @Nullable Title title);
 
 }

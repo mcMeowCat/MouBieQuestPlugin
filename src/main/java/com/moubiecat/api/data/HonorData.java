@@ -19,46 +19,39 @@
  * <http://www.gnu.org/licenses/gpl-3.0.html>.
  */
 
-package com.moubiecat.api;
+package com.moubiecat.api.data;
 
-import com.moubiecat.MouBieCat;
+import com.moubiecat.api.quests.Quest;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 /**
- * 有關偵錯或是訊息輸出類
+ * 有關操控玩家的點數介面
  * @author MouBieCat
  */
-public final class Debugger {
-
-    // 紀錄器
-    private static final Logger LOGGER = MouBieCat.getInstance().getLogger();
+public interface HonorData {
 
     /**
-     * 發送一般資訊紀錄
-     * @param msg 訊息
+     * 添加點數
+     * @param quest 任務
      */
-    public static void info(final @NotNull String msg) {
-        Debugger.LOGGER.info(Utils.forMessageToRGB(msg));
-    }
+    void addHonorPoint(final @NotNull Quest quest);
 
     /**
-     * 發送嚴重警告紀錄
-     * @param msg 訊息
+     * 減去點數
+     * @param quest 任務
      */
-    public static void warning(final @NotNull String msg) {
-        Debugger.LOGGER.warning(Utils.forMessageToRGB(msg));
-    }
+    void subHonorPoint(final @NotNull Quest quest);
 
     /**
-     * 自訂訊息級別
-     * @param level 級別
-     * @param msg 訊息
+     * 設定玩家目前的榮譽點數數量
+     * @param point 數量
      */
-    public static void log(final @NotNull Level level, final @NotNull String msg) {
-        Debugger.LOGGER.log(level, Utils.forMessageToRGB(msg));
-    }
+    void setHonorPoint(final int point);
+
+    /**
+     * 獲取玩家目前的榮譽點數數量
+     * @return 數量
+     */
+    int getHonorPoint();
 
 }

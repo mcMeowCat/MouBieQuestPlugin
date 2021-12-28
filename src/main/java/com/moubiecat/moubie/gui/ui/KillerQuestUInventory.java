@@ -28,6 +28,7 @@ import com.moubiecat.api.quests.QuestType;
 import com.moubiecat.moubie.gui.QuestUInventoryAbstract;
 import com.moubiecat.moubie.gui.button.KillerUItemBuilder;
 import com.moubiecat.MouBieCat;
+import com.moubiecat.moubie.gui.button.QuestUItemBuilder;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -69,8 +70,10 @@ public final class KillerQuestUInventory
 
         try {
             // 如果沒有任何任務，顯示空任務按鈕
-            if (sortQuests.size() == 0)
+            if (sortQuests.size() == 0) {
                 this.addUItem(this.questShowNothingButton);
+                return;
+            }
 
             else {
                 // 計算迴圈任務起始
@@ -103,7 +106,7 @@ public final class KillerQuestUInventory
 
         if (whoClicked instanceof final Player clickPlayer && currentItem != null) {
             // 獲取物品按鈕上的任務專屬名稱
-            final String itemStackQuestKey = QuestUItem.getItemStackQuestKey(currentItem);
+            final String itemStackQuestKey = QuestUItemBuilder.getItemStackQuestKey(currentItem);
             final KillerQuest killerQuest = MouBieCat.getInstance().getKillerQuestManager().get(itemStackQuestKey);
 
             // 如果任務不為空、嘗試套用稱號成功

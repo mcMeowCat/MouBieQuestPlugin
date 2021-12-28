@@ -19,27 +19,36 @@
  * <http://www.gnu.org/licenses/gpl-3.0.html>.
  */
 
-package com.moubiecat.moubie.yaml.plugin;
+package com.moubiecat.moubie.manager;
 
-import com.moubiecat.api.yaml.plugin.PluginFile;
-import com.moubiecat.moubie.yaml.Loader;
+import com.moubiecat.api.data.PlayerQuestDataFile;
+import com.moubiecat.api.manager.QuestDataManager;
+import com.moubiecat.moubie.data.PlayerQuestData;
+import com.moubiecat.moubieapi.manager.PlayerManagerAbstract;
+import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * 代表一個最基礎的插件嵌入式檔案載入器
+ * 用於紀錄玩家的任務資料管理器
  * @author MouBieCat
  */
-public abstract class PluginLoader
-        extends Loader
-        implements PluginFile {
+public final class PlayerQuestDataManager
+        extends PlayerManagerAbstract<PlayerQuestDataFile>
+        implements QuestDataManager {
 
     /**
-     * 建構子
-     * @param path      檔案路徑
-     * @param name      檔案
+     * 或取一個玩家的任務資料
+     * @param player 玩家
+     * @return v
      */
-    public PluginLoader(final @NotNull String path, final @NotNull String name) {
-        super(path, name, false);
+    @NotNull
+    public PlayerQuestDataFile get(final @NotNull Player player) {
+        final PlayerQuestDataFile dataFile = super.get(player);
+        if (dataFile != null)
+            return dataFile;
+
+        this.add(player, new PlayerQuestData(player));
+        return this.get(player);
     }
 
 }

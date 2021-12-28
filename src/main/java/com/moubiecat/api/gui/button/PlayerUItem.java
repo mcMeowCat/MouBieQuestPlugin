@@ -21,6 +21,7 @@
 
 package com.moubiecat.api.gui.button;
 
+import com.moubiecat.api.inventory.button.Button;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;

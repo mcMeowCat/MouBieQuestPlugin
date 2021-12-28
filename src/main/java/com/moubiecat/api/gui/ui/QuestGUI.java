@@ -22,6 +22,7 @@
 package com.moubiecat.api.gui.ui;
 
 import com.moubiecat.api.gui.QuestView;
+import com.moubiecat.api.inventory.gui.PageGUI;
 import org.jetbrains.annotations.NotNull;
 
 /**

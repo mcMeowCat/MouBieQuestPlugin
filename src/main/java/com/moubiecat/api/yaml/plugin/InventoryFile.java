@@ -22,6 +22,7 @@
 package com.moubiecat.api.yaml.plugin;
 
 import com.moubiecat.api.quests.QuestType;
+import com.moubiecat.api.yaml.PluginLoader;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
@@ -30,7 +31,7 @@ import org.jetbrains.annotations.NotNull;
  * @author MouBieCat
  */
 public interface InventoryFile
-        extends PluginFile {
+        extends PluginLoader {
 
     /**
      * 獲取一個任務類型的介面標題

@@ -19,31 +19,24 @@
  * <http://www.gnu.org/licenses/gpl-3.0.html>.
  */
 
-package com.moubiecat.api.manager;
-
-import com.moubiecat.api.handler.Handler;
-import com.moubiecat.api.handler.NBTHandler;
-import com.moubiecat.moubie.manager.handler.HandlerManager;
-import org.jetbrains.annotations.NotNull;
+package com.moubiecat.api.data;
 
 /**
- * 記錄所有有關 nms 操作類的管理器介面
+ * 有關玩家接收訊息管理介面
  * @author MouBieCat
  */
-public interface NMSManager
-        extends Manager<HandlerManager.NMSHandlerType, Handler> {
+public interface MessageData {
 
     /**
-     * 獲取操作NBTTag的介面類
-     * @return NBTHandler
+     * 獲取玩家是否接收有關任務的訊息
+     * @return 是否可看見
      */
-    @NotNull NBTHandler getNbtHandler();
+    boolean isReceiveMessage();
 
     /**
-     * 獲取一個 NMS 操作類
-     * @param key k 操作類型
-     * @return NMS操作類
+     * 設定玩家是否接收有關任務的訊息
+     * @param status 狀態
      */
-    @NotNull Handler get(final @NotNull HandlerManager.NMSHandlerType key);
+    void setReceiveMessage(final boolean status);
 
 }

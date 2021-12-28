@@ -21,7 +21,7 @@
 
 package com.moubiecat.listener;
 
-import com.moubiecat.api.MouBieQuest;
+import com.moubiecat.MouBieCat;
 import com.moubiecat.moubie.data.PlayerQuestData;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -44,7 +44,7 @@ public final class PlayerDataListener
     @EventHandler
     public void onJoin(final @NotNull PlayerJoinEvent event) {
         final Player player = event.getPlayer();
-        MouBieQuest.getAPI().getQuestData().add(player, new PlayerQuestData(player));
+        MouBieCat.getInstance().getPlayerDataManager().add(player, new PlayerQuestData(player));
     }
 
     /**
@@ -54,7 +54,7 @@ public final class PlayerDataListener
     @EventHandler
     public void onQuit(final @NotNull PlayerQuitEvent event) {
         final Player player = event.getPlayer();
-        MouBieQuest.getAPI().getQuestData().remove(player);
+        MouBieCat.getInstance().getPlayerDataManager().remove(player);
     }
 
 }

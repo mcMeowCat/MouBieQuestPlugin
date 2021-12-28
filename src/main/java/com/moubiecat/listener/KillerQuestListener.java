@@ -21,13 +21,16 @@
 
 package com.moubiecat.listener;
 
+import com.moubiecat.api.gui.ui.QuestGUI;
 import com.moubiecat.api.quests.KillerQuest;
 import com.moubiecat.MouBieCat;
+import com.moubiecat.moubie.gui.ui.KillerQuestUInventory;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
+import org.bukkit.event.player.PlayerDropItemEvent;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -46,9 +49,24 @@ public class KillerQuestListener
         final LivingEntity entity = event.getEntity();
         final Player killer = entity.getKiller();
         if (killer != null) {
-            for (final KillerQuest quest : MouBieCat.getInstance().getKillerQuestManager().getQuests())
+            for (final KillerQuest quest : MouBieCat.getInstance().getKillerQuestManager().getValues())
                 if (quest.checkEntityType(entity.getType()))
                     quest.addPlayerQuestProgress(killer);
+        }
+    }
+
+    /**
+     * 玩家丟棄物品事件
+     * @param event 事件
+     */
+    @EventHandler
+    public void onDrop(final @NotNull PlayerDropItemEvent event) {
+        final Player player = event.getPlayer();
+        if (player.isSneaking()) {
+            event.setCancelled(true);
+
+            final QuestGUI inventory = new KillerQuestUInventory();
+            inventory.open(player, 0);
         }
     }
 

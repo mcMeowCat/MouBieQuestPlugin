@@ -21,21 +21,21 @@
 
 package com.moubiecat.api.manager;
 
-import com.moubiecat.api.data.quest.PlayerQuestDataFile;
+import com.moubiecat.api.data.PlayerQuestDataFile;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * 用於紀錄玩家的任務資料管理器介面
+ * 代表玩家任務紀錄經理
  * @author MouBieCat
  */
-public interface PlayerDataManager
-        extends Manager<Player, PlayerQuestDataFile> {
+public interface QuestDataManager
+        extends PlayerManager<PlayerQuestDataFile> {
 
     /**
      * 或取一個玩家的任務資料
      * @param player 玩家
-     * @return 玩家資料紀錄
+     * @return v
      */
     @NotNull PlayerQuestDataFile get(final @NotNull Player player);
 

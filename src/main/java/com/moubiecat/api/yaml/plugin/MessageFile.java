@@ -21,6 +21,7 @@
 
 package com.moubiecat.api.yaml.plugin;
 
+import com.moubiecat.api.yaml.PluginLoader;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -28,7 +29,7 @@ import org.jetbrains.annotations.NotNull;
  * @author MouBieCat
  */
 public interface MessageFile
-        extends PluginFile {
+        extends PluginLoader {
 
     /**
      * 獲取改變更號的訊息

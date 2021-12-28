@@ -22,11 +22,11 @@
 package com.moubiecat.moubie.gui.button;
 
 import com.moubiecat.api.format.PlayerDataFormat;
-import com.moubiecat.api.gui.button.PlayerDataUItem;
-import com.moubiecat.api.gui.button.UItemBuilder;
+import com.moubiecat.api.gui.button.PlayerUItem;
 import com.moubiecat.api.yaml.plugin.FormatFile;
 import com.moubiecat.moubie.format.PlayerQuestDataFormat;
 import com.moubiecat.MouBieCat;
+import com.moubiecat.moubieapi.inventory.UItemStackBuilder;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -40,7 +40,7 @@ import java.util.List;
  */
 public final class PlayerQuestDataBuilder
         extends UItemStackBuilder
-        implements UItemBuilder, PlayerDataUItem {
+        implements PlayerUItem {
 
     /**
      * 建構子

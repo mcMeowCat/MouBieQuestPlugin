@@ -21,9 +21,11 @@
 
 package com.moubiecat.moubie.yaml.plugin;
 
+import com.moubiecat.MouBieCat;
 import com.moubiecat.api.quests.QuestType;
 import com.moubiecat.api.yaml.plugin.InventoryFile;
-import com.moubiecat.moubie.itemstack.ItemStackBuilder;
+import com.moubiecat.moubieapi.itemstack.ItemStackBuilder;
+import com.moubiecat.moubieapi.yaml.PluginFileLoaderAbstract;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
@@ -33,7 +35,7 @@ import org.jetbrains.annotations.NotNull;
  * @author MouBieCat
  */
 public final class PluginInventory
-        extends PluginLoader
+        extends PluginFileLoaderAbstract
         implements InventoryFile {
 
     private static final String INVENTORY_QUEST_INVENTORY_MAIN_PATH = "QuestInventory.";
@@ -49,7 +51,7 @@ public final class PluginInventory
      * 建構子
      */
     public PluginInventory() {
-        super("", "Inventory.yml");
+        super(MouBieCat.getInstance(), "", "Inventory.yml");
     }
 
     /**

@@ -21,15 +21,17 @@
 
 package com.moubiecat.moubie.gui.ui;
 
-import com.moubiecat.api.MouBieQuest;
-import com.moubiecat.api.data.quest.PlayerQuestDataFile;
-import com.moubiecat.api.gui.button.Button;
+import com.moubiecat.api.data.PlayerQuestDataFile;
 import com.moubiecat.api.gui.ui.EditStatusGUI;
 import com.moubiecat.api.gui.ui.QuestGUI;
+import com.moubiecat.api.inventory.InventorySize;
+import com.moubiecat.api.inventory.button.BackButton;
+import com.moubiecat.api.inventory.button.Button;
 import com.moubiecat.api.yaml.plugin.InventoryFile;
-import com.moubiecat.moubie.gui.UInventoryAbstract;
-import com.moubiecat.moubie.gui.button.UItemStackBuilder;
 import com.moubiecat.MouBieCat;
+import com.moubiecat.moubieapi.inventory.BackUItemStack;
+import com.moubiecat.moubieapi.inventory.UInventoryAbstract;
+import com.moubiecat.moubieapi.inventory.UItemStackBuilder;
 import org.bukkit.Sound;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
@@ -58,7 +60,7 @@ public final class EditPlayerStatusUInventory
 
     // 返回介面按鈕
     @NotNull
-    private final Button backInventoryButton;
+    private final BackButton backInventoryButton;
 
     // 代表上一層介面
     @NotNull
@@ -86,8 +88,8 @@ public final class EditPlayerStatusUInventory
         this.questReceiveMessageButton = builder;
 
         // 解析通用按鈕 (返回上一層介面)
-        builder = new UItemStackBuilder(inventoryFile.getCommonButton("backer"), INVENTORY_BACK_INVENTORY_BUTTON);
-        this.backInventoryButton = builder;
+        builder = new BackUItemStack(inventoryFile.getCommonButton("backer"), INVENTORY_BACK_INVENTORY_BUTTON);
+        this.backInventoryButton = (BackButton) builder;
     }
 
     /**
@@ -138,7 +140,7 @@ public final class EditPlayerStatusUInventory
                 // 清除稱號套用
                 case INVENTORY_QUEST_CLEAR_TITLE_BUTTON -> {
                     final PlayerQuestDataFile dataFile =
-                            MouBieQuest.getAPI().getQuestData().get(clickPlayer);
+                            MouBieCat.getInstance().getPlayerDataManager().get(clickPlayer);
                     dataFile.setPlayerTitle(null);
 
                     this.initInventory(clickPlayer);
@@ -149,7 +151,7 @@ public final class EditPlayerStatusUInventory
                 // 更改通知狀態
                 case INVENTORY_QUEST_RECEIVE_MESSAGE_BUTTON -> {
                     final PlayerQuestDataFile dataFile =
-                            MouBieQuest.getAPI().getQuestData().get(clickPlayer);
+                            MouBieCat.getInstance().getPlayerDataManager().get(clickPlayer);
                     dataFile.setReceiveMessage(!dataFile.isReceiveMessage());
 
                     this.initInventory(clickPlayer);

@@ -21,10 +21,12 @@
 
 package com.moubiecat.moubie.data;
 
-import com.moubiecat.api.data.quest.PlayerQuestDataFile;
+import com.moubiecat.MouBieCat;
+import com.moubiecat.api.data.PlayerQuestDataFile;
 import com.moubiecat.api.quests.ProgressQuest;
 import com.moubiecat.api.quests.Quest;
 import com.moubiecat.moubie.quests.object.Title;
+import com.moubiecat.moubieapi.yaml.data.PlayerDataLoaderAbstract;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -36,7 +38,7 @@ import java.io.File;
  * @author MouBieCat
  */
 public final class PlayerQuestData
-        extends PlayerDataLoader
+        extends PlayerDataLoaderAbstract<Player>
         implements PlayerQuestDataFile {
 
     // 資料實體路徑
@@ -62,19 +64,10 @@ public final class PlayerQuestData
      * @param player 資料擁有人
      */
     public PlayerQuestData(final @NotNull Player player) {
-        super(PLAYER_FLY_DATA_PATH + File.separatorChar, player);
+        super(MouBieCat.getInstance(), PLAYER_FLY_DATA_PATH + File.separatorChar, player);
         this.player_honor_point = this.configuration.getInt(PLAYER_DATA_PATH_PLAYER_HONOR_POINT);
         this.player_receive_message = this.configuration.getBoolean(PLAYER_DATA_PATH_PLAYER_IS_RECEIVE_MESSAGE);
-        this.initPlayerQuestData();
-    }
-
-    /**
-     * 初始化
-     */
-    private void initPlayerQuestData() {
-        this.configuration.set(PLAYER_DATA_PATH_PLAYER_HONOR_POINT, this.player_honor_point);
-        this.configuration.set(PLAYER_DATA_PATH_PLAYER_IS_RECEIVE_MESSAGE, this.player_receive_message);
-        this.save();
+        this.initPlayerLoader();
     }
 
     /**
@@ -148,6 +141,8 @@ public final class PlayerQuestData
      */
     public void setReceiveMessage(final boolean status) {
         this.player_receive_message = status;
+        this.configuration.set(PLAYER_DATA_PATH_PLAYER_IS_RECEIVE_MESSAGE, this.player_receive_message);
+        this.save();
     }
 
     /**
@@ -168,6 +163,16 @@ public final class PlayerQuestData
      */
     public void setProgress(final @NotNull ProgressQuest quest, final int progress) {
         this.configuration.set(PLAYER_DATA_PATH_PROGRESS_QUEST + quest.getQuestKey(), progress);
+        this.save();
+    }
+
+    /**
+     * 初始化
+     */
+    @Override
+    protected void initPlayerLoader() {
+        this.configuration.set(PLAYER_DATA_PATH_PLAYER_HONOR_POINT, this.player_honor_point);
+        this.configuration.set(PLAYER_DATA_PATH_PLAYER_IS_RECEIVE_MESSAGE, this.player_receive_message);
         this.save();
     }
 

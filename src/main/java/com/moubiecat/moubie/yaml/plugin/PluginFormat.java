@@ -21,10 +21,12 @@
 
 package com.moubiecat.moubie.yaml.plugin;
 
+import com.moubiecat.MouBieCat;
 import com.moubiecat.api.quests.Quest;
 import com.moubiecat.api.quests.QuestType;
 import com.moubiecat.api.yaml.plugin.FormatFile;
 import com.moubiecat.moubie.quests.object.Title;
+import com.moubiecat.moubieapi.yaml.PluginFileLoaderAbstract;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
@@ -38,7 +40,7 @@ import java.util.Set;
  * @author MouBieCat
  */
 public final class PluginFormat
-        extends PluginLoader
+        extends PluginFileLoaderAbstract
         implements FormatFile {
 
     private static final String FORMAT_QUEST_FORMAT_MAIN_PATH = "QuestFormat.";
@@ -65,7 +67,7 @@ public final class PluginFormat
      * 建構子
      */
     public PluginFormat() {
-        super("", "Format.yml");
+        super(MouBieCat.getInstance(), "", "Format.yml");
     }
 
     /**

@@ -21,10 +21,10 @@
 
 package com.moubiecat.moubie.format;
 
-import com.moubiecat.api.data.quest.PlayerQuestDataFile;
+import com.moubiecat.MouBieCat;
+import com.moubiecat.api.data.PlayerQuestDataFile;
 import com.moubiecat.api.format.PlayerDataFormat;
 import com.moubiecat.api.yaml.plugin.FormatFile;
-import com.moubiecat.api.MouBieQuest;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
@@ -71,7 +71,7 @@ public final class PlayerQuestDataFormat
     @NotNull
     public String replace(final @NotNull String msg) {
         String replaceStr = msg;
-        final PlayerQuestDataFile dataFile = MouBieQuest.getAPI().getQuestData().get(this.replacer);
+        final PlayerQuestDataFile dataFile = MouBieCat.getInstance().getPlayerDataManager().get(this.replacer);
 
         // 轉換玩家名稱
         replaceStr = replaceStr.replace(

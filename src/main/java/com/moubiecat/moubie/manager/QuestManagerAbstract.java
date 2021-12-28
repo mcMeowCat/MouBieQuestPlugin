@@ -23,9 +23,7 @@ package com.moubiecat.moubie.manager;
 
 import com.moubiecat.api.manager.QuestManager;
 import com.moubiecat.api.quests.Quest;
-import org.jetbrains.annotations.NotNull;
-
-import java.util.Collection;
+import com.moubiecat.moubieapi.manager.ManagerAbstract;
 
 /**
  * 代表一個單一類型任務的管理器
@@ -49,14 +47,5 @@ public abstract class QuestManagerAbstract<T extends Quest>
      * @param showInfo 顯示任務加載資訊
      */
     public abstract void parsingQuests(final boolean showInfo);
-
-    /**
-     * 獲取所有的任務
-     * @return 任務集合
-     */
-    @NotNull
-    public final Collection<T> getQuests() {
-        return this.manager.values();
-    }
 
 }

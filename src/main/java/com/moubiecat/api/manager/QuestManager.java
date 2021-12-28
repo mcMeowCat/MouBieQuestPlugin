@@ -22,9 +22,6 @@
 package com.moubiecat.api.manager;
 
 import com.moubiecat.api.quests.Quest;
-import org.jetbrains.annotations.NotNull;
-
-import java.util.Collection;
 
 /**
  * 代表一個單一類型任務的管理器
@@ -39,11 +36,5 @@ public interface QuestManager<T extends Quest>
      * @param showInfo 顯示任務加載資訊
      */
     void parsingQuests(final boolean showInfo);
-
-    /**
-     * 獲取所有的任務
-     * @return 任務集合
-     */
-    @NotNull Collection<T> getQuests();
 
 }

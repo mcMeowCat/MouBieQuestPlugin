@@ -19,12 +19,11 @@
  * <http://www.gnu.org/licenses/gpl-3.0.html>.
  */
 
-package com.moubiecat.moubie.manager.quests;
+package com.moubiecat.moubie.manager;
 
-import com.moubiecat.api.Debugger;
+import com.moubiecat.MouBieCat;
 import com.moubiecat.api.yaml.quests.KillerLoader;
 import com.moubiecat.api.quests.KillerQuest;
-import com.moubiecat.moubie.manager.QuestManagerAbstract;
 import com.moubiecat.moubie.yaml.quests.KillerQuestLoader;
 
 /**
@@ -52,7 +51,7 @@ public final class KillerQuestManager
             this.add(quest.getQuestKey(), quest);
 
         if (showInfo)
-            Debugger.info("§2成功解析並加載了 §6" + this.manager.size() + " §2個§c擊殺§2類型任務！");
+            MouBieCat.getInstance().getDebugger().info("§2成功解析並加載了 §6" + this.getValues().size() + " §2個§c擊殺§2類型任務！");
     }
 
 }

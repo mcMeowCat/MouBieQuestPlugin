@@ -21,14 +21,12 @@
 
 package com.moubiecat.listener;
 
-import com.moubiecat.api.gui.ui.GUI;
-import com.moubiecat.api.gui.ui.QuestGUI;
-import com.moubiecat.moubie.gui.ui.KillerQuestUInventory;
-import org.bukkit.entity.Player;
+import com.moubiecat.api.inventory.gui.GUI;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.event.player.PlayerDropItemEvent;
+import org.bukkit.event.inventory.InventoryCloseEvent;
+import org.bukkit.event.inventory.InventoryOpenEvent;
 import org.bukkit.inventory.InventoryHolder;
 import org.jetbrains.annotations.NotNull;
 
@@ -40,30 +38,36 @@ public final class InventoryListener
         implements Listener {
 
     /**
-     * 選單被擊事件
+     * 當介面被打開
+     * @param event 事件
+     */
+    @EventHandler
+    public void onOpen(final @NotNull InventoryOpenEvent event) {
+        final InventoryHolder holder = event.getInventory().getHolder();
+        if (holder instanceof GUI)
+            ((GUI) holder).openInventory(event);
+    }
+
+    /**
+     * 當介面被點擊
      * @param event 事件
      */
     @EventHandler
     public void onClick(final @NotNull InventoryClickEvent event) {
         final InventoryHolder holder = event.getInventory().getHolder();
-
         if (holder instanceof GUI)
-            ((GUI)holder).clickInventory(event);
+            ((GUI) holder).clickInventory(event);
     }
 
     /**
-     * 玩家丟棄物品事件
+     * 當介面被關閉
      * @param event 事件
      */
     @EventHandler
-    public void onDrop(final @NotNull PlayerDropItemEvent event) {
-        final Player player = event.getPlayer();
-        if (player.isSneaking()) {
-            event.setCancelled(true);
-
-            final QuestGUI inventory = new KillerQuestUInventory();
-            inventory.open(player, 0);
-        }
+    public void onOpen(final @NotNull InventoryCloseEvent event) {
+        final InventoryHolder holder = event.getInventory().getHolder();
+        if (holder instanceof GUI)
+            ((GUI) holder).closeInventory(event);
     }
 
 }

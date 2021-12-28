@@ -21,11 +21,12 @@
 
 package com.moubiecat.moubie.gui.button;
 
-import com.moubiecat.api.MouBieQuest;
+import com.moubiecat.api.builder.NBTBuilder;
 import com.moubiecat.api.gui.button.QuestUItem;
-import com.moubiecat.api.handler.NBTHandler;
 import com.moubiecat.api.quests.Quest;
 import com.moubiecat.api.quests.QuestType;
+import com.moubiecat.moubieapi.inventory.UItemStackBuilder;
+import com.moubiecat.moubieapi.itemstack.NBTTagBuilder;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -76,11 +77,9 @@ public abstract class QuestUItemBuilder<T extends Quest>
      */
     @Nullable
     public static QuestType getItemStackQuestType(final @NotNull ItemStack itemStack) {
-        final NBTHandler handler = MouBieQuest.getAPI().getNMS().getNbtHandler();
-
-        if (handler.hasTag(itemStack, UI_ITEM_QUEST_MAIN_TAG))
+        if (NBTTagBuilder.hasTag(itemStack, UI_ITEM_QUEST_MAIN_TAG))
             return QuestType.valueOf(
-                    handler.getString(itemStack, UI_ITEM_QUEST_MAIN_TAG, UI_ITEM_QUEST_QUEST_TYPE_TAG)
+                    NBTTagBuilder.getString(itemStack, UI_ITEM_QUEST_MAIN_TAG, UI_ITEM_QUEST_QUEST_TYPE_TAG)
             );
 
         return null;
@@ -93,10 +92,8 @@ public abstract class QuestUItemBuilder<T extends Quest>
      */
     @NotNull
     public static String getItemStackQuestKey(final @NotNull ItemStack itemStack) {
-        final NBTHandler handler = MouBieQuest.getAPI().getNMS().getNbtHandler();
-
-        if (handler.hasTag(itemStack, UI_ITEM_QUEST_MAIN_TAG))
-            return handler.getString(itemStack, UI_ITEM_QUEST_MAIN_TAG, UI_ITEM_QUEST_QUEST_KEY_TAG);
+        if (NBTTagBuilder.hasTag(itemStack, UI_ITEM_QUEST_MAIN_TAG))
+            return NBTTagBuilder.getString(itemStack, UI_ITEM_QUEST_MAIN_TAG, UI_ITEM_QUEST_QUEST_KEY_TAG);
 
         return "";
     }
@@ -107,15 +104,14 @@ public abstract class QuestUItemBuilder<T extends Quest>
      */
     @NotNull
     public final ItemStack build() {
-        final NBTHandler handler = MouBieQuest.getAPI().getNMS().getNbtHandler();
+        final NBTBuilder nbtTagBuilder = new NBTTagBuilder(UI_ITEM_QUEST_MAIN_TAG);
 
         // 配置 TAG 屬性
-        handler.setMainTagName(UI_ITEM_QUEST_MAIN_TAG)
-                .setString(UI_ITEM_QUEST_QUEST_TYPE_TAG, this.quest.getQuestType().getName())
+        nbtTagBuilder.setString(UI_ITEM_QUEST_QUEST_TYPE_TAG, this.quest.getQuestType().getName())
                 .setString(UI_ITEM_QUEST_QUEST_KEY_TAG, this.quest.getQuestKey());
 
         // 寫入到物品中
-        this.itemStack = handler.build(this.itemStack);
+        this.itemStack = nbtTagBuilder.build(this.itemStack);
 
         return super.build();
     }

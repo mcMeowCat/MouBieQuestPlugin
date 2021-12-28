@@ -23,6 +23,7 @@ package com.moubiecat.api.yaml.plugin;
 
 import com.moubiecat.api.quests.Quest;
 import com.moubiecat.api.quests.QuestType;
+import com.moubiecat.api.yaml.PluginLoader;
 import com.moubiecat.moubie.quests.object.Title;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
@@ -35,7 +36,7 @@ import java.util.List;
  * @author MouBieCat
  */
 public interface FormatFile
-        extends PluginFile {
+        extends PluginLoader {
 
     /**
      * 獲取任務類型的字串

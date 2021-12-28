@@ -21,8 +21,8 @@
 
 package com.moubiecat.moubie.quests.quest;
 
-import com.moubiecat.api.MouBieQuest;
-import com.moubiecat.api.data.quest.PlayerQuestDataFile;
+import com.moubiecat.MouBieCat;
+import com.moubiecat.api.data.PlayerQuestDataFile;
 import com.moubiecat.api.event.PlayerProgressAddEvent;
 import com.moubiecat.api.event.PlayerProgressClearEvent;
 import com.moubiecat.api.event.QuestSuccessEvent;
@@ -86,7 +86,7 @@ public abstract class ProgressQuestAbstract
         Bukkit.getPluginManager().callEvent(addEvent);
 
         if (!addEvent.isCancelled() && this.isQuestEnable() && !this.isSuccess(player)) {
-            final PlayerQuestDataFile dataFile = MouBieQuest.getAPI().getQuestData().get(player);
+            final PlayerQuestDataFile dataFile = MouBieCat.getInstance().getPlayerDataManager().get(player);
             dataFile.setProgress(this, this.getPlayerQuestProgress(player) + 1);
 
             // 當完達成時呼叫(僅限一次)
@@ -110,7 +110,7 @@ public abstract class ProgressQuestAbstract
         final PlayerProgressClearEvent clearEvent = new PlayerProgressClearEvent(this, player);
         Bukkit.getPluginManager().callEvent(clearEvent);
 
-        final PlayerQuestDataFile dataFile = MouBieQuest.getAPI().getQuestData().get(player);
+        final PlayerQuestDataFile dataFile = MouBieCat.getInstance().getPlayerDataManager().get(player);
         dataFile.setProgress(this, 0);
     }
 
@@ -120,7 +120,7 @@ public abstract class ProgressQuestAbstract
      * @return 進度次數
      */
     public final int getPlayerQuestProgress(final @NotNull Player player) {
-        final PlayerQuestDataFile dataFile = MouBieQuest.getAPI().getQuestData().get(player);
+        final PlayerQuestDataFile dataFile = MouBieCat.getInstance().getPlayerDataManager().get(player);
         return dataFile.getProgress(this);
     }
 

@@ -21,9 +21,7 @@
 
 package com.moubiecat.listener;
 
-import com.moubiecat.api.Debugger;
-import com.moubiecat.api.MouBieQuest;
-import com.moubiecat.api.data.quest.PlayerQuestDataFile;
+import com.moubiecat.api.data.PlayerQuestDataFile;
 import com.moubiecat.api.event.PlayerChangedTitleEvent;
 import com.moubiecat.api.event.QuestSuccessEvent;
 import com.moubiecat.api.quests.Quest;
@@ -71,7 +69,7 @@ public final class QuestListener
         final String msg = this.replace(MouBieCat.getInstance().getMessageFile().getSuccessQuest(), player, quest);
 
         for (final Player serverPlayer : Bukkit.getOnlinePlayers()) {
-            final PlayerQuestDataFile dataFile = MouBieQuest.getAPI().getQuestData().get(serverPlayer);
+            final PlayerQuestDataFile dataFile = MouBieCat.getInstance().getPlayerDataManager().get(serverPlayer);
             if (dataFile.isReceiveMessage() || serverPlayer == player)
                 player.sendMessage(MouBieCat.PLUGIN_TITLE + msg);
         }
@@ -100,7 +98,7 @@ public final class QuestListener
         String format = event.getFormat();
 
         final FormatFile formatFile = MouBieCat.getInstance().getFormatFile();
-        final PlayerQuestDataFile dataFile = MouBieQuest.getAPI().getQuestData().get(player);
+        final PlayerQuestDataFile dataFile = MouBieCat.getInstance().getPlayerDataManager().get(player);
 
         final String replaceFormat = formatFile.getTitleReplaceFormat();
         final String honorPointTitleFormat = formatFile.getHonorPointTitleFormat(dataFile.getHonorPoint());

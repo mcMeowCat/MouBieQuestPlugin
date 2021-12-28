@@ -21,12 +21,13 @@
 
 package com.moubiecat.api.gui.ui;
 
-import com.moubiecat.api.gui.BackInventory;
+import com.moubiecat.api.inventory.Backable;
+import com.moubiecat.api.inventory.gui.GUI;
 
 /**
  * 代表一個編輯任務狀態的介面
  * @author MouBieCat
  */
 public interface EditStatusGUI
-        extends BackInventory<QuestGUI>, GUI {
+        extends Backable<QuestGUI>, GUI {
 }

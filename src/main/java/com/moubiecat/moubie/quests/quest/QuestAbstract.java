@@ -21,8 +21,8 @@
 
 package com.moubiecat.moubie.quests.quest;
 
-import com.moubiecat.api.MouBieQuest;
-import com.moubiecat.api.data.quest.TitleData;
+import com.moubiecat.MouBieCat;
+import com.moubiecat.api.data.TitleData;
 import com.moubiecat.api.event.PlayerChangeTitleEvent;
 import com.moubiecat.api.event.PlayerChangedTitleEvent;
 import com.moubiecat.api.quests.Quest;
@@ -207,7 +207,7 @@ public abstract class QuestAbstract
             Bukkit.getPluginManager().callEvent(changedTitleEvent);
 
             // 設定玩家的稱號
-            final TitleData titleData = MouBieQuest.getAPI().getQuestData().get(player);
+            final TitleData titleData = MouBieCat.getInstance().getPlayerDataManager().get(player);
             titleData.setPlayerTitle(new Title(this.getQuestTitle()));
 
             player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_YES, 1f, 1f);

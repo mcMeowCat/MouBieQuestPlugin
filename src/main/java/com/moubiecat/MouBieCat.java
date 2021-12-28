@@ -21,13 +21,15 @@
 
 package com.moubiecat;
 
+import com.moubiecat.api.manager.QuestDataManager;
 import com.moubiecat.api.manager.QuestManager;
+import com.moubiecat.api.plugin.MouBiePlugin;
 import com.moubiecat.api.quests.KillerQuest;
 import com.moubiecat.api.yaml.plugin.FormatFile;
 import com.moubiecat.api.yaml.plugin.InventoryFile;
 import com.moubiecat.api.yaml.plugin.MessageFile;
-import com.moubiecat.api.MouBieQuest;
-import com.moubiecat.moubie.manager.quests.KillerQuestManager;
+import com.moubiecat.moubie.manager.PlayerQuestDataManager;
+import com.moubiecat.moubie.manager.KillerQuestManager;
 import com.moubiecat.moubie.yaml.plugin.PluginFormat;
 import com.moubiecat.moubie.yaml.plugin.PluginInventory;
 import com.moubiecat.moubie.yaml.plugin.PluginMessage;
@@ -44,13 +46,10 @@ import org.jetbrains.annotations.NotNull;
  * @author MouBieCat
  */
 public final class MouBieCat
-        extends JavaPlugin {
+        extends MouBiePlugin {
 
     // 插件標題
     public static final String PLUGIN_TITLE = "§7[§fMouBie§6Quest§7] §r";
-
-    // API
-    private static MouBieQuest MOU_BIE_QUEST_API;
 
     // 代表格式檔案
     private FormatFile formatFile;
@@ -61,17 +60,17 @@ public final class MouBieCat
     // 代表訊息檔案
     private MessageFile messageFile;
 
+    // 代表玩家紀錄經理
+    private QuestDataManager playerDataManager;
+
     // 擊殺任務經理
     private QuestManager<KillerQuest> killerQuestManager;
 
     /**
-     * 當插件啟動時調用
+     * 用於加載插件配置文件
      */
     @Override
-    public void onEnable() {
-        // API hook
-        MouBieCat.MOU_BIE_QUEST_API = new MouBieQuest();
-
+    protected void loadFiles() {
         // 加載檔案
         this.formatFile = new PluginFormat();
         this.inventoryFile = new PluginInventory();
@@ -80,6 +79,15 @@ public final class MouBieCat
         // 建立擊殺任務經理
         this.killerQuestManager = new KillerQuestManager();
 
+        // 加載玩家配置文件
+        this.playerDataManager = new PlayerQuestDataManager();
+    }
+
+    /**
+     * 用於註冊插件事件
+     */
+    @Override
+    protected void loadListener() {
         // 註冊事件
         Bukkit.getPluginManager().registerEvents(new PlayerDataListener(), this);
         Bukkit.getPluginManager().registerEvents(new KillerQuestListener(), this);
@@ -88,26 +96,11 @@ public final class MouBieCat
     }
 
     /**
-     * 插件關閉時調用
-     */
-    @Override
-    public void onDisable() {
-    }
-
-    /**
      * 獲取當前插件實例
      * @return 插件本身
      */
     public static MouBieCat getInstance() {
         return JavaPlugin.getPlugin(MouBieCat.class);
-    }
-
-    /**
-     * 獲取插件定義的API
-     * @return API
-     */
-    public static MouBieQuest getAPI() {
-        return MouBieCat.MOU_BIE_QUEST_API;
     }
 
     /**
@@ -135,6 +128,15 @@ public final class MouBieCat
     @NotNull
     public MessageFile getMessageFile() {
         return this.messageFile;
+    }
+
+    /**
+     * 獲取玩家紀錄經理
+     * @return 玩家紀錄
+     */
+    @NotNull
+    public QuestDataManager getPlayerDataManager() {
+        return this.playerDataManager;
     }
 
     /**

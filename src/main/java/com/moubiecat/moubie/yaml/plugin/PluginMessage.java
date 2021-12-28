@@ -21,7 +21,9 @@
 
 package com.moubiecat.moubie.yaml.plugin;
 
+import com.moubiecat.MouBieCat;
 import com.moubiecat.api.yaml.plugin.MessageFile;
+import com.moubiecat.moubieapi.yaml.PluginFileLoaderAbstract;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -29,7 +31,7 @@ import org.jetbrains.annotations.NotNull;
  * @author MouBieCat
  */
 public final class PluginMessage
-        extends PluginLoader
+        extends PluginFileLoaderAbstract
         implements MessageFile {
 
     public static final String MESSAGE_CHANGED_QUEST_TITLE = "ChangedQuestTitle";
@@ -40,7 +42,7 @@ public final class PluginMessage
      * 建構子
      */
     public PluginMessage() {
-        super("", "Message.yml");
+        super(MouBieCat.getInstance(), "", "Message.yml");
     }
 
     /**

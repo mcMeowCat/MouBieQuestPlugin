@@ -19,19 +19,19 @@
  * <http://www.gnu.org/licenses/gpl-3.0.html>.
  */
 
-package com.moubiecat.api.handler;
+package com.moubiecat.api.data;
 
-import org.jetbrains.annotations.NotNull;
+import com.moubiecat.api.yaml.PlayerLoader;
+import org.bukkit.entity.Player;
 
 /**
- * 代表一個 nms 操作類的基礎介面
+ * 有關玩家的任務資料載入器介面
+ * @author MouBieCat
  */
-public interface Handler {
-
-    /**
-     * 獲取當前使用的 Minecraft nms 版本
-     * @return 版本
-     */
-    @NotNull String getVersion();
-
+public interface PlayerQuestDataFile
+        extends PlayerLoader<Player>,
+        TitleData,
+        HonorData,
+        MessageData,
+        ProgressQuestData {
 }
