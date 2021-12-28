@@ -1,7 +1,7 @@
 name: MouBieQuest
 
 version: '${project.version}'
-api-version: 1.18
+api-version: ${plugin.api.version}
 
 authors: [ MouBieCat ]
 description: '${project.description}'
