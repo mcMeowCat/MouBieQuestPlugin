@@ -7,3 +7,4 @@ authors: [ MouBieCat ]
 description: '${project.description}'
 
 main: com.moubiequest.MouBieCat
+depend: [ MouBieAPI ]
