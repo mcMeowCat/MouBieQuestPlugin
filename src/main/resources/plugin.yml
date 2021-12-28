@@ -6,4 +6,4 @@ api-version: ${plugin.api.version}
 authors: [ MouBieCat ]
 description: '${project.description}'
 
-main: com.moubiecat.MouBieCat
+main: com.moubiequest.MouBieCat
