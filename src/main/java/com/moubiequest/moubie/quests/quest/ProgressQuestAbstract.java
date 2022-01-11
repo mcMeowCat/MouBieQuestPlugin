@@ -87,10 +87,12 @@ public abstract class ProgressQuestAbstract
 
         if (!addEvent.isCancelled() && this.isQuestEnable() && !this.isSuccess(player)) {
             final PlayerQuestDataFile dataFile = MouBieCat.getInstance().getPlayerDataManager().get(player);
-            dataFile.setProgress(this, this.getPlayerQuestProgress(player) + 1);
+
+            final int addQuestProgress = (this.getPlayerQuestProgress(player)) + 1;
+            dataFile.setProgress(this, addQuestProgress);
 
             // 當完達成時呼叫(僅限一次)
-            if (this.getPlayerQuestProgress(player) == this.quest_progress) {
+            if (addQuestProgress == this.quest_progress) {
                 // 發送事件
                 final QuestSuccessEvent successEvent = new QuestSuccessEvent(this, player);
                 Bukkit.getPluginManager().callEvent(successEvent);

@@ -21,7 +21,7 @@
 
 package com.moubiequest.moubie.data;
 
-import com.moubieapi.moubieapi.yaml.data.PlayerDataLoaderAbstract;
+import com.moubieapi.moubieapi.yaml.utils.PlayerDataLoaderAbstract;
 import com.moubiequest.MouBieCat;
 import com.moubiequest.api.data.PlayerQuestDataFile;
 import com.moubiequest.api.quests.ProgressQuest;

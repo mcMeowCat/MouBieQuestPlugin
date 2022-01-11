@@ -21,7 +21,7 @@
 
 package com.moubiequest.moubie.yaml.plugin;
 
-import com.moubieapi.moubieapi.yaml.PluginFileLoaderAbstract;
+import com.moubieapi.moubieapi.yaml.utils.PluginFileLoaderAbstract;
 import com.moubiequest.MouBieCat;
 import com.moubiequest.api.yaml.plugin.MessageFile;
 import org.jetbrains.annotations.NotNull;
