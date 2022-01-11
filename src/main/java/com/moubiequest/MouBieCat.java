@@ -22,45 +22,44 @@
 package com.moubiequest;
 
 import com.moubieapi.api.plugin.MouBiePlugin;
-import com.moubiequest.api.manager.QuestDataManager;
+import com.moubiequest.api.manager.PlayerDataManager;
 import com.moubiequest.api.manager.QuestManager;
 import com.moubiequest.api.quests.KillerQuest;
-import com.moubiequest.api.yaml.plugin.FormatFile;
-import com.moubiequest.api.yaml.plugin.InventoryFile;
-import com.moubiequest.api.yaml.plugin.MessageFile;
-import com.moubiequest.moubie.manager.PlayerQuestDataManager;
-import com.moubiequest.moubie.manager.KillerQuestManager;
-import com.moubiequest.moubie.yaml.plugin.PluginFormat;
-import com.moubiequest.moubie.yaml.plugin.PluginInventory;
-import com.moubiequest.moubie.yaml.plugin.PluginMessage;
+import com.moubiequest.api.yaml.plugin.FormatLoader;
+import com.moubiequest.api.yaml.plugin.InventoryLoader;
+import com.moubiequest.api.yaml.plugin.MessageLoader;
 import com.moubiequest.listener.KillerQuestListener;
 import com.moubiequest.listener.PlayerDataListener;
 import com.moubiequest.listener.QuestListener;
+import com.moubiequest.moubiequest.manager.KillerQuestManager;
+import com.moubiequest.moubiequest.manager.PlayerQuestDataManager;
+import com.moubiequest.moubiequest.yaml.plugin.PluginFormatLoader;
+import com.moubiequest.moubiequest.yaml.plugin.PluginInventoryLoader;
+import com.moubiequest.moubiequest.yaml.plugin.PluginMessageLoader;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * 代表該插件的主類
+ * 代表該插件的主要類別
  * @author MouBieCat
  */
 public final class MouBieCat
         extends MouBiePlugin {
-
     // 插件標題
     public static final String PLUGIN_TITLE = "§7[§fMouBie§6Quest§7] §r";
 
     // 代表格式檔案
-    private FormatFile formatFile;
+    private FormatLoader formatFile;
 
     // 代表介面檔案
-    private InventoryFile inventoryFile;
+    private InventoryLoader inventoryFile;
 
     // 代表訊息檔案
-    private MessageFile messageFile;
+    private MessageLoader messageFile;
 
     // 代表玩家紀錄經理
-    private QuestDataManager playerDataManager;
+    private PlayerDataManager playerDataManager;
 
     // 擊殺任務經理
     private QuestManager<KillerQuest> killerQuestManager;
@@ -71,9 +70,9 @@ public final class MouBieCat
     @Override
     protected void loadFiles() {
         // 加載檔案
-        this.formatFile = new PluginFormat();
-        this.inventoryFile = new PluginInventory();
-        this.messageFile = new PluginMessage();
+        this.formatFile = new PluginFormatLoader();
+        this.inventoryFile = new PluginInventoryLoader();
+        this.messageFile = new PluginMessageLoader();
 
         // 建立擊殺任務經理
         this.killerQuestManager = new KillerQuestManager();
@@ -106,7 +105,7 @@ public final class MouBieCat
      * @return 檔案
      */
     @NotNull
-    public FormatFile getFormatFile() {
+    public FormatLoader getFormatFile() {
         return this.formatFile;
     }
 
@@ -115,7 +114,7 @@ public final class MouBieCat
      * @return 檔案
      */
     @NotNull
-    public InventoryFile getInventoryFile() {
+    public InventoryLoader getInventoryFile() {
         return this.inventoryFile;
     }
 
@@ -124,7 +123,7 @@ public final class MouBieCat
      * @return 檔案
      */
     @NotNull
-    public MessageFile getMessageFile() {
+    public MessageLoader getMessageFile() {
         return this.messageFile;
     }
 
@@ -133,7 +132,7 @@ public final class MouBieCat
      * @return 玩家紀錄
      */
     @NotNull
-    public QuestDataManager getPlayerDataManager() {
+    public PlayerDataManager getPlayerDataManager() {
         return this.playerDataManager;
     }
 
